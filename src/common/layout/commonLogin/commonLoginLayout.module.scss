@@ -1,0 +1,35 @@
+@import "src/styles/variable";
+
+.commonLoginLayout {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 auto;
+  padding: 0 16px;
+  background-image: linear-gradient(347.98deg, #ba0000 -54.41%, #ff864c 92.25%);
+
+  &::before {
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background: url(../../../assets/icons/logoTriton.svg);
+    background-repeat: no-repeat;
+    background-size: 1096px 983px;
+    background-position: -151px -21px;
+  }
+
+  .fieldLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 66px;
+  }
+}

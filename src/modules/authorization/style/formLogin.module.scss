@@ -1,0 +1,42 @@
+@import "src/styles/variable";
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+  height: 100%;
+
+  .styleInput {
+    width: 100%;
+    margin-top: 20px;
+
+    input {
+      height: 50px;
+    }
+  }
+
+  .forgetPassword {
+    align-self: flex-end;
+    color: $white;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 12px;
+  }
+
+  .styleBtn {
+    display: flex;
+    justify-content: center;
+    height: 52px;
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .see {
+    position: absolute;
+    top: 55px;
+    right: 12px;
+    cursor: pointer;
+  }
+}

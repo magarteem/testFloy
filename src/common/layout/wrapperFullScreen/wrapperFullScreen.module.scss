@@ -1,0 +1,11 @@
+@import "src/styles/variable";
+
+.wrapperFullScreen {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 auto;
+}

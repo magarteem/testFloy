@@ -1,0 +1,32 @@
+@import "src/styles/variable";
+
+.headerWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+  color: $white;
+
+  .positionImg {
+    z-index: 1;
+    position: absolute;
+    overflow: hidden;
+    width: 130%;
+    height: 130px;
+    top: 0;
+    border-radius: 0 0 50% 50%;
+
+    .backgroundImg {
+      position: absolute;
+      left: 50%;
+      width: 78%;
+      transform: translate(-50%);
+      top: -35px;
+      height: 200px;
+      background: url(../../../assets/images/backgroundProfileHeader.webp);
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+  }
+}

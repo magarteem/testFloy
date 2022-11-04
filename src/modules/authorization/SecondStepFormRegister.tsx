@@ -1,40 +1,35 @@
-import React, { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { InButton } from "../../common/ui-elements/button/InButton";
 import { ReactSelect } from "../../common/components/signIn/reactSelect/ReactSelect";
 import s from "./style/secondStepFormRegister.module.scss";
 import { ButtonBack } from "../../common/ui-elements/button/ButtonBack";
+import { RouteNames } from "../../common/variables/RouteNames";
 
 export const SecondStepFormRegister = () => {
   const navigate = useNavigate();
-  const [selectData, setSelectData] = useState();
 
   const {
-    register,
     control,
     formState: { errors, isValid },
   } = useFormContext();
 
-  console.log("ewew");
-  console.log(errors.typeAccount);
-  console.log(isValid);
-
   const nextStepRegister = () =>
-    navigate("/register/create-questionnaire", { replace: true });
-  const returnStepRegister = () => navigate("/register", { replace: true });
+    navigate(`${RouteNames.REGISTER}/${RouteNames.REG_CREATE_ACCOUNT}`);
+  const returnStepRegister = () => navigate(`${RouteNames.REGISTER}`);
 
   return (
     <div className={s.secondStepFormRegister}>
       <h2>Тип аккаунта</h2>
       <Controller
-        name="typeAccount"
+        name="type_account"
         control={control}
         rules={{
           required: "тип обязателен",
         }}
-        render={({ field: { onChange } }) => (
+        render={({ field: { onChange, value } }) => (
           <ReactSelect
+            valueData={value}
             errors={errors.typeAccount && errors.typeAccount.message}
             onChange={onChange}
           />
@@ -42,11 +37,11 @@ export const SecondStepFormRegister = () => {
       />
 
       <div className={s.bntNavigate}>
-        <div className={s.styleBtn} onClick={returnStepRegister}>
-          <ButtonBack textButton="Назад" />
+        <div className={s.styleBtn}>
+          <ButtonBack textButton="Назад" onClick={returnStepRegister} />
         </div>
         <div className={s.styleBtn} onClick={nextStepRegister}>
-          <InButton textButton="Далее" isValid={!false} />
+          <InButton textButton="Далее" isValid={!isValid} />
         </div>
       </div>
     </div>

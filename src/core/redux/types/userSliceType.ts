@@ -1,16 +1,8 @@
 export interface SkillsDataType {
-  tools: {
-    title: string;
-    item: string[];
-  };
-  notice?: {
-    text: string;
-    data: string;
-  };
-  addTools: string;
-  link: string;
+  title: string;
+  item: string[] | string;
 }
 
 export interface InitialStateUserType {
-  skillsData: SkillsDataType[]
+  skillsData: SkillsDataType[];
 }

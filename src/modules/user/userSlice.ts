@@ -1,53 +1,36 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { InitialStateUserType } from '../../core/redux/types/userSliceType';
+import { createSlice } from "@reduxjs/toolkit";
+import { InitialStateUserType } from "../../core/redux/types/userSliceType";
 
 const initialState: InitialStateUserType = {
   skillsData: [
     {
-      tools: {
-        title: 'Инструменты',
-        item: ['Гитара', 'Укулеле', 'Саксофон'],
-      },
-      addTools: 'Добавить инструмент',
-      link: '/tools',
+      title: "Инструменты",
+      item: ["Гитара", "Укулеле", "Саксофон"],
     },
     {
-      tools: {
-        title: 'Жанр',
-        item: ['Джаз', 'Поп-музыка'],
-      },
-      addTools: 'Добавить жанр',
-      link: 'genre',
+      title: "Жанр",
+      item: [
+        "Джаз",
+        "Поп-музыка",
+        "Кантри",
+        "Блюз",
+        "Фолк-музыка",
+        "Ритм-н-блюз ",
+      ],
     },
     {
-      tools: {
-        title: 'Опыт работы',
-        item: [],
-      },
-      notice: {
-        text: 'Бар “Джаз”',
-        data: '2010-2021',
-      },
-      addTools: 'Добавить опыт работы',
-      link: '/experience',
+      title: "Опыт работы",
+      item: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.",
     },
     {
-      tools: {
-        title: 'Образование',
-        item: [],
-      },
-      notice: {
-        text: 'Российская Академия музыки им. Гнесеных',
-        data: '2010-2021',
-      },
-      addTools: 'Добавить учебное заведение',
-      link: '/education',
+      title: "Образование",
+      item: "Российская Академия музыки им. Гнесеных",
     },
   ],
 };
 
 const userSlice = createSlice({
-  name: 'authSlice',
+  name: "authSlice",
   initialState,
 
   reducers: {},

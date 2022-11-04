@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { FirstToStepsLayout } from "../../common/layout/signInOrOut/FirstToStepsLayout";
 import { RouteNames } from "../../common/variables/RouteNames";
@@ -13,6 +13,9 @@ import { Registration } from "../../pages/Registration";
 import { useAppSelector } from "../redux/app/hooks";
 import { ProtectedRoute } from "./ProtectedRoutes";
 import { RecoveryPassword } from "../../pages/RecoveryPassword";
+import { RecoveryPasswordFirstSteps } from "../../common/components/signIn/recoveryPassword/RecoveryPasswordFirstSteps";
+import { RecoveryPasswordSecondSteps } from "../../common/components/signIn/recoveryPassword/RecoveryPasswordSecondSteps";
+import { WelcomeWindow } from "../../pages/WelcomeWindow";
 
 const Ads = React.lazy(() =>
   import(/* webpackChunkName:"Ads" */ "../../pages/Ads").then((module) => ({
@@ -47,6 +50,9 @@ const Notification = React.lazy(() =>
 
 export const AppRouter = () => {
   const auth = useAppSelector((state) => state.authSliceReducer.isAuth);
+  const [preloaderPages, setPreloaderPages] = useState(false);
+
+  const setPreloaderPagesFu = () => setPreloaderPages((prev) => !prev);
 
   return (
     <Routes>
@@ -113,21 +119,38 @@ export const AppRouter = () => {
             <Route element={<FirstToStepsLayout />}>
               <Route index element={<FirstStepFormRegister />} />
               <Route
-                path="reg-type-account"
+                path={RouteNames.REG_TYPE_ACCOUNT}
                 element={<SecondStepFormRegister />}
               />
             </Route>
             <Route
-              path="create-questionnaire"
+              path={RouteNames.REG_CREATE_ACCOUNT}
               element={<ThreeStepFormRegister />}
             />
           </Route>
 
-          <Route path={RouteNames.LOGIN} element={<Login />} />
+          {/* <Route path={RouteNames.LOGIN} element={<Login />} /> */}
+          <Route
+            path={RouteNames.LOGIN}
+            element={
+              preloaderPages ? (
+                <Login />
+              ) : (
+                <WelcomeWindow setPreloaderPagesFu={setPreloaderPagesFu} />
+              )
+            }
+          />
+
           <Route
             path={RouteNames.RECOVERY_PASSWORD}
             element={<RecoveryPassword />}
-          />
+          >
+            <Route index element={<RecoveryPasswordFirstSteps />} />
+            <Route
+              path={RouteNames.RECOVERY_CREATE_PASSWORD}
+              element={<RecoveryPasswordSecondSteps />}
+            />
+          </Route>
         </Route>
       )}
 

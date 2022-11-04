@@ -5,9 +5,10 @@ interface InputType {
   inputLabel?: string;
   type?: string;
   errors?: any;
+  errorBackgroundOrange?: any;
   inputValue?: string;
   children?: ReactNode;
-  placeholderValue: string;
+  placeholder: string;
   onChange: any;
 }
 export const Input = ({
@@ -15,8 +16,9 @@ export const Input = ({
   inputLabel,
   type = "text",
   errors,
+  errorBackgroundOrange,
   inputValue,
-  placeholderValue,
+  placeholder,
   onChange,
   ...props
 }: InputType) => {
@@ -24,16 +26,26 @@ export const Input = ({
     <div className={s.wrapperInput}>
       <label>{inputLabel}</label>
 
-      <input
-        className={`${errors && s.error}`}
-        type={type}
-        value={inputValue}
-        placeholder={placeholderValue}
-        onChange={onChange}
-        {...props}
-      />
-      {children}
-      {errors && <span>{errors}</span>}
+      <div className={s.inpFieldsRelative}>
+        <input
+          className={`${errors && s.error} ${
+            errorBackgroundOrange && s.errorBackgroundOrange
+          }`}
+          type={type}
+          value={inputValue}
+          placeholder={placeholder}
+          onChange={onChange}
+          {...props}
+        />
+        {children}
+        {errors && (
+          <span
+            className={`${errorBackgroundOrange && s.errorBackgroundOrange}`}
+          >
+            {errors}
+          </span>
+        )}
+      </div>
     </div>
   );
 };

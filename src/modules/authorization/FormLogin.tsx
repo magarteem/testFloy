@@ -8,8 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../core/redux/app/hooks";
 import { authThunkLogin } from "./authThunkLogin";
 import { ISignInFormValues } from "./types/type";
-import s from "./style/formLogin.module.scss";
 import { RouteNames } from "../../common/variables/RouteNames";
+import s from "./style/formLogin.module.scss";
 
 export const FormLogin = () => {
   const dispatch = useAppDispatch();
@@ -33,7 +33,7 @@ export const FormLogin = () => {
 
   const onSubmit = (data: ISignInFormValues) => {
     dispatch(authThunkLogin(data));
-    navigate("/", { replace: true });
+    navigate(RouteNames.HOME, { replace: true });
   };
 
   return (
@@ -50,8 +50,9 @@ export const FormLogin = () => {
             <Input
               type="text"
               inputLabel="Email"
-              placeholderValue="Email"
+              placeholder="Email"
               errors={errors.email && errors.email.message}
+              errorBackgroundOrange={errors.email}
               onChange={onChange}
             />
           )}
@@ -66,8 +67,9 @@ export const FormLogin = () => {
             <Input
               type={eye ? "text" : "password"}
               inputLabel="Пароль"
-              placeholderValue="Password"
+              placeholder="Password"
               errors={errors.password && errors.password.message}
+              errorBackgroundOrange={errors.password}
               onChange={onChange}
             >
               {watch("password").length > 0 &&

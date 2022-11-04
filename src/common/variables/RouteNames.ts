@@ -1,5 +1,8 @@
 export enum RouteNames {
+  WELCOME = "/welcome",
   REGISTER = "/register",
+  REG_TYPE_ACCOUNT = "reg-type-account",
+  REG_CREATE_ACCOUNT = "create-account",
   LOGIN = "/login",
   HOME = "/",
   ADS = "/ads",
@@ -8,4 +11,5 @@ export enum RouteNames {
   CHATS = "/chats",
   NOTIFICATION = "/notification",
   RECOVERY_PASSWORD = "/recovery-password",
+  RECOVERY_CREATE_PASSWORD = "recovery-create-password",
 }

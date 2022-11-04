@@ -4,71 +4,41 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid $grey;
-  margin-top: 16px;
-  font-family: $font_SF_UI_Text;
+  // border-bottom: 1px solid #ebeceb;
+  // margin-top: 16px;
+  padding: 24px 0 24px;
 
   .profileData {
     h2 {
+      font-weight: 700;
       font-size: 20px;
-      font-weight: 800;
-      color: $text-primary;
-      margin-bottom: 12px;
+      color: #212121;
+      margin-bottom: 20px;
     }
 
     .skills_item {
       display: flex;
       flex-wrap: wrap;
+      gap: 20px 12px;
+      // margin-bottom: 24px;
 
       .item {
-        color: $secondary;
-        background-color: #e3f9f6;
-        border-radius: 20px;
-        margin-right: 8px;
-        padding: 4px 12px;
-      }
-
-      .organization {
-        font-weight: 600;
-
-        p {
-          font-size: 14px;
-          font-weight: 400;
-        }
-      }
-    }
-
-    .addTools {
-      display: flex;
-      align-items: center;
-      margin: 10px 0 18px;
-
-      img {
-        width: 24px;
-        height: 24px;
-        margin: 0 11px 0 3px;
-      }
-
-      button {
+        color: #5b9232;
+        font-weight: 700;
         font-size: 14px;
-        line-height: 20px;
-        color: $primary-button;
-        background-color: inherit;
+        background: rgba(185, 239, 112, 0.1);
+        border: 1px solid #5b9232;
+        border-radius: 16px;
+        padding: 6px 12px;
       }
-    }
-  }
-
-  .profileNavigate {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 30px;
-    height: 100px;
-    cursor: pointer;
-
-    img {
-      width: 16px;
-      height: 16px;
+      .textNotes {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        letter-spacing: -0.1px;
+        padding: 0 6px;
+        color: #586274;
+      }
     }
   }
 }

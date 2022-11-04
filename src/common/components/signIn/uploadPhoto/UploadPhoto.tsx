@@ -1,22 +1,21 @@
 import { useRef } from "react";
-import { useFormContext } from "react-hook-form";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 import s from "./uploadPhoto.module.scss";
 
-export const UploadPhoto = () => {
-  const {
-    register,
-    control,
-    watch,
-    formState: { errors, isValid },
-  } = useFormContext();
-
-  const { ref, ...rest } = register("imageUrl");
-
+interface UploadPhotoType {
+  register: UseFormRegister<FieldValues>;
+  // onChange: () => void;
+}
+export const UploadPhoto = ({
+  register,
+}: // onChange,
+// ...props
+UploadPhotoType) => {
   const filePicker = useRef<HTMLInputElement | null>(null);
+  const { ref, ...rest } = register("img_upload");
 
   const handlePickerRef = () => {
     if (filePicker.current) {
-      console.log(filePicker.current);
       filePicker.current.click();
     }
   };
@@ -31,6 +30,8 @@ export const UploadPhoto = () => {
           ref(e);
           filePicker.current = e;
         }}
+        // onChange={onChange}
+        // {...props}
       />
       <span>Размер файла не более 1 мб</span>
     </div>

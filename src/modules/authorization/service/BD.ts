@@ -4,6 +4,21 @@ import {
   OptionSelectType,
 } from "../types/type";
 
+export const optionsTypeAccount: OptionSelectType[] = [
+  { value: "musician", label: "Музыкант" },
+  { value: "group-collective", label: "Группа / Коллектив" },
+  { value: "performance-venue", label: "Заведение / Площадка для выступлений" },
+  { value: "school-of-music", label: "Музыкальная школа" },
+  { value: "rehearsal-point", label: "Репетиционная точка" },
+  { value: "recording-studio", label: "Студия звукозаписи" },
+  { value: "a-music-shop", label: "Музыкальный магазин" },
+  {
+    value: "Workshop-of-musical instruments",
+    label: "Мастерская музыкальных инструментов",
+  },
+  { value: "sound-engineer", label: "Звукорежиссёр" },
+];
+
 export const sityBD: OptionSelectType[] = [
   { value: "lobnya", label: "Лобня" },
   { value: "lysva", label: "Лысьва" },
@@ -35,38 +50,38 @@ export const ageNumber: AgeNumberType[] = Array.from(Array(100).keys()).map(
   }
 );
 
-export const groupOptions: GroupOptionsType[] = [
+export const groupeOptions: GroupOptionsType[] = [
   {
     label: "Вокал",
     options: [
       { label: "Тенор", value: "value_1" },
       { label: "Баритон", value: "value_2" },
-      { label: "Бас", value: "value_2" },
-      { label: "Сопрано", value: "value_2" },
-      { label: "Меццо-сопрано", value: "value_2" },
-      { label: "Контральто", value: "value_2" },
+      { label: "Бас", value: "value_23" },
+      { label: "Сопрано", value: "value_42" },
+      { label: "Меццо-сопрано", value: "value_52" },
+      { label: "Контральто", value: "value_26" },
     ],
   },
   {
     label: "Клавишные",
     options: [
-      { label: "Тенор", value: "value_1" },
-      { label: "Баритон", value: "value_2" },
-      { label: "Бас", value: "value_2" },
-      { label: "Сопрано", value: "value_2" },
-      { label: "Меццо-сопрано", value: "value_2" },
-      { label: "Контральто", value: "value_2" },
+      { label: "Тенор", value: "value_61" },
+      { label: "Баритон", value: "value5_2" },
+      { label: "Бас", value: "value_24" },
+      { label: "Сопрано", value: "valu3e_2" },
+      { label: "Меццо-сопрано", value: "2value_2" },
+      { label: "Контральто", value: "valu1e_2" },
     ],
   },
   {
     label: "Струнные",
     options: [
-      { label: "Тенор", value: "value_1" },
-      { label: "Баритон", value: "value_2" },
-      { label: "Бас", value: "value_2" },
-      { label: "Сопрано", value: "value_2" },
-      { label: "Меццо-сопрано", value: "value_2" },
-      { label: "Контральто", value: "value_2" },
+      { label: "Тенор", value: "value_321" },
+      { label: "Баритон", value: "value_223" },
+      { label: "Бас", value: "value_243" },
+      { label: "Сопрано", value: "value34_2" },
+      { label: "Меццо-сопрано", value: "va55lue_2" },
+      { label: "Контральто", value: "value_222" },
     ],
   },
 ];

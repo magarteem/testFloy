@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { LoginSocialNetwork } from "../common/components/signIn/LoginSocialNetwork";
 import { RegistrationQuestionLink } from "../common/components/signIn/registrationQuestion/RegistrationQuestionLink";
 import { RouteNames } from "../common/variables/RouteNames";

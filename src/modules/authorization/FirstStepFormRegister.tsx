@@ -11,15 +11,17 @@ import s from "./style/formRegister.module.scss";
 
 export const FirstStepFormRegister = () => {
   const navigate = useNavigate();
-  const nextStepRegister = () =>
-    navigate("/register/reg-type-account", { replace: true });
 
   const {
+    register,
     control,
     watch,
     formState: { errors, isValid },
   } = useFormContext();
-  console.log(errors);
+
+  const nextStepRegister = () => {
+    isValid && navigate("/register/reg-type-account");
+  };
 
   const [eye, setEye] = useState(false);
   const toggleEye = () => setEye((prev) => !prev);
@@ -40,6 +42,7 @@ export const FirstStepFormRegister = () => {
     );
   };
 
+  console.log("1 = ", watch("type_account", ""));
   return (
     <>
       <div className={s.styleInput}>
@@ -52,15 +55,20 @@ export const FirstStepFormRegister = () => {
           }}
           render={({ field: { onChange } }) => (
             <Input
+              inputValue={watch("email", "")}
               type="text"
               inputLabel="Email"
-              placeholderValue="Выберите Email"
+              placeholder="Выберите Email"
               errors={errors.email && errors.email.message}
+              errorBackgroundOrange={errors.email}
               onChange={onChange}
             />
           )}
         />
       </div>
+      {/* <div className={s.styleInput}>
+        <input {...register("age", { required: "Required поле" })} />
+      </div> */}
       <div className={s.styleInput}>
         <Controller
           name="password"
@@ -72,10 +80,12 @@ export const FirstStepFormRegister = () => {
           render={({ field: { onChange } }) => (
             <>
               <Input
+                inputValue={watch("password", "")}
                 type={eye ? "text" : "password"}
                 inputLabel="Пароль"
-                placeholderValue="Выберите пароль"
+                placeholder="Выберите пароль"
                 errors={errors.password && errors.password.message}
+                errorBackgroundOrange={errors.password}
                 onChange={onChange}
               >
                 {watchHandler(watch("password"), eye, toggleEye)}
@@ -85,8 +95,8 @@ export const FirstStepFormRegister = () => {
         />
       </div>
 
-      <div className={s.styleBtn} onClick={nextStepRegister}>
-        <InButton textButton="Продолжить" isValid={!isValid} />
+      <div className={s.styleBtn}>
+        <InButton textButton="Продолжить" onClick={nextStepRegister} />
       </div>
 
       <RegistrationQuestionLink

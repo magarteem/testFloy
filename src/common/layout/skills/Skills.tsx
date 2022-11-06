@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { SkillsDataType } from "../../../core/redux/types/userSliceType";
+import { SkillsDataType } from "../../../modules/user/types/userSliceType";
 import s from "./skills.module.scss";
 
 interface SkillsType {

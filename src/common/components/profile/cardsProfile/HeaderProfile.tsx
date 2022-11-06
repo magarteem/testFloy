@@ -1,14 +1,14 @@
-import arrowBack from "../../../assets/icons/arrowBack.svg";
-import backgroundProfileHeader from "../../../assets/images/backgroundProfileHeader.webp";
+import arrowBack from "../../../../assets/icons/arrowBack.svg";
+import backgroundProfileHeader from "../../../../assets/images/backgroundProfileHeader.webp";
 import { Link } from "react-router-dom";
-import pencil from "../../../assets/icons/Pencil.webp";
-import settings from "../../../assets/icons/settings.webp";
-import { RouteNames } from "../../variables/RouteNames";
-import s from "./cardsProfile.module.scss";
+import pencil from "../../../../assets/icons/Pencil.webp";
+import settings from "../../../../assets/icons/settings.webp";
+import s from "./headerProfile.module.scss";
+import { RouteNames } from "../../../variables/RouteNames";
 
-export const CardsProfile: React.FC = () => {
+export const HeaderProfile: React.FC = () => {
   return (
-    <div className={s.cardsProfile}>
+    <div className={s.headerProfile}>
       <div className={s.title}>
         <div className={s.titleNavigation}>
           <Link to={"RouteNames.back"}>
@@ -18,7 +18,7 @@ export const CardsProfile: React.FC = () => {
         </div>
 
         <div className={s.titleSettings}>
-          <Link to={"RouteNames.changePlofile"}>
+          <Link to={"RouteNames.changeProfile"}>
             <img src={pencil} alt={pencil} />
           </Link>
           <Link to={RouteNames.SETTINGS}>
@@ -33,11 +33,6 @@ export const CardsProfile: React.FC = () => {
             <img src={backgroundProfileHeader} alt={backgroundProfileHeader} />
           </div>
         </div>
-
-        {/* <div className={s.nameProfile}>
-          <h2>Александр Ковальчук</h2>
-          <span>24 года, Москва, Россия</span>
-        </div> */}
       </div>
     </div>
   );

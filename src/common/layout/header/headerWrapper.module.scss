@@ -24,9 +24,10 @@
       transform: translate(-50%);
       top: -35px;
       height: 200px;
-      background: url(../../../assets/images/backgroundProfileHeader.webp);
-      background-repeat: no-repeat;
-      background-size: 100%;
+      background: linear-gradient(270.95deg, #ff7134 0%, #e02b2b 100%);
+      // background-image: url(../../../assets/images/backgroundProfileHeader.webp);
+      // background-repeat: no-repeat;
+      // background-size: 100%;
     }
   }
 }

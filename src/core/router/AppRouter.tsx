@@ -16,6 +16,7 @@ import { RecoveryPassword } from "../../pages/RecoveryPassword";
 import { RecoveryPasswordFirstSteps } from "../../common/components/signIn/recoveryPassword/RecoveryPasswordFirstSteps";
 import { RecoveryPasswordSecondSteps } from "../../common/components/signIn/recoveryPassword/RecoveryPasswordSecondSteps";
 import { WelcomeWindow } from "../../pages/WelcomeWindow";
+import { OtherUserProfile } from "../../pages/OtherUserProfile";
 
 const Ads = React.lazy(() =>
   import(/* webpackChunkName:"Ads" */ "../../pages/Ads").then((module) => ({
@@ -98,6 +99,11 @@ export const AppRouter = () => {
                 <Notification />
               </React.Suspense>
             }
+          />
+
+          <Route
+            path={`${RouteNames.OTHER_PROFILE_USER}/:id_user`}
+            element={<OtherUserProfile />}
           />
         </Route>
       </Route>

@@ -19,6 +19,7 @@
     #ffffff 0.92% 19%,
     #ffffff 100%
   );
+  transition: all 0.3s;
   //   background: radial-gradient(
   //     circle at 50% 0%,
   //     #ffffff00 17%,
@@ -70,6 +71,22 @@
         fill: rgb(255, 115, 0);
       }
     }
+
+    // .grinBackgroudnFooter.icon {
+    //   stroke: rgb(255, 255, 255);
+    //   fill: rgb(255, 255, 255);
+
+    //   path {
+    //     stroke: rgb(255, 255, 255);
+    //   }
+    // }
+    // .grinBackgroudnFooter.icon.activeSpecified {
+    //   fill: rgb(255, 255, 255);
+
+    //   path {
+    //     fill: rgb(255, 255, 255);
+    //   }
+    // }
 
     &:after {
       content: "";

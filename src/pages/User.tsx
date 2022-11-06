@@ -1,4 +1,6 @@
-import { CardsProfile } from "../common/components/cardsProfile/CardsProfile";
+import backGroundImg from "../assets/images/backgroundProfileHeader.webp";
+import { HeaderProfile } from "../common/components/profile/cardsProfile/HeaderProfile";
+import { NameProfile } from "../common/components/profile/nameProfile/NameProfile";
 import { HeaderWrapper } from "../common/layout/header/HeaderWrapper";
 import { Skills } from "../common/layout/skills/Skills";
 import { useAppSelector } from "../core/redux/app/hooks";
@@ -11,15 +13,16 @@ export const User = () => {
 
   return (
     <>
-      <HeaderWrapper>
-        <CardsProfile />
+      <HeaderWrapper srcPhoto={backGroundImg}>
+        <HeaderProfile />
       </HeaderWrapper>
 
       <section className={s.main}>
-        <div className={s.nameProfile}>
-          <h2>Александр Ковальчук</h2>
-          <span>24 года, Москва, Россия</span>
-        </div>
+        <NameProfile
+          age="24"
+          name="Александр Ковальчук"
+          sity="Москва, Россия"
+        />
 
         {skillsData.map((elem, index) => (
           <Skills skillsDataItem={elem} key={index} />

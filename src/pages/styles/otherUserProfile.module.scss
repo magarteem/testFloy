@@ -1,0 +1,30 @@
+@import "src/styles/variable";
+
+.main {
+  flex: 1 0 auto;
+  margin: 16px 16px 16px;
+  padding-bottom: 50px;
+
+  & > div:not(:last-child):not(:first-child) {
+    border-bottom: 1px solid #ebeceb;
+  }
+
+  .btnUserContact {
+    @include flex_position();
+    width: 166px;
+    height: 35px;
+  }
+
+  // .nameProfile {
+  //   color: #363934;
+  //   text-align: center;
+  //   border-bottom: 1px solid #ebeceb;
+  //   padding-bottom: 24px;
+
+  //   h2 {
+  //     font-weight: 700;
+  //     font-size: 20px;
+  //     margin-bottom: 6px;
+  //   }
+  // }
+}

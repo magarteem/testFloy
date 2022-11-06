@@ -1,24 +1,22 @@
-import arrowBack from "../../../../assets/icons/arrowBack.svg";
 import backgroundProfileHeader from "../../../../assets/images/backgroundProfileHeader.webp";
 import { Link } from "react-router-dom";
 import pencil from "../../../../assets/icons/Pencil.webp";
 import settings from "../../../../assets/icons/settings.webp";
-import s from "./headerProfile.module.scss";
 import { RouteNames } from "../../../variables/RouteNames";
+import s from "./headerProfile.module.scss";
+import { ArrowBtnStepsBack } from "../../navigateButton/ArrowBtnStepsBack";
 
-export const HeaderProfile: React.FC = () => {
+export const HeaderProfile = () => {
   return (
     <div className={s.headerProfile}>
       <div className={s.title}>
         <div className={s.titleNavigation}>
-          <Link to={"RouteNames.back"}>
-            <img src={arrowBack} alt={arrowBack} />
-          </Link>
+          <ArrowBtnStepsBack darkArrow={false} />
           <p>@kovalchuk</p>
         </div>
 
         <div className={s.titleSettings}>
-          <Link to={"RouteNames.changeProfile"}>
+          <Link to={RouteNames.CHANGE_PROFILE}>
             <img src={pencil} alt={pencil} />
           </Link>
           <Link to={RouteNames.SETTINGS}>

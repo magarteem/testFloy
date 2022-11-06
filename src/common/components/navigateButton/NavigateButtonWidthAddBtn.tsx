@@ -19,31 +19,33 @@ export const NavigateButtonWidthAddBtn = () => {
   const setActive = ({ isActive }: LinkActiveType) =>
     cn({ [s.active]: isActive });
 
-  const dynamicStyle = {
-    background:
-      "radial-gradient(circle at 50% 0%, #ffffff00 17%, #bef574 0.92% 19%, #426e23 100%)",
-  };
-
   return (
-    <div
-      className={s.widthAddButton}
-      style={location ? dynamicStyle : { background: "" }}
-    >
+    <div className={cn(s.widthAddButton, { [s.greenBackground]: location })}>
       <div className={s.navLeftBlock}>
         <NavLink className={setActive} to={RouteNames.HOME} aria-label="home">
           <Home
-            className={cn(s.icon, s.activeSpecified, s.grinBackgroudnFooter)}
+            className={cn(s.icon, {
+              [s.greenBackground]: location,
+            })}
           />
         </NavLink>
 
         <NavLink className={setActive} to={RouteNames.ADS} aria-label="ads">
-          <Ads className={cn(s.icon, s.activeSpecified)} />
+          <Ads
+            className={cn(s.icon, {
+              [s.greenBackground]: location,
+            })}
+          />
         </NavLink>
       </div>
 
       <div className={s.nalRightBlock}>
         <NavLink className={setActive} to={RouteNames.USER} aria-label="user">
-          <User className={s.icon} />
+          <User
+            className={cn(s.icon, {
+              [s.greenBackground]: location,
+            })}
+          />
         </NavLink>
 
         <NavLink
@@ -51,7 +53,11 @@ export const NavigateButtonWidthAddBtn = () => {
           to={RouteNames.NOTIFICATION}
           aria-label="notification"
         >
-          <Notification className={s.icon} />
+          <Notification
+            className={cn(s.icon, {
+              [s.greenBackground]: location,
+            })}
+          />
         </NavLink>
       </div>
 

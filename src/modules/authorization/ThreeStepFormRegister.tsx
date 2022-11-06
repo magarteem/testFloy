@@ -1,6 +1,4 @@
 import { Controller, useFormContext } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import arrow_left from "../../assets/icons/arrow_left.webp";
 import { UploadPhoto } from "../../common/components/signIn/uploadPhoto/UploadPhoto";
 import { InputLabel } from "../../common/ui-elements/Input/InputLabel";
 import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactSelectElement";
@@ -13,18 +11,13 @@ import {
   skillBD,
 } from "./service/BD";
 import { TextAreaElement } from "../../common/ui-elements/textarea/TextAreaElement";
-import { InButton } from "../../common/ui-elements/button/InButton";
-import { ButtonBack } from "../../common/ui-elements/button/ButtonBack";
 import { CustomSelectCheckbox } from "../../common/components/signIn/CustomSelectCheckbox/CustomSelectCheckbox";
-import { RouteNames } from "../../common/variables/RouteNames";
-import s from "./style/threeStepFormRegister.module.scss";
 import { Input } from "../../common/ui-elements/Input/Input";
+import { BtnInFormSaveCansel } from "../../common/components/navigateButton/BtnInFormSaveCansel";
+import { ArrowBtnStepsBack } from "../../common/components/navigateButton/ArrowBtnStepsBack";
+import s from "./style/threeStepFormRegister.module.scss";
 
 export const ThreeStepFormRegister = () => {
-  const navigate = useNavigate();
-  const returnStepRegister = () =>
-    navigate(`${RouteNames.REGISTER}/${RouteNames.REG_TYPE_ACCOUNT}`);
-
   const {
     register,
     control,
@@ -34,10 +27,7 @@ export const ThreeStepFormRegister = () => {
   return (
     <div className={s.threeStepFormRegister}>
       <div className={s.title}>
-        <Link to={`${RouteNames.REGISTER}/${RouteNames.REG_TYPE_ACCOUNT}`}>
-          <img src={arrow_left} alt="arrow_left" />
-        </Link>
-
+        <ArrowBtnStepsBack darkArrow={true} />
         <h1>Создание анкеты</h1>
       </div>
 
@@ -236,10 +226,14 @@ export const ThreeStepFormRegister = () => {
           <Controller
             name="private_settings"
             control={control}
+            rules={{
+              required: "Обязательное поле",
+            }}
             render={({ field: { onChange, ...field } }) => (
               <ReactSelectElement
                 placeholder="Выбрать"
                 options={profilePrivacySettings}
+                errors={errors.private_settings}
                 onChange={onChange}
                 {...field}
               />
@@ -248,13 +242,19 @@ export const ThreeStepFormRegister = () => {
         </div>
       </div>
 
-      <div className={s.sendDataForm}>
+      {/* <div className={s.sendDataForm}>
         <div className={s.btnWrapper}>
           <ButtonBack textButton="Назад" onClick={returnStepRegister} />
         </div>
         <div className={s.btnWrapper}>
           <InButton textButton="Создать анкету" />
         </div>
+      </div> */}
+      <div className={s.btnFormWrapper}>
+        <BtnInFormSaveCansel
+          textCancelButton="Назад"
+          textButton="Создать анкету"
+        />
       </div>
     </div>
   );

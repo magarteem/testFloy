@@ -8,10 +8,10 @@ export const MainScreen = () => {
     <div className={s.mainScreen}>
       <Outlet />
 
-      <section className={s.footer}>
-        <NavigateButtonWidthAddBtn />
-        {/* <NavigateButton /> */}
-      </section>
+      {/* <section className={s.footer}> */}
+      {/* <NavigateButtonWidthAddBtn /> */}
+      {/* <NavigateButton /> */}
+      {/* </section> */}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { NavigateButtonWidthAddBtn } from "../common/components/navigateButton/NavigateButtonWidthAddBtn";
 import { HeaderProfile } from "../common/components/profile/cardsProfile/HeaderProfile";
 import { NameProfile } from "../common/components/profile/nameProfile/NameProfile";
 import { HeaderWrapper } from "../common/layout/header/HeaderWrapper";
@@ -64,7 +65,7 @@ export const OtherUserProfile = () => {
           </div>
 
           <div className={s.btnUserContact}>
-            <ButtonBack textButton="Связаться" />
+            <ButtonBack textCancelButton="Связаться" />
           </div>
         </BtnUser>
 
@@ -92,6 +93,8 @@ export const OtherUserProfile = () => {
           />
         )}
       </section>
+
+      <NavigateButtonWidthAddBtn />
     </>
   );
 };

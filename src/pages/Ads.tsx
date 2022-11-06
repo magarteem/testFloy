@@ -6,6 +6,7 @@ import { SwiperSlider } from "../modules/ads/SwiperSlider";
 import { Timeline } from "../common/layout/timeline/Timeline";
 import { useAppSelector } from "../core/redux/app/hooks";
 import s from "./styles/ads.module.scss";
+import { NavigateButtonWidthAddBtn } from "../common/components/navigateButton/NavigateButtonWidthAddBtn";
 
 export const Ads = () => {
   const [impValue, setImpValue] = useState("");
@@ -49,6 +50,8 @@ export const Ads = () => {
           ))}
         </div>
       </section>
+
+      <NavigateButtonWidthAddBtn />
     </>
   );
 };

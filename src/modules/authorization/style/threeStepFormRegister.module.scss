@@ -18,17 +18,11 @@
     justify-content: flex-start;
     width: 100%;
 
-    a {
-      @include flex_position();
-      margin-right: 25px;
-      width: 25px;
-      height: 25px;
-    }
-
     h1 {
       font-weight: 700;
       font-size: 20px;
       color: #363934;
+      margin-left: 25px;
     }
   }
   .main {
@@ -59,15 +53,19 @@
     }
   }
 
-  .sendDataForm {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 16px;
+  // .sendDataForm {
+  //   width: 100%;
+  //   display: flex;
+  //   justify-content: space-between;
+  //   padding: 20px 16px;
 
-    .btnWrapper {
-      width: 150px;
-      height: 52px;
-    }
+  //   .btnWrapper {
+  //     width: 150px;
+  //     height: 52px;
+  //   }
+  // }
+  .btnFormWrapper {
+    width: 100%;
+    padding: 20px 16px;
   }
 }

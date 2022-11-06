@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import backGroundImg from "../assets/images/backgroundProfileHeader.webp";
 import { NavigateButtonWidthAddBtn } from "../common/components/navigateButton/NavigateButtonWidthAddBtn";
 import { HeaderProfile } from "../common/components/profile/cardsProfile/HeaderProfile";
@@ -6,21 +5,20 @@ import { NameProfile } from "../common/components/profile/nameProfile/NameProfil
 import { HeaderWrapper } from "../common/layout/header/HeaderWrapper";
 import { Skills } from "../common/layout/skills/Skills";
 import { useAppSelector } from "../core/redux/app/hooks";
-import s from "./styles/userPage.module.scss";
+import s from "./styles/profileInfo.module.scss";
 
-export const User = () => {
+export const ProfileInfo = () => {
   const skillsData = useAppSelector(
     (state) => state.userSliceReducer.skillsData
   );
 
   return (
     <>
-      {/* <HeaderWrapper srcPhoto={backGroundImg}>
+      <HeaderWrapper srcPhoto={backGroundImg}>
         <HeaderProfile />
-      </HeaderWrapper> */}
+      </HeaderWrapper>
 
-      <Outlet />
-      {/* <section className={s.main}>
+      <section className={s.main}>
         <NameProfile
           age="24"
           name="Александр Ковальчук"
@@ -30,12 +28,9 @@ export const User = () => {
         {skillsData.map((elem, index) => (
           <Skills skillsDataItem={elem} key={index} />
         ))}
-      </section> */}
+      </section>
 
-      {/* <section className={s.footer}> */}
-      {/* <NavigateButtonWidthAddBtn /> */}
-      {/* <NavigateButton /> */}
-      {/* </section> */}
+      <NavigateButtonWidthAddBtn />
     </>
   );
 };

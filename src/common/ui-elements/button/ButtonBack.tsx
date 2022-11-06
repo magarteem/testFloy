@@ -1,24 +1,28 @@
+import { useNavigate } from "react-router-dom";
 import s from "./button.module.scss";
 
 interface ButtonBackType {
-  textButton: string;
-  isValid?: boolean;
-  onClick?: () => void;
+  textCancelButton: string;
+  isValidButtonBack?: boolean;
 }
 
 export const ButtonBack = ({
-  textButton,
-  isValid,
-  onClick,
+  textCancelButton,
+  isValidButtonBack,
+  ...props
 }: ButtonBackType) => {
+  const navigate = useNavigate();
+  const returnStepRegister = () => navigate(-1);
+
   return (
     <button
       className={s.buttonBackWrapper}
       type="submit"
-      disabled={isValid}
-      onClick={onClick}
+      disabled={isValidButtonBack}
+      onClick={returnStepRegister}
+      {...props}
     >
-      {textButton}
+      {textCancelButton}
     </button>
   );
 };

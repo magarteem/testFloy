@@ -2,16 +2,20 @@ import s from "./button.module.scss";
 
 interface PropsButton {
   textButton: string;
-  isValid?: boolean;
+  isValidInButton?: boolean;
   onClick?: () => void;
 }
 
-export const InButton = ({ textButton, isValid, onClick }: PropsButton) => {
+export const InButton = ({
+  textButton,
+  isValidInButton,
+  onClick,
+}: PropsButton) => {
   return (
     <button
       className={s.buttonWrapper}
       type="submit"
-      disabled={isValid}
+      disabled={isValidInButton}
       onClick={onClick}
     >
       {textButton}

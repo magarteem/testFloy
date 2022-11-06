@@ -17,22 +17,26 @@ import { RecoveryPasswordFirstSteps } from "../../common/components/signIn/recov
 import { RecoveryPasswordSecondSteps } from "../../common/components/signIn/recoveryPassword/RecoveryPasswordSecondSteps";
 import { WelcomeWindow } from "../../pages/WelcomeWindow";
 import { OtherUserProfile } from "../../pages/OtherUserProfile";
+import { ProfileInfo } from "../../pages/ProfileInfo";
+import { Settings } from "../../common/components/settings/Settings";
+import { User } from "../../pages/User";
+import { ChangeProfile } from "../../pages/ChangeProfile";
 
 const Ads = React.lazy(() =>
   import(/* webpackChunkName:"Ads" */ "../../pages/Ads").then((module) => ({
     default: module.Ads,
   }))
 );
-const User = React.lazy(() =>
-  import(/* webpackChunkName:"User" */ "../../pages/User").then((module) => ({
-    default: module.User,
-  }))
-);
-const Settings = React.lazy(() =>
-  import(
-    /* webpackChunkName:"Settings" */ "../../common/components/settings/Settings"
-  ).then((module) => ({ default: module.Settings }))
-);
+// const User = React.lazy(() =>
+//   import(/* webpackChunkName:"User" */ "../../pages/User").then((module) => ({
+//     default: module.User,
+//   }))
+// );
+// const Settings = React.lazy(() =>
+//   import(
+//     /* webpackChunkName:"Settings" */ "../../common/components/settings/Settings"
+//   ).then((module) => ({ default: module.Settings }))
+// );
 const Chats = React.lazy(() =>
   import(/* webpackChunkName:"Chats" */ "../../pages/Chats").then((module) => ({
     default: module.Chats,
@@ -68,22 +72,22 @@ export const AppRouter = () => {
               </React.Suspense>
             }
           />
-          <Route
+          {/* <Route
             path={RouteNames.USER}
             element={
               <React.Suspense>
                 <User />
               </React.Suspense>
             }
-          />
-          <Route
-            path={RouteNames.SETTINGS}
-            element={
-              <React.Suspense>
-                <Settings />
-              </React.Suspense>
-            }
-          />
+          /> */}
+          <Route path={RouteNames.USER} element={<User />}>
+            <Route index element={<ProfileInfo />} />
+            <Route
+              path={RouteNames.CHANGE_PROFILE}
+              element={<ChangeProfile />}
+            />
+            <Route path={RouteNames.SETTINGS} element={<Settings />} />
+          </Route>
           <Route
             path={RouteNames.CHATS}
             element={

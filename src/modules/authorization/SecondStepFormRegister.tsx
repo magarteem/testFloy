@@ -5,6 +5,7 @@ import { ReactSelect } from "../../common/components/signIn/reactSelect/ReactSel
 import s from "./style/secondStepFormRegister.module.scss";
 import { ButtonBack } from "../../common/ui-elements/button/ButtonBack";
 import { RouteNames } from "../../common/variables/RouteNames";
+import { BtnInFormSaveCansel } from "../../common/components/navigateButton/BtnInFormSaveCansel";
 
 export const SecondStepFormRegister = () => {
   const navigate = useNavigate();
@@ -16,7 +17,6 @@ export const SecondStepFormRegister = () => {
 
   const nextStepRegister = () =>
     navigate(`${RouteNames.REGISTER}/${RouteNames.REG_CREATE_ACCOUNT}`);
-  const returnStepRegister = () => navigate(`${RouteNames.REGISTER}`);
 
   return (
     <div className={s.secondStepFormRegister}>
@@ -36,13 +36,22 @@ export const SecondStepFormRegister = () => {
         )}
       />
 
-      <div className={s.bntNavigate}>
+      {/* <div className={s.bntNavigate}>
         <div className={s.styleBtn}>
-          <ButtonBack textButton="Назад" onClick={returnStepRegister} />
+          <ButtonBack textCancelButton="Назад" />
         </div>
         <div className={s.styleBtn} onClick={nextStepRegister}>
-          <InButton textButton="Далее" isValid={!isValid} />
+          <InButton textButton="Далее" isValidInButton={!isValid} />
         </div>
+      </div> */}
+
+      <div className={s.btnFormWrapper}>
+        <BtnInFormSaveCansel
+          textCancelButton="Назад"
+          textButton="Далее"
+          isValidInButton={!isValid}
+          onClick={nextStepRegister}
+        />
       </div>
     </div>
   );

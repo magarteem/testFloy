@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import s from "./headerWrapper.module.scss";
+import cn from "classnames";
 
 interface HeaderWrapperType {
   children: ReactNode;
@@ -7,21 +8,16 @@ interface HeaderWrapperType {
 }
 
 export const HeaderWrapper = ({ children, srcPhoto }: HeaderWrapperType) => {
-  const dynamicBackgroundHeader = {
-    backgroundImage: `url(${srcPhoto})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "100%",
-  };
-
   return (
     <section className={s.headerWrapper}>
       <div className={s.positionImg}>
-        <div
-          className={s.backgroundImg}
-          style={srcPhoto ? dynamicBackgroundHeader : { background: "" }}
-        ></div>
+        <div className={s.backgroundImg}>
+          <div
+            className={cn(s.reliativ130, { [s.backgroundActive]: srcPhoto })}
+          ></div>
+        </div>
+        {children}
       </div>
-      {children}
     </section>
   );
 };

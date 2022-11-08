@@ -2,9 +2,32 @@ import arrowSelect from "../../../../assets/icons/arrowSelect.webp";
 import Select, { components } from "react-select";
 import { FormatGroupLabel } from "./FormatGroupLabel";
 import { groupeOptions } from "../../../../modules/authorization/service/BD";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import s from "./formatGroupLabel.module.scss";
 import "./customSelectCheckbox.scss";
+
+const CustomSelectCheckboxLabel = ({ data }: any) => {
+  console.log(data);
+  const ref = useRef<any>(null);
+  const [listGroupe, setListGroupe] = useState(data.isOpen);
+
+  const showList = () => {
+    setListGroupe((prev: boolean) => !prev);
+    let parent = ref.current.parentElement;
+    parent.classList.toggle("menuListGroupeOpen");
+  };
+
+  return (
+    <div onClick={showList} ref={ref} className={s.formatGroupLabel}>
+      <div className={s.arrowSelectImg}>
+        <img src={arrowSelect} alt={arrowSelect} />
+      </div>
+      <span>{data.label}</span>
+    </div>
+  );
+};
+
+export const Temp = (data: any) => <CustomSelectCheckboxLabel data={data} />;
 
 interface CustomSelectCheckboxType {
   onChange: (data: string) => void;
@@ -16,10 +39,6 @@ export const CustomSelectCheckbox = ({
   ...props
 }: CustomSelectCheckboxType) => {
   const ref = useRef<HTMLDivElement | null>(null);
-
-  const isOpenListGroup = () => {
-    console.log("333");
-  };
 
   const Option = (props: any) => {
     return (
@@ -36,10 +55,11 @@ export const CustomSelectCheckbox = ({
   };
 
   const customStyles = {
-    container: (provided: any) => ({
-      ...provided,
-      border: `1.5px solid #E95050`,
-    }),
+    container: (provided: any) =>
+      errors && {
+        ...provided,
+        border: `1.5px solid #E95050`,
+      },
     control: (provided: any) => ({
       ...provided,
       border: `3.5px solid #80ff00`,
@@ -54,24 +74,12 @@ export const CustomSelectCheckbox = ({
         placeholder="Выбрать"
         isSearchable={false}
         options={groupeOptions}
-        closeMenuOnSelect={false}
         components={{ Option }}
         isMulti
-        styles={errors && customStyles}
+        styles={customStyles}
         onChange={(e: any) => onChange(e)}
         hideSelectedOptions={false}
-        formatGroupLabel={(data) => (
-          <div onClick={isOpenListGroup} className={s.formatGroupLabel}>
-            <div className={s.arrowSelectImg}>
-              <img src={arrowSelect} alt={arrowSelect} />
-            </div>
-            <span>{data.label}</span>
-          </div>
-        )}
-        // formatGroupLabel={(FormatGroupLabel) => (
-        //   <p onClick={isOpenListGroup}>{FormatGroupLabel.label}111</p>
-        // )}
-        // formatGroupLabel={FormatGroupLabel}
+        formatGroupLabel={(data) => Temp(data)}
         // menuIsOpen
         {...props}
       />

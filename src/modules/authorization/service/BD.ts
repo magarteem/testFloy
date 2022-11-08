@@ -53,6 +53,7 @@ export const ageNumber: AgeNumberType[] = Array.from(Array(100).keys()).map(
 export const groupeOptions: GroupOptionsType[] = [
   {
     label: "Вокал",
+    isOpen: true,
     options: [
       { label: "Тенор", value: "value_1" },
       { label: "Баритон", value: "value_2" },
@@ -64,6 +65,7 @@ export const groupeOptions: GroupOptionsType[] = [
   },
   {
     label: "Клавишные",
+    isOpen: false,
     options: [
       { label: "Тенор", value: "value_61" },
       { label: "Баритон", value: "value5_2" },
@@ -75,6 +77,7 @@ export const groupeOptions: GroupOptionsType[] = [
   },
   {
     label: "Струнные",
+    isOpen: false,
     options: [
       { label: "Тенор", value: "value_321" },
       { label: "Баритон", value: "value_223" },

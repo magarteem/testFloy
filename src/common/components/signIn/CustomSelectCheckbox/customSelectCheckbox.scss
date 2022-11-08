@@ -57,12 +57,12 @@
   }
   //
   //
-  &__menu-list &__group {
-    // background-color: red;
-    // overflow: hidden;
-    // height: auto;
-    // height: 50px;
+  &__menu-list &__group &__group-heading .isOpen + div {
+    background-color: red;
   }
+  // &__menu-list &__group &__group-heading + div {
+  //   background-color: red;
+  // }
   //
   //
   &__menu-list &__option {
@@ -72,9 +72,6 @@
   }
 }
 
-.test {
-  // background-color: gold;
-}
 .customCheckBoxStyle {
   display: flex;
   align-items: center;
@@ -128,4 +125,10 @@
     color: #e95050;
     font-size: 12px;
   }
+}
+
+.menuListGroupeOpen + div {
+  transition: all 0.5s;
+  height: 0;
+  overflow: hidden;
 }

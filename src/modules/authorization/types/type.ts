@@ -40,6 +40,7 @@ interface OptionsType {
 
 export interface GroupOptionsType {
   label: string;
+  isOpen?: boolean;
   options: OptionsType[];
 }
 

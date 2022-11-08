@@ -1,17 +1,18 @@
 import arrowSelect from "../../../../assets/icons/arrowSelect.webp";
 import s from "./formatGroupLabel.module.scss";
 
-export const FormatGroupLabel = (data: any) => {
+export const FormatGroupLabel = (data: any, click: any) => {
+  console.log("- ", data);
   const isOpenListGroup = () => {
     console.log("333");
   };
 
   return (
-    <div onClick={isOpenListGroup} className={s.formatGroupLabel}>
+    <div onClick={click} className={s.formatGroupLabel}>
       <div className={s.arrowSelectImg}>
         <img src={arrowSelect} alt={arrowSelect} />
       </div>
-      <span>{data.label}</span>
+      <span onClick={click}>{data.label}</span>
     </div>
   );
 };

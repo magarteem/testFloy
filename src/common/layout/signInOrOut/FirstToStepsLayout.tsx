@@ -1,10 +1,18 @@
+import { ReactNode } from "react";
 import { Outlet } from "react-router-dom";
 import s from "./firstToStepsLayout.module.scss";
 
-export const FirstToStepsLayout = () => {
-  return (
-    <div className={s.firstToStepsLayout}>
-      <Outlet />
-    </div>
-  );
+interface FirstToStepsLayoutType {
+ children?: ReactNode;
+}
+
+export const FirstToStepsLayout = ({
+ children,
+}: FirstToStepsLayoutType) => {
+ return (
+  <div className={s.firstToStepsLayout}>
+   <Outlet />
+   {children}
+  </div>
+ );
 };

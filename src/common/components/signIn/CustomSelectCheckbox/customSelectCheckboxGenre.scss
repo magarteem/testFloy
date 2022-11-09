@@ -1,9 +1,9 @@
-.customs_select_container {
+.customs_select_container_genre {
  font-weight: 500;
  border-radius: 10px;
 }
 
-.customs_select_list_prefix {
+.customs_select_list_prefix_genre {
  &__placeholder {
   font-weight: 500;
   color: #bdbdbd;
@@ -16,7 +16,7 @@
   }
  }
 
- .customs_select_container &__control {
+ .customs_select_container_genre &__control {
   border-radius: 10px;
   background: #f4f6f2;
   padding: 0 8px;
@@ -29,11 +29,11 @@
   }
  }
 
- .customs_select_container &__control--is-focused {
+ .customs_select_container_genre &__control--is-focused {
   background: #ffffff;
   border: 1.5px solid green;
  }
- .customs_select_container.styleError
+ .customs_select_container_genre.styleError
   &__control--is-focused {
   border: none;
  }
@@ -46,44 +46,42 @@
   transform: rotate(180deg);
  }
 
- .customs_select_container &__menu {
+ .customs_select_container_genre &__menu {
   margin-top: 1px;
   border: 1px solid #f4f6f2;
   box-shadow: 0px 4px 40px rgba(38, 41, 43, 0.07);
   border-radius: 10px;
  }
 
- .customs_select_container &__menu-list {
+ .customs_select_container_genre &__menu-list {
   padding: 12px 0;
  }
- //
- //
+
  &__menu-list &__group &__group-heading .isOpen + div {
   background-color: red;
  }
- // &__menu-list &__group &__group-heading + div {
- //   background-color: red;
- // }
- //
- //
+
  &__menu-list &__option {
   font-weight: 700;
   height: 37px;
   padding-left: 16px;
  }
 
- &__multi-value {
+ &__multi-value__label {
+  font-size: 16px !important;
+ }
+ &__multi-value__remove {
   display: none !important;
  }
 }
 
-.customCheckBoxStyle {
+.customCheckBoxStyleGenre {
  display: flex;
  align-items: center;
 
  label {
-  font-weight: 400;
-  font-style: 14px;
+  //font-weight: 700;
+  //font-style: 14px;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -104,7 +102,7 @@
   border: 2px solid #ff5a13;
   position: relative;
   border-radius: 5px;
-  margin: 0 8px 0 28px;
+  margin: 0 8px 0 0;
 
   &::before {
    content: "\2713";

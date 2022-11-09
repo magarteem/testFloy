@@ -1,31 +1,19 @@
 @import "src/styles/variable";
+
 .secondStepFormRegister {
-  width: 100%;
+ width: 100%;
 
-  h2 {
-    font-family: "Gilroy_Bold", sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    display: block;
-    color: $white;
-    margin-bottom: 0.5rem;
-    margin-top: 20px;
-  }
+ h2 {
+  font-family: "Gilroy_Bold", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  display: block;
+  color: $white;
+  margin-bottom: 0.5rem;
+  margin-top: 20px;
+ }
 
-  // .bntNavigate {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   column-gap: 10px;
-
-  //   .styleBtn {
-  //     display: flex;
-  //     justify-content: center;
-  //     height: 52px;
-  //     width: 100%;
-  //     margin-top: 40px;
-  //   }
-  // }
-  .btnFormWrapper {
-    margin-top: 40px;
-  }
+ .btnFormWrapper {
+  margin-top: 40px;
+ }
 }

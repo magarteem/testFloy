@@ -23,9 +23,11 @@ import { User } from "../../pages/User";
 import { ChangeProfile } from "../../pages/ChangeProfile";
 
 const Ads = React.lazy(() =>
-  import(/* webpackChunkName:"Ads" */ "../../pages/Ads").then((module) => ({
-    default: module.Ads,
-  }))
+ import(
+  /* webpackChunkName:"Ads" */ "../../pages/Ads"
+ ).then((module) => ({
+  default: module.Ads,
+ }))
 );
 // const User = React.lazy(() =>
 //   import(/* webpackChunkName:"User" */ "../../pages/User").then((module) => ({
@@ -38,14 +40,16 @@ const Ads = React.lazy(() =>
 //   ).then((module) => ({ default: module.Settings }))
 // );
 const Chats = React.lazy(() =>
-  import(/* webpackChunkName:"Chats" */ "../../pages/Chats").then((module) => ({
-    default: module.Chats,
-  }))
+ import(
+  /* webpackChunkName:"Chats" */ "../../pages/Chats"
+ ).then((module) => ({
+  default: module.Chats,
+ }))
 );
 const Notification = React.lazy(() =>
-  import(/* webpackChunkName:"Notification" */ "../../pages/Notification").then(
-    (module) => ({ default: module.Notification })
-  )
+ import(
+  /* webpackChunkName:"Notification" */ "../../pages/Notification"
+ ).then((module) => ({ default: module.Notification }))
 );
 // const Registration = React.lazy(() =>
 //   import(/* webpackChunkName:"Registration" */ "../../pages/Registration").then(
@@ -54,25 +58,29 @@ const Notification = React.lazy(() =>
 // );
 
 export const AppRouter = () => {
-  const auth = useAppSelector((state) => state.authSliceReducer.isAuth);
-  const [preloaderPages, setPreloaderPages] = useState(false);
+ const auth = useAppSelector(
+  (state) => state.authSliceReducer.isAuth
+ );
+ const [preloaderPages, setPreloaderPages] =
+  useState(false);
 
-  const setPreloaderPagesFu = () => setPreloaderPages((prev) => !prev);
+ const setPreloaderPagesFu = () =>
+  setPreloaderPages((prev) => !prev);
 
-  return (
-    <Routes>
-      <Route element={<ProtectedRoute auth={auth} />}>
-        <Route path={RouteNames.HOME} element={<MainScreen />}>
-          <Route index element={<Home />} />
-          <Route
-            path={RouteNames.ADS}
-            element={
-              <React.Suspense>
-                <Ads />
-              </React.Suspense>
-            }
-          />
-          {/* <Route
+ return (
+  <Routes>
+   <Route element={<ProtectedRoute auth={auth} />}>
+    <Route path={RouteNames.HOME} element={<MainScreen />}>
+     <Route index element={<Home />} />
+     <Route
+      path={RouteNames.ADS}
+      element={
+       <React.Suspense>
+        <Ads />
+       </React.Suspense>
+      }
+     />
+     {/* <Route
             path={RouteNames.USER}
             element={
               <React.Suspense>
@@ -80,91 +88,117 @@ export const AppRouter = () => {
               </React.Suspense>
             }
           /> */}
-          <Route path={RouteNames.USER} element={<User />}>
-            <Route index element={<ProfileInfo />} />
-            <Route
-              path={RouteNames.CHANGE_PROFILE}
-              element={<ChangeProfile />}
-            />
-            <Route path={RouteNames.SETTINGS} element={<Settings />} />
-          </Route>
-          <Route
-            path={RouteNames.CHATS}
-            element={
-              <React.Suspense>
-                <Chats />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path={RouteNames.NOTIFICATION}
-            element={
-              <React.Suspense>
-                <Notification />
-              </React.Suspense>
-            }
-          />
+     <Route path={RouteNames.USER} element={<User />}>
+      <Route index element={<ProfileInfo />} />
+      <Route
+       path={RouteNames.CHANGE_PROFILE}
+       element={<ChangeProfile />}
+      />
+      <Route
+       path={RouteNames.SETTINGS}
+       element={<Settings />}
+      />
+     </Route>
+     <Route
+      path={RouteNames.CHATS}
+      element={
+       <React.Suspense>
+        <Chats />
+       </React.Suspense>
+      }
+     />
+     <Route
+      path={RouteNames.NOTIFICATION}
+      element={
+       <React.Suspense>
+        <Notification />
+       </React.Suspense>
+      }
+     />
 
-          <Route
-            path={`${RouteNames.OTHER_PROFILE_USER}/:id_user`}
-            element={<OtherUserProfile />}
-          />
-        </Route>
+     <Route
+      path={`${RouteNames.OTHER_PROFILE_USER}/:id_user`}
+      element={<OtherUserProfile />}
+     />
+    </Route>
+   </Route>
+
+   {auth ? (
+    <Route>
+     <Route
+      path={RouteNames.LOGIN}
+      element={<Navigate to={RouteNames.HOME} replace />}
+     />
+     <Route
+      path={RouteNames.REGISTER}
+      element={<Navigate to={RouteNames.HOME} replace />}
+     />
+    </Route>
+   ) : (
+    <Route>
+     {/*  */}
+     {/*  */}
+     {/*  */}
+     {/*  */}
+     <Route
+      path={RouteNames.REGISTER}
+      element={<Registration />}
+     >
+      <Route element={<FirstToStepsLayout />}>
+       <Route index element={<FirstStepFormRegister />} />
+       <Route
+        path={RouteNames.REG_TYPE_ACCOUNT}
+        element={<SecondStepFormRegister />}
+       />
       </Route>
+      <Route
+       path={RouteNames.REG_CREATE_ACCOUNT}
+       element={<ThreeStepFormRegister />}
+      />
+     </Route>
+     {/*  */}
+     {/*  */}
+     {/*  */}
+     {/*  */}
 
-      {auth ? (
-        <Route>
-          <Route
-            path={RouteNames.LOGIN}
-            element={<Navigate to={RouteNames.HOME} replace />}
-          />
-          <Route
-            path={RouteNames.REGISTER}
-            element={<Navigate to={RouteNames.HOME} replace />}
-          />
-        </Route>
-      ) : (
-        <Route>
-          <Route path={RouteNames.REGISTER} element={<Registration />}>
-            <Route element={<FirstToStepsLayout />}>
-              <Route index element={<FirstStepFormRegister />} />
-              <Route
-                path={RouteNames.REG_TYPE_ACCOUNT}
-                element={<SecondStepFormRegister />}
-              />
-            </Route>
-            <Route
-              path={RouteNames.REG_CREATE_ACCOUNT}
-              element={<ThreeStepFormRegister />}
-            />
-          </Route>
+     {/*<Route path="/reg" element={<SliderRegister />} />*/}
 
-          {/* <Route path={RouteNames.LOGIN} element={<Login />} /> */}
-          <Route
-            path={RouteNames.LOGIN}
-            element={
-              preloaderPages ? (
-                <Login />
-              ) : (
-                <WelcomeWindow setPreloaderPagesFu={setPreloaderPagesFu} />
-              )
-            }
-          />
+     {/*  */}
+     {/*  */}
+     {/*  */}
+     {/*  */}
 
-          <Route
-            path={RouteNames.RECOVERY_PASSWORD}
-            element={<RecoveryPassword />}
-          >
-            <Route index element={<RecoveryPasswordFirstSteps />} />
-            <Route
-              path={RouteNames.RECOVERY_CREATE_PASSWORD}
-              element={<RecoveryPasswordSecondSteps />}
-            />
-          </Route>
-        </Route>
-      )}
+     {/* <Route path={RouteNames.LOGIN} element={<Login />} /> */}
+     <Route
+      path={RouteNames.LOGIN}
+      element={
+       preloaderPages ? (
+        <Login />
+       ) : (
+        <WelcomeWindow
+         setPreloaderPagesFu={setPreloaderPagesFu}
+        />
+       )
+      }
+     />
 
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
+     <Route
+      path={RouteNames.RECOVERY_PASSWORD}
+      element={<RecoveryPassword />}
+     >
+      <Route
+       index
+       element={<RecoveryPasswordFirstSteps />}
+      />
+      <Route
+       path={RouteNames.RECOVERY_CREATE_PASSWORD}
+       element={<RecoveryPasswordSecondSteps />}
+      />
+     </Route>
+    </Route>
+   )}
+
+   <Route path="*" element={<NotFound />} />
+  </Routes>
+ );
 };

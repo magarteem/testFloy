@@ -5,33 +5,34 @@ import settings from "../../../../assets/icons/settings.webp";
 import { RouteNames } from "../../../variables/RouteNames";
 import s from "./headerProfile.module.scss";
 import { ArrowBtnStepsBack } from "../../navigateButton/ArrowBtnStepsBack";
+import { AvatarPhoto } from "../avatarIcons/AvatarPhoto";
 
-export const HeaderProfile = () => {
-  return (
-    <div className={s.headerProfile}>
-      <div className={s.title}>
-        <div className={s.titleNavigation}>
-          <ArrowBtnStepsBack darkArrow={false} />
-          <p>@kovalchuk</p>
-        </div>
+interface HeaderProfileType {
+ emainUsers: string;
+}
 
-        <div className={s.titleSettings}>
-          <Link to={RouteNames.CHANGE_PROFILE}>
-            <img src={pencil} alt={pencil} />
-          </Link>
-          <Link to={RouteNames.SETTINGS}>
-            <img src={settings} alt={settings} />
-          </Link>
-        </div>
-      </div>
-
-      <div className={s.infoAccount}>
-        <div className={s.photo}>
-          <div className={s.wrapperPhoto}>
-            <img src={backgroundProfileHeader} alt={backgroundProfileHeader} />
-          </div>
-        </div>
-      </div>
+export const HeaderProfile = ({
+ emainUsers,
+}: HeaderProfileType) => {
+ return (
+  <div className={s.headerProfile}>
+   <div className={s.title}>
+    <div className={s.titleNavigation}>
+     <ArrowBtnStepsBack darkArrow={false} />
+     <p>{emainUsers}</p>
     </div>
-  );
+
+    <div className={s.titleSettings}>
+     <Link to={RouteNames.CHANGE_PROFILE}>
+      <img src={pencil} alt={pencil} />
+     </Link>
+     <Link to={RouteNames.SETTINGS}>
+      <img src={settings} alt={settings} />
+     </Link>
+    </div>
+   </div>
+
+   <AvatarPhoto avatarPhoto={backgroundProfileHeader} />
+  </div>
+ );
 };

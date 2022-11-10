@@ -90,10 +90,12 @@ export const AppRouter = () => {
           /> */}
      <Route path={RouteNames.USER} element={<User />}>
       <Route index element={<ProfileInfo />} />
+
       <Route
        path={RouteNames.CHANGE_PROFILE}
        element={<ChangeProfile />}
       />
+
       <Route
        path={RouteNames.SETTINGS}
        element={<Settings />}

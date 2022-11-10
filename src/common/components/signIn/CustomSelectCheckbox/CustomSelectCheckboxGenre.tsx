@@ -85,7 +85,7 @@ export const CustomSelectCheckboxGenre = ({
      colors: {
       ...theme.colors,
       primary25: "#ffffff",
-      primary: "#616161",
+      primary: "#47c7a9",
      },
     })}
     //menuIsOpen

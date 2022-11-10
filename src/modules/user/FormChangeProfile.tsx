@@ -25,8 +25,25 @@ type ChangeProfileFormValues = Omit<
  "email" | "password" | "img_upload" | "type_account"
 >;
 
-export const FormChangeProfile = () => {
+interface FormChangeProfileType {
+ userDataProfile: any;
+}
+export const FormChangeProfile = ({
+ userDataProfile,
+}: FormChangeProfileType) => {
  const navigate = useNavigate();
+ // const {
+ //  name_field,
+ //  sity,
+ //  gender,
+ //  age,
+ //  tool,
+ //  genre,
+ //  work_experience,
+ //  master,
+ //  education,
+ //  private_settings,
+ // } = userDataProfile;
 
  const {
   control,

@@ -1,3 +1,4 @@
+import arrowReturnWhite from "../assets/icons/arrowReturnWhite.webp";
 import backGroundImg from "../assets/images/backgroundProfileHeader.webp";
 import { HeaderProfile } from "../common/components/profile/cardsProfile/HeaderProfile";
 import { HeaderWrapper } from "../common/layout/header/HeaderWrapper";
@@ -12,7 +13,10 @@ export const ChangeProfile = () => {
  return (
   <>
    <HeaderWrapper srcPhoto={backGroundImg}>
-    <HeaderProfile emainUsers={userDataProfile.email} />
+    <HeaderProfile
+     textLabel="Редактировать профиль"
+     cancelImgIcon={arrowReturnWhite}
+    />
    </HeaderWrapper>
 
    <section className={s.main}>

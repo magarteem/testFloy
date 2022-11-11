@@ -1,35 +1,24 @@
+// store type
+export interface InitialStateType {
+ isAuth: boolean;
+ error: Error | null;
+}
+
+//
 export interface ISignInFormValues {
  email: string;
  password: string;
 }
 
-export interface ISignUpFormValues {
- email: string;
- password: string;
- type_account: string;
- name_field: string;
- img_upload: any;
- sity: string;
- gender: string;
- age: string;
- tool: OptionSelectType[];
- genre: string;
- work_experience: string;
- master: string;
- education: string;
- private_settings: string;
-}
-
 //  data Base
 export interface OptionSelectType {
- value: string | number;
- label: string | number;
+ value: string;
+ label: string;
 }
-
-//  AgeNumberType
-export interface AgeNumberType {
- value: number;
- label: number;
+interface WorkExperience {
+ img: string;
+ institution: string;
+ period: string;
 }
 
 //  GroupOptions
@@ -42,6 +31,23 @@ export interface GroupOptionsType {
  label: string;
  isOpen?: boolean;
  options: OptionsType[];
+}
+
+export interface ISignUpFormValues {
+ email: string;
+ password: string;
+ type_account: string;
+ name_field: string;
+ img_upload: any;
+ sity: OptionSelectType | null;
+ gender: OptionSelectType | null;
+ age: string | Date | any;
+ tool: OptionSelectType[];
+ genre: OptionSelectType[];
+ work_experience: string | WorkExperience[];
+ master: OptionSelectType | null;
+ education: string | WorkExperience[];
+ private_settings: OptionSelectType | null;
 }
 
 // RecoveryPassGetInstructionsForm

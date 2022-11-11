@@ -27,7 +27,7 @@ export const AboutProfile = ({
     <NameProfile
      age={userDataProfile.age}
      name={userDataProfile.name}
-     sity={userDataProfile.sity}
+     sity={userDataProfile.sity.label}
     />
 
     {id_user && (
@@ -63,7 +63,7 @@ export const AboutProfile = ({
     />
     {userDataProfile.skills.master && (
      <SkillsLayout
-      skillsDataItem={userDataProfile.skills.master}
+      skillsDataItem={userDataProfile.skills.master.label}
       skillsCategoryTitle="Мастерство"
      />
     )}

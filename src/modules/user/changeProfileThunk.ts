@@ -1,13 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const authThunkRegister = createAsyncThunk<
- any,
+export const changeProfileThunk = createAsyncThunk<
+ string,
  any,
  { rejectValue: any }
 >(
- `authorization/sign-Up`,
+ `changeProfile/user`,
  async function (data, { rejectWithValue }) {
   try {
+   console.log("th = ", data);
    return data;
   } catch (error) {
    return rejectWithValue("error");

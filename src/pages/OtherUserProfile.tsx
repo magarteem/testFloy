@@ -1,3 +1,4 @@
+import arrowReturnWhite from "../assets/icons/arrowReturnWhite.webp";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { NavigateButtonWidthAddBtn } from "../common/components/navigateButton/NavigateButtonWidthAddBtn";
@@ -11,20 +12,20 @@ const dataNull: InitialStateUserType = {
  id_user: "",
  name: "",
  email: "",
- sity: "",
+ sity: { value: "", label: "" },
  age: "",
  img_upload: "",
- gender: "",
- type_account: "",
+ gender: { value: "", label: "" },
+ type_account: { value: "", label: "" },
  skills: {
   tool: [],
   genre: [],
   workExperience: [],
   education: [],
-  master: "",
+  master: { value: "", label: "" },
   inspiration: [],
  },
- private_settings: "",
+ private_settings: { value: "", label: "" },
 };
 
 export const OtherUserProfile = () => {
@@ -43,7 +44,10 @@ export const OtherUserProfile = () => {
  return (
   <>
    <HeaderWrapper>
-    <HeaderProfile emainUsers={user.email} />
+    <HeaderProfile
+     textLabel={user.email}
+     cancelImgIcon={arrowReturnWhite}
+    />
    </HeaderWrapper>
 
    <AboutProfile userDataProfile={user} />

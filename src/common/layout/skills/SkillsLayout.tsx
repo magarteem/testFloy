@@ -1,9 +1,12 @@
 import { memo, ReactNode } from "react";
-import { EducationType } from "../../../modules/user/types/userSliceType";
+import {
+ EducationType,
+ OptionsTypeTool,
+} from "../../../modules/user/types/userSliceType";
 import s from "./skillsLayout.module.scss";
 
 interface SkillsLayoutType {
- skillsDataItem: string[] | string | EducationType[];
+ skillsDataItem: string | OptionsTypeTool[];
  skillsCategoryTitle: string;
 }
 
@@ -12,6 +15,8 @@ export const SkillsLayout = memo(
   skillsDataItem,
   skillsCategoryTitle,
  }: SkillsLayoutType) => {
+  //console.log(skillsCategoryTitle);
+  //console.log(skillsDataItem);
   return (
    <div className={s.skills}>
     <div className={s.profileData}>
@@ -22,28 +27,11 @@ export const SkillsLayout = memo(
      <div className={s.skills_item}>
       {Array.isArray(skillsDataItem)
        ? skillsDataItem.map((item) => {
-          if (typeof item === "object") {
-           return (
-            <div
-             key={item.period}
-             className={s.workExperience}
-            >
-             <div>
-              <img />
-             </div>
-             <div>
-              {item.institution}
-              {item.period}
-             </div>
-            </div>
-           );
-          } else {
-           return (
-            <div className={s.item} key={item}>
-             {item}
-            </div>
-           );
-          }
+          return (
+           <div className={s.item} key={item.label}>
+            {item.label}
+           </div>
+          );
          })
        : skillsDataItem !== "" && (
           <span className={s.textNotes}>

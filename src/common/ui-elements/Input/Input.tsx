@@ -10,6 +10,7 @@ interface InputType {
  children?: ReactNode;
  placeholder: string;
  onChange: any;
+ onClick?: any;
 }
 export const Input = ({
  children,
@@ -20,6 +21,7 @@ export const Input = ({
  inputValue,
  placeholder,
  onChange,
+ onClick,
  ...props
 }: InputType) => {
  return (
@@ -35,6 +37,7 @@ export const Input = ({
      value={inputValue}
      placeholder={placeholder}
      onChange={onChange}
+     onClick={onClick}
      {...props}
     />
     {children}

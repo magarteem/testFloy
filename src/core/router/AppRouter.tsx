@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { FirstToStepsLayout } from "../../common/layout/signInOrOut/FirstToStepsLayout";
 import { RouteNames } from "../../common/variables/RouteNames";
@@ -80,14 +80,7 @@ export const AppRouter = () => {
        </React.Suspense>
       }
      />
-     {/* <Route
-            path={RouteNames.USER}
-            element={
-              <React.Suspense>
-                <User />
-              </React.Suspense>
-            }
-          /> */}
+
      <Route path={RouteNames.USER} element={<User />}>
       <Route index element={<ProfileInfo />} />
 
@@ -101,6 +94,7 @@ export const AppRouter = () => {
        element={<Settings />}
       />
      </Route>
+
      <Route
       path={RouteNames.CHATS}
       element={
@@ -138,10 +132,6 @@ export const AppRouter = () => {
     </Route>
    ) : (
     <Route>
-     {/*  */}
-     {/*  */}
-     {/*  */}
-     {/*  */}
      <Route
       path={RouteNames.REGISTER}
       element={<Registration />}
@@ -158,19 +148,7 @@ export const AppRouter = () => {
        element={<ThreeStepFormRegister />}
       />
      </Route>
-     {/*  */}
-     {/*  */}
-     {/*  */}
-     {/*  */}
 
-     {/*<Route path="/reg" element={<SliderRegister />} />*/}
-
-     {/*  */}
-     {/*  */}
-     {/*  */}
-     {/*  */}
-
-     {/* <Route path={RouteNames.LOGIN} element={<Login />} /> */}
      <Route
       path={RouteNames.LOGIN}
       element={

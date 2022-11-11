@@ -1,7 +1,7 @@
 import { EducationType } from "../../../modules/user/types/userSliceType";
 import s from "./workEducationeCards.module.scss";
 
-interface WorkExperiencEducationeCardsType {
+interface WorkEducationeCardsType {
  workEducationeData: string | EducationType[];
  skillsCategoryTitle: string;
 }
@@ -9,7 +9,7 @@ interface WorkExperiencEducationeCardsType {
 export const WorkEducationeCards = ({
  workEducationeData,
  skillsCategoryTitle,
-}: WorkExperiencEducationeCardsType) => {
+}: WorkEducationeCardsType) => {
  return (
   <div className={s.skills}>
    <div className={s.profileData}>

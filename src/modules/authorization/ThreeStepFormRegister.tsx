@@ -1,3 +1,4 @@
+import arrowReturnBlack from "../../assets/icons/arrowReturnBlack.webp";
 import {
  Controller,
  useFormContext,
@@ -6,7 +7,7 @@ import { UploadPhoto } from "../../common/components/signIn/uploadPhoto/UploadPh
 import { InputLabel } from "../../common/ui-elements/Input/InputLabel";
 import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactSelectElement";
 import {
- ageNumber,
+ // ageNumber,
  genderBD,
  genreBD,
  groupeOptions,
@@ -21,6 +22,7 @@ import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnI
 import { ArrowBtnStepsBack } from "../../common/components/navigateButton/ArrowBtnStepsBack";
 import s from "./style/threeStepFormRegister.module.scss";
 import { CustomSelectCheckboxGenre } from "../../common/components/signIn/CustomSelectCheckbox/CustomSelectCheckboxGenre";
+import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker/ReactDatePicker";
 
 export const ThreeStepFormRegister = () => {
  const {
@@ -32,7 +34,7 @@ export const ThreeStepFormRegister = () => {
  return (
   <div className={s.threeStepFormRegister}>
    <div className={s.title}>
-    <ArrowBtnStepsBack darkArrow={true} />
+    <ArrowBtnStepsBack cancelImgIcon={arrowReturnBlack} />
     <h1>Создание анкеты</h1>
    </div>
 
@@ -129,10 +131,19 @@ export const ThreeStepFormRegister = () => {
       rules={{
        required: "Обязательное поле",
       }}
-      render={({ field: { onChange, ...field } }) => (
-       <ReactSelectElement
-        placeholder="Выбрать"
-        options={ageNumber}
+      render={({
+       field: { onChange, value, ...field },
+      }) => (
+       // <ReactSelectElement
+       //  placeholder="Выбрать"
+       //  options={ageNumber}
+       //  onChange={onChange}
+       //  errors={errors.age}
+       //  {...field}
+       // />
+       <ReactDatePickerElement
+        placeholder="Дата рождения"
+        value={value}
         onChange={onChange}
         errors={errors.age}
         {...field}

@@ -1,21 +1,25 @@
 import { useNavigate } from "react-router-dom";
-import arrowReturnWhite from "../../../assets/icons/arrowReturnWhite.webp";
-import arrowReturnBlack from "../../../assets/icons/arrowReturnBlack.webp";
+//import arrowReturnWhite from "../../../assets/icons/arrowReturnWhite.webp";
+//import arrowReturnBlack from "../../../assets/icons/arrowReturnBlack.webp";
 import s from "./arrowBtnStepsBack.module.scss";
 
 interface ArrowBtnStepsBackType {
-  darkArrow: boolean;
+ cancelImgIcon: string;
 }
 
 export const ArrowBtnStepsBack = ({
-  darkArrow = false,
+ cancelImgIcon,
 }: ArrowBtnStepsBackType) => {
-  const navigate = useNavigate();
-  const goBack = () => navigate(-1);
+ const navigate = useNavigate();
+ const goBack = () => navigate(-1);
 
-  return (
-    <div className={s.btnBack} onClick={goBack}>
-      <img src={darkArrow ? arrowReturnBlack : arrowReturnWhite} alt="back" />
-    </div>
-  );
+ return (
+  <div className={s.btnBack} onClick={goBack}>
+   <img
+    src={cancelImgIcon}
+    //src={darkArrow ? arrowReturnBlack : arrowReturnWhite}
+    alt="back"
+   />
+  </div>
+ );
 };

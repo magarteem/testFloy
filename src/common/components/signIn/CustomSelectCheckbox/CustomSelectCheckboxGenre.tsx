@@ -34,12 +34,14 @@ const Option = (props: any) => {
 };
 
 interface CustomSelectCheckboxGenreType {
+ value?: any;
  placeholder: string;
  options: any;
  onChange: (data: string) => void;
  errors: any;
 }
 export const CustomSelectCheckboxGenre = ({
+ value,
  placeholder,
  options,
  onChange,
@@ -70,6 +72,7 @@ export const CustomSelectCheckboxGenre = ({
     placeholder={placeholder}
     isSearchable={false}
     options={options}
+    value={value}
     components={{
      Option,
      MultiValueLabel,

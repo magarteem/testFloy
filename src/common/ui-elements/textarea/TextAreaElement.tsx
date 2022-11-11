@@ -1,22 +1,29 @@
 import s from "./textAreaElement.module.scss";
 
 interface TextAreaElementType {
-  placeholderValue: string;
-  onChange: () => void;
+ value: string | any;
+ placeholderValue: string;
+ onChange: () => void;
 }
 export const TextAreaElement = ({
-  placeholderValue,
-  onChange,
-  ...props
+ value,
+ placeholderValue,
+ onChange,
+ ...props
 }: TextAreaElementType) => {
-  return (
-    <div className={s.textAreaElement}>
-      <textarea
-        className={s.textField}
-        placeholder={placeholderValue}
-        onChange={onChange}
-        {...props}
-      ></textarea>
-    </div>
-  );
+ return (
+  <div className={s.textAreaElement}>
+   <textarea
+    className={s.textField}
+    placeholder={placeholderValue}
+    onChange={onChange}
+    value={
+     typeof value !== "object"
+      ? value
+      : "Нужен список организаций для выбора"
+    }
+    {...props}
+   ></textarea>
+  </div>
+ );
 };

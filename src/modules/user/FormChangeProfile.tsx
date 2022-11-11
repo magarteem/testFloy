@@ -1,4 +1,3 @@
-import { Omit } from "@reduxjs/toolkit/dist/tsHelpers";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
@@ -7,7 +6,9 @@ import { CustomSelectCheckboxTools } from "../../common/components/signIn/Custom
 import { Input } from "../../common/ui-elements/Input/Input";
 import { InputLabel } from "../../common/ui-elements/Input/InputLabel";
 import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactSelectElement";
+import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker/ReactDatePicker";
 import { TextAreaElement } from "../../common/ui-elements/textarea/TextAreaElement";
+import { useAppDispatch } from "../../core/redux/app/hooks";
 import {
  ageNumber,
  genderBD,
@@ -18,32 +19,30 @@ import {
  skillBD,
 } from "../authorization/service/BD";
 import { ISignUpFormValues } from "../authorization/types/type";
+import { changeProfileThunk } from "./changeProfileThunk";
 import s from "./style/formChangeProfile.module.scss";
-
-type ChangeProfileFormValues = Omit<
- ISignUpFormValues,
- "email" | "password" | "img_upload" | "type_account"
->;
+import {
+ ChangeProfileFormValues,
+ InitialStateUserType,
+} from "./types/userSliceType";
 
 interface FormChangeProfileType {
- userDataProfile: any;
+ userDataProfile: InitialStateUserType;
 }
 export const FormChangeProfile = ({
  userDataProfile,
 }: FormChangeProfileType) => {
+ const dispatch = useAppDispatch();
  const navigate = useNavigate();
- // const {
- //  name_field,
- //  sity,
- //  gender,
- //  age,
- //  tool,
- //  genre,
- //  work_experience,
- //  master,
- //  education,
- //  private_settings,
- // } = userDataProfile;
+
+ const {
+  name,
+  sity,
+  age,
+  gender,
+  skills,
+  private_settings,
+ } = userDataProfile;
 
  const {
   control,
@@ -52,21 +51,32 @@ export const FormChangeProfile = ({
  } = useForm<ISignUpFormValues>({
   mode: "all",
   defaultValues: {
-   name_field: "",
-   sity: "",
-   gender: "",
-   age: "",
-   tool: [],
-   genre: "",
-   work_experience: "",
-   master: "",
-   education: "",
-   private_settings: "",
+   name_field: name,
+   sity,
+   gender,
+   age: new Date(age),
+   tool: skills.tool,
+   genre: skills.genre,
+   work_experience: skills.workExperience,
+   master: {
+    value: skills.master.value,
+    label: skills.master.label,
+   },
+   education: skills.education,
+   private_settings,
   },
  });
 
- const onSubmit = (data: ChangeProfileFormValues) =>
+ const onSubmit = (data: ChangeProfileFormValues) => {
+  dispatch(
+   changeProfileThunk(data)
+   // changeProfileThunk({
+   //  ...data,
+   //  age: new Date(data.age).toLocaleDateString(),
+   // })
+  );
   navigate(-1);
+ };
 
  return (
   <form
@@ -85,10 +95,11 @@ export const FormChangeProfile = ({
        message: "Не менее 3х символов",
       },
      }}
-     render={({ field: { onChange, ...field } }) => (
+     render={({ field: { onChange, value, ...field } }) => (
       <>
        <InputLabel titleSelect="Имя" required />
        <Input
+        inputValue={value}
         placeholder="Александр Ковальчук "
         onChange={onChange}
         errors={
@@ -110,10 +121,11 @@ export const FormChangeProfile = ({
       required: "Обязательное поле",
      }}
      render={({
-      field: { onChange, ...field },
+      field: { onChange, value, ...field },
       fieldState: { error },
      }) => (
       <ReactSelectElement
+       value={value}
        placeholder="Выбрать"
        options={sityBD}
        onChange={onChange}
@@ -152,14 +164,32 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, ...field } }) => (
-      <ReactSelectElement
-       placeholder="Выбрать"
-       options={ageNumber}
+     render={({ field: { onChange, value, ...field } }) => (
+      //<ReactSelectElement
+      // value={value}
+      // placeholder="Выбрать"
+      // options={ageNumber}
+      // onChange={onChange}
+      // errors={errors.age}
+      // {...field}
+      ///>
+
+      <ReactDatePickerElement
+       placeholder="Дата рождения"
+       value={value}
        onChange={onChange}
        errors={errors.age}
        {...field}
       />
+
+      //<Input
+      // inputValue={value}
+      // placeholder="Дата рождения "
+      // onChange={onChange}
+      // errors={errors.age}
+      // type="datetime-local"
+      // {...field}
+      ///>
      )}
     />
    </div>
@@ -175,8 +205,9 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, ...field } }) => (
+     render={({ field: { onChange, value, ...field } }) => (
       <CustomSelectCheckboxTools
+       value={value}
        placeholder="Выбрать"
        options={groupeOptions}
        onChange={onChange}
@@ -195,8 +226,9 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, ...field } }) => (
+     render={({ field: { onChange, value, ...field } }) => (
       <CustomSelectCheckboxGenre
+       value={value}
        placeholder="Выбрать"
        options={genreBD}
        onChange={onChange}
@@ -220,9 +252,10 @@ export const FormChangeProfile = ({
     <Controller
      name="work_experience"
      control={control}
-     render={({ field: { onChange, ...field } }) => (
+     render={({ field: { onChange, value, ...field } }) => (
       <div className={s.textarea}>
        <TextAreaElement
+        value={value}
         onChange={onChange}
         placeholderValue="Указать"
         {...field}
@@ -238,8 +271,9 @@ export const FormChangeProfile = ({
     <Controller
      name="master"
      control={control}
-     render={({ field: { onChange, ...field } }) => (
+     render={({ field: { onChange, value, ...field } }) => (
       <ReactSelectElement
+       value={value}
        placeholder="Выбрать"
        options={skillBD}
        onChange={onChange}
@@ -254,9 +288,10 @@ export const FormChangeProfile = ({
     <Controller
      name="education"
      control={control}
-     render={({ field: { onChange, ...field } }) => (
+     render={({ field: { onChange, value, ...field } }) => (
       <div className={s.textarea}>
        <TextAreaElement
+        value={value}
         onChange={onChange}
         placeholderValue="Указать"
         {...field}

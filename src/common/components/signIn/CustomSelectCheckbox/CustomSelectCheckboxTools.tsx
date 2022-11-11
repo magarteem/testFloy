@@ -51,12 +51,14 @@ const Option = (props: any) => {
 
 interface CustomSelectCheckboxToolsType {
  placeholder: string;
+ value?: any;
  options: any;
  onChange: (data: string) => void;
  errors: any;
 }
 export const CustomSelectCheckboxTools = ({
  placeholder,
+ value,
  options,
  onChange,
  errors,
@@ -84,6 +86,7 @@ export const CustomSelectCheckboxTools = ({
     })}
     classNamePrefix="customs_select_list_prefix"
     placeholder={placeholder}
+    value={value}
     isSearchable={false}
     options={options}
     components={{

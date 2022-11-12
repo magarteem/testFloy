@@ -24,17 +24,17 @@
   background-size: 1096px 983px;
   background-position: -151px -21px;
 
-  animation: trans 1s forwards;
+  //animation: trans 1s forwards;
 
-  @keyframes trans {
-   0% {
-    position: absolute;
-    transform: translate(100px, 100px);
-   }
-   100% {
-    transform: translate(0);
-   }
-  }
+  //@keyframes trans {
+  // 0% {
+  //  position: absolute;
+  //  transform: translate(100px, 100px);
+  // }
+  // 100% {
+  //  transform: translate(0);
+  // }
+  //}
  }
 
  .fieldLogin {

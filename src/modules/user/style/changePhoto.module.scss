@@ -30,19 +30,3 @@
   font-size: 12px;
  }
 }
-
-//transitions.map(({ item, props, key }) => (
-//  <animated.div key={key}>
-
-//  </animated.div>
-
-//const location = useLocation();
-// const transitions = useTransition(
-//  location,
-//  (location) => location.pathname,
-//  {
-//   from: { opacity: 0 },
-//   enter: { opacity: 1 },
-//   leave: { opacity: 0 },
-//  }
-// );

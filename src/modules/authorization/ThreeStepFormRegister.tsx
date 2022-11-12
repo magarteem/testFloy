@@ -54,7 +54,7 @@ export const ThreeStepFormRegister = () => {
        <>
         <InputLabel titleSelect="Имя" required />
         <Input
-         placeholder="Александр Ковальчук "
+         placeholder="Ваше имя"
          onChange={onChange}
          errors={
           errors.name_field && errors.name_field.message
@@ -89,10 +89,11 @@ export const ThreeStepFormRegister = () => {
        required: "Обязательное поле",
       }}
       render={({
-       field: { onChange, ...field },
+       field: { onChange, value, ...field },
        fieldState: { error },
       }) => (
        <ReactSelectElement
+        value={value}
         placeholder="Выбрать"
         options={sityBD}
         onChange={onChange}

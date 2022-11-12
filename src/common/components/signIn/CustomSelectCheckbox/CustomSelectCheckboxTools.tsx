@@ -3,7 +3,7 @@ import Select, {
  ValueContainerProps,
 } from "react-select";
 import { FormatGroupLabel } from "./FormatGroupLabel";
-import "./customSelectCheckbox.scss";
+import "./customSelectCheckboxTool.scss";
 import cn from "classnames";
 
 export const Temp = (data: any) => (
@@ -106,7 +106,7 @@ export const CustomSelectCheckboxTools = ({
      colors: {
       ...theme.colors,
       primary25: "#ffffff",
-      primary: "#47c7a9",
+      primary: "#47c7a921",
      },
     })}
     // menuIsOpen

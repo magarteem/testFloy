@@ -159,6 +159,7 @@ export const groupeOptions: GroupOptionsType[] = [
 
 export const genreBD: OptionSelectType[] = [
  { value: "classical", label: "Классическая" },
+ { value: "helicon", label: "Геликон" },
  { value: "folk-narod", label: "Народная" },
  { value: "spiritual", label: "Духовная" },
  { value: "jazz", label: "Джаз" },

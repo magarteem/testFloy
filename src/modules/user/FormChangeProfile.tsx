@@ -59,8 +59,8 @@ export const FormChangeProfile = ({
    genre: skills.genre,
    work_experience: skills.workExperience,
    master: {
-    value: skills.master.value,
-    label: skills.master.label,
+    value: skills.master?.value,
+    label: skills.master?.label,
    },
    education: skills.education,
    private_settings,
@@ -121,11 +121,10 @@ export const FormChangeProfile = ({
       required: "Обязательное поле",
      }}
      render={({
-      field: { onChange, value, ...field },
+      field: { onChange, ...field },
       fieldState: { error },
      }) => (
       <ReactSelectElement
-       value={value}
        placeholder="Выбрать"
        options={sityBD}
        onChange={onChange}
@@ -165,15 +164,6 @@ export const FormChangeProfile = ({
       required: "Обязательное поле",
      }}
      render={({ field: { onChange, value, ...field } }) => (
-      //<ReactSelectElement
-      // value={value}
-      // placeholder="Выбрать"
-      // options={ageNumber}
-      // onChange={onChange}
-      // errors={errors.age}
-      // {...field}
-      ///>
-
       <ReactDatePickerElement
        placeholder="Дата рождения"
        value={value}
@@ -181,15 +171,6 @@ export const FormChangeProfile = ({
        errors={errors.age}
        {...field}
       />
-
-      //<Input
-      // inputValue={value}
-      // placeholder="Дата рождения "
-      // onChange={onChange}
-      // errors={errors.age}
-      // type="datetime-local"
-      // {...field}
-      ///>
      )}
     />
    </div>

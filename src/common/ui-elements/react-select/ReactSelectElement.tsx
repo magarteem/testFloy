@@ -36,7 +36,7 @@ export const ReactSelectElement = ({
    border: `3.5px solid #80ff00`,
   }),
  };
-
+ console.log(value);
  return (
   <div className="wrapperSelect">
    <Select

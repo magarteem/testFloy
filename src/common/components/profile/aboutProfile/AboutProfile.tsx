@@ -21,13 +21,17 @@ export const AboutProfile = ({
 }: AboutProfileType) => {
  const { id_user } = useParams();
 
+ console.log(userDataProfile.sity);
+
  return (
   <>
    <section className={s.main}>
     <NameProfile
      age={userDataProfile.age}
      name={userDataProfile.name}
-     sity={userDataProfile.sity.label}
+     sity={
+      userDataProfile.sity ? userDataProfile.sity.label : ""
+     }
     />
 
     {id_user && (

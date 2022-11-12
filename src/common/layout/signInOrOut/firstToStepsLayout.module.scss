@@ -1,3 +1,5 @@
+@import "src/styles/variable";
+
 .firstToStepsLayout {
  display: flex;
  flex-direction: column;
@@ -11,6 +13,10 @@
   #ff864c 92.25%
  );
 
+ @media (max-height: $mediaMaxHeight600px) {
+  padding: 25px 16px 0;
+ }
+
  &::before {
   position: absolute;
   pointer-events: none;
@@ -23,5 +29,17 @@
   background-repeat: no-repeat;
   background-size: 1096px 983px;
   background-position: -151px -21px;
+
+  animation: trans 1s forwards;
+
+  @keyframes trans {
+   0% {
+    position: absolute;
+    transform: translate(100px, 100px);
+   }
+   100% {
+    transform: translate(0);
+   }
+  }
  }
 }

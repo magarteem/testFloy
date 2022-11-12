@@ -26,40 +26,17 @@ const initialState: InitialStateUserType = {
  },
  skills: {
   tool: [
-   {
-    label: "Гитара",
-    value: "guitar",
-   },
-   {
-    label: "Саксофон",
-    value: "saxophone",
-   },
-   {
-    label: "Гусли",
-    value: "gusli",
-   },
+   { label: "Бас", value: "value_23" },
+   { label: "Сопрано", value: "value_42" },
+   { label: "Контральто", value: "value_26" },
+   { label: "Саксофон", value: "saxophone" },
   ],
   genre: [
-   {
-    label: "Поп-музыка",
-    value: "pop_music",
-   },
-   {
-    label: "Кантри",
-    value: "country",
-   },
-   {
-    label: "Блюз",
-    value: "blues",
-   },
-   {
-    label: "Геликон",
-    value: "helicon",
-   },
-   {
-    label: "Фолк-музыка",
-    value: "folk",
-   },
+   { label: "Поп-музыка", value: "pop_music" },
+   { label: "Кантри", value: "country" },
+   { label: "Блюз", value: "blues" },
+   { label: "Геликон", value: "helicon" },
+   { label: "Фолк-музыка", value: "folk" },
   ],
   workExperience:
    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.",
@@ -94,12 +71,18 @@ const userSlice = createSlice({
      state: InitialStateUserType,
      actions: PayloadAction<ChangeProfileFormValues>
     ) => {
-     // console.log(state);
-     // console.log("actions", actions.payload);
-     console.log(new Date(actions.payload.age));
-     console.log(actions.payload.age);
      state.name = actions.payload.name_field;
      state.age = actions.payload.age;
+     state.sity = actions.payload.sity;
+     state.gender = actions.payload.gender;
+     state.skills.tool = actions.payload.tool;
+     state.skills.genre = actions.payload.genre;
+     state.skills.workExperience =
+      actions.payload.work_experience;
+     state.skills.education = actions.payload.education;
+     state.skills.master = actions.payload.master;
+     state.private_settings =
+      actions.payload.private_settings;
     }
    )
    .addCase(

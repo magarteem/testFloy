@@ -10,7 +10,7 @@ import { Input } from "../../common/ui-elements/Input/Input";
 import { useNavigate } from "react-router-dom";
 import { RouteNames } from "../../common/variables/RouteNames";
 import { RegistrationQuestionLink } from "../../common/components/signIn/registrationQuestion/RegistrationQuestionLink";
-import s from "./style/formRegister.module.scss";
+import s from "./style/firstFormRegister.module.scss";
 
 export const FirstStepFormRegister = () => {
  const navigate = useNavigate();
@@ -57,7 +57,7 @@ export const FirstStepFormRegister = () => {
  };
 
  return (
-  <>
+  <div className={s.wrapperFirstFormRegister}>
    <div className={s.styleInput}>
     <Controller
      name="email"
@@ -124,6 +124,6 @@ export const FirstStepFormRegister = () => {
     lintText="ВОЙТИ"
     questionText="Уже есть аккаунт?"
    />
-  </>
+  </div>
  );
 };

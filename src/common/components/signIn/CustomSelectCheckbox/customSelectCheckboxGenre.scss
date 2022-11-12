@@ -80,8 +80,9 @@
  align-items: center;
 
  label {
-  //font-weight: 700;
-  //font-style: 14px;
+  font-weight: 700;
+  font-style: 14px;
+  color: #242424;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -89,8 +90,13 @@
 
  input {
   display: none;
-  &:checked + span::before {
-   transform: scale(1);
+
+  &:checked + span {
+   border: 2px solid #ff5a13;
+
+   &::before {
+    transform: scale(1);
+   }
   }
  }
 
@@ -99,7 +105,7 @@
   margin-bottom: -2px;
   width: 15px;
   height: 15px;
-  border: 2px solid #ff5a13;
+  border: 2px solid #727471;
   position: relative;
   border-radius: 5px;
   margin: 0 8px 0 0;

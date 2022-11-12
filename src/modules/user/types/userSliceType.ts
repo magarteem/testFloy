@@ -15,7 +15,7 @@ export interface SkillsType {
  tool: OptionsTypeTool[];
  genre: OptionsTypeTool[];
  workExperience: string | EducationType[];
- master: OptionsTypeTool;
+ master: OptionsTypeTool | null;
  education: string | EducationType[];
  inspiration: string[];
 }
@@ -24,13 +24,13 @@ export interface InitialStateUserType {
  id_user: string;
  name: string;
  email: string;
- sity: OptionsTypeTool;
+ sity: OptionsTypeTool | null;
  age: string;
  img_upload: string;
- gender: OptionsTypeTool;
+ gender: OptionsTypeTool | null;
  type_account: OptionsTypeTool;
  skills: SkillsType;
- private_settings: OptionsTypeTool;
+ private_settings: OptionsTypeTool | null;
 }
 
 //

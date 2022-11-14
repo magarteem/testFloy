@@ -98,7 +98,7 @@ export const FormLogin = () => {
       </Link>
 
       <div className={s.styleBtn}>
-        <InButton textButton="ВОЙТИ" />
+        <InButton typeButton="submit" textButton="ВОЙТИ" />
       </div>
     </form>
   );

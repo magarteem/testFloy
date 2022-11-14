@@ -5,6 +5,10 @@
   color: $white;
   text-align: center;
 
+  @media (max-height: $mediaMaxHeight560px) {
+    margin-top: 20px;
+  }
+
   h2 {
     font-size: 14px;
     letter-spacing: 2px;

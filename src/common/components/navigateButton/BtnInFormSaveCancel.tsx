@@ -3,35 +3,43 @@ import { InButton } from "../../ui-elements/button/InButton";
 import s from "./btnInFormSaveCancel.module.scss";
 
 interface BtnInFormSaveCancelType {
- textCancelButton: string;
- textButton: string;
- isValidButtonBack?: boolean;
- isValidInButton?: boolean;
- onClick?: () => void;
+  textCancelButton: string;
+  typeButton?: "button" | "reset" | "submit";
+  textButton: string;
+  isValidButtonBack?: boolean;
+  isValidInButton?: boolean;
+  onClickBack?: () => void;
+  onClick?: () => void;
 }
 
 export const BtnInFormSaveCancel = ({
- textCancelButton,
- textButton,
- isValidButtonBack,
- isValidInButton,
- onClick,
+  textCancelButton,
+  typeButton,
+  textButton,
+  isValidButtonBack,
+  isValidInButton,
+  onClickBack,
+  onClick,
 }: BtnInFormSaveCancelType) => {
- return (
-  <div className={s.sendDataForm}>
-   <div className={s.btnWrapper}>
-    <ButtonBack
-     textCancelButton={textCancelButton}
-     isValidButtonBack={isValidButtonBack}
-    />
-   </div>
-   <div className={s.btnWrapper}>
-    <InButton
-     textButton={textButton}
-     isValidInButton={isValidInButton}
-     onClick={onClick}
-    />
-   </div>
-  </div>
- );
+  console.log("111");
+
+  return (
+    <div className={s.sendDataForm}>
+      <div className={s.btnWrapper}>
+        <ButtonBack
+          textCancelButton={textCancelButton}
+          isValidButtonBack={isValidButtonBack}
+          onClick={onClickBack}
+        />
+      </div>
+      <div className={s.btnWrapper}>
+        <InButton
+          typeButton={typeButton}
+          textButton={textButton}
+          isValidInButton={isValidInButton}
+          onClick={onClick}
+        />
+      </div>
+    </div>
+  );
 };

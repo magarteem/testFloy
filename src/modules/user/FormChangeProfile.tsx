@@ -1,8 +1,9 @@
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
 import { CustomSelectCheckboxGenre } from "../../common/components/signIn/CustomSelectCheckbox/CustomSelectCheckboxGenre";
 import { CustomSelectCheckboxTools } from "../../common/components/signIn/CustomSelectCheckbox/CustomSelectCheckboxTools";
+import { ButtonBack } from "../../common/ui-elements/button/ButtonBack";
+import { InButton } from "../../common/ui-elements/button/InButton";
 import { Input } from "../../common/ui-elements/Input/Input";
 import { InputLabel } from "../../common/ui-elements/Input/InputLabel";
 import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactSelectElement";
@@ -10,304 +11,292 @@ import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker
 import { TextAreaElement } from "../../common/ui-elements/textarea/TextAreaElement";
 import { useAppDispatch } from "../../core/redux/app/hooks";
 import {
- ageNumber,
- genderBD,
- genreBD,
- groupeOptions,
- profilePrivacySettings,
- sityBD,
- skillBD,
+  genderBD,
+  genreBD,
+  groupeOptions,
+  profilePrivacySettings,
+  sityBD,
+  skillBD,
 } from "../authorization/service/BD";
 import { ISignUpFormValues } from "../authorization/types/type";
 import { changeProfileThunk } from "./changeProfileThunk";
 import s from "./style/formChangeProfile.module.scss";
 import {
- ChangeProfileFormValues,
- InitialStateUserType,
+  ChangeProfileFormValues,
+  InitialStateUserType,
 } from "./types/userSliceType";
 
 interface FormChangeProfileType {
- userDataProfile: InitialStateUserType;
+  userDataProfile: InitialStateUserType;
 }
 export const FormChangeProfile = ({
- userDataProfile,
+  userDataProfile,
 }: FormChangeProfileType) => {
- const dispatch = useAppDispatch();
- const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
- const {
-  name,
-  sity,
-  age,
-  gender,
-  skills,
-  private_settings,
- } = userDataProfile;
+  const { name, sity, age, gender, skills, private_settings } = userDataProfile;
 
- const {
-  control,
-  handleSubmit,
-  formState: { errors },
- } = useForm<ISignUpFormValues>({
-  mode: "all",
-  defaultValues: {
-   name_field: name,
-   sity,
-   gender,
-   age: new Date(age),
-   tool: skills.tool,
-   genre: skills.genre,
-   work_experience: skills.workExperience,
-   master: {
-    value: skills.master?.value,
-    label: skills.master?.label,
-   },
-   education: skills.education,
-   private_settings,
-  },
- });
-
- const onSubmit = (data: ChangeProfileFormValues) => {
-  dispatch(
-   changeProfileThunk(data)
-   // changeProfileThunk({
-   //  ...data,
-   //  age: new Date(data.age).toLocaleDateString(),
-   // })
-  );
-  navigate(-1);
- };
-
- return (
-  <form
-   onSubmit={handleSubmit(onSubmit)}
-   className={s.forms}
-  >
-   {/*  */}
-   <div className={s.styleInput}>
-    <Controller
-     name="name_field"
-     control={control}
-     rules={{
-      required: "Обязательное поле",
-      minLength: {
-       value: 3,
-       message: "Не менее 3х символов",
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISignUpFormValues>({
+    mode: "all",
+    defaultValues: {
+      name_field: name,
+      sity,
+      gender,
+      age: new Date(age),
+      tool: skills.tool,
+      genre: skills.genre,
+      work_experience: skills.workExperience,
+      master: {
+        value: skills.master?.value,
+        label: skills.master?.label,
       },
-     }}
-     render={({ field: { onChange, value, ...field } }) => (
-      <>
-       <InputLabel titleSelect="Имя" required />
-       <Input
-        inputValue={value}
-        placeholder="Александр Ковальчук "
-        onChange={onChange}
-        errors={
-         errors.name_field && errors.name_field.message
-        }
-        {...field}
-       />
-      </>
-     )}
-    />
-   </div>
+      education: skills.education,
+      private_settings,
+    },
+  });
 
-   <div className={s.selectField}>
-    <InputLabel titleSelect="Город" required />
-    <Controller
-     name="sity"
-     control={control}
-     rules={{
-      required: "Обязательное поле",
-     }}
-     render={({
-      field: { onChange, ...field },
-      fieldState: { error },
-     }) => (
-      <ReactSelectElement
-       placeholder="Выбрать"
-       options={sityBD}
-       onChange={onChange}
-       errors={errors.sity}
-       {...field}
-      />
-     )}
-    />
-   </div>
+  const onSubmit = (data: ChangeProfileFormValues) => {
+    dispatch(
+      changeProfileThunk(data)
+      // changeProfileThunk({
+      //  ...data,
+      //  age: new Date(data.age).toLocaleDateString(),
+      // })
+    );
+    navigate(-1);
+  };
 
-   <div className={s.selectField}>
-    <InputLabel titleSelect="Пол" required />
-    <Controller
-     name="gender"
-     control={control}
-     rules={{
-      required: "Обязательное поле",
-     }}
-     render={({ field: { onChange, ...field } }) => (
-      <ReactSelectElement
-       placeholder="Выбрать"
-       options={genderBD}
-       onChange={onChange}
-       errors={errors.gender}
-       {...field}
-      />
-     )}
-    />
-   </div>
-
-   <div className={s.selectField}>
-    <InputLabel titleSelect="Возраст" required />
-    <Controller
-     name="age"
-     control={control}
-     rules={{
-      required: "Обязательное поле",
-     }}
-     render={({ field: { onChange, value, ...field } }) => (
-      <ReactDatePickerElement
-       placeholder="Дата рождения"
-       value={value}
-       onChange={onChange}
-       errors={errors.age}
-       {...field}
-      />
-     )}
-    />
-   </div>
-
-   <div className={s.selectField}>
-    <InputLabel
-     titleSelect="Инструмент (род деятельности)"
-     required
-    />
-    <Controller
-     name="tool"
-     control={control}
-     rules={{
-      required: "Обязательное поле",
-     }}
-     render={({ field: { onChange, value, ...field } }) => (
-      <CustomSelectCheckboxTools
-       value={value}
-       placeholder="Выбрать"
-       options={groupeOptions}
-       onChange={onChange}
-       errors={errors.tool}
-       {...field}
-      />
-     )}
-    />
-   </div>
-
-   <div className={s.selectField}>
-    <InputLabel titleSelect="Жанр" required />
-    <Controller
-     name="genre"
-     control={control}
-     rules={{
-      required: "Обязательное поле",
-     }}
-     render={({ field: { onChange, value, ...field } }) => (
-      <CustomSelectCheckboxGenre
-       value={value}
-       placeholder="Выбрать"
-       options={genreBD}
-       onChange={onChange}
-       errors={errors.genre}
-       {...field}
-      />
-      //<ReactSelectElement
-      // placeholder="Выбрать"
-      // options={genreBD}
-      // onChange={onChange}
-      // isMulti
-      // errors={errors.genre}
-      // {...field}
-      ///>
-     )}
-    />
-   </div>
-
-   <div className={s.styleInput}>
-    <InputLabel titleSelect="Опыт работы/выступлений" />
-    <Controller
-     name="work_experience"
-     control={control}
-     render={({ field: { onChange, value, ...field } }) => (
-      <div className={s.textarea}>
-       <TextAreaElement
-        value={value}
-        onChange={onChange}
-        placeholderValue="Указать"
-        {...field}
-       />
-       <span className={s.notes}>Опишите ваш опыт</span>
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className={s.forms}>
+      {/*  */}
+      <div className={s.styleInput}>
+        <Controller
+          name="name_field"
+          control={control}
+          rules={{
+            required: "Обязательное поле",
+            minLength: {
+              value: 3,
+              message: "Не менее 3х символов",
+            },
+          }}
+          render={({ field: { onChange, value, ...field } }) => (
+            <>
+              <InputLabel titleSelect="Имя" required />
+              <Input
+                inputValue={value}
+                placeholder="Александр Ковальчук "
+                onChange={onChange}
+                errors={errors.name_field && errors.name_field.message}
+                {...field}
+              />
+            </>
+          )}
+        />
       </div>
-     )}
-    />
-   </div>
 
-   <div className={s.selectField}>
-    <InputLabel titleSelect="Мастерство" />
-    <Controller
-     name="master"
-     control={control}
-     render={({ field: { onChange, value, ...field } }) => (
-      <ReactSelectElement
-       value={value}
-       placeholder="Выбрать"
-       options={skillBD}
-       onChange={onChange}
-       {...field}
-      />
-     )}
-    />
-   </div>
-
-   <div className={s.styleInput}>
-    <InputLabel titleSelect="Образование" />
-    <Controller
-     name="education"
-     control={control}
-     render={({ field: { onChange, value, ...field } }) => (
-      <div className={s.textarea}>
-       <TextAreaElement
-        value={value}
-        onChange={onChange}
-        placeholderValue="Указать"
-        {...field}
-       />
+      <div className={s.selectField}>
+        <InputLabel titleSelect="Город" required />
+        <Controller
+          name="sity"
+          control={control}
+          rules={{
+            required: "Обязательное поле",
+          }}
+          render={({
+            field: { onChange, ...field },
+            fieldState: { error },
+          }) => (
+            <ReactSelectElement
+              placeholder="Выбрать"
+              options={sityBD}
+              onChange={onChange}
+              errors={errors.sity}
+              {...field}
+            />
+          )}
+        />
       </div>
-     )}
-    />
-   </div>
 
-   <div className={s.selectField}>
-    <InputLabel titleSelect="Настройки приватности анкеты" />
-    <Controller
-     name="private_settings"
-     control={control}
-     rules={{
-      required: "Обязательное поле",
-     }}
-     render={({ field: { onChange, ...field } }) => (
-      <ReactSelectElement
-       placeholder="Выбрать"
-       options={profilePrivacySettings}
-       errors={errors.private_settings}
-       onChange={onChange}
-       {...field}
-      />
-     )}
-    />
-   </div>
+      <div className={s.selectField}>
+        <InputLabel titleSelect="Пол" required />
+        <Controller
+          name="gender"
+          control={control}
+          rules={{
+            required: "Обязательное поле",
+          }}
+          render={({ field: { onChange, ...field } }) => (
+            <ReactSelectElement
+              placeholder="Выбрать"
+              options={genderBD}
+              onChange={onChange}
+              errors={errors.gender}
+              {...field}
+            />
+          )}
+        />
+      </div>
 
-   <div className={s.btnFormWrapper}>
-    <BtnInFormSaveCancel
-     textCancelButton="Отмена"
-     textButton="Cохранить"
-    />
-   </div>
-  </form>
- );
+      <div className={s.selectField}>
+        <InputLabel titleSelect="Возраст" required />
+        <Controller
+          name="age"
+          control={control}
+          rules={{
+            required: "Обязательное поле",
+          }}
+          render={({ field: { onChange, value, ...field } }) => (
+            <ReactDatePickerElement
+              placeholder="Дата рождения"
+              value={value}
+              onChange={onChange}
+              errors={errors.age}
+              {...field}
+            />
+          )}
+        />
+      </div>
+
+      <div className={s.selectField}>
+        <InputLabel titleSelect="Инструмент (род деятельности)" required />
+        <Controller
+          name="tool"
+          control={control}
+          rules={{
+            required: "Обязательное поле",
+          }}
+          render={({ field: { onChange, value, ...field } }) => (
+            <CustomSelectCheckboxTools
+              value={value}
+              placeholder="Выбрать"
+              options={groupeOptions}
+              onChange={onChange}
+              errors={errors.tool}
+              {...field}
+            />
+          )}
+        />
+      </div>
+
+      <div className={s.selectField}>
+        <InputLabel titleSelect="Жанр" required />
+        <Controller
+          name="genre"
+          control={control}
+          rules={{
+            required: "Обязательное поле",
+          }}
+          render={({ field: { onChange, value, ...field } }) => (
+            <CustomSelectCheckboxGenre
+              value={value}
+              placeholder="Выбрать"
+              options={genreBD}
+              onChange={onChange}
+              errors={errors.genre}
+              {...field}
+            />
+            //<ReactSelectElement
+            // placeholder="Выбрать"
+            // options={genreBD}
+            // onChange={onChange}
+            // isMulti
+            // errors={errors.genre}
+            // {...field}
+            ///>
+          )}
+        />
+      </div>
+
+      <div className={s.styleInput}>
+        <InputLabel titleSelect="Опыт работы/выступлений" />
+        <Controller
+          name="work_experience"
+          control={control}
+          render={({ field: { onChange, value, ...field } }) => (
+            <div className={s.textarea}>
+              <TextAreaElement
+                value={value}
+                onChange={onChange}
+                placeholderValue="Указать"
+                {...field}
+              />
+              <span className={s.notes}>Опишите ваш опыт</span>
+            </div>
+          )}
+        />
+      </div>
+
+      <div className={s.selectField}>
+        <InputLabel titleSelect="Мастерство" />
+        <Controller
+          name="master"
+          control={control}
+          render={({ field: { onChange, value, ...field } }) => (
+            <ReactSelectElement
+              value={value}
+              placeholder="Выбрать"
+              options={skillBD}
+              onChange={onChange}
+              {...field}
+            />
+          )}
+        />
+      </div>
+
+      <div className={s.styleInput}>
+        <InputLabel titleSelect="Образование" />
+        <Controller
+          name="education"
+          control={control}
+          render={({ field: { onChange, value, ...field } }) => (
+            <div className={s.textarea}>
+              <TextAreaElement
+                value={value}
+                onChange={onChange}
+                placeholderValue="Указать"
+                {...field}
+              />
+            </div>
+          )}
+        />
+      </div>
+
+      <div className={s.selectField}>
+        <InputLabel titleSelect="Настройки приватности анкеты" />
+        <Controller
+          name="private_settings"
+          control={control}
+          rules={{
+            required: "Обязательное поле",
+          }}
+          render={({ field: { onChange, ...field } }) => (
+            <ReactSelectElement
+              placeholder="Выбрать"
+              options={profilePrivacySettings}
+              errors={errors.private_settings}
+              onChange={onChange}
+              {...field}
+            />
+          )}
+        />
+      </div>
+
+      <div className={s.btnFormWrapper}>
+        <div className={s.sendDataForm}>
+          <div className={s.btnWrapper}>
+            <ButtonBack textCancelButton="Отмена" />
+          </div>
+          <div className={s.btnWrapper}>
+            <InButton textButton="Cохранить" typeButton="submit" />
+          </div>
+        </div>
+      </div>
+    </form>
+  );
 };

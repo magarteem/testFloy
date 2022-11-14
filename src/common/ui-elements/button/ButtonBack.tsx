@@ -1,34 +1,36 @@
-import React, { MouseEvent } from "react";
+import { MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./button.module.scss";
 
 interface ButtonBackType {
- textCancelButton: string;
- isValidButtonBack?: boolean;
+  textCancelButton: string;
+  isValidButtonBack?: boolean;
+  typeButton?: "button" | "reset" | "submit";
+  onClick?: () => void;
 }
 
 export const ButtonBack = ({
- textCancelButton,
- isValidButtonBack,
- ...props
+  textCancelButton,
+  isValidButtonBack,
+  typeButton = "button",
+  onClick,
+  ...props
 }: ButtonBackType) => {
- const navigate = useNavigate();
- const returnStepRegister = (
-  event: MouseEvent<HTMLButtonElement>
- ) => {
-  event.preventDefault();
-  navigate(-1);
- };
+  const navigate = useNavigate();
+  const returnStepRegister = (event: MouseEvent<HTMLButtonElement>) => {
+    // event.preventDefault();
+    navigate(-1);
+  };
 
- return (
-  <button
-   className={s.buttonBackWrapper}
-   type="submit"
-   disabled={isValidButtonBack}
-   onClick={returnStepRegister}
-   {...props}
-  >
-   {textCancelButton}
-  </button>
- );
+  return (
+    <button
+      className={s.buttonBackWrapper}
+      type={typeButton}
+      disabled={isValidButtonBack}
+      onClick={onClick ? onClick : returnStepRegister}
+      {...props}
+    >
+      {textCancelButton}
+    </button>
+  );
 };

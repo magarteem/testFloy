@@ -115,7 +115,7 @@ export const RecoveryCreateNewPassForm = () => {
       </div>
 
       <div className={s.styleBtn}>
-        <InButton textButton="Отправить" />
+        <InButton typeButton="submit" textButton="Отправить" />
       </div>
     </form>
   );

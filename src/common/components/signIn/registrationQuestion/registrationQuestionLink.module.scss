@@ -2,24 +2,30 @@
 
 .registrationQuestionLink {
  color: $white;
- position: fixed;
- bottom: 0;
+ // position: fixed;
+ // bottom: 0;
  display: flex;
  justify-content: center;
  align-self: center;
  flex-wrap: wrap;
- margin-bottom: 40px;
- padding: 0 16px;
+ gap: 5px 5px;
+ margin: 35px 0 40px;
 
- @media (max-height: 450px) {
-  position: static;
-  margin-top: 50px;
+ @media (max-height: $mediaMaxHeight560px) {
+  margin: 15px 0 15px;
  }
 
  span {
-  padding-right: 8px;
+  text-align: center;
   color: #ebeceb;
   letter-spacing: 2px;
+
+  @media (max-width: $mediaMaxWidth360px) {
+   font-size: 15px;
+  }
+  @media (max-width: $mediaMaxWidth340px) {
+   font-size: 17px;
+  }
  }
 
  a {
@@ -27,5 +33,11 @@
   background-color: inherit;
   font-size: 16px;
   font-weight: 700;
+  @media (max-width: $mediaMaxWidth360px) {
+   font-size: 15px;
+  }
+  @media (max-width: $mediaMaxWidth340px) {
+   font-size: 17px;
+  }
  }
 }

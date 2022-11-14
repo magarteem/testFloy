@@ -62,7 +62,10 @@ export const SliderRegister = () => {
 
  return (
   <FormProvider {...method}>
-   <form onSubmit={handleSubmit(onSubmit)}>
+   <form
+    className={s.forms}
+    onSubmit={handleSubmit(onSubmit)}
+   >
     <Swiper
      modules={[EffectFade]}
      effect="fade"

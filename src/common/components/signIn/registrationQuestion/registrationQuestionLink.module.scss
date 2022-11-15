@@ -8,21 +8,26 @@
  justify-content: center;
  align-self: center;
  flex-wrap: wrap;
- gap: 5px 5px;
- margin: 35px 0 40px;
+ margin-bottom: 40px;
+ padding: 0 16px;
 
- @media (max-height: $mediaMaxHeight560px) {
-  margin: 15px 0 15px;
+ @media (max-height: $mediaMaxHeight650px) {
+  position: static;
+  padding: 20px 16px 0;
+  //margin-bottom: 10px;
  }
+ // @media (max-height: $mediaMaxHeight600px) {
+ //  padding: 20px 16px 0;
+ // }
 
  span {
-  text-align: center;
+  padding-right: 8px;
   color: #ebeceb;
   letter-spacing: 2px;
 
-  @media (max-width: $mediaMaxWidth360px) {
-   font-size: 15px;
-  }
+  //@media (max-width: $mediaMaxWidth360px) {
+  // font-size: 15px;
+  //}
   @media (max-width: $mediaMaxWidth340px) {
    font-size: 17px;
   }
@@ -33,9 +38,10 @@
   background-color: inherit;
   font-size: 16px;
   font-weight: 700;
-  @media (max-width: $mediaMaxWidth360px) {
-   font-size: 15px;
-  }
+
+  //@media (max-width: $mediaMaxWidth360px) {
+  // font-size: 15px;
+  //}
   @media (max-width: $mediaMaxWidth340px) {
    font-size: 17px;
   }

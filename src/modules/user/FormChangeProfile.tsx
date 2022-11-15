@@ -96,13 +96,11 @@ export const FormChangeProfile = ({
        message: "Не менее 3х символов",
       },
      }}
-     render={({
-      field: { onChange, value, ref, ...field },
-     }) => (
+     render={({ field: { onChange, ref, ...field } }) => (
       <>
        <InputLabel titleSelect="Имя" required />
        <Input
-        inputValue={value}
+        //inputValue={value}
         placeholder="Александр Ковальчук "
         onChange={onChange}
         errors={
@@ -147,12 +145,9 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({
-      field: { onChange, value, ref, ...field },
-     }) => (
+     render={({ field: { onChange, ref, ...field } }) => (
       <ReactSelectElement
        ItemRef={ref}
-       value={value}
        placeholder="Выбрать"
        options={genderBD}
        onChange={onChange}
@@ -171,13 +166,10 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({
-      field: { onChange, value, ref, ...field },
-     }) => (
+     render={({ field: { onChange, ref, ...field } }) => (
       <ReactDatePickerElement
        ItemRef={ref}
        placeholder="Дата рождения"
-       value={value}
        onChange={onChange}
        errors={errors.age}
        {...field}
@@ -197,12 +189,9 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({
-      field: { onChange, ref, value, ...field },
-     }) => (
+     render={({ field: { onChange, ref, ...field } }) => (
       <CustomSelectCheckboxTools
        ItemRef={ref}
-       value={value}
        placeholder="Выбрать"
        options={groupeOptions}
        onChange={onChange}
@@ -221,12 +210,9 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({
-      field: { onChange, value, ref, ...field },
-     }) => (
+     render={({ field: { onChange, ref, ...field } }) => (
       <CustomSelectCheckboxGenre
        ItemRef={ref}
-       value={value}
        placeholder="Выбрать"
        options={genreBD}
        onChange={onChange}
@@ -250,13 +236,10 @@ export const FormChangeProfile = ({
     <Controller
      name="work_experience"
      control={control}
-     render={({
-      field: { onChange, value, ref, ...field },
-     }) => (
+     render={({ field: { onChange, ref, ...field } }) => (
       <div className={s.textarea}>
        <TextAreaElement
         ItemRef={ref}
-        value={value}
         onChange={onChange}
         placeholderValue="Указать"
         {...field}
@@ -272,12 +255,9 @@ export const FormChangeProfile = ({
     <Controller
      name="master"
      control={control}
-     render={({
-      field: { onChange, value, ref, ...field },
-     }) => (
+     render={({ field: { onChange, ref, ...field } }) => (
       <ReactSelectElement
        ItemRef={ref}
-       value={value}
        placeholder="Выбрать"
        options={skillBD}
        onChange={onChange}
@@ -292,13 +272,10 @@ export const FormChangeProfile = ({
     <Controller
      name="education"
      control={control}
-     render={({
-      field: { onChange, value, ref, ...field },
-     }) => (
+     render={({ field: { onChange, ref, ...field } }) => (
       <div className={s.textarea}>
        <TextAreaElement
         ItemRef={ref}
-        value={value}
         onChange={onChange}
         placeholderValue="Указать"
         {...field}

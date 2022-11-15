@@ -2,14 +2,14 @@ import { RecoveryPassGetInstructionsForm } from "../../../../modules/authorizati
 import { RecoveryInformation } from "../recoveryInformation/RecoveryInformation";
 
 export const RecoveryPasswordFirstSteps = () => {
-  return (
-    <>
-      <RecoveryInformation
-        title="Напишите ваш EMAIL"
-        message="Мы отправим вам инструкцию, как изменить ваш пароль"
-      />
+ return (
+  <>
+   <RecoveryInformation
+    title="Напишите ваш EMAIL"
+    message="Мы отправим вам инструкцию, как изменить ваш пароль"
+   />
 
-      <RecoveryPassGetInstructionsForm />
-    </>
-  );
+   <RecoveryPassGetInstructionsForm />
+  </>
+ );
 };

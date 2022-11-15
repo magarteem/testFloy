@@ -5,9 +5,8 @@
  flex-direction: column;
  align-items: center;
  width: 100%;
- height: auto;
  background-color: #f8f9f6;
- padding-bottom: 26px;
+ padding-bottom: 20px;
 
  .title {
   padding: 0 16px;
@@ -23,12 +22,6 @@
    font-size: 20px;
    color: #363934;
    margin-left: 25px;
-  }
-
-  .btnBack {
-   @include flex_position();
-   height: 30px;
-   width: 30px;
   }
  }
  .main {
@@ -59,22 +52,19 @@
   }
  }
 
+ // .sendDataForm {
+ //   width: 100%;
+ //   display: flex;
+ //   justify-content: space-between;
+ //   padding: 20px 16px;
+
+ //   .btnWrapper {
+ //     width: 150px;
+ //     height: 52px;
+ //   }
+ // }
  .btnFormWrapper {
   width: 100%;
   padding: 20px 16px;
-
-  .sendDataForm {
-   display: flex;
-   justify-content: space-between;
-   column-gap: 10px;
-   width: 100%;
-
-   .btnWrapper {
-    display: flex;
-    justify-content: center;
-    height: 52px;
-    width: 100%;
-   }
-  }
  }
 }

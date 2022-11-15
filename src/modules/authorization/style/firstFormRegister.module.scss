@@ -4,6 +4,9 @@ form {
  .wrapperFirstFormRegister {
   display: flex;
   flex-direction: column;
+
+  justify-content: space-between;
+  height: 100%;
   width: 100%;
   max-width: 450px;
 
@@ -11,15 +14,10 @@ form {
    width: 100%;
    margin-top: 20px;
 
-   @media (max-height: $mediaMaxHeight560px) {
-    margin-top: 10px;
-   }
-
    input {
     height: 50px;
    }
   }
-  // }
 
   .forgetPassword {
    align-self: flex-end;

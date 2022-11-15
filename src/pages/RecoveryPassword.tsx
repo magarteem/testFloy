@@ -4,13 +4,13 @@ import { WrapperFullScreen } from "../common/layout/wrapperFullScreen/WrapperFul
 import s from "./styles/recoveryPassword.module.scss";
 
 export const RecoveryPassword = () => {
-  return (
-    <WrapperFullScreen>
-      <CommonLoginLayout>
-        <div className={s.wrapperField}>
-          <Outlet />
-        </div>
-      </CommonLoginLayout>
-    </WrapperFullScreen>
-  );
+ return (
+  <WrapperFullScreen>
+   <CommonLoginLayout>
+    <div className={s.fieldLogin}>
+     <Outlet />
+    </div>
+   </CommonLoginLayout>
+  </WrapperFullScreen>
+ );
 };

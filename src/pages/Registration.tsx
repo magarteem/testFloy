@@ -27,7 +27,7 @@ export const Registration = () => {
   defaultValues: {
    email: "",
    password: "",
-   type_account: "",
+   type_account: null,
    name_field: "",
    img_upload: "",
    sity: null,

@@ -36,7 +36,7 @@ export interface GroupOptionsType {
 export interface ISignUpFormValues {
  email: string;
  password: string;
- type_account: string;
+ type_account: OptionSelectType | null;
  name_field: string;
  img_upload: any;
  sity: OptionSelectType | null;

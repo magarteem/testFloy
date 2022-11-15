@@ -7,7 +7,6 @@ import { ReactSelect } from "../../common/components/signIn/reactSelect/ReactSel
 import s from "./style/secondStepFormRegister.module.scss";
 import { RouteNames } from "../../common/variables/RouteNames";
 import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
-import { CommonLoginLayout } from "../../common/layout/commonLogin/CommonLoginLayout";
 
 export const SecondStepFormRegister = () => {
  const navigate = useNavigate();
@@ -33,14 +32,14 @@ export const SecondStepFormRegister = () => {
     rules={{
      required: "тип обязателен",
     }}
-    render={({ field: { onChange, ref, value } }) => (
+    render={({ field: { onChange, ref, ...field } }) => (
      <ReactSelect
       itemRef={ref}
-      valueData={value}
       errors={
        errors.typeAccount && errors.typeAccount.message
       }
       onChange={onChange}
+      {...field}
      />
     )}
    />

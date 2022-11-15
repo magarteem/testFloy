@@ -50,10 +50,11 @@ export const ThreeStepFormRegister = () => {
         message: "Не менее 3х символов",
        },
       }}
-      render={({ field: { onChange, ...field } }) => (
+      render={({ field: { onChange, ref, ...field } }) => (
        <>
         <InputLabel titleSelect="Имя" required />
         <Input
+         ItemRef={ref}
          placeholder="Ваше имя"
          onChange={onChange}
          errors={

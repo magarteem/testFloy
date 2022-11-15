@@ -10,6 +10,7 @@ interface InputType {
  children?: ReactNode;
  placeholder: string;
  onChange: any;
+ ItemRef?: any;
  onClick?: any;
 }
 export const Input = ({
@@ -21,9 +22,11 @@ export const Input = ({
  inputValue,
  placeholder,
  onChange,
+ ItemRef,
  onClick,
  ...props
 }: InputType) => {
+ console.log(inputValue);
  return (
   <div className={s.wrapperInput}>
    <label>{inputLabel}</label>
@@ -38,6 +41,7 @@ export const Input = ({
      placeholder={placeholder}
      onChange={onChange}
      onClick={onClick}
+     ref={ItemRef}
      {...props}
     />
     {children}

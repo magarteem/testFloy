@@ -14,8 +14,10 @@ interface ReactSelectElementType {
  menuIsOpen?: boolean;
  isMulti?: boolean;
  errors?: any;
+ ItemRef: any;
 }
 
+//export const ReactSelectElement = forwardRef<any, any>(
 export const ReactSelectElement = ({
  placeholder,
  value,
@@ -24,6 +26,7 @@ export const ReactSelectElement = ({
  onChange,
  menuIsOpen,
  errors,
+ ItemRef,
  ...props
 }: ReactSelectElementType) => {
  const customStyles = {
@@ -36,7 +39,7 @@ export const ReactSelectElement = ({
    border: `3.5px solid #80ff00`,
   }),
  };
- console.log(value);
+ console.log("value = ", value);
  return (
   <div className="wrapperSelect">
    <Select
@@ -53,6 +56,7 @@ export const ReactSelectElement = ({
     menuIsOpen={menuIsOpen}
     styles={errors && customStyles}
     value={value}
+    ref={ItemRef}
     {...props}
    />
    {errors && (

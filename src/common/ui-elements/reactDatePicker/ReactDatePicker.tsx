@@ -14,9 +14,11 @@ interface ReactDatePickerType {
  value?: any;
  onChange?: (data: any) => any;
  errors?: any;
+ ItemRef?: any;
 }
 
 export const ReactDatePickerElement = ({
+ ItemRef,
  placeholder,
  value,
  onChange,
@@ -95,6 +97,7 @@ export const ReactDatePickerElement = ({
       </select>
      </div>
     )}
+    ref={ItemRef}
     {...props}
    />
    {errors && (

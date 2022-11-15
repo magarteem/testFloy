@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Select, {
  components,
  MultiValueGenericProps,
@@ -21,11 +22,19 @@ const MultiValueLabel = (props: MultiValueGenericProps) => {
 };
 
 const Option = (props: any) => {
+ const [check, setCheck] = useState<boolean>(
+  props.isSelected
+ );
+
  const Co = components.Option;
  return (
   <Co {...props}>
    <div className="customCheckBoxStyleGenre">
-    <input checked={props.isSelected} type="checkbox" />
+    <input
+     // checked={props.isSelected}
+     defaultChecked={check}
+     type="checkbox"
+    />
     <span className="check"></span>
     <label className="customLabel">{props.label}</label>
    </div>
@@ -39,6 +48,7 @@ interface CustomSelectCheckboxGenreType {
  options: any;
  onChange: (data: string) => void;
  errors: any;
+ ItemRef: any;
 }
 export const CustomSelectCheckboxGenre = ({
  value,
@@ -46,6 +56,7 @@ export const CustomSelectCheckboxGenre = ({
  options,
  onChange,
  errors,
+ ItemRef,
  ...props
 }: CustomSelectCheckboxGenreType) => {
  const customStyles = {
@@ -92,6 +103,7 @@ export const CustomSelectCheckboxGenre = ({
      },
     })}
     //menuIsOpen
+    ref={ItemRef}
     {...props}
    />
    {errors && (

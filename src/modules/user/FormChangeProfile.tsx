@@ -95,7 +95,9 @@ export const FormChangeProfile = ({
        message: "Не менее 3х символов",
       },
      }}
-     render={({ field: { onChange, value, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <>
        <InputLabel titleSelect="Имя" required />
        <Input
@@ -121,10 +123,11 @@ export const FormChangeProfile = ({
       required: "Обязательное поле",
      }}
      render={({
-      field: { onChange, ...field },
+      field: { onChange, ref, ...field },
       fieldState: { error },
      }) => (
       <ReactSelectElement
+       ItemRef={ref}
        placeholder="Выбрать"
        options={sityBD}
        onChange={onChange}
@@ -143,8 +146,12 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <ReactSelectElement
+       ItemRef={ref}
+       value={value}
        placeholder="Выбрать"
        options={genderBD}
        onChange={onChange}
@@ -163,8 +170,11 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, value, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <ReactDatePickerElement
+       ItemRef={ref}
        placeholder="Дата рождения"
        value={value}
        onChange={onChange}
@@ -186,8 +196,11 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, value, ...field } }) => (
+     render={({
+      field: { onChange, ref, value, ...field },
+     }) => (
       <CustomSelectCheckboxTools
+       ItemRef={ref}
        value={value}
        placeholder="Выбрать"
        options={groupeOptions}
@@ -207,8 +220,11 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, value, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <CustomSelectCheckboxGenre
+       ItemRef={ref}
        value={value}
        placeholder="Выбрать"
        options={genreBD}
@@ -233,9 +249,12 @@ export const FormChangeProfile = ({
     <Controller
      name="work_experience"
      control={control}
-     render={({ field: { onChange, value, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <div className={s.textarea}>
        <TextAreaElement
+        ItemRef={ref}
         value={value}
         onChange={onChange}
         placeholderValue="Указать"
@@ -252,8 +271,11 @@ export const FormChangeProfile = ({
     <Controller
      name="master"
      control={control}
-     render={({ field: { onChange, value, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <ReactSelectElement
+       ItemRef={ref}
        value={value}
        placeholder="Выбрать"
        options={skillBD}
@@ -269,9 +291,12 @@ export const FormChangeProfile = ({
     <Controller
      name="education"
      control={control}
-     render={({ field: { onChange, value, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <div className={s.textarea}>
        <TextAreaElement
+        ItemRef={ref}
         value={value}
         onChange={onChange}
         placeholderValue="Указать"
@@ -290,8 +315,9 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, ...field } }) => (
+     render={({ field: { onChange, ref, ...field } }) => (
       <ReactSelectElement
+       ItemRef={ref}
        placeholder="Выбрать"
        options={profilePrivacySettings}
        errors={errors.private_settings}

@@ -5,6 +5,7 @@ import Select, {
 import { FormatGroupLabel } from "./FormatGroupLabel";
 import "./customSelectCheckboxTool.scss";
 import cn from "classnames";
+import { useState } from "react";
 
 export const Temp = (data: any) => (
  <FormatGroupLabel data={data} />
@@ -35,12 +36,21 @@ const ValueContainer = ({
 };
 
 const Option = (props: any) => {
+ const [check, setCheck] = useState<boolean>(
+  props.isSelected
+ );
  const Co = components.Option;
+ console.log(props.isSelected);
  return (
   // <div className="test" ref={ref}>
   <Co {...props}>
    <div className="customCheckBoxStyle">
-    <input checked={props.isSelected} type="checkbox" />
+    <input
+     // checked={props.isSelected}
+     type="checkbox"
+     defaultChecked={check}
+     onChange={() => setCheck((prev) => !prev)}
+    />
     <span className="check"></span>
     <label className="customLabel">{props.label}</label>
    </div>
@@ -55,6 +65,7 @@ interface CustomSelectCheckboxToolsType {
  options: any;
  onChange: (data: string) => void;
  errors: any;
+ ItemRef: any;
 }
 export const CustomSelectCheckboxTools = ({
  placeholder,
@@ -62,6 +73,7 @@ export const CustomSelectCheckboxTools = ({
  options,
  onChange,
  errors,
+ ItemRef,
  ...props
 }: CustomSelectCheckboxToolsType) => {
  const customStyles = {
@@ -110,7 +122,7 @@ export const CustomSelectCheckboxTools = ({
      },
     })}
     // menuIsOpen
-
+    ref={ItemRef}
     {...props}
    />
    {errors && (

@@ -4,11 +4,13 @@ interface TextAreaElementType {
  value: string | any;
  placeholderValue: string;
  onChange: () => void;
+ ItemRef: any;
 }
 export const TextAreaElement = ({
  value,
  placeholderValue,
  onChange,
+ ItemRef,
  ...props
 }: TextAreaElementType) => {
  return (
@@ -22,6 +24,7 @@ export const TextAreaElement = ({
       ? value
       : "Нужен список организаций для выбора"
     }
+    ref={ItemRef}
     {...props}
    ></textarea>
   </div>

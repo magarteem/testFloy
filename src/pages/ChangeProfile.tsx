@@ -22,7 +22,7 @@ export const ChangeProfile = () => {
 
    <section className={s.main}>
     <div className={s.changeAvatar}>
-     <ChangePhoto />
+     {/*<ChangePhoto />*/}
      {/*<button className={s.styleText}>
       Изменить фото профиля
      </button>*/}

@@ -89,10 +89,11 @@ export const ThreeStepFormRegister = () => {
        required: "Обязательное поле",
       }}
       render={({
-       field: { onChange, value, ...field },
+       field: { onChange, value, ref, ...field },
        fieldState: { error },
       }) => (
        <ReactSelectElement
+        ItemRef={ref}
         value={value}
         placeholder="Выбрать"
         options={sityBD}
@@ -112,8 +113,9 @@ export const ThreeStepFormRegister = () => {
       rules={{
        required: "Обязательное поле",
       }}
-      render={({ field: { onChange, ...field } }) => (
+      render={({ field: { onChange, ref, ...field } }) => (
        <ReactSelectElement
+        ItemRef={ref}
         placeholder="Выбрать"
         options={genderBD}
         onChange={onChange}
@@ -133,7 +135,7 @@ export const ThreeStepFormRegister = () => {
        required: "Обязательное поле",
       }}
       render={({
-       field: { onChange, value, ...field },
+       field: { onChange, value, ref, ...field },
       }) => (
        // <ReactSelectElement
        //  placeholder="Выбрать"
@@ -143,6 +145,7 @@ export const ThreeStepFormRegister = () => {
        //  {...field}
        // />
        <ReactDatePickerElement
+        ItemRef={ref}
         placeholder="Дата рождения"
         value={value}
         onChange={onChange}
@@ -164,8 +167,9 @@ export const ThreeStepFormRegister = () => {
       rules={{
        required: "Обязательное поле",
       }}
-      render={({ field: { onChange, ...field } }) => (
+      render={({ field: { onChange, ref, ...field } }) => (
        <CustomSelectCheckboxTools
+        ItemRef={ref}
         placeholder="Выбрать"
         options={groupeOptions}
         onChange={onChange}
@@ -184,8 +188,9 @@ export const ThreeStepFormRegister = () => {
       rules={{
        required: "Обязательное поле",
       }}
-      render={({ field: { onChange, ...field } }) => (
+      render={({ field: { onChange, ref, ...field } }) => (
        <CustomSelectCheckboxGenre
+        ItemRef={ref}
         placeholder="Выбрать"
         options={genreBD}
         onChange={onChange}
@@ -201,9 +206,10 @@ export const ThreeStepFormRegister = () => {
      <Controller
       name="work_experience"
       control={control}
-      render={({ field: { onChange, ...field } }) => (
+      render={({ field: { onChange, ref, ...field } }) => (
        <div className={s.textarea}>
         <TextAreaElement
+         ItemRef={ref}
          onChange={onChange}
          placeholderValue="Указать"
          {...field}
@@ -219,8 +225,9 @@ export const ThreeStepFormRegister = () => {
      <Controller
       name="master"
       control={control}
-      render={({ field: { onChange, ...field } }) => (
+      render={({ field: { onChange, ref, ...field } }) => (
        <ReactSelectElement
+        ItemRef={ref}
         placeholder="Выбрать"
         options={skillBD}
         onChange={onChange}
@@ -235,9 +242,10 @@ export const ThreeStepFormRegister = () => {
      <Controller
       name="education"
       control={control}
-      render={({ field: { onChange, ...field } }) => (
+      render={({ field: { onChange, ref, ...field } }) => (
        <div className={s.textarea}>
         <TextAreaElement
+         ItemRef={ref}
          onChange={onChange}
          placeholderValue="Указать"
          {...field}
@@ -255,8 +263,9 @@ export const ThreeStepFormRegister = () => {
       rules={{
        required: "Обязательное поле",
       }}
-      render={({ field: { onChange, ...field } }) => (
+      render={({ field: { onChange, ref, ...field } }) => (
        <ReactSelectElement
+        ItemRef={ref}
         placeholder="Выбрать"
         options={profilePrivacySettings}
         errors={errors.private_settings}

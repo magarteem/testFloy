@@ -30,6 +30,7 @@
   display: flex;
   height: 57px;
   margin: 0 auto;
+  max-width: 650px;
 
   button {
    margin: 0;
@@ -38,6 +39,8 @@
  }
 
  .formChangeProfile {
-  // background-color: rebeccapurple;
+  //display: flex;
+  //justify-content: center;
+  //max-width: 450px;
  }
 }

@@ -11,10 +11,14 @@
  margin-bottom: 40px;
  padding: 0 16px;
 
- @media (max-height: $mediaMaxHeight650px) {
+ @media (max-height: $mediaMaxHeight560px) {
+  //position: static;
+  //padding: 20px 16px 0;
+  margin-bottom: 10px;
+ }
+ @media (max-height: $mediaMaxHeight500px) {
   position: static;
   padding: 20px 16px 0;
-  //margin-bottom: 10px;
  }
  // @media (max-height: $mediaMaxHeight600px) {
  //  padding: 20px 16px 0;
@@ -24,6 +28,7 @@
   padding-right: 8px;
   color: #ebeceb;
   letter-spacing: 2px;
+  text-align: center;
 
   //@media (max-width: $mediaMaxWidth360px) {
   // font-size: 15px;

@@ -13,6 +13,7 @@
  .styleInput {
   margin-top: 20px;
   width: 100%;
+  max-width: 650px;
 
   input {
    height: 50px;
@@ -32,11 +33,13 @@
  .selectField {
   margin-top: 20px;
   width: 100%;
+  max-width: 650px;
  }
 
  .btnFormWrapper {
   width: 100%;
   margin-top: 20px;
   padding: 20px 0;
+  max-width: 650px;
  }
 }

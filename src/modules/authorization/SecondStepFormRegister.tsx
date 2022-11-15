@@ -33,8 +33,9 @@ export const SecondStepFormRegister = () => {
     rules={{
      required: "тип обязателен",
     }}
-    render={({ field: { onChange, value } }) => (
+    render={({ field: { onChange, ref, value } }) => (
      <ReactSelect
+      itemRef={ref}
       valueData={value}
       errors={
        errors.typeAccount && errors.typeAccount.message

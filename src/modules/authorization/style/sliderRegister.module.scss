@@ -1,19 +1,14 @@
-//.forms {
-// height: 100vh;
-// overflow: hidden;
-//}
-
 .swp {
- height: 100%;
+ height: 100% !important;
  width: 100%;
  // height: auto !important;
  // min-height: 100%;
  background-color: black;
 
  .noSwipingClass1 {
-  background-color: rgb(186, 186, 184);
+  background-color: rgb(221, 221, 109);
   width: 100%;
-  // height: 100vh;
+  height: 100vh !important;
  }
  .noSwipingClass2 {
   background-color: rgb(238, 255, 0);

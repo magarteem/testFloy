@@ -2,9 +2,9 @@ import { WrapperFullScreen } from "../common/layout/wrapperFullScreen/WrapperFul
 import { SliderRegister } from "../modules/authorization/SliderRegister";
 
 export const Registration = () => {
-  return (
-    <WrapperFullScreen>
-      <SliderRegister />
-    </WrapperFullScreen>
-  );
+ return (
+  <WrapperFullScreen>
+   <SliderRegister />
+  </WrapperFullScreen>
+ );
 };

@@ -10,7 +10,8 @@ import { ThreeStepFormRegister } from "./ThreeStepFormRegister";
 import { useNavigate } from "react-router-dom";
 import { RouteNames } from "../../common/variables/RouteNames";
 import "swiper/css";
-import "swiper/css/effect-fade";
+
+//import "swiper/css/effect-fade";
 import "./style/sliderRegister.scss";
 import s from "./style/sliderRegister.module.scss";
 import { RegistrationQuestionLink } from "../../common/components/signIn/registrationQuestion/RegistrationQuestionLink";
@@ -62,20 +63,18 @@ export const SliderRegister = () => {
 
  return (
   <FormProvider {...method}>
-   <form
-    className={s.forms}
-    onSubmit={handleSubmit(onSubmit)}
-   >
+   <form className={s.fr} onSubmit={handleSubmit(onSubmit)}>
     <Swiper
-     modules={[EffectFade]}
-     effect="fade"
+     // modules={[EffectFade]}
+     // effect="fade"
+     autoHeight={true}
      slidesPerView={1}
      noSwiping={true}
      className={s.swp}
-     noSwipingClass="noSwipingClass"
+     // noSwipingClass="noSwipingClass"
      onSwiper={(swiper) => setMySlides(swiper)}
     >
-     <SwiperSlide className="noSwipingClass">
+     <SwiperSlide className="noSwipingClass noSwipingClass1">
       <CommonLoginLayout>
        <FirstStepFormRegister next={next} />
 

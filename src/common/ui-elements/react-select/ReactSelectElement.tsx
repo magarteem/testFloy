@@ -10,7 +10,7 @@ interface ReactSelectElementType {
  placeholder: string;
  value?: any;
  options: OptionSelectType[] | GroupOptionsType[];
- onChange: (data: string) => void;
+ onChange: () => void;
  menuIsOpen?: boolean;
  isMulti?: boolean;
  errors?: any;
@@ -29,6 +29,9 @@ export const ReactSelectElement = ({
  ItemRef,
  ...props
 }: ReactSelectElementType) => {
+ console.log("====");
+ console.log("value = ", value);
+ console.log("value = ", props);
  const customStyles = {
   container: (provided: any) => ({
    ...provided,
@@ -39,7 +42,6 @@ export const ReactSelectElement = ({
    border: `3.5px solid #80ff00`,
   }),
  };
- console.log("value = ", value);
  return (
   <div className="wrapperSelect">
    <Select
@@ -50,12 +52,12 @@ export const ReactSelectElement = ({
     placeholder={placeholder}
     isSearchable={false}
     // onChange={(e: any) => onChange(e.value)}
-    onChange={(e: any) => onChange(e)}
+    onChange={onChange}
     options={options}
     isMulti={isMulti}
     menuIsOpen={menuIsOpen}
     styles={errors && customStyles}
-    value={value}
+    //value={value}
     ref={ItemRef}
     {...props}
    />

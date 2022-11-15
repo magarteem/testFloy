@@ -10,7 +10,6 @@ import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker
 import { TextAreaElement } from "../../common/ui-elements/textarea/TextAreaElement";
 import { useAppDispatch } from "../../core/redux/app/hooks";
 import {
- ageNumber,
  genderBD,
  genreBD,
  groupeOptions,
@@ -51,21 +50,18 @@ export const FormChangeProfile = ({
   formState: { errors },
  } = useForm<ISignUpFormValues>({
   mode: "all",
-  defaultValues: {
-   name_field: name,
-   sity,
-   gender,
-   age: new Date(age),
-   tool: skills.tool,
-   genre: skills.genre,
-   work_experience: skills.workExperience,
-   master: {
-    value: skills.master?.value,
-    label: skills.master?.label,
-   },
-   education: skills.education,
-   private_settings,
-  },
+  //defaultValues: {
+  // name_field: name,
+  // sity,
+  // gender,
+  // age: new Date(age),
+  // tool: skills.tool,
+  // genre: skills.genre,
+  // work_experience: skills.workExperience,
+  // master: skills.master,
+  // education: skills.education,
+  // private_settings,
+  //},
  });
 
  const onSubmit = (data: ChangeProfileFormValues) => {
@@ -96,11 +92,13 @@ export const FormChangeProfile = ({
        message: "Не менее 3х символов",
       },
      }}
-     render={({ field: { onChange, ref, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <>
        <InputLabel titleSelect="Имя" required />
        <Input
-        //inputValue={value}
+        inputValue={value}
         placeholder="Александр Ковальчук "
         onChange={onChange}
         errors={
@@ -166,10 +164,13 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, ref, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <ReactDatePickerElement
        ItemRef={ref}
        placeholder="Дата рождения"
+       value={value}
        onChange={onChange}
        errors={errors.age}
        {...field}
@@ -189,9 +190,12 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, ref, ...field } }) => (
+     render={({
+      field: { onChange, ref, value, ...field },
+     }) => (
       <CustomSelectCheckboxTools
        ItemRef={ref}
+       value={value}
        placeholder="Выбрать"
        options={groupeOptions}
        onChange={onChange}
@@ -210,9 +214,12 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, ref, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <CustomSelectCheckboxGenre
        ItemRef={ref}
+       value={value}
        placeholder="Выбрать"
        options={genreBD}
        onChange={onChange}
@@ -236,10 +243,13 @@ export const FormChangeProfile = ({
     <Controller
      name="work_experience"
      control={control}
-     render={({ field: { onChange, ref, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <div className={s.textarea}>
        <TextAreaElement
         ItemRef={ref}
+        value={value}
         onChange={onChange}
         placeholderValue="Указать"
         {...field}
@@ -255,9 +265,12 @@ export const FormChangeProfile = ({
     <Controller
      name="master"
      control={control}
-     render={({ field: { onChange, ref, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <ReactSelectElement
        ItemRef={ref}
+       value={value}
        placeholder="Выбрать"
        options={skillBD}
        onChange={onChange}
@@ -272,10 +285,13 @@ export const FormChangeProfile = ({
     <Controller
      name="education"
      control={control}
-     render={({ field: { onChange, ref, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <div className={s.textarea}>
        <TextAreaElement
         ItemRef={ref}
+        value={value}
         onChange={onChange}
         placeholderValue="Указать"
         {...field}

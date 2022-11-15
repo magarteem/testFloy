@@ -41,12 +41,6 @@ export const genderBD: OptionSelectType[] = [
  { value: "other", label: "Другое" },
 ];
 
-export const ageNumber: OptionSelectType[] = Array.from(
- Array(100).keys()
-).map((x) => {
- return { value: `${x}`, label: `${x}` };
-});
-
 export const groupeOptions: GroupOptionsType[] = [
  {
   label: "Вокал",

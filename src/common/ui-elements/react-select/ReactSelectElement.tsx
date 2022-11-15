@@ -31,7 +31,6 @@ export const ReactSelectElement = ({
 }: ReactSelectElementType) => {
  console.log("====");
  console.log("value = ", value);
- console.log("value = ", props);
  const customStyles = {
   container: (provided: any) => ({
    ...provided,
@@ -42,6 +41,7 @@ export const ReactSelectElement = ({
    border: `3.5px solid #80ff00`,
   }),
  };
+
  return (
   <div className="wrapperSelect">
    <Select
@@ -51,13 +51,13 @@ export const ReactSelectElement = ({
     classNamePrefix="custom_style_list_typeAccount_reg"
     placeholder={placeholder}
     isSearchable={false}
-    // onChange={(e: any) => onChange(e.value)}
+    //onChange={(e: any) => onChange(e)}
     onChange={onChange}
     options={options}
     isMulti={isMulti}
     menuIsOpen={menuIsOpen}
     styles={errors && customStyles}
-    //value={value}
+    value={value}
     ref={ItemRef}
     {...props}
    />

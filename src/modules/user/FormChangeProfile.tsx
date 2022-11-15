@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
@@ -33,6 +34,9 @@ export const FormChangeProfile = ({
 }: FormChangeProfileType) => {
  const dispatch = useAppDispatch();
  const navigate = useNavigate();
+ // const [defValues, setDefValues] = useState<
+ //  ISignUpFormValues | {}
+ // >({});
 
  const {
   name,
@@ -44,12 +48,29 @@ export const FormChangeProfile = ({
  } = userDataProfile;
  console.log("userDataProfile = ", userDataProfile);
 
+ useEffect(() => {
+  reset({
+   name_field: name,
+   sity,
+   gender,
+   age: new Date(age),
+   tool: skills.tool,
+   genre: skills.genre,
+   work_experience: skills.workExperience,
+   master: skills.master,
+   education: skills.education,
+   private_settings,
+  });
+ }, []);
+
  const {
   control,
   handleSubmit,
+  reset,
   formState: { errors },
  } = useForm<ISignUpFormValues>({
   mode: "all",
+  defaultValues: {},
   //defaultValues: {
   // name_field: name,
   // sity,
@@ -65,13 +86,7 @@ export const FormChangeProfile = ({
  });
 
  const onSubmit = (data: ChangeProfileFormValues) => {
-  dispatch(
-   changeProfileThunk(data)
-   // changeProfileThunk({
-   //  ...data,
-   //  age: new Date(data.age).toLocaleDateString(),
-   // })
-  );
+  dispatch(changeProfileThunk(data));
   navigate(-1);
  };
 
@@ -120,10 +135,11 @@ export const FormChangeProfile = ({
       required: "Обязательное поле",
      }}
      render={({
-      field: { onChange, ref, ...field },
+      field: { onChange, value, ref, ...field },
       fieldState: { error },
      }) => (
       <ReactSelectElement
+       value={value}
        ItemRef={ref}
        placeholder="Выбрать"
        options={sityBD}
@@ -143,9 +159,12 @@ export const FormChangeProfile = ({
      rules={{
       required: "Обязательное поле",
      }}
-     render={({ field: { onChange, ref, ...field } }) => (
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
       <ReactSelectElement
        ItemRef={ref}
+       value={value}
        placeholder="Выбрать"
        options={genderBD}
        onChange={onChange}

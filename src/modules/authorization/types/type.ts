@@ -41,7 +41,7 @@ export interface ISignUpFormValues {
  img_upload: any;
  sity: OptionSelectType | null;
  gender: OptionSelectType | null;
- age: number | null;
+ age: Date | number | null;
  tool: OptionSelectType[];
  genre: OptionSelectType[];
  work_experience: string | WorkExperience[];

@@ -42,7 +42,6 @@ export const FormChangeProfile = ({
   skills,
   private_settings,
  } = userDataProfile;
- console.log("userDataProfile = ", userDataProfile);
 
  const {
   control,

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Select, {
  components,
  MultiValueGenericProps,
+ OptionProps,
 } from "react-select";
 import "./customSelectCheckboxGenre.scss";
 import cn from "classnames";
@@ -21,19 +22,21 @@ const MultiValueLabel = (props: MultiValueGenericProps) => {
  );
 };
 
-const Option = (props: any) => {
- const [check, setCheck] = useState<boolean>(
-  props.isSelected
- );
+const Option = (props: OptionProps) => {
+ const [check, setCheck] = useState(props.isSelected);
+ const checkCh = () => setCheck((prev) => !prev);
 
  const Co = components.Option;
  return (
   <Co {...props}>
-   <div className="customCheckBoxStyleGenre">
+   <div
+    className="customCheckBoxStyleGenre"
+    onClick={checkCh}
+   >
     <input
-     // checked={props.isSelected}
-     defaultChecked={check}
+     checked={check}
      type="checkbox"
+     onChange={() => {}}
     />
     <span className="check"></span>
     <label className="customLabel">{props.label}</label>
@@ -93,6 +96,7 @@ export const CustomSelectCheckboxGenre = ({
     onChange={(e: any) => onChange(e)}
     hideSelectedOptions={false}
     closeMenuOnSelect={false}
+    blurInputOnSelect={false}
     isClearable={false}
     theme={(theme) => ({
      ...theme,

@@ -16,12 +16,6 @@ export const ReactSelect = ({
  onChange,
  ...props
 }: ReactSelectType) => {
- // const val = optionsTypeAccount.filter(
- //  (x) => x.value === valueData
- // );
-
- console.log(value);
- // console.log(val);
  return (
   <Select
    options={optionsTypeAccount}

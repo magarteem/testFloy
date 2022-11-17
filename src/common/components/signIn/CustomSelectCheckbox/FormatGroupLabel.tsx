@@ -10,13 +10,13 @@ interface FormatGroupLabelType {
 export const FormatGroupLabel = ({
  data,
 }: FormatGroupLabelType) => {
- const ref = useRef<any>(null);
+ const ref = useRef<HTMLDivElement | null>(null);
 
  const showList = () => {
-  let parent = ref.current.parentElement;
-  parent.classList.toggle("menuListGroupeOpen");
+  let parent = ref.current?.parentElement;
+  parent?.classList.toggle("menuListGroupeOpen");
  };
-
+ console.log(ref);
  return (
   <div
    onClick={showList}

@@ -138,13 +138,6 @@ export const ThreeStepFormRegister = () => {
       render={({
        field: { onChange, value, ref, ...field },
       }) => (
-       // <ReactSelectElement
-       //  placeholder="Выбрать"
-       //  options={ageNumber}
-       //  onChange={onChange}
-       //  errors={errors.age}
-       //  {...field}
-       // />
        <ReactDatePickerElement
         ItemRef={ref}
         placeholder="Дата рождения"

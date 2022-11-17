@@ -1,21 +1,27 @@
 import Select, {
+ MultiValueProps,
  components,
  ValueContainerProps,
+ OptionProps,
+ GroupProps,
+ GroupBase,
+ StylesConfig,
 } from "react-select";
 import { FormatGroupLabel } from "./FormatGroupLabel";
 import "./customSelectCheckboxTool.scss";
 import cn from "classnames";
 import { useState } from "react";
+import { GroupOptionsType } from "../../../../modules/authorization/types/type";
 
-export const Temp = (data: any) => (
- <FormatGroupLabel data={data} />
-);
+export const Temp = (data: any) => {
+ return <FormatGroupLabel data={data} />;
+};
 
-const MultiValue = (props: any) => {
+const MultiValue = (props: MultiValueProps) => {
  return (
-  <div>
-   <components.MultiValue {...props} />
-  </div>
+  //<div style={{ backgroundColor: "red" }}>
+  <components.MultiValue {...props} />
+  //</div>
  );
 };
 
@@ -35,35 +41,36 @@ const ValueContainer = ({
  );
 };
 
-const Option = (props: any) => {
- const [check, setCheck] = useState<boolean>(
-  props.isSelected
- );
+const Option = (props: OptionProps) => {
+ const [check, setCheck] = useState(props.isSelected);
+ const checkCh = () => setCheck((prev) => !prev);
  const Co = components.Option;
- console.log(props.isSelected);
+
  return (
-  // <div className="test" ref={ref}>
   <Co {...props}>
-   <div className="customCheckBoxStyle">
+   <div className="customCheckBoxStyle" onClick={checkCh}>
     <input
-     // checked={props.isSelected}
+     checked={check}
      type="checkbox"
-     defaultChecked={check}
-     onChange={() => setCheck((prev) => !prev)}
+     onChange={() => {}}
     />
     <span className="check"></span>
     <label className="customLabel">{props.label}</label>
    </div>
   </Co>
-  // </div>
  );
+};
+
+const Group = (props: any) => {
+ return <components.Group {...props} />;
 };
 
 interface CustomSelectCheckboxToolsType {
  placeholder: string;
  value?: any;
- options: any;
- onChange: (data: string) => void;
+ options: GroupOptionsType[];
+ onChange: () => void;
+ // onChange: (data: string) => void;
  errors: any;
  ItemRef: any;
 }
@@ -76,6 +83,8 @@ export const CustomSelectCheckboxTools = ({
  ItemRef,
  ...props
 }: CustomSelectCheckboxToolsType) => {
+ const [ttt, setTtt] = useState(false);
+
  const customStyles = {
   container: (provided: any) =>
    errors && {
@@ -88,6 +97,11 @@ export const CustomSelectCheckboxTools = ({
    fontWeight: 500,
    fotnSize: "16px",
   }),
+  //group: (provided: any) => ({
+  // ...provided,
+  // height: ttt ? "auto" : "0",
+  // overflow: "hidden",
+  //}),
  };
 
  return (
@@ -105,13 +119,16 @@ export const CustomSelectCheckboxTools = ({
      Option,
      ValueContainer,
      MultiValue,
+     Group,
     }}
     isMulti
     styles={customStyles}
-    onChange={(e: any) => onChange(e)}
+    onChange={onChange}
+    //onChange={(e: any) => onChange(e)}
     hideSelectedOptions={false}
     formatGroupLabel={(data) => Temp(data)}
     closeMenuOnSelect={false}
+    blurInputOnSelect={false}
     isClearable={false}
     theme={(theme) => ({
      ...theme,
@@ -121,7 +138,7 @@ export const CustomSelectCheckboxTools = ({
       primary: "#47c7a921",
      },
     })}
-    // menuIsOpen
+    //menuIsOpen
     ref={ItemRef}
     {...props}
    />

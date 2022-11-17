@@ -55,7 +55,7 @@ export const FormChangeProfile = ({
    name_field: name,
    sity,
    gender,
-   age: new Date(),
+   age: age && new Date(age).getTime(),
    tool: skills.tool,
    genre: skills.genre,
    work_experience: skills.workExperience,

@@ -13,10 +13,11 @@ export const FormatGroupLabel = ({
  const ref = useRef<HTMLDivElement | null>(null);
 
  const showList = () => {
-  let parent = ref.current?.parentElement;
+  let parent =
+   ref.current?.parentElement?.parentElement?.parentElement;
   parent?.classList.toggle("menuListGroupeOpen");
  };
- console.log(ref);
+
  return (
   <div
    onClick={showList}

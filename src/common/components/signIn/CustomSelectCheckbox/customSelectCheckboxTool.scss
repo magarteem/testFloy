@@ -57,11 +57,17 @@
   padding: 12px 0;
  }
 
- &__menu-list &__group &__group-heading .isOpen + div {
-  background-color: red;
+ &__menu-list div div {
+  transition: all 1.5s;
+ }
+ &__menu-list div div:nth-child(n + 2) {
+  height: 0;
+  overflow: hidden;
+ }
+ &__menu-list div.menuListGroupeOpen div:nth-child(n + 2) {
+  height: auto;
  }
 
- //
  //
  &__menu-list &__option {
   font-weight: 700;
@@ -134,10 +140,4 @@
   color: #e95050;
   font-size: 12px;
  }
-}
-
-.menuListGroupeOpen + div {
- transition: all 0.5s;
- height: 0;
- overflow: hidden;
 }

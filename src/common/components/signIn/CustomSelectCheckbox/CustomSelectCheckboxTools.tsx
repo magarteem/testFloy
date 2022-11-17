@@ -3,9 +3,6 @@ import Select, {
  components,
  ValueContainerProps,
  OptionProps,
- GroupProps,
- GroupBase,
- StylesConfig,
 } from "react-select";
 import { FormatGroupLabel } from "./FormatGroupLabel";
 import "./customSelectCheckboxTool.scss";
@@ -62,7 +59,18 @@ const Option = (props: OptionProps) => {
 };
 
 const Group = (props: any) => {
- return <components.Group {...props} />;
+ let show = props.selectProps.options[0].label;
+ let label = props.data.label;
+
+ return (
+  <div
+   className={cn({
+    ["menuListGroupeOpen"]: show === label,
+   })}
+  >
+   <components.Group {...props} />
+  </div>
+ );
 };
 
 interface CustomSelectCheckboxToolsType {
@@ -83,8 +91,6 @@ export const CustomSelectCheckboxTools = ({
  ItemRef,
  ...props
 }: CustomSelectCheckboxToolsType) => {
- const [ttt, setTtt] = useState(false);
-
  const customStyles = {
   container: (provided: any) =>
    errors && {

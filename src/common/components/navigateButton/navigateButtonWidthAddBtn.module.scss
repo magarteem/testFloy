@@ -14,124 +14,120 @@
  background: radial-gradient(
   circle at 50% 0%,
   #ffffff00 4%,
-  #ffffff 0.92% 19%,
-  #ffffff 100%
+  #bef574 0.92% 19%,
+  #426e23 100%
  );
 
  @media (max-width: $mediaMaxWidth1400px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 5%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
-
  @media (max-width: $mediaMaxWidth1200px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 6%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
  @media (max-width: $mediaMaxWidth991px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 7%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
  @media (max-width: $mediaMaxWidth767px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 9%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
  @media (max-width: $mediaMaxWidth575px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 12%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
-
  @media (max-width: $mediaMaxWidth480px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 13%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
-
  @media (max-width: $mediaMaxWidth400px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 16%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
  @media (max-width: $mediaMaxWidth375px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 17%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
-
  @media (max-width: $mediaMaxWidth360px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 18%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
  @media (max-width: $mediaMaxWidth340px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 19%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
  @media (max-width: $mediaMaxWidth320px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 20%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
  @media (max-width: $mediaMaxWidth300px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 21%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
  @media (max-width: $mediaMaxWidth280px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 23%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
  @media (max-width: $mediaMaxWidth260px) {
   background: radial-gradient(
    circle at 50% 0%,
    #ffffff00 24%,
-   #ffffff 0.92% 19%,
-   #ffffff 100%
+   #bef574 0.92% 19%,
+   #426e23 100%
   );
  }
 
@@ -239,138 +235,6 @@
    &:after {
     transform: rotate(90deg);
    }
-  }
- }
-}
-
-.widthAddButton.greenBackground {
- background: radial-gradient(
-  circle at 50% 0%,
-  #ffffff00 4%,
-  #bef574 0.92% 19%,
-  #426e23 100%
- );
-
- @media (max-width: $mediaMaxWidth1400px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 5%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
-
- @media (max-width: $mediaMaxWidth1200px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 6%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
- @media (max-width: $mediaMaxWidth991px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 7%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
- @media (max-width: $mediaMaxWidth767px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 9%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
- @media (max-width: $mediaMaxWidth575px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 12%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
-
- @media (max-width: $mediaMaxWidth480px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 13%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
-
- @media (max-width: $mediaMaxWidth400px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 16%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
- @media (max-width: $mediaMaxWidth375px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 17%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
-
- @media (max-width: $mediaMaxWidth360px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 18%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
- @media (max-width: $mediaMaxWidth340px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 19%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
- @media (max-width: $mediaMaxWidth320px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 20%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
- @media (max-width: $mediaMaxWidth300px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 21%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
- @media (max-width: $mediaMaxWidth280px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 23%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
- @media (max-width: $mediaMaxWidth260px) {
-  background: radial-gradient(
-   circle at 50% 0%,
-   #ffffff00 24%,
-   #bef574 0.92% 19%,
-   #426e23 100%
-  );
- }
-
- .greenBackground.icon {
-  path {
-   stroke: rgb(255, 255, 255);
   }
  }
 }

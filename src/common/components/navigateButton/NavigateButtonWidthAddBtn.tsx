@@ -9,61 +9,54 @@ import { ReactComponent as User } from "../../../assets/icons/User.svg";
 import s from "./navigateButtonWidthAddBtn.module.scss";
 
 interface LinkActiveType {
-  isActive: boolean;
+ isActive: boolean;
 }
 
 export const NavigateButtonWidthAddBtn = () => {
-  let { pathname } = useLocation();
-  const location = pathname.includes("/other-user-profile");
+ const setActive = ({ isActive }: LinkActiveType) =>
+  cn({ [s.active]: isActive });
 
-  const setActive = ({ isActive }: LinkActiveType) =>
-    cn({ [s.active]: isActive });
+ return (
+  <div className={s.widthAddButton}>
+   <div className={s.navLeftBlock}>
+    <NavLink
+     className={setActive}
+     to={RouteNames.HOME}
+     aria-label="home"
+    >
+     <Home className={s.icon} />
+    </NavLink>
 
-  return (
-    <div className={cn(s.widthAddButton, { [s.greenBackground]: location })}>
-      <div className={s.navLeftBlock}>
-        <NavLink className={setActive} to={RouteNames.HOME} aria-label="home">
-          <Home
-            className={cn(s.icon, {
-              [s.greenBackground]: location,
-            })}
-          />
-        </NavLink>
+    <NavLink
+     className={setActive}
+     to={RouteNames.ADS}
+     aria-label="ads"
+    >
+     <Ads className={s.icon} />
+    </NavLink>
+   </div>
 
-        <NavLink className={setActive} to={RouteNames.ADS} aria-label="ads">
-          <Ads
-            className={cn(s.icon, {
-              [s.greenBackground]: location,
-            })}
-          />
-        </NavLink>
-      </div>
+   <div className={s.nalRightBlock}>
+    <NavLink
+     className={setActive}
+     to={RouteNames.USER}
+     aria-label="user"
+    >
+     <User className={s.icon} />
+    </NavLink>
 
-      <div className={s.nalRightBlock}>
-        <NavLink className={setActive} to={RouteNames.USER} aria-label="user">
-          <User
-            className={cn(s.icon, {
-              [s.greenBackground]: location,
-            })}
-          />
-        </NavLink>
+    <NavLink
+     className={setActive}
+     to={RouteNames.NOTIFICATION}
+     aria-label="notification"
+    >
+     <Notification className={s.icon} />
+    </NavLink>
+   </div>
 
-        <NavLink
-          className={setActive}
-          to={RouteNames.NOTIFICATION}
-          aria-label="notification"
-        >
-          <Notification
-            className={cn(s.icon, {
-              [s.greenBackground]: location,
-            })}
-          />
-        </NavLink>
-      </div>
-
-      <div className={s.duttonAdd}>
-        <div className={s.plas}></div>
-      </div>
-    </div>
-  );
+   <div className={s.duttonAdd}>
+    <div className={s.plas}></div>
+   </div>
+  </div>
+ );
 };

@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom";
 import { InitialStateUserType } from "../../../../modules/user/types/userSliceType";
-import {
- BtnUser,
- InspirationUser,
- SkillsLayout,
-} from "../../../layout/skills/SkillsLayout";
+import { BtnUserContact } from "../../../layout/skills/BtnUserContact";
+import { InspirationUser } from "../../../layout/skills/InspirationUser";
+import { SkillsLayout } from "../../../layout/skills/SkillsLayout";
 import { WorkEducationeCards } from "../../../layout/skills/WorkEducationeCards";
 import { ButtonBack } from "../../../ui-elements/button/ButtonBack";
 import { ContactButton } from "../../../ui-elements/button/ContactButton";
@@ -21,8 +19,6 @@ export const AboutProfile = ({
 }: AboutProfileType) => {
  const { id_user } = useParams();
 
- console.log(userDataProfile.sity);
-
  return (
   <>
    <section className={s.main}>
@@ -35,7 +31,7 @@ export const AboutProfile = ({
     />
 
     {id_user && (
-     <BtnUser>
+     <BtnUserContact>
       <div className={s.btnUserContact}>
        <ContactButton textButton="Связаться" />
       </div>
@@ -43,7 +39,7 @@ export const AboutProfile = ({
       <div className={s.btnUserContact}>
        <ButtonBack textCancelButton="Связаться" />
       </div>
-     </BtnUser>
+     </BtnUserContact>
     )}
 
     <SkillsLayout

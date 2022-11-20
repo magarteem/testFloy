@@ -7,6 +7,7 @@ import { WorkEducationeCards } from "../../../layout/skills/WorkEducationeCards"
 import { ButtonBack } from "../../../ui-elements/button/ButtonBack";
 import { ContactButton } from "../../../ui-elements/button/ContactButton";
 import { NavigateButtonWidthAddBtn } from "../../navigateButton/NavigateButtonWidthAddBtn";
+import { PopUpNavigateGradient } from "../../navigateButton/PopUpNavigateGradient";
 import { NameProfile } from "../nameProfile/NameProfile";
 import s from "./aboutProfile.module.scss";
 
@@ -37,7 +38,9 @@ export const AboutProfile = ({
       </div>
 
       <div className={s.btnUserContact}>
-       <ButtonBack textCancelButton="Связаться" />
+       <button className={s.buttonContactWrapper}>
+        Связаться
+       </button>
       </div>
      </BtnUserContact>
     )}
@@ -75,7 +78,8 @@ export const AboutProfile = ({
     )}
    </section>
 
-   <NavigateButtonWidthAddBtn />
+   {/*<NavigateButtonWidthAddBtn />*/}
+   <PopUpNavigateGradient />
   </>
  );
 };

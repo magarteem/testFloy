@@ -46,7 +46,6 @@ export const FormChangeProfile = ({
  const {
   control,
   handleSubmit,
-  reset,
   formState: { errors },
  } = useForm<ISignUpFormValues>({
   mode: "all",

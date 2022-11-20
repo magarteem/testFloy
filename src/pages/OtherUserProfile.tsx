@@ -7,6 +7,7 @@ import { HeaderProfile } from "../common/components/profile/cardsProfile/HeaderP
 import { HeaderWrapper } from "../common/layout/header/HeaderWrapper";
 import { tempDataOtherUserProfile } from "../modules/user/service/tempDataOtherUserProfile";
 import { InitialStateUserType } from "../modules/user/types/userSliceType";
+import { PopUpNavigateGradient } from "../common/components/navigateButton/PopUpNavigateGradient";
 
 const dataNull: InitialStateUserType = {
  id_user: "",
@@ -52,7 +53,8 @@ export const OtherUserProfile = () => {
 
    <AboutProfile userDataProfile={user} />
 
-   <NavigateButtonWidthAddBtn />
+   {/*<NavigateButtonWidthAddBtn />*/}
+   <PopUpNavigateGradient />
   </>
  );
 };

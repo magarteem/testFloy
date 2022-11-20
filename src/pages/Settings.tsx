@@ -6,6 +6,7 @@ import { RouteNames } from "../common/variables/RouteNames";
 import { NavigateButtonWidthAddBtn } from "../common/components/navigateButton/NavigateButtonWidthAddBtn";
 import s from "./styles/settings.module.scss";
 import { ButtonInstallPwa } from "../modules/pwa/ButtonInstallPwa";
+import { PopUpNavigateGradient } from "../common/components/navigateButton/PopUpNavigateGradient";
 
 export const Settings = () => {
  const dispatch = useAppDispatch();
@@ -26,7 +27,8 @@ export const Settings = () => {
     </Link>
     <ButtonInstallPwa />
    </div>
-   <NavigateButtonWidthAddBtn />
+   {/*<NavigateButtonWidthAddBtn />*/}
+   <PopUpNavigateGradient />
   </>
  );
 };

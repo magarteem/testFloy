@@ -13,5 +13,32 @@
   @include flex_position();
   width: 166px;
   height: 35px;
+
+  .buttonContactWrapper {
+   width: 100%;
+   height: 100%;
+   background-color: $white;
+   border-radius: 10px;
+   color: #5b9232;
+   border: 1.5px solid #5b9232;
+   font-size: 16px;
+   transition: all 0.2s;
+   padding: 0.4rem;
+
+   &:hover {
+    background: rgb(199 221 169);
+   }
+
+   &:active {
+    background-color: rgb(59, 101, 1);
+    color: $white;
+   }
+
+   &:disabled {
+    background-color: #cdcdcc;
+    border: none;
+    color: $white;
+   }
+  }
  }
 }

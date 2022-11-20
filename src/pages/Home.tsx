@@ -7,8 +7,8 @@ export const Home = () => {
   <div className={s.tempStyle}>
    Home
    <br /> (в разработке)
-   <NavigateButtonWidthAddBtn />
-   {/*<PopUpNavigateGradient />*/}
+   {/*<NavigateButtonWidthAddBtn />*/}
+   <PopUpNavigateGradient />
   </div>
  );
 };

@@ -1,10 +1,10 @@
 import backGroundImg from "../assets/images/backgroundProfileHeader.webp";
 import arrowReturnWhite from "../assets/icons/arrowReturnWhite.webp";
-import { NavigateButtonWidthAddBtn } from "../common/components/navigateButton/NavigateButtonWidthAddBtn";
 import { AboutProfile } from "../common/components/profile/aboutProfile/AboutProfile";
 import { HeaderProfile } from "../common/components/profile/cardsProfile/HeaderProfile";
 import { HeaderWrapper } from "../common/layout/header/HeaderWrapper";
 import { useAppSelector } from "../core/redux/app/hooks";
+import { PopUpNavigateGradient } from "../common/components/navigateButton/PopUpNavigateGradient";
 
 export const ProfileInfo = () => {
  const userDataProfile = useAppSelector(
@@ -24,7 +24,8 @@ export const ProfileInfo = () => {
 
    <AboutProfile userDataProfile={userDataProfile} />
 
-   <NavigateButtonWidthAddBtn />
+   {/*<NavigateButtonWidthAddBtn />*/}
+   <PopUpNavigateGradient />
   </>
  );
 };

@@ -9,7 +9,7 @@ import { AvatarPhoto } from "../avatarIcons/AvatarPhoto";
 
 interface HeaderProfileType {
  textLabel: string;
- cancelImgIcon: string;
+ cancelImgIcon?: string;
  change?: boolean;
  settings?: boolean;
 }
@@ -24,7 +24,9 @@ export const HeaderProfile = ({
   <div className={s.headerProfile}>
    <div className={s.title}>
     <div className={s.titleNavigation}>
-     <ArrowBtnStepsBack cancelImgIcon={cancelImgIcon} />
+     {cancelImgIcon && (
+      <ArrowBtnStepsBack cancelImgIcon={cancelImgIcon} />
+     )}
      <p>{textLabel}</p>
     </div>
 

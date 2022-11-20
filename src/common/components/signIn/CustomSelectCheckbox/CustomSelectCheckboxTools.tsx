@@ -103,11 +103,6 @@ export const CustomSelectCheckboxTools = ({
    fontWeight: 500,
    fotnSize: "16px",
   }),
-  //group: (provided: any) => ({
-  // ...provided,
-  // height: ttt ? "auto" : "0",
-  // overflow: "hidden",
-  //}),
  };
 
  return (
@@ -125,6 +120,7 @@ export const CustomSelectCheckboxTools = ({
      Option,
      ValueContainer,
      MultiValue,
+
      Group,
     }}
     isMulti

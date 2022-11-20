@@ -4,7 +4,6 @@ import { BtnUserContact } from "../../../layout/skills/BtnUserContact";
 import { InspirationUser } from "../../../layout/skills/InspirationUser";
 import { SkillsLayout } from "../../../layout/skills/SkillsLayout";
 import { WorkEducationeCards } from "../../../layout/skills/WorkEducationeCards";
-import { ButtonBack } from "../../../ui-elements/button/ButtonBack";
 import { ContactButton } from "../../../ui-elements/button/ContactButton";
 import { NavigateButtonWidthAddBtn } from "../../navigateButton/NavigateButtonWidthAddBtn";
 import { PopUpNavigateGradient } from "../../navigateButton/PopUpNavigateGradient";
@@ -79,7 +78,7 @@ export const AboutProfile = ({
    </section>
 
    {/*<NavigateButtonWidthAddBtn />*/}
-   <PopUpNavigateGradient />
+   {/*<PopUpNavigateGradient />*/}
   </>
  );
 };

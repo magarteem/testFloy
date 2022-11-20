@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom";
-//import arrowReturnWhite from "../../../assets/icons/arrowReturnWhite.webp";
-//import arrowReturnBlack from "../../../assets/icons/arrowReturnBlack.webp";
 import s from "./arrowBtnStepsBack.module.scss";
 
 interface ArrowBtnStepsBackType {

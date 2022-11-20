@@ -6,7 +6,6 @@ import getMonth from "date-fns/getYear";
 import "react-datepicker/dist/react-datepicker.css";
 import ru from "date-fns/locale/ru";
 import "./reactDatePickerElement.scss";
-import { InputLabel } from "../Input/InputLabel";
 registerLocale("ru", ru);
 
 interface ReactDatePickerType {
@@ -25,11 +24,12 @@ export const ReactDatePickerElement = ({
  errors,
  ...props
 }: ReactDatePickerType) => {
- const range = (start: any, end: any) => {
+ const range = (start: number, end: number) => {
   return new Array(end - start)
    .fill(null)
    .map((d, i) => i + start);
  };
+
  const years = range(1950, getYear(new Date()));
  const months = [
   "Январь",
@@ -46,12 +46,18 @@ export const ReactDatePickerElement = ({
   "Декабрь",
  ];
 
- console.log("dt = ", value);
+ const calculateAge = (value: Date | number) =>
+  `${
+   new Date().getFullYear() - new Date(value).getFullYear()
+  }`;
+
  return (
   <div className="wrapperPicker">
    <DatePicker
-    dateFormat="yyyy/MM/dd"
+    //dateFormat="yyyy/MM/dd"
+    dateFormat={calculateAge(value)}
     locale="ru"
+    dateFormatCalendar=""
     showPopperArrow={false}
     selected={value}
     placeholderText={placeholder}

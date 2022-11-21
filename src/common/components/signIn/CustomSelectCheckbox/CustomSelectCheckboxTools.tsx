@@ -3,6 +3,7 @@ import Select, {
  components,
  ValueContainerProps,
  OptionProps,
+ MultiValueGenericProps,
 } from "react-select";
 import { FormatGroupLabel } from "./FormatGroupLabel";
 import "./customSelectCheckboxTool.scss";
@@ -19,6 +20,21 @@ const MultiValue = (props: MultiValueProps) => {
   //<div style={{ backgroundColor: "red" }}>
   <components.MultiValue {...props} />
   //</div>
+ );
+};
+
+const MultiValueLabel = (props: MultiValueGenericProps) => {
+ const Mval = components.MultiValueLabel;
+ let obj = props.selectProps.value;
+ //@ts-ignore
+ const lastItemObj = obj[obj.length - 1].value;
+ const count = props.data.value;
+
+ return (
+  <Mval {...props}>
+   {props.children}
+   <span>{lastItemObj !== count && ","}</span>
+  </Mval>
  );
 };
 
@@ -118,9 +134,9 @@ export const CustomSelectCheckboxTools = ({
     options={options}
     components={{
      Option,
-     ValueContainer,
-     MultiValue,
-
+     // ValueContainer,
+     // MultiValue,
+     MultiValueLabel,
      Group,
     }}
     isMulti

@@ -3,6 +3,7 @@ import { ISignUpFormValues } from "../../authorization/types/type";
 export interface OptionsTypeTool {
  label: string;
  value: string;
+ hexColor?: string;
 }
 
 export interface EducationType {

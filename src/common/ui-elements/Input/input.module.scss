@@ -21,7 +21,7 @@
 
   input {
    width: 100%;
-   padding: 18px 20px 17px;
+   padding: 5px;
    background-color: inherit;
    border-radius: 10px;
    font-size: 16px;
@@ -37,7 +37,8 @@
     background-color: #d1d1d1;
    }
 
-   &:focus {
+   &:focus,
+   &:focus.error.errorBackgroundOrange {
     background-color: #ffffff;
     border: 1.5px solid #5b9232;
    }
@@ -50,7 +51,6 @@
 
   .error {
    border: 1px solid $error;
-   font-size: 12px;
   }
   .error.errorBackgroundOrange {
    border: 1px solid $errorBackgroundOrange;
@@ -63,6 +63,7 @@
    bottom: -15px;
    left: 0;
   }
+
   span.errorBackgroundOrange {
    color: $errorBackgroundOrange;
   }

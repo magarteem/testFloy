@@ -25,6 +25,7 @@
   }
  }
  .main {
+  max-width: 650px;
   width: 100%;
   padding: 20px 20px;
   display: flex;
@@ -35,6 +36,11 @@
 
   .styleInput {
    width: 100%;
+
+   input {
+    height: 50px;
+    padding: 18px 20px 17px;
+   }
 
    .textarea {
     min-height: 50px;
@@ -52,18 +58,8 @@
   }
  }
 
- // .sendDataForm {
- //   width: 100%;
- //   display: flex;
- //   justify-content: space-between;
- //   padding: 20px 16px;
-
- //   .btnWrapper {
- //     width: 150px;
- //     height: 52px;
- //   }
- // }
  .btnFormWrapper {
+  max-width: 650px;
   width: 100%;
   padding: 20px 16px;
  }

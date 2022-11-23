@@ -14,6 +14,7 @@ export interface ISignInFormValues {
 export interface OptionSelectType {
  value: string;
  label: string;
+ hexColor?: string;
 }
 interface WorkExperience {
  img: string;
@@ -25,11 +26,13 @@ interface WorkExperience {
 interface OptionsType {
  label: string;
  value: string;
+ imgIcons: string;
 }
 
 export interface GroupOptionsType {
  label: string;
- isOpen?: boolean;
+ imgIcons?: string;
+ hexColor?: string;
  options: OptionsType[];
 }
 

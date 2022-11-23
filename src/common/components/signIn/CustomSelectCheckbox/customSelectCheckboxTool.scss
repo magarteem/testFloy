@@ -74,6 +74,11 @@
  &__multi-value {
   //display: none !important;
  }
+
+ &__multi-value__label {
+  font-size: 16px !important;
+ }
+
  &__multi-value__remove {
   display: none !important;
  }

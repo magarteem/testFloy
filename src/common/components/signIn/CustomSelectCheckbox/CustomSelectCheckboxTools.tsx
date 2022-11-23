@@ -1,7 +1,5 @@
 import Select, {
- MultiValueProps,
  components,
- ValueContainerProps,
  OptionProps,
  MultiValueGenericProps,
 } from "react-select";
@@ -13,14 +11,6 @@ import { GroupOptionsType } from "../../../../modules/authorization/types/type";
 
 export const Temp = (data: any) => {
  return <FormatGroupLabel data={data} />;
-};
-
-const MultiValue = (props: MultiValueProps) => {
- return (
-  //<div style={{ backgroundColor: "red" }}>
-  <components.MultiValue {...props} />
-  //</div>
- );
 };
 
 const MultiValueLabel = (props: MultiValueGenericProps) => {
@@ -35,22 +25,6 @@ const MultiValueLabel = (props: MultiValueGenericProps) => {
    {props.children}
    <span>{lastItemObj !== count && ","}</span>
   </Mval>
- );
-};
-
-const ValueContainer = ({
- children,
- ...props
-}: ValueContainerProps) => {
- const { getValue } = props;
- const VCo = components.ValueContainer;
- return (
-  <VCo {...props}>
-   {children}
-   {getValue().length !== 0 && (
-    <p>Выбрано ({getValue().length})</p>
-   )}
-  </VCo>
  );
 };
 
@@ -94,7 +68,6 @@ interface CustomSelectCheckboxToolsType {
  value?: any;
  options: GroupOptionsType[];
  onChange: () => void;
- // onChange: (data: string) => void;
  errors: any;
  ItemRef: any;
 }
@@ -130,19 +103,16 @@ export const CustomSelectCheckboxTools = ({
     classNamePrefix="customs_select_list_prefix"
     placeholder={placeholder}
     value={value}
-    isSearchable={false}
+    //isSearchable={false}
     options={options}
     components={{
      Option,
-     // ValueContainer,
-     // MultiValue,
      MultiValueLabel,
      Group,
     }}
     isMulti
     styles={customStyles}
     onChange={onChange}
-    //onChange={(e: any) => onChange(e)}
     hideSelectedOptions={false}
     formatGroupLabel={(data) => Temp(data)}
     closeMenuOnSelect={false}

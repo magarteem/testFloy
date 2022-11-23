@@ -3,9 +3,12 @@ import Select, {
  components,
  MultiValueGenericProps,
  OptionProps,
+ StylesConfig,
 } from "react-select";
 import "./customSelectCheckboxGenre.scss";
 import cn from "classnames";
+import { OptionSelectType } from "../../../../modules/authorization/types/type";
+import { hexToRGB } from "../../../../modules/authorization/helpers/convertHexToRgb";
 
 const MultiValueLabel = (props: MultiValueGenericProps) => {
  const Mval = components.MultiValueLabel;
@@ -48,7 +51,7 @@ const Option = (props: OptionProps) => {
 interface CustomSelectCheckboxGenreType {
  value?: any;
  placeholder: string;
- options: any;
+ options: OptionSelectType[];
  onChange: (data: string) => void;
  errors: any;
  ItemRef: any;
@@ -62,19 +65,38 @@ export const CustomSelectCheckboxGenre = ({
  ItemRef,
  ...props
 }: CustomSelectCheckboxGenreType) => {
- const customStyles = {
-  container: (provided: any) =>
-   errors && {
+ const customStyles: StylesConfig<OptionSelectType, true> =
+  {
+   container: (provided) =>
+    errors && {
+     ...provided,
+     border: `1.5px solid #E95050`,
+    },
+   multiValue: (
+    provided,
+    { data, isDisabled, isFocused }
+   ) => ({
     ...provided,
-    border: `1.5px solid #E95050`,
+    background: "inherit",
+    fontWeight: 500,
+    backgroundColor: `${hexToRGB(
+     data.hexColor,
+     "100%"
+    )} !important`,
+    borderRadius: "30px",
+    padding: "5px 6px !important",
+   }),
+   multiValueLabel: (
+    provided,
+    { data, isDisabled, isFocused }
+   ) => {
+    return {
+     ...provided,
+     color: "white",
+     // backgroundColor: `${hexToRGB(data.hexColor, "40%")}`,
+    };
    },
-  multiValue: (provided: any) => ({
-   ...provided,
-   background: "inherit",
-   fontWeight: 500,
-   fotnSize: "16px",
-  }),
- };
+  };
 
  return (
   <div className="wrapperSelect">
@@ -84,12 +106,12 @@ export const CustomSelectCheckboxGenre = ({
     })}
     classNamePrefix="customs_select_list_prefix_genre"
     placeholder={placeholder}
-    isSearchable={false}
+    //isSearchable={false}
     options={options}
     value={value}
     components={{
      Option,
-     MultiValueLabel,
+     // MultiValueLabel,
     }}
     isMulti
     styles={customStyles}

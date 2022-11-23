@@ -3,10 +3,11 @@ import {
  useFormContext,
 } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { ReactSelect } from "../../common/components/signIn/reactSelect/ReactSelect";
 import s from "./style/secondStepFormRegister.module.scss";
 import { RouteNames } from "../../common/variables/RouteNames";
 import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
+import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactSelectElement";
+import { optionsTypeAccount } from "./service/BD";
 
 export const SecondStepFormRegister = () => {
  const navigate = useNavigate();
@@ -23,6 +24,13 @@ export const SecondStepFormRegister = () => {
   );
  };
 
+ const customStyles = {
+  singleValue: (provided: any) => ({
+   ...provided,
+   fontSize: `14px !important`,
+  }),
+ };
+
  return (
   <div className={s.secondStepFormRegister}>
    <h2>Тип аккаунта</h2>
@@ -33,12 +41,13 @@ export const SecondStepFormRegister = () => {
      required: "тип обязателен",
     }}
     render={({ field: { onChange, ref, ...field } }) => (
-     <ReactSelect
-      itemRef={ref}
-      errors={
-       errors.typeAccount && errors.typeAccount.message
-      }
+     <ReactSelectElement
+      ItemRef={ref}
+      placeholder="Выбрать"
+      options={optionsTypeAccount}
       onChange={onChange}
+      errors={errors.type_account}
+      customStyles={customStyles}
       {...field}
      />
     )}

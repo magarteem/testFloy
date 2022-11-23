@@ -9,6 +9,7 @@ import {
  InitialStateUserType,
 } from "./types/userSliceType";
 import { changeProfileThunk } from "./changeProfileThunk";
+import { genreBD } from "../authorization/service/BD";
 
 //const initialState: InitialStateUserType =
 // tempDataOtherUserProfile[3];
@@ -32,11 +33,11 @@ const initialState: InitialStateUserType = {
    { label: "Саксофон", value: "saxophone" },
   ],
   genre: [
-   { label: "Поп-музыка", value: "pop_music" },
-   { label: "Кантри", value: "country" },
-   { label: "Блюз", value: "blues" },
-   { label: "Геликон", value: "helicon" },
-   { label: "Фолк-музыка", value: "folk" },
+   genreBD[3],
+   genreBD[5],
+   genreBD[6],
+   genreBD[8],
+   genreBD[11],
   ],
   workExperience:
    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.",

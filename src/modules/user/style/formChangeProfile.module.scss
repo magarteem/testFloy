@@ -1,22 +1,20 @@
-.forms {
+.formChangeProfile {
  padding: 16px 16px 0;
-
- //   .styleInput {
- //     width: 100%;
- //     margin-top: 20px;
-
- //     input {
- //       height: 50px;
- //     }
- //   }
+ max-width: 650px;
+ margin: 0 auto;
 
  .styleInput {
   margin-top: 20px;
   width: 100%;
   max-width: 650px;
 
-  input {
+  .wrapperBlockInput {
    height: 50px;
+
+   input {
+    height: 50px;
+    padding: 18px 20px 17px;
+   }
   }
 
   .textarea {

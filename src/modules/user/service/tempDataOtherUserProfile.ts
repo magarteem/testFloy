@@ -4,6 +4,7 @@ import avatar_1 from "../../../assets/images/avatar_1.webp";
 import avatar_2 from "../../../assets/images/avatar_2.webp";
 import avatar_3 from "../../../assets/images/avatar_3.webp";
 import { InitialStateUserType } from "../types/userSliceType";
+import { genreBD } from "../../authorization/service/BD";
 
 export const tempDataOtherUserProfile: InitialStateUserType[] =
  [
@@ -35,30 +36,12 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
      },
     ],
     genre: [
-     {
-      label: "Джаз",
-      value: "jazz",
-     },
-     {
-      label: "Поп-музыка",
-      value: "pop_music",
-     },
-     {
-      label: "Кантри",
-      value: "country",
-     },
-     {
-      label: "Блюз",
-      value: "blues",
-     },
-     {
-      label: "Фолк-музыка",
-      value: "folk",
-     },
-     {
-      label: "Ритм-н-блюз",
-      value: "rhythm_and_blues",
-     },
+     genreBD[14],
+     genreBD[3],
+     genreBD[5],
+     genreBD[6],
+     genreBD[9],
+     genreBD[8],
     ],
     workExperience:
      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.",
@@ -100,22 +83,10 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
      },
     ],
     genre: [
-     {
-      label: "Поп-музыка",
-      value: "pop_music",
-     },
-     {
-      label: "Кантри",
-      value: "country",
-     },
-     {
-      label: "Саксофон",
-      value: "saxophone",
-     },
-     {
-      label: "Геликон",
-      value: "helicon",
-     },
+     genreBD[3],
+     genreBD[5],
+     genreBD[10],
+     genreBD[6],
     ],
     workExperience: [
      {
@@ -167,26 +138,11 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
      },
     ],
     genre: [
-     {
-      label: "Поп-музыка",
-      value: "pop_music",
-     },
-     {
-      label: "Кантри",
-      value: "country",
-     },
-     {
-      label: "Блюз",
-      value: "blues",
-     },
-     {
-      label: "Геликон",
-      value: "helicon",
-     },
-     {
-      label: "Фолк-музыка",
-      value: "folk",
-     },
+     genreBD[0],
+     genreBD[2],
+     genreBD[4],
+     genreBD[8],
+     genreBD[9],
     ],
     workExperience:
      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.",
@@ -242,20 +198,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
       value: "guitar",
      },
     ],
-    genre: [
-     {
-      label: "Поп-музыка",
-      value: "pop_music",
-     },
-     {
-      label: "Кантри",
-      value: "country",
-     },
-     {
-      label: "Фолк-музыка",
-      value: "folk",
-     },
-    ],
+    genre: [genreBD[3], genreBD[5], genreBD[4]],
     workExperience: [
      {
       img: avatar_1,

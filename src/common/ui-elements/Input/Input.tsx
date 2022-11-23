@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ChangeEvent, ReactNode } from "react";
+import cn from "classnames";
 import s from "./input.module.scss";
 
 interface InputType {
@@ -9,9 +10,9 @@ interface InputType {
  inputValue?: string;
  children?: ReactNode;
  placeholder: string;
- onChange: any;
+ onChange: (e: ChangeEvent<HTMLInputElement>) => void;
  ItemRef?: any;
- onClick?: any;
+ onClick?: () => void;
 }
 export const Input = ({
  children,
@@ -32,9 +33,10 @@ export const Input = ({
 
    <div className={s.inpFieldsRelative}>
     <input
-     className={`${errors && s.error} ${
-      errorBackgroundOrange && s.errorBackgroundOrange
-     }`}
+     className={cn({
+      [s.error]: errors,
+      [s.errorBackgroundOrange]: errorBackgroundOrange,
+     })}
      type={type}
      value={inputValue}
      placeholder={placeholder}
@@ -46,9 +48,9 @@ export const Input = ({
     {children}
     {errors && (
      <span
-      className={`${
-       errorBackgroundOrange && s.errorBackgroundOrange
-      }`}
+      className={cn({
+       [s.errorBackgroundOrange]: errorBackgroundOrange,
+      })}
      >
       {errors}
      </span>

@@ -71,7 +71,7 @@ export const FormChangeProfile = ({
  return (
   <form
    onSubmit={handleSubmit(onSubmit)}
-   className={s.forms}
+   className={s.formChangeProfile}
   >
    {/*  */}
    <div className={s.styleInput}>
@@ -90,15 +90,17 @@ export const FormChangeProfile = ({
      }) => (
       <>
        <InputLabel titleSelect="Имя" required />
-       <Input
-        inputValue={value}
-        placeholder="Александр Ковальчук "
-        onChange={onChange}
-        errors={
-         errors.name_field && errors.name_field.message
-        }
-        {...field}
-       />
+       <div className={s.wrapperBlockInput}>
+        <Input
+         inputValue={value}
+         placeholder="Александр Ковальчук "
+         onChange={onChange}
+         errors={
+          errors.name_field && errors.name_field.message
+         }
+         {...field}
+        />
+       </div>
       </>
      )}
     />
@@ -223,14 +225,6 @@ export const FormChangeProfile = ({
        errors={errors.genre}
        {...field}
       />
-      //<ReactSelectElement
-      // placeholder="Выбрать"
-      // options={genreBD}
-      // onChange={onChange}
-      // isMulti
-      // errors={errors.genre}
-      // {...field}
-      ///>
      )}
     />
    </div>

@@ -19,10 +19,12 @@
  .customs_select_container_genre &__control {
   border-radius: 10px;
   background: #f4f6f2;
-  padding: 0 8px;
+  //padding: 12px 9px;
+  padding: 3px 8px;
   min-height: 50px;
   border: none !important;
   border-radius: 10px;
+  column-gap: 8px;
 
   &___indicators {
    display: none;
@@ -62,16 +64,23 @@
  }
 
  &__menu-list &__option {
+  font-size: 14px;
   font-weight: 700;
   height: 37px;
   padding-left: 16px;
  }
 
  &__multi-value__label {
-  font-size: 16px !important;
+  font-size: 14px;
+  color: white;
  }
  &__multi-value__remove {
-  display: none !important;
+  //display: none !important;
+  color: white;
+  svg {
+   width: 18px;
+   height: 18px;
+  }
  }
 }
 

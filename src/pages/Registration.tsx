@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { ISignUpFormValues } from "../modules/authorization/types/type";
 import { WrapperFullScreen } from "../common/layout/wrapperFullScreen/WrapperFullScreen";
 import { RouteNames } from "../common/variables/RouteNames";
+import s from "./styles/registrationPage.module.scss";
 
 export enum FormRegisterFieldNames {
  EMAIL = "email",
@@ -52,7 +53,10 @@ export const Registration = () => {
  return (
   <WrapperFullScreen>
    <FormProvider {...method}>
-    <form onSubmit={method.handleSubmit(onSubmit)}>
+    <form
+     className={s.formRegister}
+     onSubmit={method.handleSubmit(onSubmit)}
+    >
      <Outlet />
     </form>
    </FormProvider>

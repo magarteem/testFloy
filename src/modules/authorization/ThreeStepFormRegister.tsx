@@ -7,7 +7,6 @@ import { UploadPhoto } from "../../common/components/signIn/uploadPhoto/UploadPh
 import { InputLabel } from "../../common/ui-elements/Input/InputLabel";
 import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactSelectElement";
 import {
- // ageNumber,
  genderBD,
  genreBD,
  groupeOptions,
@@ -271,14 +270,6 @@ export const ThreeStepFormRegister = () => {
     </div>
    </div>
 
-   {/* <div className={s.sendDataForm}>
-        <div className={s.btnWrapper}>
-          <ButtonBack textButton="Назад" onClick={returnStepRegister} />
-        </div>
-        <div className={s.btnWrapper}>
-          <InButton textButton="Создать анкету" />
-        </div>
-      </div> */}
    <div className={s.btnFormWrapper}>
     <BtnInFormSaveCancel
      textCancelButton="Назад"

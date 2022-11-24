@@ -1,5 +1,10 @@
 import { ISignUpFormValues } from "../../authorization/types/type";
 
+export interface OptionsTypeTools {
+ label: string;
+ value: string;
+ imgIcons: string;
+}
 export interface OptionsTypeTool {
  label: string;
  value: string;
@@ -13,7 +18,7 @@ export interface EducationType {
 }
 
 export interface SkillsType {
- tool: OptionsTypeTool[];
+ tool: OptionsTypeTools[];
  genre: OptionsTypeTool[];
  workExperience: string | EducationType[];
  master: OptionsTypeTool | null;

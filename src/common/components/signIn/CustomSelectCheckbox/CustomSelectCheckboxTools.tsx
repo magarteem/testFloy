@@ -7,7 +7,10 @@ import { FormatGroupLabel } from "./FormatGroupLabel";
 import "./customSelectCheckboxTool.scss";
 import cn from "classnames";
 import { useState } from "react";
-import { GroupOptionsType } from "../../../../modules/authorization/types/type";
+import {
+ GroupOptionsType,
+ OptionsType,
+} from "../../../../modules/authorization/types/type";
 
 export const Temp = (data: any) => {
  return <FormatGroupLabel data={data} />;
@@ -22,13 +25,17 @@ const MultiValueLabel = (props: MultiValueGenericProps) => {
 
  return (
   <Mval {...props}>
+   <img
+    src={props.data.imgIcons}
+    alt={props.data.imgIcons}
+   />
    {props.children}
    <span>{lastItemObj !== count && ","}</span>
   </Mval>
  );
 };
 
-const Option = (props: OptionProps) => {
+const Option = (props: OptionProps<OptionsType>) => {
  const [check, setCheck] = useState(props.isSelected);
  const checkCh = () => setCheck((prev) => !prev);
  const Co = components.Option;
@@ -41,7 +48,9 @@ const Option = (props: OptionProps) => {
      type="checkbox"
      onChange={() => {}}
     />
+
     <span className="check"></span>
+    <img src={props?.data.imgIcons} alt={props.label} />
     <label className="customLabel">{props.label}</label>
    </div>
   </Co>

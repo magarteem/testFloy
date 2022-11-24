@@ -2,6 +2,25 @@ import {
  GroupOptionsType,
  OptionSelectType,
 } from "../types/type";
+import vocals from "../../../assets/icons/iconsTools/vocals.webp";
+import classical_guitar from "../../../assets/icons/iconsTools/classical_guitar.webp";
+import ukulele from "../../../assets/icons/iconsTools/ukulele.webp";
+import violin from "../../../assets/icons/iconsTools/violin.webp";
+import alto from "../../../assets/icons/iconsTools/alto.webp";
+import double_bass from "../../../assets/icons/iconsTools/double_bass.webp";
+import cello from "../../../assets/icons/iconsTools/cello.webp";
+import djembe from "../../../assets/icons/iconsTools/djembe.webp";
+import balalaika from "../../../assets/icons/iconsTools/balalaika.webp";
+import saxophone from "../../../assets/icons/iconsTools/saxophone.webp";
+import tuba from "../../../assets/icons/iconsTools/tuba.webp";
+import trombone from "../../../assets/icons/iconsTools/trombone.webp";
+import horn from "../../../assets/icons/iconsTools/horn.webp";
+import xylophone from "../../../assets/icons/iconsTools/xylophone.webp";
+import accordion from "../../../assets/icons/iconsTools/accordion.webp";
+import organ from "../../../assets/icons/iconsTools/organ.webp";
+import bagpipes from "../../../assets/icons/iconsTools/bagpipes.webp";
+import piano from "../../../assets/icons/iconsTools/piano.webp";
+import synthesizer from "../../../assets/icons/iconsTools/synthesizer.webp";
 
 export const optionsTypeAccount: OptionSelectType[] = [
  { value: "musician", label: "Музыкант" },
@@ -45,27 +64,47 @@ export const groupeOptions: GroupOptionsType[] = [
   label: "Вокал",
   hexColor: "#000",
   options: [
-   { label: "Тенор", value: "value_1", imgIcons: "" },
-   { label: "Баритон", value: "value_2", imgIcons: "" },
-   { label: "Бас", value: "value_23", imgIcons: "" },
-   { label: "Сопрано", value: "value_42", imgIcons: "" },
+   { label: "Тенор", value: "value_1", imgIcons: vocals },
+   { label: "Баритон", value: "value_2", imgIcons: vocals },
+   { label: "Бас", value: "value_23", imgIcons: vocals },
+   {
+    label: "Сопрано",
+    value: "value_42",
+    imgIcons: vocals,
+   },
    {
     label: "Меццо-сопрано",
     value: "value_52",
-    imgIcons: "",
+    imgIcons: vocals,
    },
-   { label: "Контральто", value: "value_26", imgIcons: "" },
+   {
+    label: "Контральто",
+    value: "value_26",
+    imgIcons: vocals,
+   },
   ],
  },
  {
   label: "Клавишные",
   hexColor: "#f3a00a",
   options: [
-   { label: "Аккордеон", value: "accordion", imgIcons: "" },
-   { label: "Ксилофон", value: "xylophone", imgIcons: "" },
-   { label: "Орган", value: "organ", imgIcons: "" },
-   { label: "Пианино", value: "piano", imgIcons: "" },
-   { label: "Рояль", value: "rouial", imgIcons: "" },
+   {
+    label: "Аккордеон",
+    value: "аккордеон",
+    imgIcons: accordion,
+   },
+   {
+    label: "Ксилофон",
+    value: "xylophone",
+    imgIcons: xylophone,
+   },
+   { label: "Орган", value: "organ", imgIcons: organ },
+   { label: "Фортепиано", value: "piano", imgIcons: piano },
+   {
+    label: "Синтезатор",
+    value: "synthesizer",
+    imgIcons: synthesizer,
+   },
   ],
  },
  {
@@ -75,47 +114,47 @@ export const groupeOptions: GroupOptionsType[] = [
    {
     label: "Саксофон",
     value: "saxophone",
-    imgIcons: "",
+    imgIcons: saxophone,
    },
    {
     label: "Труба",
     value: "pipe",
-    imgIcons: "",
+    imgIcons: tuba,
    },
    {
     label: "Тромбон",
     value: "trombone",
-    imgIcons: "",
+    imgIcons: trombone,
    },
    {
     label: "Валторна",
     value: "french_horn",
-    imgIcons: "",
+    imgIcons: horn,
    },
    {
     label: "Туба",
     value: "tuba",
-    imgIcons: "",
+    imgIcons: tuba,
    },
    {
     label: "Геликон",
     value: "helicon",
-    imgIcons: "",
+    imgIcons: xylophone,
    },
    {
     label: "Сузафон",
     value: "sousaphone",
-    imgIcons: "",
+    imgIcons: xylophone,
    },
    {
-    label: "Флюгельгорн",
-    value: "flugelhorn",
-    imgIcons: "",
+    label: "Волынка",
+    value: "bagpipes",
+    imgIcons: bagpipes,
    },
    {
-    label: "Корнет",
-    value: "cornet",
-    imgIcons: "",
+    label: "Саксофон",
+    value: "saxophone",
+    imgIcons: saxophone,
    },
   ],
  },
@@ -124,49 +163,49 @@ export const groupeOptions: GroupOptionsType[] = [
   hexColor: "#4a2fff",
   options: [
    {
-    label: "Гитара",
-    value: "guitar",
-    imgIcons: "",
+    label: "Классическая гитара",
+    value: "classical_guitar",
+    imgIcons: classical_guitar,
    },
    {
     label: "Укулеле",
     value: "ukulele",
-    imgIcons: "",
+    imgIcons: ukulele,
    },
    {
     label: "Скрипка",
     value: "violins",
-    imgIcons: "",
+    imgIcons: violin,
    },
    {
     label: "Альта",
     value: "violas",
-    imgIcons: "",
+    imgIcons: alto,
    },
    {
     label: "Контрабас",
     value: "вouble_basses",
-    imgIcons: "",
+    imgIcons: double_bass,
    },
    {
     label: "Виолончели",
     value: "cellos",
-    imgIcons: "",
+    imgIcons: cello,
    },
    {
     label: "Домра",
     value: "domry",
-    imgIcons: "",
+    imgIcons: djembe,
    },
    {
     label: "Балалайка",
     value: "balalaikas",
-    imgIcons: "",
+    imgIcons: balalaika,
    },
    {
     label: "Гусли",
     value: "gusli",
-    imgIcons: "",
+    imgIcons: saxophone,
    },
   ],
  },

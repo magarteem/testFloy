@@ -11,6 +11,11 @@ export interface ISignInFormValues {
 }
 
 //  data Base
+export interface OptionSelectTypeTools {
+ value: string;
+ label: string;
+ imgIcons: string;
+}
 export interface OptionSelectType {
  value: string;
  label: string;
@@ -23,7 +28,7 @@ interface WorkExperience {
 }
 
 //  GroupOptions
-interface OptionsType {
+export interface OptionsType {
  label: string;
  value: string;
  imgIcons: string;
@@ -45,7 +50,7 @@ export interface ISignUpFormValues {
  sity: OptionSelectType | null;
  gender: OptionSelectType | null;
  age: Date | number | null;
- tool: OptionSelectType[];
+ tool: OptionSelectTypeTools[];
  genre: OptionSelectType[];
  work_experience: string | WorkExperience[];
  master: OptionSelectType | null;

@@ -4,6 +4,7 @@ import { BtnUserContact } from "../../../layout/skills/BtnUserContact";
 import { InspirationUser } from "../../../layout/skills/InspirationUser";
 import { SkillsLayout } from "../../../layout/skills/SkillsLayout";
 import { SkillsLayoutGenre } from "../../../layout/skills/SkillsLayoutGenre";
+import { SkillsLayoutTools } from "../../../layout/skills/SkillsLayoutTools";
 import { WorkEducationeCards } from "../../../layout/skills/WorkEducationeCards";
 import { ContactButton } from "../../../ui-elements/button/ContactButton";
 import { NavigateButtonWidthAddBtn } from "../../navigateButton/NavigateButtonWidthAddBtn";
@@ -45,7 +46,7 @@ export const AboutProfile = ({
      </BtnUserContact>
     )}
 
-    <SkillsLayout
+    <SkillsLayoutTools
      skillsDataItem={userDataProfile.skills.tool}
      skillsCategoryTitle="Инструменты"
     />

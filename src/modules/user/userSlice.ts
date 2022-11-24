@@ -9,7 +9,10 @@ import {
  InitialStateUserType,
 } from "./types/userSliceType";
 import { changeProfileThunk } from "./changeProfileThunk";
-import { genreBD } from "../authorization/service/BD";
+import {
+ genreBD,
+ groupeOptions,
+} from "../authorization/service/BD";
 
 //const initialState: InitialStateUserType =
 // tempDataOtherUserProfile[3];
@@ -27,10 +30,10 @@ const initialState: InitialStateUserType = {
  },
  skills: {
   tool: [
-   { label: "Бас", value: "value_23" },
-   { label: "Сопрано", value: "value_42" },
-   { label: "Контральто", value: "value_26" },
-   { label: "Саксофон", value: "saxophone" },
+   groupeOptions[0].options[2],
+   groupeOptions[0].options[3],
+   groupeOptions[1].options[2],
+   groupeOptions[2].options[2],
   ],
   genre: [
    genreBD[3],

@@ -4,7 +4,10 @@ import avatar_1 from "../../../assets/images/avatar_1.webp";
 import avatar_2 from "../../../assets/images/avatar_2.webp";
 import avatar_3 from "../../../assets/images/avatar_3.webp";
 import { InitialStateUserType } from "../types/userSliceType";
-import { genreBD } from "../../authorization/service/BD";
+import {
+ genreBD,
+ groupeOptions,
+} from "../../authorization/service/BD";
 
 export const tempDataOtherUserProfile: InitialStateUserType[] =
  [
@@ -22,18 +25,10 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    },
    skills: {
     tool: [
-     {
-      label: "Гитара",
-      value: "guitar",
-     },
-     {
-      label: "Укулеле",
-      value: "ukulele",
-     },
-     {
-      label: "Саксофон",
-      value: "saxophone",
-     },
+     groupeOptions[2].options[1],
+     groupeOptions[3].options[0],
+     groupeOptions[3].options[9],
+     groupeOptions[2].options[2],
     ],
     genre: [
      genreBD[14],
@@ -69,18 +64,10 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    type_account: { value: "musician", label: "Музыкант" },
    skills: {
     tool: [
-     {
-      label: "Гитара",
-      value: "guitar",
-     },
-     {
-      label: "Туба",
-      value: "tuba",
-     },
-     {
-      label: "Сузафон",
-      value: "sousaphone",
-     },
+     groupeOptions[1].options[2],
+     groupeOptions[2].options[1],
+     groupeOptions[2].options[3],
+     groupeOptions[3].options[4],
     ],
     genre: [
      genreBD[3],
@@ -124,18 +111,10 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    },
    skills: {
     tool: [
-     {
-      label: "Гитара",
-      value: "guitar",
-     },
-     {
-      label: "Саксофон",
-      value: "saxophone",
-     },
-     {
-      label: "Гусли",
-      value: "gusli",
-     },
+     groupeOptions[0].options[0],
+     groupeOptions[1].options[0],
+     groupeOptions[2].options[2],
+     groupeOptions[3].options[1],
     ],
     genre: [
      genreBD[0],
@@ -192,12 +171,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    },
 
    skills: {
-    tool: [
-     {
-      label: "Гитара",
-      value: "guitar",
-     },
-    ],
+    tool: [groupeOptions[0].options[3]],
     genre: [genreBD[3], genreBD[5], genreBD[4]],
     workExperience: [
      {

@@ -1,23 +1,18 @@
-import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { InButton } from "../../common/ui-elements/button/InButton";
-import { Input } from "../../common/ui-elements/Input/Input";
-import { RecoveryPassGetInstructionsFormType } from "./types/type";
-import s from "./style/recoveryPassGetInstructionsForm.module.scss";
 import { useNavigate } from "react-router-dom";
-import { RouteNames } from "../../common/variables/RouteNames";
+import { RouteNames } from "../../core/router/RouteNames";
+import s from "./style/recoveryPassGetInstructionsForm.module.scss";
+import { RecoveryPassGetInstructionsFormType } from "./types/recoveryPasswordType";
+import { Input } from "../../common/ui-elements/Input/Input";
 
 export const RecoveryPassGetInstructionsForm = () => {
  const navigate = useNavigate();
- const goCreateNewPassword = () =>
-  navigate(`${RouteNames.RECOVERY_CREATE_PASSWORD}`, {
-   replace: true,
-  });
 
  const {
   control,
   handleSubmit,
-  formState: { errors, isValid },
+  formState: { errors },
  } = useForm<RecoveryPassGetInstructionsFormType>({
   mode: "onBlur",
   defaultValues: {
@@ -29,8 +24,9 @@ export const RecoveryPassGetInstructionsForm = () => {
   data: RecoveryPassGetInstructionsFormType
  ) => {
   // dispatch(authThunkLogin(data));
-  console.log(data);
-  goCreateNewPassword();
+  navigate(`${RouteNames.RECOVERY_CREATE_PASSWORD}`, {
+   replace: true,
+  });
  };
 
  return (
@@ -39,6 +35,7 @@ export const RecoveryPassGetInstructionsForm = () => {
    onSubmit={handleSubmit(onSubmit)}
   >
    <div className={s.styleInput}>
+    <h2 className={s.title}>Email</h2>
     <Controller
      name="email"
      control={control}
@@ -52,7 +49,6 @@ export const RecoveryPassGetInstructionsForm = () => {
      render={({ field: { onChange } }) => (
       <Input
        type="text"
-       inputLabel="Email"
        placeholder="Email"
        errors={errors.email && errors.email.message}
        errorBackgroundOrange={errors.email}

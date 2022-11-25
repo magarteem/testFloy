@@ -4,7 +4,7 @@ import {
 } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import s from "./style/secondStepFormRegister.module.scss";
-import { RouteNames } from "../../common/variables/RouteNames";
+import { RouteNames } from "../../core/router/RouteNames";
 import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
 import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactSelectElement";
 import { optionsTypeAccount } from "./service/BD";

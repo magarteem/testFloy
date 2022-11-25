@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { FirstToStepsLayout } from "../../common/layout/signInOrOut/FirstToStepsLayout";
-import { RouteNames } from "../../common/variables/RouteNames";
+import { FirstToStepsLayout } from "../../common/layout/firstToStepsLayout/FirstToStepsLayout";
+import { RouteNames } from "./RouteNames";
 import { ThreeStepFormRegister } from "../../modules/authorization/ThreeStepFormRegister";
 import { FirstStepFormRegister } from "../../modules/authorization/FirstStepFormRegister";
 import { SecondStepFormRegister } from "../../modules/authorization/SecondStepFormRegister";
@@ -83,12 +83,10 @@ export const AppRouter = () => {
 
      <Route path={RouteNames.USER} element={<User />}>
       <Route index element={<ProfileInfo />} />
-
       <Route
        path={RouteNames.CHANGE_PROFILE}
        element={<ChangeProfile />}
       />
-
       <Route
        path={RouteNames.SETTINGS}
        element={<Settings />}

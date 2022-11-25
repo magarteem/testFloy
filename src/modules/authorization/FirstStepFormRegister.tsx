@@ -6,11 +6,11 @@ import {
  useFormContext,
 } from "react-hook-form";
 import { InButton } from "../../common/ui-elements/button/InButton";
-import { Input } from "../../common/ui-elements/Input/Input";
 import { useNavigate } from "react-router-dom";
-import { RouteNames } from "../../common/variables/RouteNames";
+import { RouteNames } from "../../core/router/RouteNames";
 import { RegistrationQuestionLink } from "../../common/components/signIn/registrationQuestion/RegistrationQuestionLink";
-import s from "./style/firstFormRegister.module.scss";
+import s from "./style/firstStepFormRegister.module.scss";
+import { Input } from "../../common/ui-elements/Input/Input";
 
 export const FirstStepFormRegister = () => {
  const navigate = useNavigate();
@@ -22,10 +22,10 @@ export const FirstStepFormRegister = () => {
   formState: { errors },
  } = useFormContext();
 
- const nextStepRegister = async (dataField: string[]) => {
-  const result = await trigger(dataField);
+ const nextStepRegister = async (data: string[]) => {
+  const result = await trigger(data);
   if (!result) return;
-  navigate("/register/reg-type-account");
+  navigate(RouteNames.REG_TYPE_ACCOUNT);
  };
 
  const [eye, setEye] = useState(false);
@@ -35,33 +35,22 @@ export const FirstStepFormRegister = () => {
   watches: string,
   eye: boolean,
   toggle: () => void
- ) => {
-  return (
-   watches.length > 0 &&
-   (eye ? (
-    <img
-     onClick={toggle}
-     className={s.see}
-     src={eye_open}
-     alt={eye_open}
-    />
-   ) : (
-    <img
-     onClick={toggle}
-     className={s.see}
-     src={eye_close}
-     alt={eye_close}
-    />
-   ))
+ ) =>
+  watches.length > 0 && (
+   <img
+    onClick={toggle}
+    className={s.see}
+    src={eye ? eye_open : eye_close}
+    alt={eye ? eye_open : eye_close}
+   />
   );
- };
 
  return (
-  //<CommonLoginLayout>
-
   <div className={s.wrapperFirstFormRegister}>
    <div>
     <div className={s.styleInput}>
+     <h2 className={s.title}>Email</h2>
+
      <Controller
       name="email"
       control={control}
@@ -76,7 +65,6 @@ export const FirstStepFormRegister = () => {
        <Input
         inputValue={value}
         type="text"
-        inputLabel="Email"
         placeholder="Выберите Email"
         errors={errors.email && errors.email.message}
         errorBackgroundOrange={errors.email}
@@ -87,6 +75,7 @@ export const FirstStepFormRegister = () => {
     </div>
 
     <div className={s.styleInput}>
+     <h2 className={s.title}>Пароль</h2>
      <Controller
       name="password"
       control={control}
@@ -102,7 +91,6 @@ export const FirstStepFormRegister = () => {
         <Input
          inputValue={value}
          type={eye ? "text" : "password"}
-         inputLabel="Пароль"
          placeholder="Выберите пароль"
          errors={errors.password && errors.password.message}
          errorBackgroundOrange={errors.password}
@@ -131,6 +119,5 @@ export const FirstStepFormRegister = () => {
     questionText="Уже есть аккаунт?"
    />
   </div>
-  //</CommonLoginLayout>
  );
 };

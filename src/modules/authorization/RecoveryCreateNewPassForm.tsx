@@ -1,13 +1,13 @@
 import eye_open from "../../assets/icons/eye_open.webp";
 import eye_close from "../../assets/icons/eye_close.webp";
 import { Controller, useForm } from "react-hook-form";
-import { Input } from "../../common/ui-elements/Input/Input";
-import { RecoveryCreateNewPassFormType } from "./types/type";
 import { useState } from "react";
-import s from "./style/recoveryPassGetInstructionsForm.module.scss";
 import { InButton } from "../../common/ui-elements/button/InButton";
 import { useNavigate } from "react-router-dom";
-import { RouteNames } from "../../common/variables/RouteNames";
+import { RouteNames } from "../../core/router/RouteNames";
+import s from "./style/recoveryPassGetInstructionsForm.module.scss";
+import { RecoveryCreateNewPassFormType } from "./types/recoveryPasswordType";
+import { Input } from "../../common/ui-elements/Input/Input";
 
 export const RecoveryCreateNewPassForm = () => {
  const navigate = useNavigate();
@@ -24,7 +24,7 @@ export const RecoveryCreateNewPassForm = () => {
   watch,
   control,
   handleSubmit,
-  formState: { errors, isValid },
+  formState: { errors },
  } = useForm<RecoveryCreateNewPassFormType>({
   mode: "onBlur",
   defaultValues: {
@@ -60,7 +60,6 @@ export const RecoveryCreateNewPassForm = () => {
 
  const onSubmit = (data: RecoveryCreateNewPassFormType) => {
   // dispatch();
-  console.log(data);
   goLogin();
  };
 
@@ -70,6 +69,7 @@ export const RecoveryCreateNewPassForm = () => {
    onSubmit={handleSubmit(onSubmit)}
   >
    <div className={s.styleInput}>
+    <h2 className={s.title}>Пароль</h2>
     <Controller
      name="password"
      control={control}
@@ -85,7 +85,6 @@ export const RecoveryCreateNewPassForm = () => {
        <Input
         inputValue={watch("password", "")}
         type={eye ? "text" : "password"}
-        inputLabel="Пароль"
         placeholder="Пароль"
         errors={errors.password && errors.password.message}
         errorBackgroundOrange={errors.password}

@@ -30,9 +30,7 @@ export const ChangeProfile = () => {
      </button>
     </div>
 
-    <div className={s.formChangeProfile}>
-     <FormChangeProfile userDataProfile={userDataProfile} />
-    </div>
+    <FormChangeProfile userDataProfile={userDataProfile} />
    </section>
   </>
  );

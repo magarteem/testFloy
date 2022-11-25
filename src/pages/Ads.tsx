@@ -1,13 +1,12 @@
 import { ChangeEvent, useState } from "react";
-import { Input } from "../common/ui-elements/Input/Input";
 import filter from "../assets/icons/filter.webp";
 import search from "../assets/icons/search.webp";
 import { SwiperSlider } from "../modules/ads/SwiperSlider";
 import { Timeline } from "../common/layout/timeline/Timeline";
 import { useAppSelector } from "../core/redux/app/hooks";
-import s from "./styles/ads.module.scss";
-import { NavigateButtonWidthAddBtn } from "../common/components/navigateButton/NavigateButtonWidthAddBtn";
 import { PopUpNavigateGradient } from "../common/components/navigateButton/PopUpNavigateGradient";
+import s from "./styles/ads.module.scss";
+import { Input } from "../common/ui-elements/Input/Input";
 
 export const Ads = () => {
  const [impValue, setImpValue] = useState("");
@@ -33,7 +32,6 @@ export const Ads = () => {
     <div className={s.search}>
      <Input
       type="text"
-      inputLabel=""
       inputValue={impValue}
       placeholder="Поиск"
       onChange={changeImpValue}
@@ -57,7 +55,6 @@ export const Ads = () => {
     </div>
    </section>
 
-   {/*<NavigateButtonWidthAddBtn />*/}
    <PopUpNavigateGradient />
   </>
  );

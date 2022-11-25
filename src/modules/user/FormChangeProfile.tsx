@@ -1,10 +1,8 @@
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
-import { CustomSelectCheckboxGenre } from "../../common/components/signIn/CustomSelectCheckbox/CustomSelectCheckboxGenre";
-import { CustomSelectCheckboxTools } from "../../common/components/signIn/CustomSelectCheckbox/CustomSelectCheckboxTools";
-import { Input } from "../../common/ui-elements/Input/Input";
 import { InputLabel } from "../../common/ui-elements/Input/InputLabel";
+import { Input } from "../../common/ui-elements/Input/Input";
 import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactSelectElement";
 import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker/ReactDatePicker";
 import { TextAreaElement } from "../../common/ui-elements/textarea/TextAreaElement";
@@ -17,13 +15,15 @@ import {
  sityBD,
  skillBD,
 } from "../authorization/service/BD";
-import { ISignUpFormValues } from "../authorization/types/type";
+import { ISignUpFormValues } from "../authorization/types/authType";
 import { changeProfileThunk } from "./changeProfileThunk";
 import s from "./style/formChangeProfile.module.scss";
 import {
  ChangeProfileFormValues,
  InitialStateUserType,
 } from "./types/userSliceType";
+import { CustomReactSelectGenre } from "../../common/components/signIn/customReactSelectGenre/CustomReactSelectGenre";
+import { CustomReactSelectTools } from "../../common/components/signIn/customReactSelectTools/CustomReactSelectTools";
 
 interface FormChangeProfileType {
  userDataProfile: InitialStateUserType;
@@ -73,8 +73,8 @@ export const FormChangeProfile = ({
    onSubmit={handleSubmit(onSubmit)}
    className={s.formChangeProfile}
   >
-   {/*  */}
    <div className={s.styleInput}>
+    <InputLabel titleSelect="Имя" required />
     <Controller
      name="name_field"
      control={control}
@@ -88,20 +88,17 @@ export const FormChangeProfile = ({
      render={({
       field: { onChange, value, ref, ...field },
      }) => (
-      <>
-       <InputLabel titleSelect="Имя" required />
-       <div className={s.wrapperBlockInput}>
-        <Input
-         inputValue={value}
-         placeholder="Александр Ковальчук "
-         onChange={onChange}
-         errors={
-          errors.name_field && errors.name_field.message
-         }
-         {...field}
-        />
-       </div>
-      </>
+      <div className={s.wrapperBlockInput}>
+       <Input
+        inputValue={value}
+        placeholder="Александр Ковальчук "
+        onChange={onChange}
+        errors={
+         errors.name_field && errors.name_field.message
+        }
+        {...field}
+       />
+      </div>
      )}
     />
    </div>
@@ -192,7 +189,7 @@ export const FormChangeProfile = ({
      render={({
       field: { onChange, ref, value, ...field },
      }) => (
-      <CustomSelectCheckboxTools
+      <CustomReactSelectTools
        ItemRef={ref}
        value={value}
        placeholder="Выбрать"
@@ -216,7 +213,7 @@ export const FormChangeProfile = ({
      render={({
       field: { onChange, value, ref, ...field },
      }) => (
-      <CustomSelectCheckboxGenre
+      <CustomReactSelectGenre
        ItemRef={ref}
        value={value}
        placeholder="Выбрать"

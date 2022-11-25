@@ -1,9 +1,7 @@
 @import "src/styles/variable";
 
-//form {
 .wrapperFirstFormRegister {
- display: flex;
- flex-direction: column;
+ @include flex_direction_column_position();
 
  justify-content: space-between;
  height: 100%;
@@ -13,6 +11,15 @@
  .styleInput {
   width: 100%;
   margin-top: 20px;
+
+  .title {
+   font-family: "Gilroy_Bold", sans-serif;
+   font-size: 24px;
+   font-weight: 700;
+   display: block;
+   color: $white;
+   margin-bottom: 0.5rem;
+  }
 
   input {
    height: 50px;
@@ -29,8 +36,7 @@
  }
 
  .styleBtn {
-  display: flex;
-  justify-content: center;
+  @include flex_horizont_position();
   height: 52px;
   width: 100%;
   margin-top: 40px;
@@ -43,30 +49,3 @@
   cursor: pointer;
  }
 }
-//}
-
-//.sign_in {
-// color: $white;
-// position: fixed;
-// bottom: 0;
-// display: flex;
-// justify-content: center;
-// margin-bottom: 40px;
-
-// @media (max-height: 450px) {
-//  position: static;
-// }
-
-// span {
-//  padding-right: 8px;
-//  color: #ebeceb;
-//  letter-spacing: 2px;
-// }
-
-// a {
-//  color: $white;
-//  background-color: inherit;
-//  font-size: 16px;
-//  font-weight: 700;
-// }
-//}

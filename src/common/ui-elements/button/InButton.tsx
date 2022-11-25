@@ -10,6 +10,7 @@ export const InButton = ({
  textButton,
  isValidInButton,
  onClick,
+ ...props
 }: PropsButton) => {
  return (
   <button
@@ -17,6 +18,7 @@ export const InButton = ({
    type="submit"
    disabled={isValidInButton}
    onClick={onClick}
+   {...props}
   >
    {textButton}
   </button>

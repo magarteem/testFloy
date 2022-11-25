@@ -1,11 +1,11 @@
-import vk from "../../../assets/icons/vk.webp";
-import yandex from "../../../assets/icons/yandex.webp";
+import vk from "../../../../assets/icons/vk.webp";
+import yandex from "../../../../assets/icons/yandex.webp";
 import { Link } from "react-router-dom";
-import s from "./styles/loginSocialNetwork.module.scss";
+import s from "./loginSocial.module.scss";
 
-export const LoginSocialNetwork = () => {
+export const LoginSocial = () => {
   return (
-    <div className={s.loginSocialNetwork}>
+    <div className={s.loginSocial}>
       <h2>ВОЙТИ ЧЕРЕЗ</h2>
 
       <div className={s.linkLogin}>

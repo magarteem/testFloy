@@ -2,8 +2,7 @@ import { ChangeEvent, ReactNode } from "react";
 import cn from "classnames";
 import s from "./input.module.scss";
 
-interface InputType {
- inputLabel?: string;
+interface InputTypeNew {
  type?: string;
  errors?: any;
  errorBackgroundOrange?: any;
@@ -16,46 +15,42 @@ interface InputType {
 }
 export const Input = ({
  children,
- inputLabel,
  type = "text",
  errors,
  errorBackgroundOrange,
  inputValue,
  placeholder,
- onChange,
  ItemRef,
+ onChange,
  onClick,
  ...props
-}: InputType) => {
+}: InputTypeNew) => {
  return (
   <div className={s.wrapperInput}>
-   <label>{inputLabel}</label>
-
-   <div className={s.inpFieldsRelative}>
-    <input
+   <input
+    className={cn({
+     [s.error]: errors,
+     [s.errorBackgroundOrange]: errorBackgroundOrange,
+    })}
+    autoComplete="off"
+    type={type}
+    value={inputValue}
+    placeholder={placeholder}
+    onChange={onChange}
+    onClick={onClick}
+    ref={ItemRef}
+    {...props}
+   />
+   {children}
+   {errors && (
+    <span
      className={cn({
-      [s.error]: errors,
       [s.errorBackgroundOrange]: errorBackgroundOrange,
      })}
-     type={type}
-     value={inputValue}
-     placeholder={placeholder}
-     onChange={onChange}
-     onClick={onClick}
-     ref={ItemRef}
-     {...props}
-    />
-    {children}
-    {errors && (
-     <span
-      className={cn({
-       [s.errorBackgroundOrange]: errorBackgroundOrange,
-      })}
-     >
-      {errors}
-     </span>
-    )}
-   </div>
+    >
+     {errors}
+    </span>
+   )}
   </div>
  );
 };

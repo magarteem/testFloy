@@ -12,9 +12,7 @@
   width: 100%;
 
   a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex_position();
     width: 25%;
     height: 100%;
     cursor: pointer;

@@ -1,14 +1,15 @@
-import { ISignUpFormValues } from "../../authorization/types/type";
+import { ISignUpFormValues } from "../../authorization/types/authType";
 
-export interface OptionsTypeTools {
+export interface DataSelectType {
  label: string;
  value: string;
+}
+
+export interface ToolsSliceType extends DataSelectType {
  imgIcons: string;
 }
-export interface OptionsTypeTool {
- label: string;
- value: string;
- hexColor?: string;
+export interface GenreSliceType extends DataSelectType {
+ hexColor: string;
 }
 
 export interface EducationType {
@@ -18,10 +19,10 @@ export interface EducationType {
 }
 
 export interface SkillsType {
- tool: OptionsTypeTools[];
- genre: OptionsTypeTool[];
+ tool: ToolsSliceType[];
+ genre: GenreSliceType[];
  workExperience: string | EducationType[];
- master: OptionsTypeTool | null;
+ master: DataSelectType | null;
  education: string | EducationType[];
  inspiration: string[];
 }
@@ -30,16 +31,15 @@ export interface InitialStateUserType {
  id_user: string;
  name: string;
  email: string;
- sity: OptionsTypeTool | null;
- age: Date | number | null;
+ sity: DataSelectType | null;
+ age: number | null;
  img_upload: string;
- gender: OptionsTypeTool | null;
- type_account: OptionsTypeTool;
+ gender: DataSelectType | null;
+ type_account: DataSelectType;
  skills: SkillsType;
- private_settings: OptionsTypeTool | null;
+ private_settings: DataSelectType | null;
 }
 
-//
 export type ChangeProfileFormValues = Omit<
  ISignUpFormValues,
  "email" | "password" | "img_upload" | "type_account"

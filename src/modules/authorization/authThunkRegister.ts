@@ -1,16 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { ISignUpFormValues } from "./types/authType";
 
 export const authThunkRegister = createAsyncThunk<
- any,
- any,
- { rejectValue: any }
+  string,
+  ISignUpFormValues,
+  { rejectValue: string }
 >(
- `authorization/sign-Up`,
- async function (data, { rejectWithValue }) {
-  try {
-   return data;
-  } catch (error) {
-   return rejectWithValue("error");
+  `authorization/sign-Up`,
+  async function (data, { rejectWithValue }) {
+    try {
+      return JSON.stringify(data)
+    } catch (error) {
+      return rejectWithValue("error");
+    }
   }
- }
 );

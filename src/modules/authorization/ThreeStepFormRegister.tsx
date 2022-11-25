@@ -15,13 +15,13 @@ import {
  skillBD,
 } from "./service/BD";
 import { TextAreaElement } from "../../common/ui-elements/textarea/TextAreaElement";
-import { CustomSelectCheckboxTools } from "../../common/components/signIn/CustomSelectCheckbox/CustomSelectCheckboxTools";
-import { Input } from "../../common/ui-elements/Input/Input";
 import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
 import { ArrowBtnStepsBack } from "../../common/components/navigateButton/ArrowBtnStepsBack";
 import s from "./style/threeStepFormRegister.module.scss";
-import { CustomSelectCheckboxGenre } from "../../common/components/signIn/CustomSelectCheckbox/CustomSelectCheckboxGenre";
 import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker/ReactDatePicker";
+import { Input } from "../../common/ui-elements/Input/Input";
+import { CustomReactSelectGenre } from "../../common/components/signIn/customReactSelectGenre/CustomReactSelectGenre";
+import { CustomReactSelectTools } from "../../common/components/signIn/customReactSelectTools/CustomReactSelectTools";
 
 export const ThreeStepFormRegister = () => {
  const {
@@ -39,6 +39,7 @@ export const ThreeStepFormRegister = () => {
 
    <div className={s.main}>
     <div className={s.styleInput}>
+     <InputLabel titleSelect="Имя" required />
      <Controller
       name="name_field"
       control={control}
@@ -50,8 +51,7 @@ export const ThreeStepFormRegister = () => {
        },
       }}
       render={({ field: { onChange, ref, ...field } }) => (
-       <>
-        <InputLabel titleSelect="Имя" required />
+       <div className={s.sizeInput}>
         <Input
          ItemRef={ref}
          placeholder="Ваше имя"
@@ -61,7 +61,7 @@ export const ThreeStepFormRegister = () => {
          }
          {...field}
         />
-       </>
+       </div>
       )}
      />
     </div>
@@ -71,9 +71,6 @@ export const ThreeStepFormRegister = () => {
      <Controller
       name="img_upload"
       control={control}
-      // rules={{
-      //   required: "Обязательное поле",
-      // }}
       render={({ field: { onChange, ...field } }) => (
        <UploadPhoto register={register} />
       )}
@@ -161,7 +158,7 @@ export const ThreeStepFormRegister = () => {
        required: "Обязательное поле",
       }}
       render={({ field: { onChange, ref, ...field } }) => (
-       <CustomSelectCheckboxTools
+       <CustomReactSelectTools
         ItemRef={ref}
         placeholder="Выбрать"
         options={groupeOptions}
@@ -182,7 +179,7 @@ export const ThreeStepFormRegister = () => {
        required: "Обязательное поле",
       }}
       render={({ field: { onChange, ref, ...field } }) => (
-       <CustomSelectCheckboxGenre
+       <CustomReactSelectGenre
         ItemRef={ref}
         placeholder="Выбрать"
         options={genreBD}
@@ -249,7 +246,10 @@ export const ThreeStepFormRegister = () => {
     </div>
 
     <div className={s.selectField}>
-     <InputLabel titleSelect="Настройки приватности анкеты" />
+     <InputLabel
+      required
+      titleSelect="Настройки приватности анкеты"
+     />
      <Controller
       name="private_settings"
       control={control}

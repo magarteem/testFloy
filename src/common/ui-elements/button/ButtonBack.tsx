@@ -1,4 +1,4 @@
-import React, { MouseEvent } from "react";
+import { MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./button.module.scss";
 

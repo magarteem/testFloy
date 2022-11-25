@@ -3,13 +3,13 @@ import eye_open from "../../assets/icons/eye_open.webp";
 import eye_close from "../../assets/icons/eye_close.webp";
 import { Controller, useForm } from "react-hook-form";
 import { InButton } from "../../common/ui-elements/button/InButton";
-import { Input } from "../../common/ui-elements/Input/Input";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../core/redux/app/hooks";
 import { authThunkLogin } from "./authThunkLogin";
-import { ISignInFormValues } from "./types/type";
-import { RouteNames } from "../../common/variables/RouteNames";
+import { ISignInFormValues } from "./types/authType";
+import { RouteNames } from "../../core/router/RouteNames";
 import s from "./style/formLogin.module.scss";
+import { Input } from "../../common/ui-elements/Input/Input";
 
 export const FormLogin = () => {
  const dispatch = useAppDispatch();
@@ -42,6 +42,7 @@ export const FormLogin = () => {
    onSubmit={handleSubmit(onSubmit)}
   >
    <div className={s.styleInput}>
+    <h2 className={s.title}>Email</h2>
     <Controller
      name="email"
      control={control}
@@ -55,7 +56,6 @@ export const FormLogin = () => {
      render={({ field: { onChange } }) => (
       <Input
        type="text"
-       inputLabel="Email"
        placeholder="Email"
        errors={errors.email && errors.email.message}
        errorBackgroundOrange={errors.email}
@@ -64,7 +64,9 @@ export const FormLogin = () => {
      )}
     />
    </div>
+
    <div className={s.styleInput}>
+    <h2 className={s.title}>Пароль</h2>
     <Controller
      name="password"
      control={control}
@@ -72,28 +74,19 @@ export const FormLogin = () => {
      render={({ field: { onChange } }) => (
       <Input
        type={eye ? "text" : "password"}
-       inputLabel="Пароль"
        placeholder="Password"
        errors={errors.password && errors.password.message}
        errorBackgroundOrange={errors.password}
        onChange={onChange}
       >
-       {watch("password").length > 0 &&
-        (eye ? (
-         <img
-          onClick={toggleEye}
-          className={s.see}
-          src={eye_open}
-          alt={eye_open}
-         />
-        ) : (
-         <img
-          onClick={toggleEye}
-          className={s.see}
-          src={eye_close}
-          alt={eye_close}
-         />
-        ))}
+       {watch("password").length > 0 && (
+        <img
+         onClick={toggleEye}
+         className={s.see}
+         src={eye ? eye_open : eye_close}
+         alt={eye ? eye_open : eye_close}
+        />
+       )}
       </Input>
      )}
     />

@@ -26,18 +26,28 @@
    gap: 8px;
 
    .item {
-    color: #5b9232;
-    //font-weight: 700;
+    color: #1a1c18;
     font-size: 14px;
-    background: rgba(185, 239, 112, 0.1);
-    border: 1px solid #5b9232;
-    border-radius: 16px;
+    background: linear-gradient(
+      0deg,
+      rgba(43, 108, 0, 0.08),
+      rgba(43, 108, 0, 0.08)
+     ),
+     #fdfdf5;
+    border: 1px solid #66784e;
+    border-radius: 30px;
     padding: 6px 12px;
 
     img {
      margin-right: 6px;
     }
    }
+
+   .itemHidden {
+    cursor: pointer;
+    background: none;
+   }
+
    .textNotes {
     font-weight: 400;
     font-size: 16px;

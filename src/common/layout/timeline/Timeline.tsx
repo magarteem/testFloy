@@ -1,6 +1,6 @@
-import { TimelineCards } from '../../../core/redux/types/adsSliceType';
-import { Gallery } from '../../../modules/ads/Gallery';
-import s from './timeline.module.scss';
+import { TimelineCards } from "../../../modules/ads/types/adsSliceType";
+import { Gallery } from "../../../modules/ads/Gallery";
+import s from "./timeline.module.scss";
 
 interface TimelineType {
   elem: TimelineCards;
@@ -12,11 +12,7 @@ export const Timeline: React.FC<TimelineType> = ({ elem }) => {
       <div className={s.titleCard}>
         <div className={s.infoUser}>
           <div className={s.personData}>
-            {elem.avatar ? (
-              <img src={elem.avatar} alt={elem.avatar} />
-            ) : (
-              <div className={s.noName}>{elem.name[0]}</div>
-            )}
+            {elem.avatar ? <img src={elem.avatar} alt={elem.avatar} /> : <div className={s.noName}>{elem.name[0]}</div>}
             <h3>{elem.name}</h3>
           </div>
           <span className={s.time}>{elem.timeAgo}</span>

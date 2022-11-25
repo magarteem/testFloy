@@ -1,9 +1,7 @@
 @import "src/styles/variable";
 
 .formLogin {
- display: flex;
- flex-direction: column;
- align-items: center;
+ @include flex_direction_column_align_center_position();
  width: 100%;
  z-index: 2;
  height: 100%;
@@ -11,6 +9,15 @@
  .styleInput {
   width: 100%;
   margin-top: 20px;
+
+  .title {
+   font-family: "Gilroy_Bold", sans-serif;
+   font-size: 24px;
+   font-weight: 700;
+   display: block;
+   color: $white;
+   margin-bottom: 0.5rem;
+  }
 
   input {
    height: 50px;
@@ -27,8 +34,7 @@
  }
 
  .styleBtn {
-  display: flex;
-  justify-content: center;
+  @include flex_horizont_position();
   height: 52px;
   width: 100%;
   margin-top: 40px;

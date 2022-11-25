@@ -1,14 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ISignInFormValues } from "./types/type";
+import { ISignInFormValues } from "./types/authType";
 
 export const authThunkLogin = createAsyncThunk<
   string,
   ISignInFormValues,
-  { rejectValue: any }
->(`authorization/sign-In`, async function (data, { rejectWithValue }) {
-  try {
-    return JSON.stringify(data)
-  } catch (error) {
-    return rejectWithValue("error");
-  }
-});
+  { rejectValue: string }
+>(`authorization/sign-In`,
+  async function (data, { rejectWithValue }) {
+    try {
+      return JSON.stringify(data)
+    } catch (error) {
+      return rejectWithValue(`#any string ??? ${error}`);
+    }
+  });

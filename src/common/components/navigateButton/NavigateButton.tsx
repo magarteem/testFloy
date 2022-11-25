@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { NavLink } from "react-router-dom";
-import { RouteNames } from "../../variables/RouteNames";
+import { RouteNames } from "../../../core/router/RouteNames";
 import { ReactComponent as Home } from "../../../assets/icons/Home.svg";
 import { ReactComponent as Notification } from "../../../assets/icons/Notification.svg";
 import { ReactComponent as Ads } from "../../../assets/icons/Ads.svg";
@@ -13,8 +13,7 @@ interface LinkActiveType {
 }
 
 export const NavigateButton = () => {
-  const setActive = ({ isActive }: LinkActiveType) =>
-    cn({ [s.active]: isActive });
+  const setActive = ({ isActive }: LinkActiveType) => cn({ [s.active]: isActive });
 
   return (
     <div className={s.widthAddButton}>
@@ -34,11 +33,7 @@ export const NavigateButton = () => {
         <Chats className={s.icon} />
       </NavLink> */}
 
-      <NavLink
-        className={setActive}
-        to={RouteNames.NOTIFICATION}
-        aria-label="notification"
-      >
+      <NavLink className={setActive} to={RouteNames.NOTIFICATION} aria-label="notification">
         <Notification className={s.icon} />
       </NavLink>
     </div>

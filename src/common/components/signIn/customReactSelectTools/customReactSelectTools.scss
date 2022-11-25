@@ -65,6 +65,17 @@
  }
 
  //
+ &__value-container {
+  padding: 12px !important;
+ }
+ &__multi-value.moreTools {
+  background-color: #fdfdf5 !important;
+
+  .customs_select_list_prefix__multi-value__remove {
+   display: none;
+  }
+ }
+
  &__menu-list &__option {
   font-weight: 700;
   height: 37px;
@@ -73,10 +84,22 @@
 
  &__multi-value {
   //display: none !important;
+
+  //color: #5b9232;
+  background: linear-gradient(
+    0deg,
+    rgba(43, 108, 0, 0.08),
+    rgba(43, 108, 0, 0.08)
+   ),
+   #fdfdf5 !important;
+
+  border: 1px solid #5b9232;
+  border-radius: 30px !important;
+  padding: 3px 8px;
  }
 
  &__multi-value__label {
-  font-size: 16px !important;
+  font-size: 14px !important;
   display: flex;
   align-items: center;
 
@@ -86,7 +109,12 @@
  }
 
  &__multi-value__remove {
-  display: none !important;
+  //display: none !important;
+  color: #43483e;
+  svg {
+   width: 18px;
+   height: 18px;
+  }
  }
 }
 

@@ -1,4 +1,4 @@
-interface SwiperData {
+export interface SwiperData {
   text: string;
   urlImg: string;
   link: string;

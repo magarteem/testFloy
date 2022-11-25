@@ -6,18 +6,16 @@
   min-height: 175px;
 
   .positionImg {
+    @include flex_horizont_position();
     position: relative;
-    display: flex;
-    justify-content: center;
     height: 130px;
     width: 100%;
 
     .backgroundImg {
+      @include flex_horizont_position();
       position: absolute;
       width: 100%;
       height: 100%;
-      display: flex;
-      justify-content: center;
       overflow: hidden;
 
       .reliativ130 {

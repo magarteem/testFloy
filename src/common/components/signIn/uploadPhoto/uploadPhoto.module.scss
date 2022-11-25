@@ -1,6 +1,7 @@
+@import "src/styles/variable";
+
 .uploadPhoto {
-  display: flex;
-  flex-direction: column;
+  @include flex_direction_column_position();
 
   p {
     cursor: pointer;

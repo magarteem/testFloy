@@ -218,4 +218,45 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
     label: "Публичная анкета",
    },
   },
+  {
+   id_user: "ulia",
+   name: "Юлия Андреевна",
+   email: "vova_test@mail.ru",
+   sity: { value: "magadan", label: "Магадан" },
+   age: 952078480000,
+   img_upload: "",
+   gender: { value: "male", label: "Мужской" },
+   type_account: {
+    value: "rehearsal-point",
+    label: "Репетиционная точка",
+   },
+   skills: {
+    tool: [
+     groupeOptions[0].options[2],
+     groupeOptions[0].options[3],
+     groupeOptions[1].options[2],
+     groupeOptions[2].options[2],
+    ],
+    genre: [
+     genreBD[3],
+     genreBD[5],
+     genreBD[6],
+     genreBD[8],
+     genreBD[11],
+    ],
+    workExperience:
+     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.",
+    master: null,
+    education: "Российская Академия музыки им. Гнесеных",
+    inspiration: [
+     Inspiration_1,
+     Inspiration_2,
+     Inspiration_1,
+    ],
+   },
+   private_settings: {
+    value: "public-questionnaire",
+    label: "Публичная анкета",
+   },
+  },
  ];

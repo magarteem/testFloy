@@ -5,9 +5,12 @@ import Select, {
  OptionProps,
  StylesConfig,
 } from "react-select";
-import "./customSelectCheckboxGenre.scss";
+import "./customReactSelectGenre.scss";
 import cn from "classnames";
-import { OptionSelectType } from "../../../../modules/authorization/types/type";
+import {
+ GenreType,
+ OptionSelectType,
+} from "../../../../modules/authorization/types/authType";
 import { hexToRGB } from "../../../../modules/authorization/helpers/convertHexToRgb";
 
 const MultiValueLabel = (props: MultiValueGenericProps) => {
@@ -48,7 +51,7 @@ const Option = (props: OptionProps) => {
  );
 };
 
-interface CustomSelectCheckboxGenreType {
+interface CustomReactSelectGenreType {
  value?: any;
  placeholder: string;
  options: OptionSelectType[];
@@ -56,7 +59,7 @@ interface CustomSelectCheckboxGenreType {
  errors: any;
  ItemRef: any;
 }
-export const CustomSelectCheckboxGenre = ({
+export const CustomReactSelectGenre = ({
  value,
  placeholder,
  options,
@@ -64,39 +67,37 @@ export const CustomSelectCheckboxGenre = ({
  errors,
  ItemRef,
  ...props
-}: CustomSelectCheckboxGenreType) => {
- const customStyles: StylesConfig<OptionSelectType, true> =
-  {
-   container: (provided) =>
-    errors && {
-     ...provided,
-     border: `1.5px solid #E95050`,
-    },
-   multiValue: (
-    provided,
-    { data, isDisabled, isFocused }
-   ) => ({
+}: CustomReactSelectGenreType) => {
+ const customStyles: StylesConfig<GenreType, true> = {
+  container: (provided) =>
+   errors && {
     ...provided,
-    background: "inherit",
-    fontWeight: 500,
-    backgroundColor: `${hexToRGB(
-     data.hexColor,
-     "100%"
-    )} !important`,
-    borderRadius: "30px",
-    padding: "5px 6px !important",
-   }),
-   multiValueLabel: (
-    provided,
-    { data, isDisabled, isFocused }
-   ) => {
-    return {
-     ...provided,
-     color: "white",
-     // backgroundColor: `${hexToRGB(data.hexColor, "40%")}`,
-    };
+    border: `1.5px solid #E95050`,
    },
-  };
+  multiValue: (
+   provided,
+   { data, isDisabled, isFocused }
+  ) => ({
+   ...provided,
+   background: "inherit",
+   fontWeight: 500,
+   backgroundColor: `${hexToRGB(
+    data.hexColor,
+    "100%"
+   )} !important`,
+   borderRadius: "30px",
+   padding: "5px 6px !important",
+  }),
+  multiValueLabel: (
+   provided,
+   { data, isDisabled, isFocused }
+  ) => {
+   return {
+    ...provided,
+    color: "white",
+   };
+  },
+ };
 
  return (
   <div className="wrapperSelect">

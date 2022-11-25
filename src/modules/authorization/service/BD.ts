@@ -1,7 +1,7 @@
 import {
- GroupOptionsType,
+ GenreType,
  OptionSelectType,
-} from "../types/type";
+} from "../types/authType";
 import vocals from "../../../assets/icons/iconsTools/vocals.webp";
 import classical_guitar from "../../../assets/icons/iconsTools/classical_guitar.webp";
 import ukulele from "../../../assets/icons/iconsTools/ukulele.webp";
@@ -21,6 +21,7 @@ import organ from "../../../assets/icons/iconsTools/organ.webp";
 import bagpipes from "../../../assets/icons/iconsTools/bagpipes.webp";
 import piano from "../../../assets/icons/iconsTools/piano.webp";
 import synthesizer from "../../../assets/icons/iconsTools/synthesizer.webp";
+import { GroupOptionsType } from "../types/selectOptionsType";
 
 export const optionsTypeAccount: OptionSelectType[] = [
  { value: "musician", label: "Музыкант" },
@@ -211,7 +212,7 @@ export const groupeOptions: GroupOptionsType[] = [
  },
 ];
 
-export const genreBD: OptionSelectType[] = [
+export const genreBD: GenreType[] = [
  {
   value: "classical",
   label: "Классическая",

@@ -168,6 +168,10 @@ export const FormChangeProfile = ({
        placeholder="Дата рождения"
        value={value}
        onChange={onChange}
+       // переделать в ms
+       // onChange={(date) => {
+       //  onChange(new Date(date).getTime());
+       // }}
        errors={errors.age}
        {...field}
       />
@@ -313,7 +317,7 @@ export const FormChangeProfile = ({
    <div className={s.btnFormWrapper}>
     <BtnInFormSaveCancel
      textCancelButton="Отмена"
-     textButton="Cохранить"
+     textButton="Сохранить"
     />
    </div>
   </form>

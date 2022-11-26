@@ -29,6 +29,15 @@ const userSlice = createSlice({
      state: InitialStateUserType,
      actions: PayloadAction<ChangeProfileFormValues>
     ) => {
+     // return {
+     //  ...state,
+     //  ...actions,
+     //  name: actions.payload.name_field,
+     //  skills: {
+     //   ...state.skills,
+     //   workExperience: actions.payload.work_experience,
+     //  },
+     // };
      state.name = actions.payload.name_field;
      state.age = actions.payload.age;
      state.sity = actions.payload.sity;

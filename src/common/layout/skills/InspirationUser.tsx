@@ -1,4 +1,4 @@
-import s from "./skillsLayout.module.scss";
+import s from "./skillsLayoutMaster.module.scss";
 
 interface InspirationType {
  inspiration: string[];

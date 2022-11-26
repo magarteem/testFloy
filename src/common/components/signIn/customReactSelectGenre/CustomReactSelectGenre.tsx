@@ -13,19 +13,74 @@ import {
 } from "../../../../modules/authorization/types/authType";
 import { hexToRGB } from "../../../../modules/authorization/helpers/convertHexToRgb";
 
-const MultiValueLabel = (props: MultiValueGenericProps) => {
- const Mval = components.MultiValueLabel;
- let obj = props.selectProps.value;
- //@ts-ignore
- const lastItemObj = obj[obj.length - 1].value;
- const count = props.data.value;
+//const MultiValueLabel = (props: MultiValueGenericProps) => {
+// const Mval = components.MultiValueLabel;
+// let obj = props.selectProps.value;
+// //@ts-ignore
+// const lastItemObj = obj[obj.length - 1].value;
+// const count = props.data.value;
 
- return (
-  <Mval {...props}>
+// return (
+//  <Mval {...props}>
+//   {props.children}
+//   <span>{lastItemObj !== count && ","}</span>
+//  </Mval>
+// );
+//};
+
+const CustomMultiValue = (
+ props: any,
+ showChips: boolean,
+ toggleShow: (prev: any) => void
+) => {
+ const getValueSelected = props.getValue().length;
+ const limitedShowChips = 5;
+ const defaultChips = (
+  <components.MultiValue {...props}>
+   <img
+    src={props.data.imgIcons}
+    alt={props.data.imgIcons}
+   />
    {props.children}
-   <span>{lastItemObj !== count && ","}</span>
-  </Mval>
+  </components.MultiValue>
  );
+
+ if (showChips && getValueSelected < limitedShowChips + 1)
+  return defaultChips;
+ else if (showChips) {
+  if (getValueSelected !== props.index + 1)
+   return defaultChips;
+  else {
+   return (
+    <>
+     {defaultChips}
+     <span onClick={toggleShow} onTouchEnd={toggleShow}>
+      <components.MultiValue
+       className="moreTools"
+       {...props}
+      >
+       Скрыть
+      </components.MultiValue>
+     </span>
+    </>
+   );
+  }
+ }
+
+ if (props.index < limitedShowChips) return defaultChips;
+ else if (props.index === limitedShowChips) {
+  return (
+   <span
+    className="moreTools"
+    onClick={toggleShow}
+    onTouchEnd={toggleShow}
+   >
+    <components.MultiValue className="moreTools" {...props}>
+     Ещё {getValueSelected - limitedShowChips}
+    </components.MultiValue>
+   </span>
+  );
+ } else return null;
 };
 
 const Option = (props: OptionProps) => {
@@ -99,6 +154,10 @@ export const CustomReactSelectGenre = ({
   },
  };
 
+ const [showChips, setShowChips] = useState(false);
+ const toggleShow = (e: any) =>
+  setShowChips((prev: boolean) => !prev);
+
  return (
   <div className="wrapperSelect">
    <Select
@@ -112,7 +171,8 @@ export const CustomReactSelectGenre = ({
     value={value}
     components={{
      Option,
-     // MultiValueLabel,
+     MultiValue: (props) =>
+      CustomMultiValue(props, showChips, toggleShow),
     }}
     isMulti
     styles={customStyles}

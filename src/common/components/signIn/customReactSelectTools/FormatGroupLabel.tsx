@@ -4,23 +4,30 @@ import { GroupOptionsType } from "../../../../modules/authorization/types/select
 import s from "./formatGroupLabel.module.scss";
 
 interface FormatGroupLabelType {
-  data: GroupOptionsType;
+ data: GroupOptionsType;
 }
 
-export const FormatGroupLabel = ({ data }: FormatGroupLabelType) => {
-  const ref = useRef<HTMLDivElement | null>(null);
+export const FormatGroupLabel = ({
+ data,
+}: FormatGroupLabelType) => {
+ const ref = useRef<HTMLDivElement | null>(null);
 
-  const showList = () => {
-    let parent = ref.current?.parentElement?.parentElement?.parentElement;
-    parent?.classList.toggle("menuListGroupeOpen");
-  };
+ const showList = () => {
+  let parent =
+   ref.current?.parentElement?.parentElement?.parentElement;
+  parent?.classList.toggle("menuListGroupeOpen");
+ };
 
-  return (
-    <div onClick={showList} ref={ref} className={s.formatGroupLabel}>
-      <div className={s.arrowSelectImg}>
-        <img src={arrowSelect} alt={arrowSelect} />
-      </div>
-      <span>{data.label}</span>
-    </div>
-  );
+ return (
+  <div
+   onClick={showList}
+   ref={ref}
+   className={s.formatGroupLabel}
+  >
+   <div className={s.arrowSelectImg}>
+    <img src={arrowSelect} alt={arrowSelect} />
+   </div>
+   <span>{data.label}</span>
+  </div>
+ );
 };

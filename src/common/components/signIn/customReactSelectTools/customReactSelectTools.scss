@@ -1,3 +1,5 @@
+@import "src/styles/variable";
+
 .customs_select_container {
  font-weight: 500;
  border-radius: 10px;
@@ -65,11 +67,12 @@
  }
 
  //
+
  &__value-container {
   padding: 12px !important;
  }
  &__multi-value.moreTools {
-  background-color: #fdfdf5 !important;
+  background: none !important;
 
   .customs_select_list_prefix__multi-value__remove {
    display: none;
@@ -80,19 +83,21 @@
   font-weight: 700;
   height: 37px;
   padding-left: 16px;
+
+  img {
+   @media (max-width: $mediaMaxWidth340px) {
+    height: 22px;
+   }
+  }
  }
 
  &__multi-value {
-  //display: none !important;
-
-  //color: #5b9232;
   background: linear-gradient(
     0deg,
     rgba(43, 108, 0, 0.08),
     rgba(43, 108, 0, 0.08)
    ),
    #fdfdf5 !important;
-
   border: 1px solid #5b9232;
   border-radius: 30px !important;
   padding: 3px 8px;
@@ -103,14 +108,22 @@
   display: flex;
   align-items: center;
 
+  @media (max-width: $mediaMaxWidth340px) {
+   font-size: 16px !important;
+  }
+
   img {
    margin-right: 6px;
+
+   @media (max-width: $mediaMaxWidth340px) {
+    height: 22px;
+   }
   }
  }
 
  &__multi-value__remove {
-  //display: none !important;
   color: #43483e;
+
   svg {
    width: 18px;
    height: 18px;

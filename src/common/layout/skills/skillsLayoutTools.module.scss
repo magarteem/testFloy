@@ -26,6 +26,8 @@
    gap: 8px;
 
    .item {
+    display: flex;
+    align-items: center;
     color: #1a1c18;
     font-size: 14px;
     background: linear-gradient(
@@ -38,8 +40,16 @@
     border-radius: 30px;
     padding: 6px 12px;
 
+    @media (max-width: $mediaMaxWidth340px) {
+     font-size: 16px;
+    }
+
     img {
      margin-right: 6px;
+
+     @media (max-width: $mediaMaxWidth340px) {
+      height: 22px;
+     }
     }
    }
 

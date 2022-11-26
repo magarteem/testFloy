@@ -19,7 +19,7 @@ export const NameProfile = ({
 }: NameProfileType) => {
  const ageFu = (age: Date | number) =>
   new Date().getFullYear() - new Date(age).getFullYear();
-
+ // переделать функцию ageFu
  return (
   <div className={s.nameProfile}>
    <h2>{name}</h2>

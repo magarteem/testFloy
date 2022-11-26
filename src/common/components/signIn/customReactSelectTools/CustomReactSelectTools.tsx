@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Select, {
  components,
  OptionProps,
@@ -14,70 +14,108 @@ export const Temp = (data: any) => (
  <FormatGroupLabel data={data} />
 );
 
-const MultiValue = (props: any) => {
- const Mval = components.MultiValue;
- const [showChips, setShowChips] = useState(false);
- const toogleShow = () => {
-  setShowChips((prev) => !prev);
-  console.log(showChips);
+const CustomMultiValue = (
+ props: any,
+ showChips: boolean,
+ toggleShow: (prev: any) => void
+) => {
+ const getValueSelected = props.getValue().length;
+ const limitedShowChips = 5;
+ const onMouseDown = (e: any) => {
+  e.preventDefault();
+  e.stopPropagation();
  };
- const overflow = props
-  .getValue()
-  .slice(6)
-  .map((x: any) => x.label);
+ const defaultChips = (
+  <components.MultiValue {...props}>
+   <img
+    src={props.data.imgIcons}
+    alt={props.data.imgIcons}
+   />
+   {props.children}
+  </components.MultiValue>
+ );
+ const innerProps = { ...props.innerProps, onMouseDown };
 
- if (showChips)
-  return (
-   <Mval {...props}>
-    <img
-     src={props.data.imgIcons}
-     alt={props.data.imgIcons}
-    />
-    {props.children}
-   </Mval>
-  );
+ if (showChips && getValueSelected < limitedShowChips + 1)
+  return defaultChips;
+ else if (showChips) {
+  if (getValueSelected !== props.index + 1)
+   return defaultChips;
+  else {
+   return (
+    <>
+     {defaultChips}
+     <span onClick={toggleShow} onTouchEnd={toggleShow}>
+      <components.MultiValue
+       className="moreTools"
+       innerProps={innerProps}
+       {...props}
+      >
+       Скрыть
+      </components.MultiValue>
+     </span>
+    </>
+   );
+  }
+ }
 
- if (props.index < 5) {
+ if (props.index < limitedShowChips) return defaultChips;
+ else if (props.index === limitedShowChips) {
   return (
-   <Mval {...props}>
-    <img
-     src={props.data.imgIcons}
-     alt={props.data.imgIcons}
-    />
-    {props.children}
-   </Mval>
-  );
- } else if (props.index === 5) {
-  return (
-   // <span onClick={toogleShow}>
-   <Mval className="moreTools" {...props}>
-    Ещё {overflow.length + 1}
-   </Mval>
-   // </span>
+   <span onClick={toggleShow} onTouchEnd={toggleShow}>
+    <components.MultiValue
+     className="moreTools"
+     {...props}
+     innerProps={innerProps}
+    >
+     Ещё {getValueSelected - limitedShowChips}
+    </components.MultiValue>
+   </span>
   );
  } else return null;
 };
 
-const MultiValueLabel = (
- props: MultiValueGenericProps<GroupOptionsType[]>
+const CustomMultiValueContainer = (
+ props: MultiValueGenericProps<GroupOptionsType[]>,
+ showChips: boolean,
+ toggleShow: (prev: any) => void
 ) => {
- const Mval = components.MultiValueLabel;
- //let obj = props.selectProps.value;
- //const lastItemObj = obj[obj.length - 1].value;
- //const count = props.data.value;
  console.log(props);
- return (
-  <Mval {...props}>
-   {/*<img
+ const getValueSelected = props.selectProps.value?.length;
+ const limitedShowChips = 5;
+ const defaultChips = (
+  <components.MultiValueContainer {...props}>
+   <img
     src={props.data.imgIcons}
     alt={props.data.imgIcons}
-   />*/}
-
+   />
    {props.children}
-   {/*<span>{lastItemObj !== count && ","}</span>*/}
-  </Mval>
+  </components.MultiValueContainer>
+ );
+
+ return (
+  <>
+   {showChips && defaultChips}
+   <span onClick={toggleShow}>sss</span>
+  </>
  );
 };
+
+//const MultiValueLabel = (
+// props: MultiValueGenericProps<GroupOptionsType[]>
+//) => {
+// const Mval = components.MultiValueLabel;
+// //let obj = props.selectProps.value;
+// //const lastItemObj = obj[obj.length - 1].value;
+// //const count = props.data.value;
+// console.log(props);
+// return (
+//  <Mval {...props}>
+//   {props.children}
+//   {/*<span>{lastItemObj !== count && ","}</span>*/}
+//  </Mval>
+// );
+//};
 
 const Option = (props: OptionProps<ToolsType>) => {
  const [check, setCheck] = useState(props.isSelected);
@@ -147,6 +185,11 @@ export const CustomReactSelectTools = ({
   }),
  };
 
+ const [showChips, setShowChips] = useState(false);
+ const toggleShow = (e: any) => {
+  return setShowChips((prev: boolean) => !prev);
+ };
+
  return (
   <div className="wrapperSelect">
    <Select
@@ -160,8 +203,8 @@ export const CustomReactSelectTools = ({
     options={options}
     components={{
      Option,
-     // MultiValueLabel,
-     MultiValue,
+     MultiValue: (props) =>
+      CustomMultiValue(props, showChips, toggleShow),
      Group,
     }}
     isMulti
@@ -190,3 +233,41 @@ export const CustomReactSelectTools = ({
   </div>
  );
 };
+
+//e.preventDefault();
+//e.stopPropagation();
+
+//removeProps={{
+//  onMouseDown: (e) => {
+//   // e.preventDefault();
+//   // e.stopPropagation();
+//  },
+// }}
+
+//{
+/*<components.MultiValue
+innerProps={{
+ ...props.innerProps,
+ onClick: (e) => {
+  e.stopPropagation();
+  e.preventDefault();
+
+  alert(props.data.label);
+ },
+}}
+className="moreTools"
+{...props}
+>
+Ещё {getValueSelected - limitedShowChips}
+</components.MultiValue>*/
+//}
+
+// //let obj = props.selectProps.value;
+// //const lastItemObj = obj[obj.length - 1].value;
+// //const count = props.data.value;
+// console.log(props);
+// return (
+//  <Mval {...props}>
+//   {props.children}
+//   {/*<span>{lastItemObj !== count && ","}</span>*/}
+//  </Mval>

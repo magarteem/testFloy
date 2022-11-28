@@ -77,14 +77,28 @@
  }
  &__value-container {
   padding: 11px !important;
+
+  @media (max-width: $mediaMaxWidth340px) {
+   padding: 12px 0 !important;
+  }
  }
 
  &__multi-value.moreTools {
   background: #000 !important;
-  padding: 5px 10px !important;
+  padding: 3px 10px !important;
 
   .customs_select_list_prefix_genre__multi-value__remove {
    display: none;
+  }
+ }
+
+ &__multi-value {
+  border-radius: 30px;
+  padding: 5px 6px !important;
+
+  @media (max-width: $mediaMaxWidth340px) {
+   padding: 3px 6px !important;
+   border-radius: 15px !important;
   }
  }
 
@@ -94,10 +108,15 @@
 
   @media (max-width: $mediaMaxWidth340px) {
    font-size: 16px !important;
+   padding-left: 2px !important;
   }
  }
  &__multi-value__remove {
   color: white;
+
+  @media (max-width: $mediaMaxWidth340px) {
+   padding: 0 !important;
+  }
 
   svg {
    width: 18px;

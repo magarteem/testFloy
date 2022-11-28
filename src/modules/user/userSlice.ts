@@ -8,9 +8,46 @@ import {
 } from "./types/userSliceType";
 import { changeProfileThunk } from "./changeProfileThunk";
 import { tempDataOtherUserProfile } from "./service/tempDataOtherUserProfile";
+import { getDataProfileThunk } from "./getDataProfileThunk";
 
-const initialState: InitialStateUserType =
- tempDataOtherUserProfile[4];
+interface InitialStateType {
+ profileData: InitialStateUserType;
+ error: string;
+ isLoading: boolean;
+}
+
+const initialState: InitialStateType = {
+ profileData: {
+  id_user: "",
+  name: "",
+  email: "",
+  sity: { value: "", label: "" },
+  age: 952078480000,
+  img_upload: "",
+  gender: { value: "", label: "" },
+  type_account: {
+   value: "",
+   label: "",
+  },
+  skills: {
+   tool: [],
+   genre: [],
+   workExperience: "",
+   master: { value: "", label: "" },
+   education: "",
+   inspiration: [],
+  },
+  private_settings: {
+   value: "",
+   label: "",
+  },
+ },
+ error: "",
+ isLoading: false,
+};
+
+//const initialState: InitialStateUserType =
+//tempDataOtherUserProfile[4];
 
 const userSlice = createSlice({
  name: "authSlice",
@@ -21,12 +58,12 @@ const userSlice = createSlice({
   builder
    .addCase(
     changeProfileThunk.pending.type,
-    (state: InitialStateUserType) => {}
+    (state: InitialStateType) => {}
    )
    .addCase(
     changeProfileThunk.fulfilled.type,
     (
-     state: InitialStateUserType,
+     state: InitialStateType,
      actions: PayloadAction<ChangeProfileFormValues>
     ) => {
      // return {
@@ -38,27 +75,53 @@ const userSlice = createSlice({
      //   workExperience: actions.payload.work_experience,
      //  },
      // };
-     state.name = actions.payload.name_field;
-     state.age = actions.payload.age;
-     state.sity = actions.payload.sity;
-     state.gender = actions.payload.gender;
-     state.skills.tool = actions.payload.tool;
-     state.skills.genre = actions.payload.genre;
-     state.skills.workExperience =
+     state.profileData.name = actions.payload.name_field;
+     state.profileData.age = actions.payload.age;
+     state.profileData.sity = actions.payload.sity;
+     state.profileData.gender = actions.payload.gender;
+     state.profileData.skills.tool = actions.payload.tool;
+     state.profileData.skills.genre = actions.payload.genre;
+     state.profileData.skills.workExperience =
       actions.payload.work_experience;
-     state.skills.education = actions.payload.education;
-     state.skills.master = actions.payload.master;
-     state.private_settings =
+     state.profileData.skills.education =
+      actions.payload.education;
+     state.profileData.skills.master =
+      actions.payload.master;
+     state.profileData.private_settings =
       actions.payload.private_settings;
     }
    )
    .addCase(
     changeProfileThunk.rejected.type,
     (
-     state: InitialStateUserType,
+     state: InitialStateType,
      actions: PayloadAction<string>
     ) => {
      console.log("changeProfileThunk");
+    }
+   )
+   // getDataProfileThunk
+   .addCase(
+    getDataProfileThunk.pending.type,
+    (state: InitialStateType) => {}
+   )
+   .addCase(
+    getDataProfileThunk.fulfilled.type,
+    (
+     state: InitialStateType,
+     actions: PayloadAction<any>
+    ) => {
+     console.log("full");
+     state.profileData = actions.payload;
+    }
+   )
+   .addCase(
+    getDataProfileThunk.rejected.type,
+    (
+     state: InitialStateType,
+     actions: PayloadAction<string>
+    ) => {
+     console.log("full1111");
     }
    );
  },

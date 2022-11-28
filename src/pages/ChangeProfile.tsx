@@ -9,7 +9,7 @@ import s from "./styles/changeProfile.module.scss";
 
 export const ChangeProfile = () => {
  const userDataProfile = useAppSelector(
-  (state) => state.userSliceReducer
+  (state) => state.userSliceReducer.profileData
  );
  return (
   <>

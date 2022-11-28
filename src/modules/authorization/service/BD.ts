@@ -2,25 +2,25 @@ import {
  GenreType,
  OptionSelectType,
 } from "../types/authType";
-import vocals from "../../../assets/icons/iconsTools/vocals.webp";
-import classical_guitar from "../../../assets/icons/iconsTools/classical_guitar.webp";
-import ukulele from "../../../assets/icons/iconsTools/ukulele.webp";
-import violin from "../../../assets/icons/iconsTools/violin.webp";
-import alto from "../../../assets/icons/iconsTools/alto.webp";
-import double_bass from "../../../assets/icons/iconsTools/double_bass.webp";
-import cello from "../../../assets/icons/iconsTools/cello.webp";
-import djembe from "../../../assets/icons/iconsTools/djembe.webp";
-import balalaika from "../../../assets/icons/iconsTools/balalaika.webp";
-import saxophone from "../../../assets/icons/iconsTools/saxophone.webp";
-import tuba from "../../../assets/icons/iconsTools/tuba.webp";
-import trombone from "../../../assets/icons/iconsTools/trombone.webp";
-import horn from "../../../assets/icons/iconsTools/horn.webp";
-import xylophone from "../../../assets/icons/iconsTools/xylophone.webp";
-import accordion from "../../../assets/icons/iconsTools/accordion.webp";
-import organ from "../../../assets/icons/iconsTools/organ.webp";
-import bagpipes from "../../../assets/icons/iconsTools/bagpipes.webp";
-import piano from "../../../assets/icons/iconsTools/piano.webp";
-import synthesizer from "../../../assets/icons/iconsTools/synthesizer.webp";
+import vocals from "../../../assets/icons/iconsTools/vocals.svg";
+import classical_guitar from "../../../assets/icons/iconsTools/classical_guitar.svg";
+import ukulele from "../../../assets/icons/iconsTools/ukulele.svg";
+import violin from "../../../assets/icons/iconsTools/violin.svg";
+import alto from "../../../assets/icons/iconsTools/alto.svg";
+import double_bass from "../../../assets/icons/iconsTools/double_bass.svg";
+import cello from "../../../assets/icons/iconsTools/cello.svg";
+import djembe from "../../../assets/icons/iconsTools/djembe.svg";
+import balalaika from "../../../assets/icons/iconsTools/balalaika.svg";
+import saxophone from "../../../assets/icons/iconsTools/saxophone.svg";
+import tuba from "../../../assets/icons/iconsTools/tuba.svg";
+import trombone from "../../../assets/icons/iconsTools/trombone.svg";
+import horn from "../../../assets/icons/iconsTools/horn.svg";
+import xylophone from "../../../assets/icons/iconsTools/xylophone.svg";
+import accordion from "../../../assets/icons/iconsTools/accordion.svg";
+import organ from "../../../assets/icons/iconsTools/organ.svg";
+import bagpipes from "../../../assets/icons/iconsTools/bagpipes.svg";
+import piano from "../../../assets/icons/iconsTools/piano.svg";
+import synthesizer from "../../../assets/icons/iconsTools/synthesizer.svg";
 import { GroupOptionsType } from "../types/selectOptionsType";
 
 export const optionsTypeAccount: OptionSelectType[] = [

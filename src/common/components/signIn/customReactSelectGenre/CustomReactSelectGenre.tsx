@@ -141,7 +141,6 @@ export const CustomReactSelectGenre = ({
     "100%"
    )} !important`,
    borderRadius: "30px",
-   padding: "5px 6px !important",
   }),
   multiValueLabel: (
    provided,

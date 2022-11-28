@@ -70,6 +70,10 @@
 
  &__value-container {
   padding: 12px !important;
+
+  @media (max-width: $mediaMaxWidth340px) {
+   padding: 12px 0 !important;
+  }
  }
  &__multi-value.moreTools {
   background: none !important;
@@ -101,6 +105,11 @@
   border: 1px solid #5b9232;
   border-radius: 30px !important;
   padding: 3px 8px;
+
+  @media (max-width: $mediaMaxWidth340px) {
+   border-radius: 15px !important;
+   padding: 2px;
+  }
  }
 
  &__multi-value__label {
@@ -116,13 +125,18 @@
    margin-right: 6px;
 
    @media (max-width: $mediaMaxWidth340px) {
-    height: 22px;
+    height: 20px;
+    margin-right: 4px;
    }
   }
  }
 
  &__multi-value__remove {
   color: #43483e;
+
+  @media (max-width: $mediaMaxWidth340px) {
+   padding: 0 !important;
+  }
 
   svg {
    width: 18px;

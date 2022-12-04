@@ -1,15 +1,10 @@
+import arrowReturnBlack from "../../assets/icons/arrowReturnBlack.webp";
 import {
  Controller,
  useFormContext,
 } from "react-hook-form";
-import { InputLabel } from "../../common/ui-elements/Input/InputLabel";
-
-import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
-import s from "./style/threeStepFormRegister.module.scss";
-import { Input } from "../../common/ui-elements/Input/Input";
-
-import { FormLayout } from "../../common/layout/formLayout/FormLayout";
 import { UploadPhoto } from "../../common/components/signIn/uploadPhoto/UploadPhoto";
+import { InputLabel } from "../../common/ui-elements/Input/InputLabel";
 import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactSelectElement";
 import {
  genderBD,
@@ -19,28 +14,32 @@ import {
  sityBD,
  skillBD,
 } from "./service/BD";
-import { SelectElementMui } from "../../common/mui-element/SelectElementMui";
+import { TextAreaElement } from "../../common/ui-elements/textarea/TextAreaElement";
+import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
+import { ArrowBtnStepsBack } from "../../common/components/navigateButton/ArrowBtnStepsBack";
+import s from "./style/threeStepFormRegister.module.scss";
 import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker/ReactDatePicker";
-import { CustomReactSelectToolsMui } from "../../common/mui-element/CustomReactSelectToolsMui";
-import { SelectCheckedElementMui } from "../../common/mui-element/SelectCheckedElementMui";
-import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
-import TextFieldTextareaElementMui from "../../common/mui-element/TextFieldTextareaElementMui";
-import TextFieldElementMui from "../../common/mui-element/TextFieldElementMui";
+import { Input } from "../../common/ui-elements/Input/Input";
+import { CustomReactSelectGenre } from "../../common/components/signIn/customReactSelectGenre/CustomReactSelectGenre";
+import { CustomReactSelectTools } from "../../common/components/signIn/customReactSelectTools/CustomReactSelectTools";
 
 export const ThreeStepFormRegister = () => {
  const {
   register,
-  watch,
   control,
   formState: { errors },
  } = useFormContext();
 
- console.log(watch("sity"));
-
  return (
-  <FormLayout textLabel="Регистрация">
+  <div className={s.threeStepFormRegister}>
+   <div className={s.title}>
+    <ArrowBtnStepsBack cancelImgIcon={arrowReturnBlack} />
+    <h1>Создание анкеты</h1>
+   </div>
+
    <div className={s.main}>
     <div className={s.styleInput}>
+     <InputLabel titleSelect="Имя" required />
      <Controller
       name="name_field"
       control={control}
@@ -53,12 +52,10 @@ export const ThreeStepFormRegister = () => {
       }}
       render={({ field: { onChange, ref, ...field } }) => (
        <div className={s.sizeInput}>
-        <TextFieldElementMui
+        <Input
          ItemRef={ref}
          placeholder="Ваше имя"
-         required={true}
          onChange={onChange}
-         helperText="Обязательное поле"
          errors={
           errors.name_field && errors.name_field.message
          }
@@ -70,6 +67,7 @@ export const ThreeStepFormRegister = () => {
     </div>
 
     <div className={s.selectField}>
+     <InputLabel titleSelect="Фотография" required />
      <Controller
       name="img_upload"
       control={control}
@@ -80,6 +78,7 @@ export const ThreeStepFormRegister = () => {
     </div>
 
     <div className={s.selectField}>
+     <InputLabel titleSelect="Город" required />
      <Controller
       name="sity"
       control={control}
@@ -90,19 +89,12 @@ export const ThreeStepFormRegister = () => {
        field: { onChange, value, ref, ...field },
        fieldState: { error },
       }) => (
-       <SelectElementMui
+       <ReactSelectElement
         ItemRef={ref}
         value={value}
-        placeholder="Город"
+        placeholder="Выбрать"
         options={sityBD}
-        //onChange={onChange}
-        //@ts-ignore
-        onChange={(e) =>
-         onChange({
-          value: e.target.value,
-          label: e.target.value,
-         })
-        }
+        onChange={onChange}
         errors={errors.sity}
         {...field}
        />
@@ -111,27 +103,19 @@ export const ThreeStepFormRegister = () => {
     </div>
 
     <div className={s.selectField}>
+     <InputLabel titleSelect="Пол" required />
      <Controller
       name="gender"
       control={control}
       rules={{
        required: "Обязательное поле",
       }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <SelectElementMui
+      render={({ field: { onChange, ref, ...field } }) => (
+       <ReactSelectElement
         ItemRef={ref}
-        value={value}
-        placeholder="Пол"
+        placeholder="Выбрать"
         options={genderBD}
-        //@ts-ignore
-        onChange={(e) =>
-         onChange({
-          value: e.target.value,
-          label: e.target.value,
-         })
-        }
+        onChange={onChange}
         errors={errors.gender}
         {...field}
        />
@@ -140,6 +124,7 @@ export const ThreeStepFormRegister = () => {
     </div>
 
     <div className={s.selectField}>
+     <InputLabel titleSelect="Возраст" required />
      <Controller
       name="age"
       control={control}
@@ -151,8 +136,9 @@ export const ThreeStepFormRegister = () => {
       }) => (
        <ReactDatePickerElement
         ItemRef={ref}
-        placeholder="Возраст"
+        placeholder="Дата рождения"
         value={value}
+        //onChange={onChange}
         onChange={(date) =>
          onChange(new Date(date).getTime())
         }
@@ -163,20 +149,21 @@ export const ThreeStepFormRegister = () => {
      />
     </div>
 
-    <div className={s.selectFieldCustomHeight}>
+    <div className={s.selectField}>
+     <InputLabel
+      titleSelect="Инструмент (род деятельности)"
+      required
+     />
      <Controller
       name="tool"
       control={control}
       rules={{
        required: "Обязательное поле",
       }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <CustomReactSelectToolsMui
+      render={({ field: { onChange, ref, ...field } }) => (
+       <CustomReactSelectTools
         ItemRef={ref}
-        value={value}
-        placeholder="Инструмент (род деятельности)"
+        placeholder="Выбрать"
         options={groupeOptions}
         onChange={onChange}
         errors={errors.tool}
@@ -186,29 +173,20 @@ export const ThreeStepFormRegister = () => {
      />
     </div>
 
-    <div className={s.selectFieldCustomHeight}>
+    <div className={s.selectField}>
+     <InputLabel titleSelect="Жанр" required />
      <Controller
       name="genre"
       control={control}
       rules={{
        required: "Обязательное поле",
       }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <SelectCheckedElementMui
+      render={({ field: { onChange, ref, ...field } }) => (
+       <CustomReactSelectGenre
         ItemRef={ref}
-        value={value}
-        placeholder="Жанр"
+        placeholder="Выбрать"
         options={genreBD}
         onChange={onChange}
-        //@ts-ignore
-        // onChange={(e) =>
-        //  onChange({
-        //   value: e.target.value,
-        //   label: e.target.value,
-        //  })
-        // }
         errors={errors.genre}
         {...field}
        />
@@ -216,22 +194,36 @@ export const ThreeStepFormRegister = () => {
      />
     </div>
 
+    <div className={s.styleInput}>
+     <InputLabel titleSelect="Опыт работы/выступлений" />
+     <Controller
+      name="work_experience"
+      control={control}
+      render={({ field: { onChange, ref, ...field } }) => (
+       <div className={s.textarea}>
+        <TextAreaElement
+         ItemRef={ref}
+         onChange={onChange}
+         placeholderValue="Указать"
+         {...field}
+        />
+        <span className={s.notes}>Опишите ваш опыт</span>
+       </div>
+      )}
+     />
+    </div>
+
     <div className={s.selectField}>
+     <InputLabel titleSelect="Мастерство" />
      <Controller
       name="master"
       control={control}
       render={({ field: { onChange, ref, ...field } }) => (
-       <SelectElementMui
+       <ReactSelectElement
         ItemRef={ref}
-        placeholder="Мастерство"
+        placeholder="Выбрать"
         options={skillBD}
-        //@ts-ignore
-        onChange={(e) =>
-         onChange({
-          value: e.target.value,
-          label: e.target.value,
-         })
-        }
+        onChange={onChange}
         {...field}
        />
       )}
@@ -239,36 +231,16 @@ export const ThreeStepFormRegister = () => {
     </div>
 
     <div className={s.styleInput}>
-     <Controller
-      name="work_experience"
-      control={control}
-      render={({ field: { onChange, ref, ...field } }) => (
-       <div className={s.sizeInput}>
-        <TextFieldTextareaElementMui
-         ItemRef={ref}
-         placeholder="Опыт работы/выступлений"
-         onChange={onChange}
-         multiline={true}
-         helperText="Опишите ваш опыт"
-         {...field}
-        />
-       </div>
-      )}
-     />
-    </div>
-
-    <div className={s.styleInput}>
+     <InputLabel titleSelect="Образование" />
      <Controller
       name="education"
       control={control}
       render={({ field: { onChange, ref, ...field } }) => (
-       <div className={s.sizeInput}>
-        <TextFieldTextareaElementMui
+       <div className={s.textarea}>
+        <TextAreaElement
          ItemRef={ref}
-         placeholder="Образование"
          onChange={onChange}
-         multiline={true}
-         helperText="Опишите ваш образование"
+         placeholderValue="Указать"
          {...field}
         />
        </div>
@@ -277,28 +249,23 @@ export const ThreeStepFormRegister = () => {
     </div>
 
     <div className={s.selectField}>
+     <InputLabel
+      required
+      titleSelect="Настройки приватности анкеты"
+     />
      <Controller
       name="private_settings"
       control={control}
       rules={{
        required: "Обязательное поле",
       }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <SelectElementMui
+      render={({ field: { onChange, ref, ...field } }) => (
+       <ReactSelectElement
         ItemRef={ref}
-        value={value}
-        placeholder="Настройки приватности анкеты"
+        placeholder="Выбрать"
         options={profilePrivacySettings}
-        //@ts-ignore
-        onChange={(e) =>
-         onChange({
-          value: e.target.value,
-          label: e.target.value,
-         })
-        }
         errors={errors.private_settings}
+        onChange={onChange}
         {...field}
        />
       )}
@@ -307,17 +274,11 @@ export const ThreeStepFormRegister = () => {
    </div>
 
    <div className={s.btnFormWrapper}>
-    <BtnInGroupeSaveCancelMui
-     textCancelButton="Назад"
-     textButton="Создать анкету"
-    />
-   </div>
-   {/*<div className={s.btnFormWrapper}>
     <BtnInFormSaveCancel
      textCancelButton="Назад"
      textButton="Создать анкету"
     />
-   </div>*/}
-  </FormLayout>
+   </div>
+  </div>
  );
 };

@@ -8,36 +8,43 @@ import { ArrowBtnStepsBack } from "../../navigateButton/ArrowBtnStepsBack";
 import { AvatarPhoto } from "../avatarIcons/AvatarPhoto";
 
 interface HeaderProfileType {
-  textLabel: string;
-  cancelImgIcon?: string;
-  change?: boolean;
-  settings?: boolean;
+ textLabel: string;
+ cancelImgIcon?: string;
+ change?: boolean;
+ settings?: boolean;
 }
 
-export const HeaderProfile = ({ textLabel, cancelImgIcon, change = false, settings = false }: HeaderProfileType) => {
-  return (
-    <div className={s.headerProfile}>
-      <div className={s.title}>
-        <div className={s.titleNavigation}>
-          {cancelImgIcon && <ArrowBtnStepsBack cancelImgIcon={cancelImgIcon} />}
-          <p>{textLabel}</p>
-        </div>
-
-        <div className={s.titleSettings}>
-          {change && (
-            <Link to={RouteNames.CHANGE_PROFILE}>
-              <img src={pencil} alt={pencil} />
-            </Link>
-          )}
-          {settings && (
-            <Link to={RouteNames.SETTINGS}>
-              <img src={settingsIcon} alt={settingsIcon} />
-            </Link>
-          )}
-        </div>
-      </div>
-
-      <AvatarPhoto avatarPhoto={backgroundProfileHeader} />
+export const HeaderProfile = ({
+ textLabel,
+ cancelImgIcon,
+ change = false,
+ settings = false,
+}: HeaderProfileType) => {
+ return (
+  <div className={s.headerProfile}>
+   <div className={s.title}>
+    <div className={s.titleNavigation}>
+     {cancelImgIcon && (
+      <ArrowBtnStepsBack cancelImgIcon={cancelImgIcon} />
+     )}
+     <p>{textLabel}</p>
     </div>
-  );
+
+    <div className={s.titleSettings}>
+     {change && (
+      <Link to={RouteNames.CHANGE_PROFILE}>
+       <img src={pencil} alt={pencil} />
+      </Link>
+     )}
+     {settings && (
+      <Link to={RouteNames.SETTINGS}>
+       <img src={settingsIcon} alt={settingsIcon} />
+      </Link>
+     )}
+    </div>
+   </div>
+
+   <AvatarPhoto avatarPhoto={backgroundProfileHeader} />
+  </div>
+ );
 };

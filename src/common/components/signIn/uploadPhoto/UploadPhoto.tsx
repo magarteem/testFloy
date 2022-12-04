@@ -25,7 +25,7 @@ UploadPhotoType) => {
 
  return (
   <div className={s.uploadPhoto}>
-   <p onClick={handlePickerRef}>Выбрать файл</p>
+   <p onClick={handlePickerRef}>Загрузить фотографию</p>
    <input
     {...rest}
     type="file"

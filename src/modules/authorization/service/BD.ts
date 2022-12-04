@@ -53,11 +53,181 @@ export const sityBD: OptionSelectType[] = [
  { value: "mezhdurechensk", label: "Междуреченск" },
  { value: "meleuz", label: "Мелеуз" },
 ];
+export const sityBD1: any = [
+ { value: "lobnya", name: "Лобня" },
+ { value: "lysva", name: "Лысьва" },
+ { value: "lytkarino", name: "Лыткарино" },
+ { value: "lyubertsy", name: "Люберцы" },
+ { value: "magadan", name: "Магадан" },
+ { value: "magnitogorsk", name: "Магнитогорск" },
+ { value: "maykop", name: "Майкоп" },
+ { value: "makhachkala", name: "Махачкала" },
+ { value: "mezhdurechensk", name: "Междуреченск" },
+ { value: "meleuz", name: "Мелеуз" },
+];
 
 export const genderBD: OptionSelectType[] = [
  { value: "male", label: "Мужской" },
  { value: "female", label: "Женский" },
  { value: "other", label: "Другое" },
+];
+
+export const genderBD1: any = [
+ { value: "male", name: "Мужской" },
+ { value: "female", name: "Женский" },
+ { value: "other", name: "Другое" },
+];
+
+export const groupeOptions1: any = [
+ {
+  label: "Вокал",
+  hexColor: "#000",
+  options: [
+   { label: "Тенор", value: "value_1", imgIcons: vocals },
+   { label: "Баритон", value: "value_2", imgIcons: vocals },
+   { label: "Бас", value: "value_23", imgIcons: vocals },
+   {
+    label: "Сопрано",
+    value: "value_42",
+    imgIcons: vocals,
+   },
+   {
+    label: "Меццо-сопрано",
+    value: "value_52",
+    imgIcons: vocals,
+   },
+   {
+    label: "Контральто",
+    value: "value_26",
+    imgIcons: vocals,
+   },
+  ],
+ },
+ {
+  label: "Клавишные",
+  hexColor: "#f3a00a",
+  options: [
+   {
+    label: "Аккордеон",
+    value: "аккордеон",
+    imgIcons: accordion,
+   },
+   {
+    label: "Ксилофон",
+    value: "xylophone",
+    imgIcons: xylophone,
+   },
+   { label: "Орган", value: "organ", imgIcons: organ },
+   { label: "Фортепиано", value: "piano", imgIcons: piano },
+   {
+    label: "Синтезатор",
+    value: "synthesizer",
+    imgIcons: synthesizer,
+   },
+  ],
+ },
+ {
+  label: "Духовые",
+  hexColor: "#35ed4d",
+  options: [
+   {
+    label: "Саксофон",
+    value: "saxophone",
+    imgIcons: saxophone,
+   },
+   {
+    label: "Труба",
+    value: "pipe",
+    imgIcons: tuba,
+   },
+   {
+    label: "Тромбон",
+    value: "trombone",
+    imgIcons: trombone,
+   },
+   {
+    label: "Валторна",
+    value: "french_horn",
+    imgIcons: horn,
+   },
+   {
+    label: "Туба",
+    value: "tuba",
+    imgIcons: tuba,
+   },
+   {
+    label: "Геликон",
+    value: "helicon",
+    imgIcons: xylophone,
+   },
+   {
+    label: "Сузафон",
+    value: "sousaphone",
+    imgIcons: xylophone,
+   },
+   {
+    label: "Волынка",
+    value: "bagpipes",
+    imgIcons: bagpipes,
+   },
+   {
+    label: "Саксофон",
+    value: "saxophone",
+    imgIcons: saxophone,
+   },
+  ],
+ },
+ {
+  label: "Струнные",
+  hexColor: "#4a2fff",
+  options: [
+   {
+    label: "Классическая гитара",
+    value: "classical_guitar",
+    imgIcons: classical_guitar,
+   },
+   {
+    label: "Укулеле",
+    value: "ukulele",
+    imgIcons: ukulele,
+   },
+   {
+    label: "Скрипка",
+    value: "violins",
+    imgIcons: violin,
+   },
+   {
+    label: "Альта",
+    value: "violas",
+    imgIcons: alto,
+   },
+   {
+    label: "Контрабас",
+    value: "вouble_basses",
+    imgIcons: double_bass,
+   },
+   {
+    label: "Виолончели",
+    value: "cellos",
+    imgIcons: cello,
+   },
+   {
+    label: "Домра",
+    value: "domry",
+    imgIcons: djembe,
+   },
+   {
+    label: "Балалайка",
+    value: "balalaikas",
+    imgIcons: balalaika,
+   },
+   {
+    label: "Гусли",
+    value: "gusli",
+    imgIcons: saxophone,
+   },
+  ],
+ },
 ];
 
 export const groupeOptions: GroupOptionsType[] = [

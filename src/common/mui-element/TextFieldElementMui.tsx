@@ -47,8 +47,6 @@ const useStyles = makeStyles((theme) =>
    fontWeight: "600 !important",
    padding: "0 14px !important",
   },
-
-  cssFocused: {},
  })
 );
 
@@ -122,7 +120,6 @@ export default function TextFieldElementMui({
    InputProps={{
     classes: {
      root: classes.cssOutlinedInput,
-     focused: classes.cssFocused,
      notchedOutline: classes.notchedOutline,
      input: classes.input,
     },

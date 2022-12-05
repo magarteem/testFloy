@@ -26,6 +26,7 @@ interface CustomReactSelectToolsMuiType {
  onChange: () => void;
  errors: any;
  ItemRef: any;
+ required?: boolean;
 }
 
 export const CustomReactSelectToolsMui = ({
@@ -35,6 +36,7 @@ export const CustomReactSelectToolsMui = ({
  onChange,
  errors,
  ItemRef,
+ required = false,
  ...props
 }: CustomReactSelectToolsMuiType) => {
  const [selectedChips, setSelectedChips] = useState(value);
@@ -45,8 +47,6 @@ export const CustomReactSelectToolsMui = ({
   setSelectedChips(value);
  }, [value]);
 
- // console.log(value);
- console.log(selectedChips);
  return (
   <FormControl
    fullWidth
@@ -54,6 +54,10 @@ export const CustomReactSelectToolsMui = ({
     "& .MuiFormLabel-root": {
      lineHeight: "inherit",
      color: "#1A1C18",
+
+     "& .MuiFormLabel-asterisk": {
+      color: "red",
+     },
     },
     "& .Mui-focused": {
      color: "#1A1C18 !important",
@@ -65,6 +69,7 @@ export const CustomReactSelectToolsMui = ({
    error={errors}
   >
    <InputLabel
+    required={required}
     id="demo-multiple-checkbox-label"
     sx={{
      color: "#1A1C18 !important",

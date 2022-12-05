@@ -17,7 +17,7 @@ export const BtnInGroupeSaveCancelMui = ({
  textCancelButton,
  textButton,
  isValidButtonBack,
- isValidInButton,
+ isValidInButton = false,
  onClick,
 }: BtnInGroupeSaveCancelMuiType) => {
  return (
@@ -26,7 +26,10 @@ export const BtnInGroupeSaveCancelMui = ({
     <ButtonBackMui textCancelButton={textCancelButton} />
    </div>
    <div className={s.btnWrapper}>
-    <ButtonSubmitMui textButton={textButton} />
+    <ButtonSubmitMui
+     textButton={textButton}
+     isValidInButton={isValidInButton}
+    />
    </div>
   </div>
  );

@@ -17,13 +17,6 @@ const useStyles = makeStyles((theme) =>
    color: "#ff0000 !important",
   },
 
-  outlined: {
-   // border: "1px solid #d2e407 !important",
-   "&.focused": {
-    //width: "150px !important",
-   },
-  },
-
   asterisk: {
    color: "red",
   },
@@ -102,8 +95,11 @@ export default function TextFieldTextareaElementMui({
      lineHeight: "inherit",
     },
     "& .MuiInputBase-root": {
-     height: "100%",
-     padding: 0,
+     padding: " 0",
+
+     "&.Mui-focused": {
+      padding: "5px 0 0 !important",
+     },
     },
     "& .MuiInputBase-input": {
      height: "auto",
@@ -111,6 +107,11 @@ export default function TextFieldTextareaElementMui({
       height: "auto",
      },
     },
+    //"& .MuiFormHelperText-root": {
+    // position: "absolute",
+    // bottom: "-18px",
+    // // color: "#ff0000 !important",
+    //},
    }}
    fullWidth
    label={placeholder}
@@ -123,7 +124,6 @@ export default function TextFieldTextareaElementMui({
      root: classes.inputLabel,
      focused: "focused",
      asterisk: classes.asterisk,
-     outlined: classes.outlined,
      error: classes.error,
     },
    }}

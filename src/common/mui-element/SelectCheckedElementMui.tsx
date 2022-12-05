@@ -26,6 +26,7 @@ interface SelectCheckedElementMuiType {
  isMulti?: boolean;
  errors?: any;
  ItemRef: any;
+ required?: boolean;
 }
 
 export const SelectCheckedElementMui = ({
@@ -36,6 +37,7 @@ export const SelectCheckedElementMui = ({
  onChange,
  errors,
  ItemRef,
+ required = false,
  ...props
 }: SelectCheckedElementMuiType) => {
  const [personName, setPersonName] = useState<string[]>(
@@ -68,6 +70,10 @@ export const SelectCheckedElementMui = ({
     "& .MuiFormLabel-root": {
      lineHeight: "inherit",
      color: "#1A1C18",
+
+     "& .MuiFormLabel-asterisk": {
+      color: "red",
+     },
     },
     "& .Mui-focused": {
      color: "#1A1C18 !important",
@@ -78,7 +84,10 @@ export const SelectCheckedElementMui = ({
    }}
    error={errors}
   >
-   <InputLabel id="demo-multiple-checkbox-label">
+   <InputLabel
+    required={required}
+    id="demo-multiple-checkbox-label"
+   >
     {placeholder}
    </InputLabel>
    <Select

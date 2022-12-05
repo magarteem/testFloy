@@ -26,13 +26,15 @@ import { SelectCheckedElementMui } from "../../common/mui-element/SelectCheckedE
 import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
 import TextFieldTextareaElementMui from "../../common/mui-element/TextFieldTextareaElementMui";
 import TextFieldElementMui from "../../common/mui-element/TextFieldElementMui";
+import { DatePickerMui } from "../../common/mui-element/DatePickerMui";
 
 export const ThreeStepFormRegister = () => {
  const {
   register,
   watch,
   control,
-  formState: { errors },
+
+  formState: { errors, isValid },
  } = useFormContext();
 
  console.log(watch("sity"));
@@ -94,6 +96,7 @@ export const ThreeStepFormRegister = () => {
         ItemRef={ref}
         value={value}
         placeholder="Город"
+        required={true}
         options={sityBD}
         //onChange={onChange}
         //@ts-ignore
@@ -124,6 +127,7 @@ export const ThreeStepFormRegister = () => {
         ItemRef={ref}
         value={value}
         placeholder="Пол"
+        required={true}
         options={genderBD}
         //@ts-ignore
         onChange={(e) =>
@@ -139,7 +143,34 @@ export const ThreeStepFormRegister = () => {
      />
     </div>
 
-    <div className={s.selectField}>
+    <div className={s.styleInput}>
+     <Controller
+      name="age"
+      control={control}
+      rules={{
+       required: "Обязательное поле",
+      }}
+      render={({
+       field: { onChange, value, ref, ...field },
+      }) => (
+       <div className={s.sizeInput}>
+        <DatePickerMui
+         placeholder="Возраст"
+         required={true}
+         value={value}
+         onChange={(date) =>
+          onChange(new Date(date).getTime())
+         }
+         errors={errors.age}
+         helperText="Обязательное поле"
+         {...field}
+        />
+       </div>
+      )}
+     />
+    </div>
+
+    {/*<div className={s.selectField}>
      <Controller
       name="age"
       control={control}
@@ -161,7 +192,7 @@ export const ThreeStepFormRegister = () => {
        />
       )}
      />
-    </div>
+    </div>*/}
 
     <div className={s.selectFieldCustomHeight}>
      <Controller
@@ -177,6 +208,7 @@ export const ThreeStepFormRegister = () => {
         ItemRef={ref}
         value={value}
         placeholder="Инструмент (род деятельности)"
+        required={true}
         options={groupeOptions}
         onChange={onChange}
         errors={errors.tool}
@@ -200,6 +232,7 @@ export const ThreeStepFormRegister = () => {
         ItemRef={ref}
         value={value}
         placeholder="Жанр"
+        required={true}
         options={genreBD}
         onChange={onChange}
         //@ts-ignore
@@ -268,7 +301,7 @@ export const ThreeStepFormRegister = () => {
          placeholder="Образование"
          onChange={onChange}
          multiline={true}
-         helperText="Опишите ваш образование"
+         helperText="Опишите ваше образование"
          {...field}
         />
        </div>
@@ -290,6 +323,7 @@ export const ThreeStepFormRegister = () => {
         ItemRef={ref}
         value={value}
         placeholder="Настройки приватности анкеты"
+        required={true}
         options={profilePrivacySettings}
         //@ts-ignore
         onChange={(e) =>
@@ -310,6 +344,7 @@ export const ThreeStepFormRegister = () => {
     <BtnInGroupeSaveCancelMui
      textCancelButton="Назад"
      textButton="Создать анкету"
+     isValidInButton={!isValid}
     />
    </div>
    {/*<div className={s.btnFormWrapper}>

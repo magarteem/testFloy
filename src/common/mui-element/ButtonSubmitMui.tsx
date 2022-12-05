@@ -2,14 +2,17 @@ import { Button } from "@mui/material";
 
 interface ButtonSubmitMuiType {
  textButton: string;
+ isValidInButton: boolean;
 }
 
 export const ButtonSubmitMui = ({
  textButton,
+ isValidInButton,
  ...props
 }: ButtonSubmitMuiType) => {
  return (
   <Button
+   disabled={isValidInButton}
    variant="contained"
    type="submit"
    sx={{

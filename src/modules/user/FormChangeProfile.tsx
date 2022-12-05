@@ -29,6 +29,7 @@ import { CustomReactSelectToolsMui } from "../../common/mui-element/CustomReactS
 import { SelectCheckedElementMui } from "../../common/mui-element/SelectCheckedElementMui";
 import TextFieldTextareaElementMui from "../../common/mui-element/TextFieldTextareaElementMui";
 import { useNavigate } from "react-router-dom";
+import { DatePickerMui } from "../../common/mui-element/DatePickerMui";
 
 interface FormChangeProfileType {
  userDataProfile: InitialStateUserType;
@@ -163,6 +164,7 @@ export const FormChangeProfile = ({
          ItemRef={ref}
          value={value}
          placeholder="Город"
+         required={true}
          options={sityBD}
          //@ts-ignore
          onChange={(e) =>
@@ -221,6 +223,7 @@ export const FormChangeProfile = ({
         ItemRef={ref}
         value={value}
         placeholder="Пол"
+        required={true}
         options={genderBD}
         //@ts-ignore
         onChange={(e) =>
@@ -261,8 +264,35 @@ export const FormChangeProfile = ({
     />
    </div>*/}
 
-   <div className={s.selectField}>
-    {/*<InputLabel titleSelect="Возраст" required />*/}
+   <div className={s.styleInput}>
+    <Controller
+     name="age"
+     control={control}
+     rules={{
+      required: "Обязательное поле",
+     }}
+     render={({
+      field: { onChange, value, ref, ...field },
+     }) => (
+      <div className={s.sizeInput}>
+       <DatePickerMui
+        placeholder="Возраст"
+        value={value}
+        required={true}
+        onChange={(date) =>
+         onChange(new Date(date).getTime())
+        }
+        errors={errors.age}
+        helperText="Обязательное поле"
+        {...field}
+       />
+      </div>
+     )}
+    />
+   </div>
+
+   {/*<div className={s.selectField}>
+    <InputLabel titleSelect="Возраст" required />
     <Controller
      name="age"
      control={control}
@@ -284,7 +314,7 @@ export const FormChangeProfile = ({
       />
      )}
     />
-   </div>
+   </div>*/}
 
    {/*<div className={s.selectField}>
     <Controller
@@ -302,6 +332,7 @@ export const FormChangeProfile = ({
        placeholder="Инструмент (род деятельности)"
        options={groupeOptions}
        onChange={onChange}
+        required={true}
        errors={errors.tool}
        {...field}
       />
@@ -351,6 +382,7 @@ export const FormChangeProfile = ({
        ItemRef={ref}
        value={value}
        placeholder="Жанр"
+       required={true}
        options={genreBD}
        onChange={onChange}
        //@ts-ignore
@@ -496,6 +528,7 @@ export const FormChangeProfile = ({
         placeholder="Образование"
         multiline={true}
         onChange={onChange}
+        helperText="Опишите ваше образование"
         inputValue={value}
         {...field}
        />
@@ -539,6 +572,7 @@ export const FormChangeProfile = ({
        <SelectElementMui
         ItemRef={ref}
         value={value}
+        required={true}
         placeholder="Настройки приватности анкеты"
         options={profilePrivacySettings}
         errors={errors.private_settings}

@@ -17,8 +17,9 @@ interface SelectElementMuiType {
  isMulti?: boolean;
  errors?: any;
  ItemRef: any;
+ required?: boolean;
 }
-const r = { value: "Sssss", label: "Rrrr" };
+
 export const SelectElementMui = ({
  placeholder,
  value,
@@ -27,6 +28,7 @@ export const SelectElementMui = ({
  onChange,
  errors,
  ItemRef,
+ required = false,
  ...props
 }: SelectElementMuiType) => {
  return (
@@ -38,16 +40,20 @@ export const SelectElementMui = ({
     "& .MuiFormLabel-root": {
      lineHeight: "inherit",
      color: "#1A1C18",
+
+     "& .MuiFormLabel-asterisk": {
+      color: "red",
+     },
     },
     "& .Mui-focused": {
      color: "#1A1C18 !important",
     },
-    "& .Mui-error": {
-     // color: "rgb(255, 0, 0) !important",
-    },
    }}
   >
-   <InputLabel id="demo-simple-select-error-label">
+   <InputLabel
+    required={required}
+    id="demo-simple-select-error-label"
+   >
     {placeholder}
    </InputLabel>
 
@@ -60,10 +66,6 @@ export const SelectElementMui = ({
     onChange={onChange}
     input={<OutlinedInput label={placeholder} />}
     fullWidth
-    //renderValue={(selected) => {
-    // console.log(selected);
-    // return selected;
-    //}}
     MenuProps={{
      sx: {
       ".MuiList-root li": {

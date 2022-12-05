@@ -16,7 +16,8 @@ export const ButtonSubmitMui = ({
    variant="contained"
    type="submit"
    sx={{
-    background: "#5B9232",
+    background:
+     "linear-gradient(270.95deg, #79AF33 0%, #448016 100%)",
     borderRadius: "100px",
     width: "100%",
     textTransform: "none",

@@ -30,6 +30,7 @@ import { SelectCheckedElementMui } from "../../common/mui-element/SelectCheckedE
 import TextFieldTextareaElementMui from "../../common/mui-element/TextFieldTextareaElementMui";
 import { useNavigate } from "react-router-dom";
 import { DatePickerMui } from "../../common/mui-element/DatePickerMui";
+import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
 
 interface FormChangeProfileType {
  userDataProfile: InitialStateUserType;
@@ -612,7 +613,7 @@ export const FormChangeProfile = ({
    </div>*/}
 
    <div className={s.btnFormWrapper}>
-    <BtnInFormSaveCancel
+    <BtnInGroupeSaveCancelMui
      textCancelButton="Отмена"
      textButton="Сохранить"
     />

@@ -78,9 +78,6 @@ export const SelectCheckedElementMui = ({
     "& .Mui-focused": {
      color: "#1A1C18 !important",
     },
-    "& .Mui-error": {
-     // color: "rgb(255, 0, 0) !important",
-    },
    }}
    error={errors}
   >
@@ -106,6 +103,10 @@ export const SelectCheckedElementMui = ({
        padding: "0 14px",
        minHeight: "auto !important",
 
+       "&.Mui-selected": {
+        background: "#4dd64d2e",
+       },
+
        "& .MuiListItemText-root .MuiTypography-root": {
         lineHeight: "1 !important",
         paddingLeft: "6px",
@@ -121,13 +122,13 @@ export const SelectCheckedElementMui = ({
      minHeight: "48px !important",
      borderRadius: "8px",
 
-     "& .MuiSvgIcon-root": {
-      color: "#000000",
+     "&.Mui-error .MuiOutlinedInput-notchedOutline": {
+      color: "red !important",
+      border: "1px solid red !important",
      },
 
-     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      border: "1px solid #C6D1B8",
-      color: "red",
+     "& .MuiSvgIcon-root": {
+      color: "#000000",
      },
 
      "& .MuiSelect-select": {
@@ -142,7 +143,11 @@ export const SelectCheckedElementMui = ({
      },
 
      fieldset: {
+      border: "1px solid #C6D1B8 !important",
       borderRadius: "8px",
+     },
+     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      border: "1px solid #C6D1B8 !important",
      },
     }}
     renderValue={(selected) => {

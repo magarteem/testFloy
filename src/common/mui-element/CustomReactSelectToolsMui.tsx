@@ -62,9 +62,6 @@ export const CustomReactSelectToolsMui = ({
     "& .Mui-focused": {
      color: "#1A1C18 !important",
     },
-    "& .Mui-error": {
-     // color: "rgb(255, 0, 0) !important",
-    },
    }}
    error={errors}
   >
@@ -93,9 +90,12 @@ export const CustomReactSelectToolsMui = ({
 
       ".MuiList-root li": {
        height: "37px !important",
-
        padding: "0 14px",
        minHeight: "auto !important",
+
+       "&.Mui-selected": {
+        background: "#4dd64d2e",
+       },
 
        "& .MuiListItemText-root .MuiTypography-root": {
         lineHeight: "1 !important",
@@ -114,11 +114,6 @@ export const CustomReactSelectToolsMui = ({
       color: "#000000",
      },
 
-     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      border: "1px solid #C6D1B8",
-      //color: "red",
-     },
-
      "& .MuiSelect-select": {
       height: "100% !important",
       padding: "8px 24px 8px 14px !important",
@@ -130,8 +125,18 @@ export const CustomReactSelectToolsMui = ({
       },
      },
 
+     "&.Mui-error .MuiOutlinedInput-notchedOutline": {
+      color: "red !important",
+      border: "1px solid red !important",
+     },
+
      fieldset: {
+      border: "1px solid #C6D1B8 !important",
       borderRadius: "8px",
+     },
+
+     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      border: "1px solid #C6D1B8",
      },
     }}
     renderValue={(selected) => {

@@ -347,12 +347,6 @@ export const ThreeStepFormRegister = () => {
      isValidInButton={!isValid}
     />
    </div>
-   {/*<div className={s.btnFormWrapper}>
-    <BtnInFormSaveCancel
-     textCancelButton="Назад"
-     textButton="Создать анкету"
-    />
-   </div>*/}
   </FormLayout>
  );
 };

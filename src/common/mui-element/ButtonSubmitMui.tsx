@@ -22,6 +22,12 @@ export const ButtonSubmitMui = ({
     width: "100%",
     textTransform: "none",
 
+    "&:disabled": {
+     color: "rgba(0, 0, 0, 0.26)",
+     boxShadow: "none",
+     background: "rgba(0, 0, 0, 0.12)",
+    },
+
     "&:hover": {
      backgroundColor: "#395920",
      borderColor: "#3d5b26",

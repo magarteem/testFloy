@@ -1,0 +1,25 @@
+@import "src/styles/variable";
+
+.infoCards {
+ @include flex_direction_column_align_center_position();
+
+ img {
+  width: 100%;
+ }
+
+ .textInfo {
+  padding: 16px;
+  //height: 40px;
+  font-size: 14px;
+  color: #43483e;
+
+  margin: 0;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  .textRedactor {
+  }
+ }
+}

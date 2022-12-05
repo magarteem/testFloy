@@ -1,0 +1,17 @@
+@import "src/styles/variable";
+
+.footerCards {
+ // @include flex_position();
+ padding: 16px;
+
+ a {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #2b6c00;
+ }
+ .theme {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #66784e;
+ }
+}

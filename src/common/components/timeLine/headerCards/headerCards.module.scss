@@ -1,0 +1,35 @@
+@import "src/styles/variable";
+
+.headerCards {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding-bottom: 12px;
+
+ .author {
+  display: flex;
+  align-items: center;
+
+  .avatar {
+   margin: 0 16px;
+   width: 40px;
+   height: 40px;
+  }
+
+  .infoAuthor {
+   .name {
+    font-weight: 700;
+    font-size: 18px;
+    color: #1a1c18;
+   }
+
+   .visit {
+    font-size: 14px;
+    color: #1a1c18;
+   }
+  }
+ }
+
+ .buttonAction {
+ }
+}

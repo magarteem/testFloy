@@ -1,65 +1,27 @@
-import React from "react";
+import { InitialStateTeamLineType } from "../../../modules/timeLine/types/timlineSliceType";
 import { CardsLayoutItem } from "../../layout/cardsLayoutItem/CardsLayoutItem";
-import { FooterCards } from "./footerCards/FooterCards";
 import { HeaderCards } from "./headerCards/HeaderCards";
-import { InfoCards } from "./infoCards/InfoCards";
+import { BodyCards } from "./bodyCards/BodyCards";
 import s from "./timeLine.module.scss";
 
-export const TimeLine = () => {
+interface TimeLineType {
+ timeLineData: InitialStateTeamLineType[] | null;
+}
+
+export const TimeLine = ({
+ timeLineData,
+}: TimeLineType) => {
  return (
   <section className={s.timeline}>
-   <CardsLayoutItem>
-    <HeaderCards />
-    <InfoCards />
-    <FooterCards />
-   </CardsLayoutItem>
-
-   <CardsLayoutItem>
-    <HeaderCards />
-    <InfoCards />
-    <FooterCards />
-   </CardsLayoutItem>
-
-   <CardsLayoutItem>
-    <HeaderCards />
-    <InfoCards />
-    <FooterCards />
-   </CardsLayoutItem>
-   <CardsLayoutItem>
-    <HeaderCards />
-    <InfoCards />
-    <FooterCards />
-   </CardsLayoutItem>
-   <CardsLayoutItem>
-    <HeaderCards />
-    <InfoCards />
-    <FooterCards />
-   </CardsLayoutItem>
-   <CardsLayoutItem>
-    <HeaderCards />
-    <InfoCards />
-    <FooterCards />
-   </CardsLayoutItem>
-   <CardsLayoutItem>
-    <HeaderCards />
-    <InfoCards />
-    <FooterCards />
-   </CardsLayoutItem>
-   <CardsLayoutItem>
-    <HeaderCards />
-    <InfoCards />
-    <FooterCards />
-   </CardsLayoutItem>
-   <CardsLayoutItem>
-    <HeaderCards />
-    <InfoCards />
-    <FooterCards />
-   </CardsLayoutItem>
-   <CardsLayoutItem>
-    <HeaderCards />
-    <InfoCards />
-    <FooterCards />
-   </CardsLayoutItem>
+   {timeLineData?.map((x) => (
+    <CardsLayoutItem key={x.id}>
+     <HeaderCards author={x.author} date={x.date} />
+     <BodyCards
+      timeLinePost={x.timeLinePost}
+      id_news={x.id}
+     />
+    </CardsLayoutItem>
+   ))}
   </section>
  );
 };

@@ -21,6 +21,8 @@ import { ProfileInfo } from "../../pages/ProfileInfo";
 import { Settings } from "../../pages/Settings";
 import { User } from "../../pages/User";
 import { ChangeProfile } from "../../pages/ChangeProfile";
+import { NewsPagesOne } from "../../pages/NewsPagesOne";
+import { NewsAll } from "../../pages/NewsAll";
 
 const Ads = React.lazy(() =>
  import(
@@ -71,7 +73,19 @@ export const AppRouter = () => {
   <Routes>
    <Route element={<ProtectedRoute auth={auth} />}>
     <Route path={RouteNames.HOME} element={<MainScreen />}>
-     <Route index element={<Home />} />
+     <Route element={<Home />}>
+      <Route index element={<NewsAll />} />
+      <Route
+       path={`${RouteNames.NEWS}/:id_news`}
+       element={<NewsPagesOne />}
+      />
+     </Route>
+
+     {/*<Route
+      path={`${RouteNames.NEWS}/:id_news`}
+      element={<NewsPagesOne />}
+     />*/}
+
      <Route
       path={RouteNames.ADS}
       element={

@@ -12,8 +12,8 @@ import {
 export const tempDataOtherUserProfile: InitialStateUserType[] =
  [
   {
-   id_user: "initialProfile",
-   name: "Юлия Андреевна",
+   id_user: "masha",
+   name: "Маша Андреевна",
    email: "i-am-mail_test@mail.ru",
    sity: { value: "magadan", label: "Магадан" },
    age: 1290163404000,
@@ -27,7 +27,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
     tool: [
      groupeOptions[2].options[1],
      groupeOptions[3].options[0],
-     groupeOptions[3].options[9],
+     groupeOptions[3].options[6],
      groupeOptions[2].options[2],
     ],
     genre: [
@@ -54,8 +54,8 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    },
   },
   {
-   id_user: "vova",
-   name: "Вова Петров",
+   id_user: "kirill",
+   name: "Кирилл Белоусов",
    email: "vova_test@mail.ru",
    sity: { value: "lobnya", label: "Лобня" },
    age: 26736204000,
@@ -161,8 +161,8 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    },
   },
   {
-   id_user: "masha",
-   name: "Мария Афанасьевна",
+   id_user: "iana",
+   name: "Яна Калинина",
    email: "masha_test@mail.ru",
    sity: { value: "makhachkala", label: "Махачкала" },
    age: 720960204000,
@@ -222,8 +222,8 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    },
   },
   {
-   id_user: "ulia",
-   name: "Юлия Андреевна",
+   id_user: "eugenia",
+   name: "Евгения Матвеева",
    email: "vova_test@mail.ru",
    sity: { value: "magadan", label: "Магадан" },
    age: 952078480000,

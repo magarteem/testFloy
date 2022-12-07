@@ -9,7 +9,7 @@ export const ProfileInfo = () => {
  const userDataProfile = useAppSelector(
   (state) => state.userSliceReducer.profileData
  );
- //console.log(userDataProfile);
+
  return (
   <>
    <HeaderWrapper srcPhoto={backGroundImg}>

@@ -23,6 +23,7 @@ import { User } from "../../pages/User";
 import { ChangeProfile } from "../../pages/ChangeProfile";
 import { NewsPagesOne } from "../../pages/NewsPagesOne";
 import { NewsAll } from "../../pages/NewsAll";
+import { CreateNewAds } from "../../pages/CreateNewAds";
 
 const Ads = React.lazy(() =>
  import(
@@ -93,6 +94,10 @@ export const AppRouter = () => {
         <Ads />
        </React.Suspense>
       }
+     />
+     <Route
+      path={RouteNames.CREATE_ADS}
+      element={<CreateNewAds />}
      />
 
      <Route path={RouteNames.USER} element={<User />}>

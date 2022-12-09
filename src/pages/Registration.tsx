@@ -19,7 +19,7 @@ export const Registration = () => {
    type_account: null,
    name_field: "",
    img_upload: "",
-   sity: null,
+   city: null,
    gender: null,
    age: null,
    tool: [],

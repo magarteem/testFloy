@@ -11,7 +11,7 @@ import {
  genreBD,
  groupeOptions,
  profilePrivacySettings,
- sityBD,
+ cityBD,
  skillBD,
 } from "../authorization/service/BD";
 import { ISignUpFormValues } from "../authorization/types/authType";
@@ -43,7 +43,7 @@ export const FormChangeProfile = ({
 
  const {
   name,
-  sity,
+  city,
   age,
   gender,
   skills,
@@ -59,7 +59,7 @@ export const FormChangeProfile = ({
   mode: "all",
   defaultValues: {
    name_field: name,
-   sity,
+   city,
    gender,
    age: age && new Date(age).getTime(),
    tool: skills.tool,
@@ -78,7 +78,7 @@ export const FormChangeProfile = ({
  };
 
  // console.log("value hook = ", value);
- // console.log("sity = ", sity);
+ // console.log("city = ", city);
  return (
   <form
    noValidate
@@ -150,7 +150,7 @@ export const FormChangeProfile = ({
 
    <div className={s.selectField}>
     <Controller
-     name="sity"
+     name="city"
      control={control}
      rules={{
       required: "Обязательное поле",
@@ -166,7 +166,7 @@ export const FormChangeProfile = ({
          value={value}
          placeholder="Город"
          required={true}
-         options={sityBD}
+         options={cityBD}
          //@ts-ignore
          onChange={(e) =>
           onChange({
@@ -174,7 +174,7 @@ export const FormChangeProfile = ({
            label: e.target.value,
           })
          }
-         errors={errors.sity}
+         errors={errors.city}
          {...field}
         />
        </div>
@@ -186,7 +186,7 @@ export const FormChangeProfile = ({
    {/*<div className={s.selectField}>
     <InputLabel titleSelect="Город" required />
     <Controller
-     name="sity"
+     name="city"
      control={control}
      rules={{
       required: "Обязательное поле",
@@ -199,9 +199,9 @@ export const FormChangeProfile = ({
        value={value}
        ItemRef={ref}
        placeholder="Выбрать"
-       options={sityBD}
+       options={cityBD}
        onChange={onChange}
-       errors={errors.sity}
+       errors={errors.city}
        {...field}
       />
      )}

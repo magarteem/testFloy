@@ -34,8 +34,6 @@ const timeLineSlice = createSlice({
      actions: PayloadAction<InitialStateTeamLineType[]>
     ) => {
      state.isLoading = false;
-     console.log("getDataTimeLineThunk = fulfilled");
-     console.log(actions.payload);
      state.timeLineData = actions.payload;
     }
    )

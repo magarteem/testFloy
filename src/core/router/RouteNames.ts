@@ -7,6 +7,7 @@ export enum RouteNames {
  HOME = "/",
  NEWS = "/news",
  ADS = "/ads",
+ CREATE_ADS = "/create-ads",
  USER = "/user",
  CHANGE_PROFILE = "change-profile",
  OTHER_PROFILE_USER = "/other-user-profile",

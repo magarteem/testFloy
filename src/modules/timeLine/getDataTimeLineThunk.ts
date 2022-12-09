@@ -10,7 +10,6 @@ export const getDataTimeLineThunk = createAsyncThunk<
   try {
    //return await new Promise(resolve => setTimeout(resolve, 1000));
 
-   console.log(timeLineBD);
    return timeLineBD;
   } catch (error) {
    return rejectWithValue(error);

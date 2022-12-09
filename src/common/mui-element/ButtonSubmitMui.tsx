@@ -22,6 +22,10 @@ export const ButtonSubmitMui = ({
     width: "100%",
     textTransform: "none",
 
+    "@media screen and (max-width: 400px)": {
+     padding: "6px 0 !important",
+    },
+
     "&:disabled": {
      color: "rgba(0, 0, 0, 0.26)",
      boxShadow: "none",

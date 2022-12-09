@@ -31,7 +31,7 @@ export interface InitialStateUserType {
  id_user: string;
  name: string;
  email: string;
- sity: DataSelectType | null;
+ city: DataSelectType | null;
  age: number | null;
  img_upload: string;
  gender: DataSelectType | null;

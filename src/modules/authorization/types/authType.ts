@@ -28,7 +28,7 @@ export interface ISignUpFormValues
  type_account: OptionSelectType | null;
  name_field: string;
  img_upload: string;
- sity: OptionSelectType | null;
+ city: OptionSelectType | null;
  gender: OptionSelectType | null;
  age: number | null;
  tool: ToolsType[];

@@ -21,7 +21,7 @@ const initialState: InitialStateType = {
   id_user: "",
   name: "",
   email: "",
-  sity: { value: "", label: "" },
+  city: { value: "", label: "" },
   age: 952078480000,
   img_upload: "",
   gender: { value: "", label: "" },
@@ -77,7 +77,7 @@ const userSlice = createSlice({
      // };
      state.profileData.name = actions.payload.name_field;
      state.profileData.age = actions.payload.age;
-     state.profileData.sity = actions.payload.sity;
+     state.profileData.city = actions.payload.city;
      state.profileData.gender = actions.payload.gender;
      state.profileData.skills.tool = actions.payload.tool;
      state.profileData.skills.genre = actions.payload.genre;

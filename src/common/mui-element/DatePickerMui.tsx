@@ -11,6 +11,8 @@ interface LinkActiveType {
  placeholder: string;
  helperText: string;
  required?: boolean;
+ minDate?: any;
+ views?: any;
 }
 
 export const DatePickerMui = ({
@@ -20,6 +22,8 @@ export const DatePickerMui = ({
  required = false,
  errors,
  helperText = "",
+ minDate = new Date(28898667000),
+ views = ["year", "month", "day"],
 }: LinkActiveType) => {
  const calculateAge = (value: Date | number) =>
   `${
@@ -32,6 +36,8 @@ export const DatePickerMui = ({
    adapterLocale={"ru"}
   >
    <DatePicker
+    views={views}
+    minDate={minDate}
     maxDate={new Date()}
     label={placeholder}
     value={value}

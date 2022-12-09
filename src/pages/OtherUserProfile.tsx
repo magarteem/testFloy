@@ -13,7 +13,7 @@ const dataNull: InitialStateUserType = {
  id_user: "",
  name: "",
  email: "",
- sity: { value: "", label: "" },
+ city: { value: "", label: "" },
  age: 0,
  img_upload: "",
  gender: { value: "", label: "" },

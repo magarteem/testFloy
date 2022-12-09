@@ -16,7 +16,7 @@ import {
  genreBD,
  groupeOptions,
  profilePrivacySettings,
- sityBD,
+ cityBD,
  skillBD,
 } from "./service/BD";
 import { SelectElementMui } from "../../common/mui-element/SelectElementMui";
@@ -33,11 +33,8 @@ export const ThreeStepFormRegister = () => {
   register,
   watch,
   control,
-
   formState: { errors, isValid },
  } = useFormContext();
-
- console.log(watch("sity"));
 
  return (
   <FormLayout textLabel="Регистрация">
@@ -83,7 +80,7 @@ export const ThreeStepFormRegister = () => {
 
     <div className={s.selectField}>
      <Controller
-      name="sity"
+      name="city"
       control={control}
       rules={{
        required: "Обязательное поле",
@@ -97,7 +94,7 @@ export const ThreeStepFormRegister = () => {
         value={value}
         placeholder="Город"
         required={true}
-        options={sityBD}
+        options={cityBD}
         //onChange={onChange}
         //@ts-ignore
         onChange={(e) =>
@@ -106,7 +103,7 @@ export const ThreeStepFormRegister = () => {
           label: e.target.value,
          })
         }
-        errors={errors.sity}
+        errors={errors.city}
         {...field}
        />
       )}

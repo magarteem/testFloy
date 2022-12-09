@@ -4,6 +4,10 @@ import { AuthorType } from "../../../../modules/timeLine/types/timlineSliceType"
 import s from "./headerCards.module.scss";
 import { Link } from "react-router-dom";
 import { RouteNames } from "../../../../core/router/RouteNames";
+import Dayjs from "dayjs";
+import relativeTIme from "dayjs/plugin/relativeTime";
+Dayjs.locale("ru");
+Dayjs.extend(relativeTIme);
 
 interface HeaderCardsType {
  author: AuthorType;
@@ -11,6 +15,11 @@ interface HeaderCardsType {
  menu?: boolean;
 }
 
+const calculateDatePublicher = (date: any) => {
+ return Dayjs(date).fromNow();
+};
+//1670235280000 2
+//921838480000 9м
 export const HeaderCards = ({
  author,
  date,
@@ -18,7 +27,6 @@ export const HeaderCards = ({
 }: HeaderCardsType) => {
  return (
   <div className={s.headerCards}>
-   {/*<div className={s.author}>*/}
    <Link
     to={`${RouteNames.OTHER_PROFILE_USER}/${author.id_user}`}
     className={s.author}
@@ -29,11 +37,10 @@ export const HeaderCards = ({
     <div className={s.infoAuthor}>
      <h2 className={s.name}>{author.name}</h2>
      <span className={s.visit}>
-      {new Date(date).toLocaleDateString()}, Москва
+      {`${calculateDatePublicher(date)}, ${author.city}`}
      </span>
     </div>
    </Link>
-   {/*</div>*/}
 
    {menu && (
     <div className={s.buttonAction}>
@@ -43,9 +50,3 @@ export const HeaderCards = ({
   </div>
  );
 };
-
-{
- /*<Link to={`${RouteNames.OTHER_PROFILE_USER}/vova`} style={{ margin: "10px" }}>
-Вова
-</Link>*/
-}

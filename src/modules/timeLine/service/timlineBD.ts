@@ -14,10 +14,10 @@ export const timeLineBD: InitialStateTeamLineType[] = [
   author: {
    id_user: "kirill",
    name: "Кирилл Белоусов",
-   sity: "Москва",
+   city: "Москва",
    avatar: avatart_11,
   },
-  date: 1646216080000,
+  date: 1670447887000,
   timeLinePost: {
    photo: [cardsItem_1],
    text:
@@ -42,7 +42,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
   author: {
    id_user: "iana",
    name: "Яна Калинина",
-   sity: "Ростов",
+   city: "Ростов",
    avatar: avatart_22,
   },
   date: 1669976080000,
@@ -72,7 +72,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
   author: {
    id_user: "kirill",
    name: "Кирилл Белоусов",
-   sity: "Москва",
+   city: "Москва",
    avatar: avatart_33,
   },
   date: 1669803280000,
@@ -100,7 +100,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
   author: {
    id_user: "ulia",
    name: "Юлия Андреевна",
-   sity: "Петербург",
+   city: "Петербург",
    avatar: avatart_22,
   },
   date: 1669371280000,
@@ -129,7 +129,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
   author: {
    id_user: "iana",
    name: "Яна Калинина",
-   sity: "Москва",
+   city: "Москва",
    avatar: avatart_11,
   },
   date: 1668420880000,
@@ -168,7 +168,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
   author: {
    id_user: "masha",
    name: "Маша Андреевна",
-   sity: "Москва",
+   city: "Москва",
    avatar: avatart_11,
   },
   date: 1668420880000,
@@ -207,7 +207,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
   author: {
    id_user: "eugenia",
    name: "Евгения Матвеева",
-   sity: "Москва",
+   city: "Москва",
    avatar: avatart_11,
   },
   date: 1668420880000,

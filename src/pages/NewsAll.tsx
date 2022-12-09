@@ -18,7 +18,7 @@ export const NewsAll = () => {
      addIcons={addIcons}
      filterIcons={filterIcons}
     />
-    {/*//@ts-ignore*/}
+
     {data.isLoading ? (
      <h1>Loading....</h1>
     ) : (

@@ -11,7 +11,7 @@ import {
  genreBD,
  groupeOptions,
  profilePrivacySettings,
- sityBD,
+ cityBD,
  skillBD,
 } from "./service/BD";
 import { TextAreaElement } from "../../common/ui-elements/textarea/TextAreaElement";
@@ -80,7 +80,7 @@ export const ThreeStepFormRegister = () => {
     <div className={s.selectField}>
      <InputLabel titleSelect="Город" required />
      <Controller
-      name="sity"
+      name="city"
       control={control}
       rules={{
        required: "Обязательное поле",
@@ -93,9 +93,9 @@ export const ThreeStepFormRegister = () => {
         ItemRef={ref}
         value={value}
         placeholder="Выбрать"
-        options={sityBD}
+        options={cityBD}
         onChange={onChange}
-        errors={errors.sity}
+        errors={errors.city}
         {...field}
        />
       )}

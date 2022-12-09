@@ -1,6 +1,6 @@
 export function hexToRGB(
  h: string | undefined,
- opasity: string
+ opacity: string
 ) {
  let r: any = 0,
   g: any = 0,
@@ -19,5 +19,5 @@ export function hexToRGB(
   b = "0x" + h[5] + h[6];
  }
 
- return `rgb(${+r} ${+g} ${+b} / ${opasity})`;
+ return `rgb(${+r} ${+g} ${+b} / ${opacity})`;
 }

@@ -4,7 +4,7 @@ import { GenreType } from "../../authorization/types/authType";
 export interface AuthorType {
  id_user: string;
  name: string;
- sity: string;
+ city: string;
  avatar: string;
 }
 export interface TimeLinePostType {

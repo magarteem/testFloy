@@ -12,43 +12,73 @@ import { EducationeCards } from "./skills/EducationeCards";
 import s from "./aboutProfile.module.scss";
 
 interface AboutProfileType {
-  userDataProfile: InitialStateUserType;
+ userDataProfile: InitialStateUserType;
 }
 
-export const AboutProfile = ({ userDataProfile }: AboutProfileType) => {
-  const { id_user } = useParams();
+export const AboutProfile = ({
+ userDataProfile,
+}: AboutProfileType) => {
+ const { id_user } = useParams();
 
-  return (
-    <>
-      <section className={s.main}>
-        <NameProfile age={userDataProfile.age || 0} name={userDataProfile.name} sity={userDataProfile.sity ? userDataProfile.sity.label : ""} />
+ return (
+  <>
+   <section className={s.main}>
+    <NameProfile
+     age={userDataProfile.age || 0}
+     name={userDataProfile.name}
+     city={
+      userDataProfile.city ? userDataProfile.city.label : ""
+     }
+    />
 
-        {id_user && (
-          <BtnUserContact>
-            <div className={s.btnUserContact}>
-              <ContactButton textButton="Связаться" />
-            </div>
+    {id_user && (
+     <BtnUserContact>
+      <div className={s.btnUserContact}>
+       <ContactButton textButton="Связаться" />
+      </div>
 
-            <div className={s.btnUserContact}>
-              <button className={s.buttonContactWrapper}>Связаться</button>
-            </div>
-          </BtnUserContact>
-        )}
+      <div className={s.btnUserContact}>
+       <button className={s.buttonContactWrapper}>
+        Связаться
+       </button>
+      </div>
+     </BtnUserContact>
+    )}
 
-        <SkillsLayoutTools skillsDataItem={userDataProfile.skills.tool} skillsCategoryTitle="Инструменты" />
-        <SkillsLayoutGenre skillsDataItem={userDataProfile.skills.genre} skillsCategoryTitle="Жанр" />
+    <SkillsLayoutTools
+     skillsDataItem={userDataProfile.skills.tool}
+     skillsCategoryTitle="Инструменты"
+    />
+    <SkillsLayoutGenre
+     skillsDataItem={userDataProfile.skills.genre}
+     skillsCategoryTitle="Жанр"
+    />
 
-        {userDataProfile.skills.master && (
-          <SkillsLayoutMaster skillsDataItem={userDataProfile.skills.master.label} skillsCategoryTitle="Мастерство" />
-        )}
+    {userDataProfile.skills.master && (
+     <SkillsLayoutMaster
+      skillsDataItem={userDataProfile.skills.master.label}
+      skillsCategoryTitle="Мастерство"
+     />
+    )}
 
-        <WorkExperienceCard workEducationeData={userDataProfile.skills.workExperience} skillsCategoryTitle="Опыт работы" />
-        <EducationeCards workEducationeData={userDataProfile.skills.education} skillsCategoryTitle="Образование" />
+    <WorkExperienceCard
+     workEducationeData={
+      userDataProfile.skills.workExperience
+     }
+     skillsCategoryTitle="Опыт работы"
+    />
+    <EducationeCards
+     workEducationeData={userDataProfile.skills.education}
+     skillsCategoryTitle="Образование"
+    />
 
-        {userDataProfile.skills.inspiration.length > 0 && (
-          <InspirationUser inspiration={userDataProfile.skills.inspiration} skillsCategoryTitle="Портфолио" />
-        )}
-      </section>
-    </>
-  );
+    {userDataProfile.skills.inspiration.length > 0 && (
+     <InspirationUser
+      inspiration={userDataProfile.skills.inspiration}
+      skillsCategoryTitle="Портфолио"
+     />
+    )}
+   </section>
+  </>
+ );
 };

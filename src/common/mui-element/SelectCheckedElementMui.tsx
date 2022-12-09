@@ -158,26 +158,49 @@ export const SelectCheckedElementMui = ({
         let colorsChips = options.filter(
          (color: any) => color.label === values
         );
+
         return (
          <Chip
           key={values}
           label={values}
-          sx={{
-           backgroundColor: colorsChips[0].hexColor,
-           boxShadow:
-            "0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)",
-           borderRadius: " 30px",
-           color: "white !important",
-           fontSize: "14px",
-           margin: "0 !important",
+          sx={
+           colorsChips[0].hexColor
+            ? {
+               background: colorsChips[0].hexColor,
+               boxShadow:
+                "0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)",
+               borderRadius: " 30px",
+               color: "white !important",
 
-           "& .MuiChip-deleteIcon": {
-            height: "10px !important",
-           },
-           "& .MuiChip-label": {
-            padding: "8px !important",
-           },
-          }}
+               fontSize: "14px",
+               margin: "0 !important",
+
+               "& .MuiChip-deleteIcon": {
+                height: "10px !important",
+               },
+               "& .MuiChip-label": {
+                padding: "8px !important",
+               },
+              }
+            : {
+               border: " 1px solid #66784E",
+               background:
+                "linear-gradient(0deg, rgba(43, 108, 0, 0.08), rgba(43, 108, 0, 0.08)), #FDFDF5;",
+               boxShadow:
+                "0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)",
+               borderRadius: " 30px",
+               color: "#1A1C18",
+               fontSize: "14px",
+               margin: "0 !important",
+
+               "& .MuiChip-deleteIcon": {
+                height: "10px !important",
+               },
+               "& .MuiChip-label": {
+                padding: "12px !important",
+               },
+              }
+          }
          />
         );
        })}

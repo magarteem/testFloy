@@ -1,40 +1,15 @@
 @import "src/styles/variable";
 
-//.threeStepFormRegister {
-// @include flex_direction_column_align_center_position();
-// width: 100%;
-// max-width: 1024px;
-// background-color: #f8f9f6;
-// padding-bottom: 20px;
-
-// .title {
-//  padding: 0 16px;
-//  height: 48px;
-//  background-color: $white;
-//  display: flex;
-//  align-items: center;
-//  justify-content: flex-start;
-//  width: 100%;
-
-//  h1 {
-//   font-weight: 700;
-//   font-size: 20px;
-//   color: #363934;
-//   margin-left: 25px;
-//  }
-// }
 .main {
  @include flex_direction_column_align_center_position();
  justify-content: flex-start;
  max-width: 650px;
  width: 100%;
- // padding: 20px 0;
  row-gap: 24px;
  padding-bottom: 24px;
 
  .styleInput {
   width: 100%;
-  // height: 76px;
 
   .sizeInput {
    min-height: 48px;
@@ -45,17 +20,8 @@
 
    textarea {
     min-height: 48px !important;
-
-    //&:focus {
-    // height: auto !important;
-    // min-height: 48px !important;
-    //}
    }
   }
-
-  //.textarea {
-  // min-height: 50px;
-  //}
 
   .notes {
    display: block;
@@ -69,7 +35,6 @@
   width: 100%;
  }
  .selectFieldCustomHeight {
-  //height: 48px;
   width: 100%;
  }
 }
@@ -79,4 +44,3 @@
  width: 100%;
  padding: 20px 0;
 }
-//}

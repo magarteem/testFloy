@@ -319,7 +319,6 @@ export const CreateFormVacancy = () => {
         placeholder="Оплата"
         required={true}
         onChange={onChange}
-        type="number"
         helperText="Обязательное поле"
         errors={errors.payment && errors.payment.message}
         {...field}

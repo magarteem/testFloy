@@ -1,52 +1,6 @@
 import { ChangeEvent, ReactNode } from "react";
 import { TextField } from "@mui/material";
 
-const useStyles = {
- inputLabel: {
-  height: "100% !important",
-  color: "#1A1C18 !important",
-
-  "&.focused": {
-   color: "#242424 !important",
-  },
- },
-
- error: {
-  // color: "#ff0000 !important",
- },
-
- asterisk: {
-  color: "red",
- },
-
- cssOutlinedInput: {
-  // border: "1px solid #C6D1B8 !important",
-  borderRadius: "8px !important",
-  height: "100%",
-  padding: 0,
-
-  "&$cssFocused $notchedOutline": {
-   //обводка легенд
-   border: "1px solid #C6D1B8 !important",
-  },
- },
-
- notchedOutline: {
-  "&$cssFocused $notchedOutline": {
-   border: "1px solid #d2e407 !important",
-  },
- },
-
- //текст в инпуте
- input: {
-  fontFamily: `Mulish_Regular, sans-serif !important`,
-  fontSize: "16px !important",
-  color: "##1A1C18 !important",
-  fontWeight: "600 !important",
-  padding: "0 14px !important",
- },
-};
-
 interface TextFieldElementMuiType {
  type?: string;
  multiline?: boolean;
@@ -77,7 +31,7 @@ export default function TextFieldElementMui({
 }: TextFieldElementMuiType) {
  return (
   <TextField
-   helperText={errors && helperText}
+   helperText={errors && errors}
    multiline={multiline}
    maxRows={4}
    error={errors}

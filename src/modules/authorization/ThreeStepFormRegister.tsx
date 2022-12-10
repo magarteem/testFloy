@@ -22,11 +22,13 @@ import {
 import { SelectElementMui } from "../../common/mui-element/SelectElementMui";
 import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker/ReactDatePicker";
 import { CustomReactSelectToolsMui } from "../../common/mui-element/CustomReactSelectToolsMui";
-import { SelectCheckedElementMui } from "../../common/mui-element/SelectCheckedElementMui";
 import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
 import TextFieldTextareaElementMui from "../../common/mui-element/TextFieldTextareaElementMui";
 import TextFieldElementMui from "../../common/mui-element/TextFieldElementMui";
 import { DatePickerMui } from "../../common/mui-element/DatePickerMui";
+import { SelectGenreElementMui } from "../../common/mui-element/selectGenreElementMui/SelectGenreElementMui";
+import { SelectToolsElementMui } from "../../common/mui-element/selectToolsElementMui/SelectToolsElementMui";
+import { useEffect } from "react";
 
 export const ThreeStepFormRegister = () => {
  const {
@@ -200,8 +202,9 @@ export const ThreeStepFormRegister = () => {
       }}
       render={({
        field: { onChange, value, ref, ...field },
+       formState: { errors },
       }) => (
-       <CustomReactSelectToolsMui
+       <SelectToolsElementMui
         ItemRef={ref}
         value={value}
         placeholder="Инструмент (род деятельности)"
@@ -225,7 +228,7 @@ export const ThreeStepFormRegister = () => {
       render={({
        field: { onChange, value, ref, ...field },
       }) => (
-       <SelectCheckedElementMui
+       <SelectGenreElementMui
         ItemRef={ref}
         value={value}
         placeholder="Жанр"

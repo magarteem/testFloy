@@ -8,30 +8,24 @@ import { FormChangeProfile } from "../modules/user/FormChangeProfile";
 import s from "./styles/changeProfile.module.scss";
 
 export const ChangeProfile = () => {
- const userDataProfile = useAppSelector(
-  (state) => state.userSliceReducer.profileData
- );
- return (
-  <>
-   <HeaderWrapper srcPhoto={backGroundImg}>
-    <HeaderProfile
-     textLabel="Редактировать профиль"
-     cancelImgIcon={arrowReturnWhite}
-    />
-   </HeaderWrapper>
+  const userDataProfile = useAppSelector((state) => state.userSliceReducer.profileData);
 
-   <section className={s.main}>
-    <div className={s.changeAvatar}>
-     <ChangePhoto />
-    </div>
-    <div className={s.addSecondProfile}>
-     <button className={s.styleText}>
-      Добавить вторую анкету
-     </button>
-    </div>
+  return (
+    <>
+      <HeaderWrapper srcPhoto={backGroundImg}>
+        <HeaderProfile textLabel="Редактировать профиль" cancelImgIcon={arrowReturnWhite} />
+      </HeaderWrapper>
 
-    <FormChangeProfile userDataProfile={userDataProfile} />
-   </section>
-  </>
- );
+      <section className={s.main}>
+        <div className={s.changeAvatar}>
+          <ChangePhoto />
+        </div>
+        <div className={s.addSecondProfile}>
+          <button className={s.styleText}>Добавить вторую анкету</button>
+        </div>
+
+        <FormChangeProfile userDataProfile={userDataProfile} />
+      </section>
+    </>
+  );
 };

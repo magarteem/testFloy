@@ -59,10 +59,7 @@ export const ThreeStepFormRegister = () => {
          placeholder="Ваше имя"
          required={true}
          onChange={onChange}
-         helperText="Обязательное поле"
-         errors={
-          errors.name_field && errors.name_field.message
-         }
+         errors={errors.name_field}
          {...field}
         />
        </div>

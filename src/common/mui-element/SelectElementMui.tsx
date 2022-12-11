@@ -31,6 +31,7 @@ export const SelectElementMui = ({
  required = false,
  ...props
 }: SelectElementMuiType) => {
+ console.log(" value = ", value);
  return (
   <FormControl
    error={errors}

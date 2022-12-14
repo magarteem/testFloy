@@ -31,7 +31,6 @@ export const SelectElementMui = ({
  required = false,
  ...props
 }: SelectElementMuiType) => {
- console.log(" value = ", value);
  return (
   <FormControl
    error={errors}
@@ -54,6 +53,7 @@ export const SelectElementMui = ({
    <InputLabel
     required={required}
     id="demo-simple-select-error-label"
+    sx={{ color: "#1A1C18 !important" }}
    >
     {placeholder}
    </InputLabel>

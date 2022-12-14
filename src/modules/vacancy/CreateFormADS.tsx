@@ -4,12 +4,13 @@ import {
 } from "react-hook-form";
 import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
 import { CustomReactSelectToolsMui } from "../../common/mui-element/CustomReactSelectToolsMui";
-import { DatePickerMui } from "../../common/mui-element/DatePickerMui";
+import { DatePickerMui } from "../../common/mui-element/datePicker/DatePickerMui";
 import { SelectElementMui } from "../../common/mui-element/SelectElementMui";
 import { SelectGenreElementMui } from "../../common/mui-element/selectGenreElementMui/SelectGenreElementMui";
 import { SelectToolsElementMui } from "../../common/mui-element/selectToolsElementMui/SelectToolsElementMui";
-import TextFieldElementMui from "../../common/mui-element/TextFieldElementMui";
-import TextFieldTextareaElementMui from "../../common/mui-element/TextFieldTextareaElementMui";
+import TextFieldElementMui from "../../common/mui-element/textFieldElementMui/textField/TextFieldElementMui";
+import TextFieldPhoneElementMui from "../../common/mui-element/textFieldElementMui/phoneInput/TextFieldPhoneElementMui";
+import TextFieldTextareaElementMui from "../../common/mui-element/textFieldElementMui/textAreaInput/TextFieldTextareaElementMui";
 import {
  cityBD,
  genderBD,
@@ -31,7 +32,7 @@ export const CreateFormADS = () => {
   formState: { errors },
  } = useFormContext();
 
- const work = watch("required")?.value === "Работу";
+ const typeAds = watch("required")?.value;
 
  return (
   <>
@@ -44,7 +45,6 @@ export const CreateFormADS = () => {
      }}
      render={({
       field: { onChange, value, ref, ...field },
-      fieldState: { error },
      }) => (
       <SelectElementMui
        ItemRef={ref}
@@ -59,14 +59,14 @@ export const CreateFormADS = () => {
          label: e.target.value,
         })
        }
-       errors={errors.city}
+       errors={errors.required}
        {...field}
       />
      )}
     />
    </div>
 
-   {work && (
+   {typeAds === "Работу" && (
     <div className={s.selectFieldCustomHeight}>
      <Controller
       name="typeOfInstitution"
@@ -80,11 +80,11 @@ export const CreateFormADS = () => {
        <SelectGenreElementMui
         ItemRef={ref}
         value={value}
-        placeholder="Тип заведения"
+        placeholder="Место работы"
         required={true}
         options={typeOfInstitution}
         onChange={onChange}
-        errors={errors.genre}
+        errors={errors.typeOfInstitution}
         {...field}
        />
       )}
@@ -97,7 +97,10 @@ export const CreateFormADS = () => {
      name="tool"
      control={control}
      rules={{
-      required: "Обязательное поле",
+      required:
+       typeAds === "Коллектив"
+        ? false
+        : "Обязательное поле",
      }}
      render={({
       field: { onChange, value, ref, ...field },
@@ -107,7 +110,7 @@ export const CreateFormADS = () => {
        ItemRef={ref}
        value={value}
        placeholder="Инструмент (род деятельности)"
-       required={true}
+       required={typeAds !== "Коллектив" && true}
        options={groupeOptions}
        onChange={onChange}
        errors={errors.tool}
@@ -173,93 +176,101 @@ export const CreateFormADS = () => {
     />
    </div>
 
-   <div className={s.selectField}>
-    <Controller
-     name="gender"
-     control={control}
-     render={({
-      field: { onChange, value, ref, ...field },
-     }) => (
-      <SelectElementMui
-       ItemRef={ref}
-       value={value}
-       placeholder="Пол"
-       options={genderBD}
-       //@ts-ignore
-       onChange={(e) =>
-        onChange({
-         value: e.target.value,
-         label: e.target.value,
-        })
-       }
-       errors={errors.gender}
-       {...field}
+   {typeAds === "Музыканта" && (
+    <div className={s.selectField}>
+     <Controller
+      name="gender"
+      control={control}
+      render={({
+       field: { onChange, value, ref, ...field },
+      }) => (
+       <SelectElementMui
+        ItemRef={ref}
+        value={value}
+        placeholder="Пол"
+        options={genderBD}
+        //@ts-ignore
+        onChange={(e) =>
+         onChange({
+          value: e.target.value,
+          label: e.target.value,
+         })
+        }
+        errors={errors.gender}
+        {...field}
+       />
+      )}
+     />
+    </div>
+   )}
+
+   {typeAds === "Музыканта" && (
+    <div className={s.ageRange}>
+     <div className={s.styleInput}>
+      <Controller
+       name="fromAge"
+       control={control}
+       rules={{
+        required: "Обязательное поле",
+       }}
+       render={({
+        field: { onChange, value, ref, ...field },
+       }) => (
+        <div className={s.sizeInput}>
+         <DatePickerMui
+          views={["year"]}
+          placeholder="Возраст от"
+          required={true}
+          value={value}
+          onChange={(date) =>
+           onChange(new Date(date).getTime())
+          }
+          errors={errors.fromAge}
+          helperText="Обязательное поле"
+          {...field}
+         />
+        </div>
+       )}
       />
-     )}
-    />
-   </div>
+     </div>
 
-   <div className={s.ageRange}>
-    <div className={s.styleInput}>
-     <Controller
-      name="fromAge"
-      control={control}
-      rules={{
-       required: "Обязательное поле",
-      }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <div className={s.sizeInput}>
-        <DatePickerMui
-         views={["year"]}
-         placeholder="Возраст от"
-         required={true}
-         value={value}
-         onChange={(date) =>
-          onChange(new Date(date).getTime())
-         }
-         errors={errors.fromAge}
-         helperText="Обязательное поле"
-         {...field}
-        />
-       </div>
-      )}
-     />
+     <div className={s.styleInput}>
+      <Controller
+       name="toAge"
+       control={control}
+       rules={{
+        required: "Обязательное поле",
+       }}
+       render={({
+        field: { onChange, value, ref, ...field },
+       }) => (
+        <div className={s.sizeInput}>
+         <DatePickerMui
+          views={["year"]}
+          minDate={watch("fromAge")}
+          placeholder="До"
+          required={true}
+          value={value}
+          onChange={(date) =>
+           onChange(new Date(date).getTime())
+          }
+          errors={errors.toAge}
+          helperText="Обязательное поле"
+          {...field}
+         />
+        </div>
+       )}
+      />
+     </div>
     </div>
-
-    <div className={s.styleInput}>
-     <Controller
-      name="toAge"
-      control={control}
-      rules={{
-       required: "Обязательное поле",
-      }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <div className={s.sizeInput}>
-        <DatePickerMui
-         views={["year"]}
-         minDate={watch("fromAge")}
-         placeholder="До"
-         required={true}
-         value={value}
-         onChange={(date) =>
-          onChange(new Date(date).getTime())
-         }
-         errors={errors.toAge}
-         helperText="Обязательное поле"
-         {...field}
-        />
-       </div>
-      )}
-     />
-    </div>
-   </div>
+   )}
 
    <div className={s.requirements}>
-    {work ? <h2>О себе</h2> : <h2>Требования</h2>}
+    {typeAds === "Работу" ? (
+     <h2>О себе</h2>
+    ) : (
+     <h2>Требования</h2>
+    )}
    </div>
 
    <div className={s.styleInput}>
@@ -273,7 +284,7 @@ export const CreateFormADS = () => {
         placeholder="Опыт работы/выступлений"
         onChange={onChange}
         multiline={true}
-        helperText="Опишите ваш опыт"
+        helperText="Опишите требуемый опыт"
         {...field}
        />
       </div>
@@ -281,28 +292,29 @@ export const CreateFormADS = () => {
     />
    </div>
 
-   <div className={s.selectField}>
-    <Controller
-     name="master"
-     control={control}
-     render={({ field: { onChange, ref, ...field } }) => (
-      <SelectElementMui
-       ItemRef={ref}
-       placeholder="Мастерство"
-       options={skillBD}
-       //@ts-ignore
-       onChange={(e) =>
-        onChange({
-         value: e.target.value,
-         label: e.target.value,
-        })
-       }
-       {...field}
-      />
-     )}
-    />
-   </div>
-
+   {typeAds !== "Коллектив" && (
+    <div className={s.selectField}>
+     <Controller
+      name="master"
+      control={control}
+      render={({ field: { onChange, ref, ...field } }) => (
+       <SelectElementMui
+        ItemRef={ref}
+        placeholder="Мастерство"
+        options={skillBD}
+        //@ts-ignore
+        onChange={(e) =>
+         onChange({
+          value: e.target.value,
+          label: e.target.value,
+         })
+        }
+        {...field}
+       />
+      )}
+     />
+    </div>
+   )}
    <div className={s.styleInput}>
     <Controller
      name="commit"
@@ -311,7 +323,9 @@ export const CreateFormADS = () => {
       <div className={s.sizeInput}>
        <TextFieldTextareaElementMui
         ItemRef={ref}
-        placeholder={work ? "О себе" : "Комментарий"}
+        placeholder={
+         typeAds === "Работу" ? "О себе" : "Комментарий"
+        }
         onChange={onChange}
         multiline={true}
         {...field}
@@ -322,16 +336,24 @@ export const CreateFormADS = () => {
    </div>
 
    <div className={s.requirements}>
-    {work ? <h2>О работе</h2> : <h2>О сотрудничестве</h2>}
+    {typeAds === "Работу" ? (
+     <h2>О работе</h2>
+    ) : (
+     <h2>О сотрудничестве</h2>
+    )}
    </div>
 
-   {work && (
+   {typeAds === "Работу" && (
     <div className={s.styleInput}>
      <Controller
       name="payment"
       control={control}
       rules={{
        required: "Обязательное поле",
+       minLength: {
+        value: 3,
+        message: "Не менее 3х символов",
+       },
       }}
       render={({ field: { onChange, ref, ...field } }) => (
        <div className={s.sizeInput}>
@@ -340,7 +362,7 @@ export const CreateFormADS = () => {
          placeholder="Оплата"
          required={true}
          onChange={onChange}
-         errors={errors.payment && errors.payment.message}
+         errors={errors.payment}
          {...field}
         />
        </div>
@@ -375,7 +397,7 @@ export const CreateFormADS = () => {
     />
    </div>
 
-   {work && (
+   {typeAds === "Работу" && (
     <div className={s.styleInput}>
      <Controller
       name="commitAbout"
@@ -403,21 +425,12 @@ export const CreateFormADS = () => {
     <Controller
      name="phone"
      control={control}
-     // rules={{
-     //  minLength: {
-     //   value: 3,
-     //   message: "Не менее 3х символов",
-     //  },
-     // }}
      render={({ field: { onChange, ref, ...field } }) => (
       <div className={s.sizeInput}>
-       <TextFieldElementMui
+       <TextFieldPhoneElementMui
         ItemRef={ref}
         placeholder="Телефон"
         onChange={onChange}
-        type="phone"
-        //helperText="Обязательное поле"
-        //errors={errors.phone && errors.phone.message}
         {...field}
        />
       </div>

@@ -3,12 +3,13 @@ import {
  useFormContext,
 } from "react-hook-form";
 import { CustomReactSelectToolsMui } from "../../common/mui-element/CustomReactSelectToolsMui";
-import { DatePickerMui } from "../../common/mui-element/DatePickerMui";
+import { DatePickerMui } from "../../common/mui-element/datePicker/DatePickerMui";
 import { SelectElementMui } from "../../common/mui-element/SelectElementMui";
 import { SelectGenreElementMui } from "../../common/mui-element/selectGenreElementMui/SelectGenreElementMui";
 import { SelectToolsElementMui } from "../../common/mui-element/selectToolsElementMui/SelectToolsElementMui";
-import TextFieldElementMui from "../../common/mui-element/TextFieldElementMui";
-import TextFieldTextareaElementMui from "../../common/mui-element/TextFieldTextareaElementMui";
+import TextFieldElementMui from "../../common/mui-element/textFieldElementMui/textField/TextFieldElementMui";
+import TextFieldPhoneElementMui from "../../common/mui-element/textFieldElementMui/phoneInput/TextFieldPhoneElementMui";
+import TextFieldTextareaElementMui from "../../common/mui-element/textFieldElementMui/textAreaInput/TextFieldTextareaElementMui";
 import {
  genderBD,
  genreBD,
@@ -29,7 +30,7 @@ export const CreateFormVacancy = () => {
   formState: { errors },
  } = useFormContext();
 
- const musician = watch("required")?.value === "Музыкант";
+ const typeVacancy = watch("required")?.value;
 
  return (
   <>
@@ -42,7 +43,6 @@ export const CreateFormVacancy = () => {
      }}
      render={({
       field: { onChange, value, ref, ...field },
-      fieldState: { error },
      }) => (
       <SelectElementMui
        ItemRef={ref}
@@ -69,7 +69,10 @@ export const CreateFormVacancy = () => {
      name="tool"
      control={control}
      rules={{
-      required: "Обязательное поле",
+      required:
+       typeVacancy === "Коллектив"
+        ? false
+        : "Обязательное поле",
      }}
      render={({
       field: { onChange, value, ref, ...field },
@@ -79,7 +82,7 @@ export const CreateFormVacancy = () => {
        ItemRef={ref}
        value={value}
        placeholder="Инструмент (род деятельности)"
-       required={true}
+       required={typeVacancy !== "Коллектив" && true}
        options={groupeOptions}
        onChange={onChange}
        errors={errors.tool}
@@ -122,7 +125,6 @@ export const CreateFormVacancy = () => {
      }}
      render={({
       field: { onChange, value, ref, ...field },
-      fieldState: { error },
      }) => (
       <SelectElementMui
        ItemRef={ref}
@@ -145,7 +147,7 @@ export const CreateFormVacancy = () => {
     />
    </div>
 
-   {musician && (
+   {typeVacancy === "Музыкант" && (
     <div className={s.selectField}>
      <Controller
       name="gender"
@@ -173,7 +175,7 @@ export const CreateFormVacancy = () => {
     </div>
    )}
 
-   {musician && (
+   {typeVacancy === "Музыкант" && (
     <div className={s.ageRange}>
      <div className={s.styleInput}>
       <Controller
@@ -249,7 +251,7 @@ export const CreateFormVacancy = () => {
         placeholder="Опыт работы/выступлений"
         onChange={onChange}
         multiline={true}
-        helperText="Опишите ваш опыт"
+        helperText="Опишите требуемый опыт"
         {...field}
        />
       </div>
@@ -257,7 +259,7 @@ export const CreateFormVacancy = () => {
     />
    </div>
 
-   {musician && (
+   {typeVacancy === "Музыкант" && (
     <div className={s.selectField}>
      <Controller
       name="master"
@@ -309,6 +311,10 @@ export const CreateFormVacancy = () => {
      control={control}
      rules={{
       required: "Обязательное поле",
+      minLength: {
+       value: 3,
+       message: "Не менее 3х символов",
+      },
      }}
      render={({ field: { onChange, ref, ...field } }) => (
       <div className={s.sizeInput}>
@@ -318,7 +324,7 @@ export const CreateFormVacancy = () => {
         required={true}
         onChange={onChange}
         helperText="Обязательное поле"
-        errors={errors.payment && errors.payment.message}
+        errors={errors.payment}
         {...field}
        />
       </div>
@@ -378,20 +384,13 @@ export const CreateFormVacancy = () => {
     <Controller
      name="phone"
      control={control}
-     //rules={{
-     //  minLength: {
-     //    value: 3,
-     //    message: "Не менее 3х символов",
-     //  },
-     //}}
      render={({ field: { onChange, ref, ...field } }) => (
       <div className={s.sizeInput}>
-       <TextFieldElementMui
+       <TextFieldPhoneElementMui
         ItemRef={ref}
         placeholder="Телефон"
         onChange={onChange}
         type="phone"
-        //errors={errors.phone && errors.phone.message}
         {...field}
        />
       </div>

@@ -4,11 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { BtnInGroupeSaveCancelMui } from "../common/components/navigateButton/BtnInGroupeSaveCancelMui";
 import { FormLayoutCreateADS } from "../common/layout/formLayoutCreateADS/FormLayoutCreateADS";
 import { ButtonGroupe } from "../common/mui-element/ButtonGroupe";
+import { useAppDispatch } from "../core/redux/app/hooks";
+import { getDataAdsThunk } from "../modules/ads/getDataAdsThunk";
 import { CreateFormADS } from "../modules/vacancy/CreateFormADS";
 import { CreateFormVacancy } from "../modules/vacancy/CreateFormVacancy";
+import { setDataAdsThunk } from "../modules/vacancy/setDataAdsThunk";
 import s from "./styles/createNewAds.module.scss";
 
 export const CreateNewAds = () => {
+ const dispatch = useAppDispatch();
  const navigate = useNavigate();
  const [checked, setCheckedButtom] = useState(true);
  const showVacancyButton = () => setCheckedButtom(true);
@@ -37,6 +41,7 @@ export const CreateNewAds = () => {
  });
  const validVacancy = methodVacancy.formState.isValid;
  const onSubmitVacancy = (data: any) => {
+  dispatch(setDataAdsThunk(data));
   console.log("onSubmitVacancy = ", data);
   navigate(-1);
  };
@@ -46,7 +51,6 @@ export const CreateNewAds = () => {
   defaultValues: {
    required: null,
    typeOfInstitution: [],
-
    tool: [],
    genre: [],
    city: null,
@@ -66,6 +70,7 @@ export const CreateNewAds = () => {
  });
  const validAds = methodAds.formState.isValid;
  const onSubmitAds = (data: any) => {
+  dispatch(setDataAdsThunk(data));
   console.log("onSubmitAds = ", data);
   navigate(-1);
  };

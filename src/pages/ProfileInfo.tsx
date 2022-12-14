@@ -6,23 +6,25 @@ import { useAppSelector } from "../core/redux/app/hooks";
 import { PopUpNavigateGradient } from "../common/components/navigateButton/PopUpNavigateGradient";
 
 export const ProfileInfo = () => {
- const userDataProfile = useAppSelector(
-  (state) => state.userSliceReducer.profileData
- );
+  const userDataProfile = useAppSelector((state) => state.userSliceReducer.profileData);
 
- return (
-  <>
-   <HeaderWrapper srcPhoto={backGroundImg}>
-    <HeaderProfile
-     textLabel={userDataProfile.email}
-     change={true}
-     settings={true}
-    />
-   </HeaderWrapper>
+  if (!userDataProfile)
+    return (
+      <>
+        <p>Что то с интернет</p>
+        <p>Попробуйте обновить страницу</p>
+      </>
+    );
 
-   <AboutProfile userDataProfile={userDataProfile} />
+  return (
+    <>
+      <HeaderWrapper srcPhoto={backGroundImg}>
+        <HeaderProfile textLabel={userDataProfile.email} change={true} settings={true} />
+      </HeaderWrapper>
 
-   <PopUpNavigateGradient />
-  </>
- );
+      <AboutProfile userDataProfile={userDataProfile} />
+
+      <PopUpNavigateGradient />
+    </>
+  );
 };

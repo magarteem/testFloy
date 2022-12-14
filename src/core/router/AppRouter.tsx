@@ -24,14 +24,17 @@ import { ChangeProfile } from "../../pages/ChangeProfile";
 import { NewsPagesOne } from "../../pages/NewsPagesOne";
 import { NewsAll } from "../../pages/NewsAll";
 import { CreateNewAds } from "../../pages/CreateNewAds";
+import { Ads } from "../../pages/Ads";
+import { AdsAll } from "../../pages/AdsAll";
+import { AdsPageOne } from "../../pages/AdsPageOne";
 
-const Ads = React.lazy(() =>
- import(
-  /* webpackChunkName:"Ads" */ "../../pages/Ads"
- ).then((module) => ({
-  default: module.Ads,
- }))
-);
+//const Ads = React.lazy(() =>
+// import(
+//  /* webpackChunkName:"Ads" */ "../../pages/Ads"
+// ).then((module) => ({
+//  default: module.Ads,
+// }))
+//);
 // const User = React.lazy(() =>
 //   import(/* webpackChunkName:"User" */ "../../pages/User").then((module) => ({
 //     default: module.User,
@@ -87,14 +90,22 @@ export const AppRouter = () => {
       element={<NewsPagesOne />}
      />*/}
 
-     <Route
+     <Route path={RouteNames.ADS} element={<Ads />}>
+      <Route index element={<AdsAll />} />
+      <Route
+       path={`${RouteNames.ADS}/:id_ads`}
+       element={<AdsPageOne />}
+      />
+     </Route>
+     {/*<Route
       path={RouteNames.ADS}
       element={
        <React.Suspense>
         <Ads />
        </React.Suspense>
       }
-     />
+     />*/}
+
      <Route
       path={RouteNames.CREATE_ADS}
       element={<CreateNewAds />}

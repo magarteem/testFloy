@@ -10,6 +10,14 @@ import s from "./styles/changeProfile.module.scss";
 export const ChangeProfile = () => {
   const userDataProfile = useAppSelector((state) => state.userSliceReducer.profileData);
 
+  if (!userDataProfile)
+    return (
+      <>
+        <p>Что то с интернет</p>
+        <p>Попробуйте обновить страницу</p>
+      </>
+    );
+
   return (
     <>
       <HeaderWrapper srcPhoto={backGroundImg}>

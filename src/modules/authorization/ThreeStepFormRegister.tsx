@@ -23,17 +23,15 @@ import { SelectElementMui } from "../../common/mui-element/SelectElementMui";
 import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker/ReactDatePicker";
 import { CustomReactSelectToolsMui } from "../../common/mui-element/CustomReactSelectToolsMui";
 import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
-import TextFieldTextareaElementMui from "../../common/mui-element/TextFieldTextareaElementMui";
-import TextFieldElementMui from "../../common/mui-element/TextFieldElementMui";
-import { DatePickerMui } from "../../common/mui-element/DatePickerMui";
+import TextFieldTextareaElementMui from "../../common/mui-element/textFieldElementMui/textAreaInput/TextFieldTextareaElementMui";
+import TextFieldElementMui from "../../common/mui-element/textFieldElementMui/textField/TextFieldElementMui";
+import { DatePickerMui } from "../../common/mui-element/datePicker/DatePickerMui";
 import { SelectGenreElementMui } from "../../common/mui-element/selectGenreElementMui/SelectGenreElementMui";
 import { SelectToolsElementMui } from "../../common/mui-element/selectToolsElementMui/SelectToolsElementMui";
-import { useEffect } from "react";
 
 export const ThreeStepFormRegister = () => {
  const {
   register,
-  watch,
   control,
   formState: { errors, isValid },
  } = useFormContext();
@@ -86,7 +84,6 @@ export const ThreeStepFormRegister = () => {
       }}
       render={({
        field: { onChange, value, ref, ...field },
-       fieldState: { error },
       }) => (
        <SelectElementMui
         ItemRef={ref}
@@ -154,11 +151,10 @@ export const ThreeStepFormRegister = () => {
          placeholder="Возраст"
          required={true}
          value={value}
-         onChange={(date) =>
-          onChange(new Date(date).getTime())
-         }
+         //value={new Date(value).getTime()}
+         onChange={onChange}
+         //onChange={(date) => onChange(new Date(date).getTime())}
          errors={errors.age}
-         helperText="Обязательное поле"
          {...field}
         />
        </div>
@@ -232,13 +228,6 @@ export const ThreeStepFormRegister = () => {
         required={true}
         options={genreBD}
         onChange={onChange}
-        //@ts-ignore
-        // onChange={(e) =>
-        //  onChange({
-        //   value: e.target.value,
-        //   label: e.target.value,
-        //  })
-        // }
         errors={errors.genre}
         {...field}
        />

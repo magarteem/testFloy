@@ -1,10 +1,11 @@
-import s from "./headerStylesWrapper.module.scss";
-import { ArrowBtnStepsBack } from "../../components/navigateButton/ArrowBtnStepsBack";
-import { Link } from "react-router-dom";
+import { ReactNode } from "react";
 import { RouteNames } from "../../../core/router/RouteNames";
+import { Link } from "react-router-dom";
+import { ArrowBtnStepsBack } from "../../components/navigateButton/ArrowBtnStepsBack";
+import s from "./headerStylesWrapper.module.scss";
 
 interface HeaderStylesWrapperType {
- textLabel: string;
+ textLabel?: string;
  cancelImgIcon?: string;
  filterIcons?: string;
  settings?: boolean;
@@ -12,6 +13,7 @@ interface HeaderStylesWrapperType {
  anyIconsFirst?: { img: string; action: string };
  anyIconsSecond?: { img: string; action: string };
  tsxElement?: any;
+ children?: ReactNode;
 }
 
 export const HeaderStylesWrapper = ({
@@ -23,10 +25,12 @@ export const HeaderStylesWrapper = ({
  anyIconsFirst,
  anyIconsSecond,
  tsxElement,
+ children,
 }: HeaderStylesWrapperType) => {
  return (
   <section className={s.headerStylesWrapper}>
    <div className={s.titleNavigation}>
+    {children}
     {cancelImgIcon && (
      <ArrowBtnStepsBack cancelImgIcon={cancelImgIcon} />
     )}

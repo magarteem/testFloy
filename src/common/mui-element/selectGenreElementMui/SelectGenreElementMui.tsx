@@ -80,6 +80,7 @@ export const SelectGenreElementMui = ({
    <InputLabel
     required={required}
     id="demo-multiple-checkbox-label"
+    sx={{ color: "#1A1C18 !important" }}
    >
     {placeholder}
    </InputLabel>

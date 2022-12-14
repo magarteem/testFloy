@@ -5,11 +5,11 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 interface LinkActiveType {
- value: any;
+ value?: any;
  onChange: (data: any) => any;
  errors: any;
  placeholder: string;
- helperText: string;
+ helperText?: string;
  required?: boolean;
  minDate?: any;
  views?: any;
@@ -46,7 +46,7 @@ export const DatePickerMui = ({
     renderInput={(params) => (
      <TextField
       required={required}
-      helperText={errors && helperText}
+      helperText={errors && errors.message}
       error={errors}
       fullWidth
       {...params}

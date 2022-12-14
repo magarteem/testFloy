@@ -21,6 +21,7 @@ export const ButtonSubmitMui = ({
     borderRadius: "100px",
     width: "100%",
     textTransform: "none",
+    fontFamily: `Mulish_Regular, sans-serif !important`,
 
     "@media screen and (max-width: 400px)": {
      padding: "6px 0 !important",

@@ -2,23 +2,14 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { tempDataOtherUserProfile } from "./service/tempDataOtherUserProfile";
 import { InitialStateUserType } from "./types/userSliceType";
 
-const tempDataFetch: InitialStateUserType =
-  tempDataOtherUserProfile[4];
-
 export const getDataProfileThunk = createAsyncThunk<
   InitialStateUserType
 >(
   `getDataProfileThunk/user`,
   async function (_, { rejectWithValue }) {
-
-
     try {
-
       //return await new Promise(resolve => setTimeout(resolve, 1000));
-
-      console.log("tempDataFetch")
-      console.log(tempDataFetch)
-      return tempDataFetch
+      return tempDataOtherUserProfile[4]
     } catch (error) {
       return rejectWithValue(error);
     }

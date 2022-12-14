@@ -27,6 +27,9 @@ import { CreateNewAds } from "../../pages/CreateNewAds";
 import { Ads } from "../../pages/Ads";
 import { AdsAll } from "../../pages/AdsAll";
 import { AdsPageOne } from "../../pages/AdsPageOne";
+import { Notification } from "../../pages/Notification";
+import { IincomingNotification } from "../../pages/IincomingNotification";
+import { OutgoingNotification } from "../../pages/OutgoingNotification";
 
 //const Ads = React.lazy(() =>
 // import(
@@ -45,18 +48,12 @@ import { AdsPageOne } from "../../pages/AdsPageOne";
 //     /* webpackChunkName:"Settings" */ "../../common/components/settings/Settings"
 //   ).then((module) => ({ default: module.Settings }))
 // );
-const Chats = React.lazy(() =>
- import(
-  /* webpackChunkName:"Chats" */ "../../pages/Chats"
- ).then((module) => ({
-  default: module.Chats,
- }))
-);
-const Notification = React.lazy(() =>
- import(
-  /* webpackChunkName:"Notification" */ "../../pages/Notification"
- ).then((module) => ({ default: module.Notification }))
-);
+
+//const Notification = React.lazy(() =>
+// import(
+//  /* webpackChunkName:"Notification" */ "../../pages/Notification"
+// ).then((module) => ({ default: module.Notification }))
+//);
 // const Registration = React.lazy(() =>
 //   import(/* webpackChunkName:"Registration" */ "../../pages/Registration").then(
 //     (module) => ({ default: module.Registration })
@@ -117,6 +114,7 @@ export const AppRouter = () => {
        path={RouteNames.CHANGE_PROFILE}
        element={<ChangeProfile />}
       />
+
       <Route
        path={RouteNames.SETTINGS}
        element={<Settings />}
@@ -124,21 +122,21 @@ export const AppRouter = () => {
      </Route>
 
      <Route
-      path={RouteNames.CHATS}
-      element={
-       <React.Suspense>
-        <Chats />
-       </React.Suspense>
-      }
-     />
-     <Route
+      path={RouteNames.NOTIFICATION}
+      element={<Notification />}
+     >
+      <Route index element={<OutgoingNotification />} />
+      <Route index element={<IincomingNotification />} />
+     </Route>
+
+     {/*<Route
       path={RouteNames.NOTIFICATION}
       element={
        <React.Suspense>
         <Notification />
        </React.Suspense>
       }
-     />
+     />*/}
 
      <Route
       path={`${RouteNames.OTHER_PROFILE_USER}/:id_user`}

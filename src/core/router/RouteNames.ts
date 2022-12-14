@@ -12,8 +12,9 @@ export enum RouteNames {
  CHANGE_PROFILE = "change-profile",
  OTHER_PROFILE_USER = "/other-user-profile",
  SETTINGS = "settings",
- CHATS = "/chats",
  NOTIFICATION = "/notification",
+ OUT_GOING_NOTIFICATION = "/outgoing",
+ IN_COMING_NOTIFICATION = "/incoming",
  RECOVERY_PASSWORD = "/recovery-password",
  RECOVERY_CREATE_PASSWORD = "recovery-create-password",
 }

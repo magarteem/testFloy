@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import relativeTIme from "dayjs/plugin/relativeTime";
+import Dayjs from "dayjs";
+
 import {
  GenreType,
  ToolsType,
@@ -8,6 +11,9 @@ import { ChipsGenreItem } from "../../../ui-elements/chips/ChipsGenreItem";
 import { ChipsToolItem } from "../../../ui-elements/chips/ChipsToolItem";
 import cn from "classnames";
 import s from "./bodyAds.module.scss";
+
+Dayjs.locale("ru");
+Dayjs.extend(relativeTIme);
 
 interface BodyAdsType {
  city: string;
@@ -34,7 +40,7 @@ export const BodyAds = ({
   setShowMore((prev) => !prev);
   setMaxShowChips(num);
  };
-
+ console.log(publicationDate);
  return (
   <div className={s.bodyAds}>
    <div className={s.city}>
@@ -72,23 +78,9 @@ export const BodyAds = ({
     </ChipsLayout>
    </div>
 
-   {/*<div className={s.skills}>
-    <ChipsLayout>
-     {objectSkills.map((x: any) => {
-      if (x.imgIcons) {
-       return <ChipsToolItem itemLabel={x} />;
-      } else {
-       return <ChipsGenreItem itemLabel={x} />;
-      }
-     })}
-    </ChipsLayout>
-   </div>*/}
-
    <div className={s.about}>{commitAbout}</div>
    <div className={s.publicationDate}>
-    {`Опубликовано ${new Date(
-     publicationDate
-    ).toLocaleDateString()}`}
+    {`Опубликовано ${Dayjs(publicationDate).fromNow()}`}
    </div>
   </div>
  );

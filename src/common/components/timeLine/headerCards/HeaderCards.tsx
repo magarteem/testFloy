@@ -4,8 +4,8 @@ import { AuthorType } from "../../../../modules/timeLine/types/timlineSliceType"
 import s from "./headerCards.module.scss";
 import { Link } from "react-router-dom";
 import { RouteNames } from "../../../../core/router/RouteNames";
-import Dayjs from "dayjs";
 import relativeTIme from "dayjs/plugin/relativeTime";
+import Dayjs from "dayjs";
 Dayjs.locale("ru");
 Dayjs.extend(relativeTIme);
 

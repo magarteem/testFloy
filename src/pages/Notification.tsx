@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import filterIcons from "../assets/icons/filterIcons.svg";
 import searchIcon from "../assets/icons/searchIcon.svg";
@@ -6,39 +7,39 @@ import { TabsComponent } from "../common/components/notification/tabsComponent/T
 import { HeaderStylesWrapper } from "../common/layout/headerStylesWrapper/HeaderStylesWrapper";
 import { RibbonLayout } from "../common/layout/ribbonLayout/RibbonLayout";
 import { StylesFullScreen } from "../common/layout/stylesFullScreen/StylesFullScreen";
-import { useAppSelector } from "../core/redux/app/hooks";
-import s from "./styles/notification.module.scss";
+import { useAppDispatch, useAppSelector } from "../core/redux/app/hooks";
+import { getDataNotificationThunk } from "../modules/notification/getDataNotificationThunk";
+import { OutgoingNotificationData } from "../modules/notification/service/notification_BD";
 
 export const Notification = () => {
- const adsData = useAppSelector(
-  (state) => state.adsSliceReducer
- );
+  const dispatch = useAppDispatch();
+  const adsData = useAppSelector((state) => state.notificationSliceReducer);
 
- if (adsData.isLoading) return <h1>Loading.....</h1>;
- if (adsData.error) return <h1>Error</h1>;
+  useEffect(() => {
+    adsData.adsList.length === 0 &&
+      dispatch(getDataNotificationThunk(OutgoingNotificationData));
+  }, []);
 
- return (
-  <>
-   <div className={s.wrappHeader}>
-    <HeaderStylesWrapper
-     textLabel="Запросы"
-     anyIconsFirst={{ img: searchIcon, action: "" }}
-     anyIconsSecond={{ img: filterIcons, action: "" }}
-    />
-   </div>
-   <TabsComponent />
+  if (adsData.isLoading) return <h1>Loading.....</h1>;
+  if (adsData.error) return <h1>Error</h1>;
 
-   <StylesFullScreen>
-    <RibbonLayout>
-     <Outlet />
+  return (
+    <>
+      <StylesFullScreen>
+        <HeaderStylesWrapper
+          textLabel="Запросы"
+          anyIconsFirst={{ img: searchIcon, action: "" }}
+          anyIconsSecond={{ img: filterIcons, action: "" }}
+        />
+      </StylesFullScreen>
+      <TabsComponent />
 
-     <p>d</p>
-     <p>d</p>
-     <p>d</p>
-     <p>d</p>
-    </RibbonLayout>
-   </StylesFullScreen>
-   <PopUpNavigateGradient />
-  </>
- );
+      <StylesFullScreen>
+        <RibbonLayout>
+          <Outlet context={adsData} />
+        </RibbonLayout>
+      </StylesFullScreen>
+      <PopUpNavigateGradient />
+    </>
+  );
 };

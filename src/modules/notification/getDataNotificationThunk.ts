@@ -1,17 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// import { timeLineBD } from "./service/timlineBD";
-import { InitialStateTeamLineType } from "./types/timlineSliceType";
+import { TimelineCards } from "../ads/types/adsSliceType";
 
-export const getDataTimeLineThunk = createAsyncThunk<
-  InitialStateTeamLineType[],
-  InitialStateTeamLineType[]
+export const getDataNotificationThunk = createAsyncThunk<
+  TimelineCards[],
+  TimelineCards[]
 >(
-  `getDataTimeLineThunk/user`,
-  async function (timeLineBD, { rejectWithValue }) {
+  `getDataNotificationThunk/ads`,
+  async function (OutgoingNotificationData, { rejectWithValue }) {
     try {
       //return await new Promise(resolve => setTimeout(resolve, 1000));
-
-      return timeLineBD;
+      return OutgoingNotificationData;
     } catch (error) {
       return rejectWithValue(error);
     }

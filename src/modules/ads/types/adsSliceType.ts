@@ -4,6 +4,13 @@ import {
  ToolsType,
 } from "../../authorization/types/authType";
 
+export interface AuthorType {
+ id_user: string;
+ name: string;
+ city: string;
+ avatar: string;
+}
+
 interface WorkExperience {
  img: string;
  institution: string;
@@ -12,6 +19,7 @@ interface WorkExperience {
 
 export interface TimelineCards {
  id: number;
+ author: AuthorType;
  publicationDate: number;
  required: OptionSelectType;
  typeOfInstitution: OptionSelectType[];
@@ -30,6 +38,11 @@ export interface TimelineCards {
  phone: string;
  email: string;
  web_site: string;
+ //ожидание отклика других пользователей
+ waitingForResponse: {
+  userId: string;
+  status: number;
+ };
 }
 
 export interface InitialStateAdsType {

@@ -1,0 +1,104 @@
+@import "src/styles/variable";
+
+.incomingNotificationPageOne {
+ .bodyAdsPageOne {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 80px;
+
+  .headerAds {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   padding: 16px 0 8px;
+
+   .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    //height: 48px;
+
+    h2 {
+     font-weight: 700;
+     font-size: 22px;
+     color: #1a1c18;
+    }
+
+    p {
+     padding-top: 4px;
+     font-size: 16px;
+     color: #43483e;
+    }
+   }
+  }
+
+  .about {
+   font-size: 16px;
+   line-height: 24px;
+   color: #43483e;
+  }
+
+  .styleAbout {
+   font-size: 16px;
+   line-height: 24px;
+   color: #43483e;
+
+   .titleSpan {
+    white-space: nowrap;
+    padding-right: 8px;
+    font-weight: 700;
+    color: #1a1c18;
+   }
+  }
+
+  .educatione {
+   display: flex;
+   align-items: center;
+   width: 100%;
+   border-radius: 16px;
+   padding: 16px 16px;
+   margin: 8px 0;
+   border: 1px solid #c6d1b8;
+
+   .itemImg {
+    margin-right: 16px;
+    height: 40px;
+    width: 40px;
+
+    img {
+     width: 100%;
+    }
+   }
+
+   .text {
+    @include flex_direction_column_position();
+    justify-content: space-between;
+    height: 45px;
+    font-weight: 500;
+    font-size: 14px;
+
+    p:first-child {
+     font-weight: 600;
+     font-size: 16px;
+     color: #1a1c18;
+    }
+   }
+  }
+
+  .reStyleImportant {
+   div {
+    padding: 0;
+   }
+  }
+  .reStyleImportant.border {
+   padding-bottom: 16px;
+   border-bottom: 1px solid #ebeceb;
+  }
+
+  .respond {
+   padding: 16px 0;
+  }
+ }
+}

@@ -40,7 +40,7 @@ export const BodyAds = ({
   setShowMore((prev) => !prev);
   setMaxShowChips(num);
  };
- console.log(publicationDate);
+
  return (
   <div className={s.bodyAds}>
    <div className={s.city}>
@@ -60,7 +60,10 @@ export const BodyAds = ({
 
      {objectSkills.length > maxShowChips && (
       <div
-       onClick={() => toggle(objectSkills.length)}
+       onClick={(e) => {
+        e.preventDefault();
+        toggle(objectSkills.length);
+       }}
        className={cn(s.item, s.itemHidden)}
       >
        Ещё {objectSkills.length - maxShowChips}
@@ -69,7 +72,10 @@ export const BodyAds = ({
 
      {!showMore && (
       <div
-       onClick={() => toggle(5)}
+       onClick={(e) => {
+        e.preventDefault();
+        toggle(5);
+       }}
        className={cn(s.item, s.itemHidden)}
       >
        Скрыть

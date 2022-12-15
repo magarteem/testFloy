@@ -28,8 +28,9 @@ import { Ads } from "../../pages/Ads";
 import { AdsAll } from "../../pages/AdsAll";
 import { AdsPageOne } from "../../pages/AdsPageOne";
 import { Notification } from "../../pages/Notification";
-import { IincomingNotification } from "../../pages/IincomingNotification";
+import { IncomingNotification } from "../../pages/IncomingNotification";
 import { OutgoingNotification } from "../../pages/OutgoingNotification";
+import { IncomingNotificationPageOne } from "../../pages/IncomingNotificationPageOne";
 
 //const Ads = React.lazy(() =>
 // import(
@@ -126,7 +127,14 @@ export const AppRouter = () => {
       element={<Notification />}
      >
       <Route index element={<OutgoingNotification />} />
-      <Route index element={<IincomingNotification />} />
+      <Route
+       path={`${RouteNames.IN_COMING_NOTIFICATION}`}
+       element={<IncomingNotification />}
+      />
+      <Route
+       path={`${RouteNames.OUT_GOING_NOTIFICATION}/:id_inComingNotification`}
+       element={<IncomingNotificationPageOne />}
+      />
      </Route>
 
      {/*<Route

@@ -1,20 +1,20 @@
 import avatart_11 from "../../../assets/images/avatart_11.webp";
 import avatart_22 from "../../../assets/images/avatart_22.webp";
 import avatart_33 from "../../../assets/images/avatart_33.webp";
+import { TimelineCards } from "../../ads/types/adsSliceType";
 import {
  genreBD,
  groupeOptions,
 } from "../../authorization/service/BD";
-import { TimelineCards } from "../types/adsSliceType";
 
-export const adsListData: TimelineCards[] = [
+export const OutgoingNotificationData: TimelineCards[] = [
  {
   id: 1,
   author: {
-   id_user: "iana",
-   name: "Яна Калинина",
-   city: "Ростов",
-   avatar: avatart_22,
+   id_user: "kirill",
+   name: "Кирилл Белоусов",
+   city: "Москва",
+   avatar: avatart_11,
   },
   publicationDate: 1607786743153,
   required: {
@@ -67,17 +67,17 @@ export const adsListData: TimelineCards[] = [
   web_site: "rerererer",
   waitingForResponse: {
    userId: "",
-   status: 1,
+   status: 0,
   },
  },
 
  {
   id: 2,
   author: {
-   id_user: "masha",
-   name: "Маша Андреевна",
-   city: "Москва",
-   avatar: avatart_11,
+   id_user: "iana",
+   name: "Яна Калинина",
+   city: "Ростов",
+   avatar: avatart_22,
   },
   publicationDate: 1449933940779,
   required: {
@@ -141,10 +141,10 @@ export const adsListData: TimelineCards[] = [
  {
   id: 3,
   author: {
-   id_user: "kirill",
-   name: "Кирилл Белоусов",
-   city: "Москва",
-   avatar: avatart_33,
+   id_user: "ulia",
+   name: "Юлия Андреевна",
+   city: "Петербург",
+   avatar: avatart_22,
   },
   publicationDate: 1607786743153,
   required: { value: "Музыкант", label: "Музыкант" },
@@ -199,16 +199,16 @@ export const adsListData: TimelineCards[] = [
   web_site: "rerererer",
   waitingForResponse: {
    userId: "",
-   status: 1,
+   status: 2,
   },
  },
  {
   id: 4,
   author: {
-   id_user: "ulia",
-   name: "Юлия Андреевна",
-   city: "Петербург",
-   avatar: avatart_22,
+   id_user: "masha",
+   name: "Маша Андреевна",
+   city: "Москва",
+   avatar: avatart_11,
   },
   publicationDate: 1607786743153,
   required: { value: "Музыкант", label: "Музыкант" },
@@ -253,7 +253,7 @@ export const adsListData: TimelineCards[] = [
   web_site: "rerererer",
   waitingForResponse: {
    userId: "",
-   status: 1,
+   status: 0,
   },
  },
 ];

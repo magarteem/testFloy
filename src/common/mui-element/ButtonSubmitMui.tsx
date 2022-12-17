@@ -3,15 +3,18 @@ import { Button } from "@mui/material";
 interface ButtonSubmitMuiType {
  textButton: string;
  isValidInButton: boolean;
+ onClick?: () => void;
 }
 
 export const ButtonSubmitMui = ({
  textButton,
  isValidInButton,
+ onClick,
  ...props
 }: ButtonSubmitMuiType) => {
  return (
   <Button
+   onClick={onClick}
    disabled={isValidInButton}
    variant="contained"
    type="submit"
@@ -24,7 +27,7 @@ export const ButtonSubmitMui = ({
     fontFamily: `Mulish_Regular, sans-serif !important`,
 
     "@media screen and (max-width: 400px)": {
-     padding: "6px 0 !important",
+     // padding: "6px 0 !important",
     },
 
     "&:disabled": {

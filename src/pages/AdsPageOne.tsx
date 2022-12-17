@@ -15,8 +15,11 @@ import { EducationeCards } from "../common/components/profile/aboutProfile/skill
 import { SkillsLayoutTools } from "../common/components/profile/aboutProfile/skills/SkillsLayoutTools";
 import { SkillsLayoutGenre } from "../common/components/profile/aboutProfile/skills/SkillsLayoutGenre";
 import { ButtonSubmitMui } from "../common/mui-element/ButtonSubmitMui";
+import { useAppDispatch } from "../core/redux/app/hooks";
+import { setDataNotificationThunk } from "../modules/notification/setDataNotificationThunk";
 
 export const AdsPageOne = () => {
+ const dispatch = useAppDispatch();
  const data: InitialStateAdsType = useOutletContext();
 
  const { id_ads } = useParams();
@@ -30,11 +33,15 @@ export const AdsPageOne = () => {
   dataOneNews.required.label
  );
 
- console.log(dataOneNews);
  const calculateAge = (value: Date | number) =>
   `${
    new Date().getFullYear() - new Date(value).getFullYear()
   }`;
+
+ const respondAds = () => {
+  dispatch(setDataNotificationThunk(dataOneNews));
+ };
+
  return (
   <div className={s.adsPageOne}>
    <HeaderStylesWrapper
@@ -130,6 +137,7 @@ export const AdsPageOne = () => {
 
     <div className={s.respond}>
      <ButtonSubmitMui
+      onClick={respondAds}
       isValidInButton={false}
       textButton="Откликнуться"
      />

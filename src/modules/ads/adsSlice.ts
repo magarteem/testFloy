@@ -64,6 +64,18 @@ const adsSlice = createSlice({
      state.adsList.unshift({
       ...actions.payload,
       id: new Date().getTime(),
+      publicationDate: new Date().getTime(),
+      author: {
+       avatar:
+        "/static/media/avatart_22.656e2d550638bec4dc6d.webp",
+       city: "Ростов",
+       id_user: "iana",
+       name: "Яна Калинина",
+      },
+      waitingForResponse: {
+       status: 0,
+       userId: "masha",
+      },
      });
      state.isLoading = false;
     }

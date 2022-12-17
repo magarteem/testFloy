@@ -67,7 +67,7 @@ export const adsListData: TimelineCards[] = [
   web_site: "rerererer",
   waitingForResponse: {
    userId: "",
-   status: 1,
+   status: 0,
   },
  },
 
@@ -199,7 +199,7 @@ export const adsListData: TimelineCards[] = [
   web_site: "rerererer",
   waitingForResponse: {
    userId: "",
-   status: 1,
+   status: 2,
   },
  },
  {
@@ -253,7 +253,7 @@ export const adsListData: TimelineCards[] = [
   web_site: "rerererer",
   waitingForResponse: {
    userId: "",
-   status: 1,
+   status: 0,
   },
  },
 ];

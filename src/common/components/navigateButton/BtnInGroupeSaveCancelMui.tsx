@@ -11,6 +11,7 @@ interface BtnInGroupeSaveCancelMuiType {
  isValidButtonBack?: boolean;
  isValidInButton?: boolean;
  onClick?: () => void;
+ cancelClick?: () => void;
 }
 
 export const BtnInGroupeSaveCancelMui = ({
@@ -18,15 +19,20 @@ export const BtnInGroupeSaveCancelMui = ({
  textButton,
  isValidButtonBack,
  isValidInButton = false,
+ cancelClick,
  onClick,
 }: BtnInGroupeSaveCancelMuiType) => {
  return (
   <div className={s.sendDataForm}>
    <div className={s.btnWrapper}>
-    <ButtonBackMui textCancelButton={textCancelButton} />
+    <ButtonBackMui
+     textCancelButton={textCancelButton}
+     cancelClick={cancelClick}
+    />
    </div>
    <div className={s.btnWrapper}>
     <ButtonSubmitMui
+     onClick={onClick}
      textButton={textButton}
      isValidInButton={isValidInButton}
     />

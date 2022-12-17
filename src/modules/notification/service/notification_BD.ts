@@ -133,7 +133,7 @@ export const OutgoingNotificationData: TimelineCards[] = [
   email: "trtrtrt@ewe.wewewe",
   web_site: "rerererer",
   waitingForResponse: {
-   userId: "",
+   userId: "masha",
    status: 1,
   },
  },
@@ -252,8 +252,8 @@ export const OutgoingNotificationData: TimelineCards[] = [
   email: "trtrtrt@ewe.wewewe",
   web_site: "rerererer",
   waitingForResponse: {
-   userId: "",
-   status: 0,
+   userId: "ulia",
+   status: 1,
   },
  },
 ];

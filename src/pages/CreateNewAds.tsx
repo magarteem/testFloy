@@ -42,7 +42,6 @@ export const CreateNewAds = () => {
  const validVacancy = methodVacancy.formState.isValid;
  const onSubmitVacancy = (data: any) => {
   dispatch(setDataAdsThunk(data));
-  console.log("onSubmitVacancy = ", data);
   navigate(-1);
  };
 

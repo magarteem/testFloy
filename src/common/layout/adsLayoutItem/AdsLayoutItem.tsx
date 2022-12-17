@@ -5,6 +5,7 @@ interface AdsLayoutItemType {
  children: ReactNode;
 }
 
+// удалить по возможности заменить на CardsLayoutItem
 export const AdsLayoutItem = ({
  children,
 }: AdsLayoutItemType) => {

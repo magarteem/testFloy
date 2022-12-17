@@ -100,5 +100,18 @@
   .respond {
    padding: 16px 0;
   }
+
+  .pending {
+   display: flex;
+   align-items: center;
+   height: 40px;
+   margin: 26px 0 16px;
+   font-weight: 600;
+   font-size: 14px;
+
+   img {
+    margin-right: 8px;
+   }
+  }
  }
 }

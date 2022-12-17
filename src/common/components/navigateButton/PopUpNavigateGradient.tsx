@@ -9,62 +9,42 @@ import { ReactComponent as NavigateRadialGradientFonts } from "../../../assets/i
 import s from "./popUpNavigateGradient.module.scss";
 
 interface LinkActiveType {
- isActive: boolean;
+  isActive: boolean;
 }
 
 export const PopUpNavigateGradient = () => {
- const setActive = ({ isActive }: LinkActiveType) =>
-  cn({ [s.active]: isActive });
+  const setActive = ({ isActive }: LinkActiveType) => cn({ [s.active]: isActive });
 
- return (
-  <div className={cn(s.popUpNavigateGradient)}>
-   <div className={s.tapLeftBlock}>
-    <NavLink
-     className={setActive}
-     to={RouteNames.HOME}
-     aria-label="home"
-    >
-     <Home className={s.icon} />
-    </NavLink>
+  return (
+    <div className={cn(s.popUpNavigateGradient)}>
+      <div className={s.tapLeftBlock}>
+        <NavLink className={setActive} to={RouteNames.HOME} aria-label="home">
+          <Home className={s.icon} />
+        </NavLink>
 
-    <NavLink
-     className={setActive}
-     to={RouteNames.ADS}
-     aria-label="ads"
-    >
-     <Ads className={cn(s.icon, s.specifiedFill)} />
-    </NavLink>
-   </div>
+        <NavLink className={setActive} to={RouteNames.ADS} aria-label="ads">
+          <Ads className={cn(s.icon, s.specifiedFill)} />
+        </NavLink>
+      </div>
 
-   <span className={s.radialGradientFontsWrapper}>
-    <NavigateRadialGradientFonts />
-    <NavLink
-     to={RouteNames.CREATE_ADS}
-     aria-label="create-ads"
-    >
-     <div className={s.duttonAdd}>
-      <div className={s.plas}></div>
-     </div>
-    </NavLink>
-   </span>
+      <span className={s.radialGradientFontsWrapper}>
+        <NavigateRadialGradientFonts />
+        <NavLink to={RouteNames.CREATE_ADS} aria-label="create-ads">
+          <div className={s.duttonAdd}>
+            <div className={s.plas}></div>
+          </div>
+        </NavLink>
+      </span>
 
-   <div className={s.tapRightBlock}>
-    <NavLink
-     className={setActive}
-     to={RouteNames.USER}
-     aria-label="user"
-    >
-     <User className={s.icon} />
-    </NavLink>
+      <div className={s.tapRightBlock}>
+        <NavLink className={setActive} to={RouteNames.USER} aria-label="user">
+          <User className={s.icon} />
+        </NavLink>
 
-    <NavLink
-     className={setActive}
-     to={RouteNames.NOTIFICATION}
-     aria-label="notification"
-    >
-     <Notification className={s.icon} />
-    </NavLink>
-   </div>
-  </div>
- );
+        <NavLink end className={setActive} to={RouteNames.NOTIFICATION} aria-label="notification">
+          <Notification className={s.icon} />
+        </NavLink>
+      </div>
+    </div>
+  );
 };

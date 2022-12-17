@@ -1,64 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Tab, Tabs } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { styleSxTabsComponent } from "./styleSxTabsComponent";
 
 export const TabsComponent = () => {
-  let navigate = useNavigate();
-  const [value, setValue] = React.useState("");
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
+ const [value, setValue] = React.useState("");
+ let location = useLocation();
 
-  React.useEffect(() => {
-    navigate(value);
-  }, [value]);
+ useEffect(() => {
+  location.pathname === "/notification/incoming"
+   ? setValue("incoming")
+   : setValue("");
+ }, []);
 
-  return (
-    <Tabs
-      value={value}
-      onChange={handleChange}
-      textColor="primary"
-      indicatorColor="secondary"
-      aria-label="secondary tabs example"
-      sx={{
-        width: "100%",
-        borderBottom: "1px solid #E9F0DA;",
+ const handleChange = (
+  event: React.SyntheticEvent,
+  newValue: string
+ ) => {
+  setValue(newValue);
+ };
 
-        "& .MuiTabs-flexContainer": {
-          display: "flex",
-          justifyContent: "space-around",
-
-          "& .MuiButtonBase-root": {
-            padding: 0,
-            fontWeight: 600,
-            fontSize: " 14px",
-          },
-          "& .MuiButtonBase-root.Mui-selected": {
-            color: "#2B6C00",
-          },
-        },
-
-        "& .MuiTabs-indicator": {
-          height: "3px",
-          background: "#2B6C00",
-          borderRadius: "100px 100px 0px 0px",
-        },
-      }}
-    >
-      <Tab
-        value=""
-        label="Отправленные"
-        sx={{
-          textTransform: "none",
-        }}
-      />
-      <Tab
-        value="incoming"
-        label="Входящие"
-        sx={{
-          textTransform: "none",
-        }}
-      />
-    </Tabs>
-  );
+ return (
+  <Tabs
+   value={value}
+   onChange={handleChange}
+   textColor="primary"
+   indicatorColor="secondary"
+   aria-label="secondary tabs example"
+   sx={styleSxTabsComponent.tabs}
+  >
+   <Tab
+    to=""
+    value=""
+    component={Link}
+    label="Отправленные"
+    sx={styleSxTabsComponent.tab}
+    onClick={() => setValue("")}
+   />
+   <Tab
+    to="incoming"
+    value="incoming"
+    component={Link}
+    label="Входящие"
+    sx={styleSxTabsComponent.tab}
+    onClick={() => setValue("incoming")}
+   />
+  </Tabs>
+ );
 };

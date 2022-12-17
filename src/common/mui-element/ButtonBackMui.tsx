@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 interface ButtonBackMuiType {
  textCancelButton: string;
+ cancelClick?: () => void;
 }
 
 export const ButtonBackMui = ({
  textCancelButton,
+ cancelClick,
  ...props
 }: ButtonBackMuiType) => {
  const navigate = useNavigate();
@@ -21,7 +23,9 @@ export const ButtonBackMui = ({
  return (
   <Button
    variant="outlined"
-   onClick={returnStepRegister}
+   onClick={
+    !!cancelClick ? cancelClick : returnStepRegister
+   }
    sx={{
     color: "#2B6C00",
     border: "1px solid #66784E",

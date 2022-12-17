@@ -9,35 +9,41 @@ import { RibbonLayout } from "../common/layout/ribbonLayout/RibbonLayout";
 import { CardsLayoutItem } from "../common/layout/cardsLayoutItem/CardsLayoutItem";
 import { HeaderCards } from "../common/components/timeLine/headerCards/HeaderCards";
 import { BodyCards } from "../common/components/timeLine/bodyCards/BodyCards";
+import s from "./styles/newsAll.module.scss";
 
 export const NewsAll = () => {
-  const data: InitialStateType = useOutletContext();
+ const data: InitialStateType = useOutletContext();
 
-  return (
-    <>
-      <StylesFullScreen>
-        <HeaderStylesWrapper
-          textLabel="Лента"
-          addIcons={addIcons}
-          filterIcons={filterIconsNew}
+ return (
+  <>
+   <StylesFullScreen>
+    <HeaderStylesWrapper
+     textLabel="Лента"
+     addIcons={addIcons}
+     filterIcons={filterIconsNew}
+    />
+
+    {data.isLoading ? (
+     <h1>Loading....</h1>
+    ) : (
+     // <TimeLine timeLineData={data.timeLineData} />
+     <RibbonLayout>
+      {data.timeLineData?.map((x) => (
+       <div className={s.cardsItemWrapp} key={x.id}>
+        <div className={s.customStyleA}>
+         <HeaderCards author={x.author} date={x.date} />
+        </div>
+        <BodyCards
+         timeLinePost={x.timeLinePost}
+         id_news={x.id}
         />
+       </div>
+      ))}
+     </RibbonLayout>
+    )}
+   </StylesFullScreen>
 
-        {data.isLoading ? (
-          <h1>Loading....</h1>
-        ) : (
-          // <TimeLine timeLineData={data.timeLineData} />
-          <RibbonLayout>
-            {data.timeLineData?.map((x) => (
-              <CardsLayoutItem key={x.id}>
-                <HeaderCards author={x.author} date={x.date} />
-                <BodyCards timeLinePost={x.timeLinePost} id_news={x.id} />
-              </CardsLayoutItem>
-            ))}
-          </RibbonLayout>
-        )}
-      </StylesFullScreen>
-
-      <PopUpNavigateGradient />
-    </>
-  );
+   <PopUpNavigateGradient />
+  </>
+ );
 };

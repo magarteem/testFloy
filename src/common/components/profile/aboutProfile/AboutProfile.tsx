@@ -34,7 +34,7 @@ export const AboutProfile = ({
     {id_user && (
      <BtnUserContact>
       <div className={s.btnUserContact}>
-       <ContactButton textButton="Связаться" />
+       <ContactButton textButton="Подписаться" />
       </div>
 
       <div className={s.btnUserContact}>

@@ -1,21 +1,25 @@
 @import "src/styles/variable";
 
-.styleInput {
- position: relative;
- width: 100%;
+.customAddPadding {
+ margin-top: 10px;
 
- .sizeInput {
-  min-height: 48px;
+ .styleInput {
+  position: relative;
+  width: 100%;
 
-  input {
-   height: 48px;
+  .sizeInput {
+   min-height: 48px;
+
+   input {
+    height: 48px;
+   }
   }
- }
 
- img {
-  position: absolute;
-  left: 11px;
-  top: 13px;
+  img {
+   position: absolute;
+   left: 11px;
+   top: 13px;
+  }
  }
 }
 

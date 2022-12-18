@@ -8,6 +8,9 @@
   }
 
   .respond {
-    padding: 16px;
+    margin: 16px;
+
+    @include flex_horizont_position();
+    height: 40px;
   }
 }

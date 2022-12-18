@@ -1,20 +1,30 @@
 export enum RouteNames {
-  WELCOME = "/welcome",
-  REGISTER = "/register",
-  REG_TYPE_ACCOUNT = "reg-type-account",
-  REG_CREATE_ACCOUNT = "create-account",
-  LOGIN = "/login",
-  HOME = "/",
-  NEWS = "/news",
-  ADS = "/ads",
-  CREATE_ADS = "/create-ads",
-  USER = "/user",
-  CHANGE_PROFILE = "change-profile",
-  OTHER_PROFILE_USER = "/other-user-profile",
-  SETTINGS = "settings",
-  NOTIFICATION = "/notification",
-  OUT_GOING_NOTIFICATION = "outgoing",
-  IN_COMING_NOTIFICATION = "incoming",
-  RECOVERY_PASSWORD = "/recovery-password",
-  RECOVERY_CREATE_PASSWORD = "recovery-create-password",
+ WELCOME = "/welcome",
+
+ REGISTER = "/register",
+ REG_TYPE_ACCOUNT = "reg-type-account",
+ REG_CREATE_ACCOUNT = "create-account",
+
+ LOGIN = "/login",
+ HOME = "/",
+ NEWS = "/news",
+
+ ADS = "/ads",
+ ADS_LIST = "ads-list",
+ ADS_QUESTIONNAIRE_LIST = "questionnaire-list",
+
+ CREATE_ADS = "/create-ads",
+
+ USER = "/user",
+ CHANGE_PROFILE = "change-profile",
+ SETTINGS = "settings",
+
+ OTHER_PROFILE_USER = "/other-user-profile",
+
+ NOTIFICATION = "/notification",
+ OUT_GOING_NOTIFICATION = "outgoing",
+ IN_COMING_NOTIFICATION = "incoming",
+
+ RECOVERY_PASSWORD = "/recovery-password",
+ RECOVERY_CREATE_PASSWORD = "recovery-create-password",
 }

@@ -1,14 +1,14 @@
 @import "src/styles/variable";
 
 .pending {
- display: flex;
- align-items: center;
- height: 40px;
- margin: 16px;
- font-weight: 600;
- font-size: 14px;
+  display: flex;
+  align-items: center;
+  // height: 40px;
+  margin: 16px;
+  font-weight: 600;
+  font-size: 14px;
 
- img {
-  margin-right: 8px;
- }
+  img {
+    margin-right: 8px;
+  }
 }

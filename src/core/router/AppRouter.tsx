@@ -32,6 +32,9 @@ import { IncomingNotification } from "../../common/components/notification/incom
 import { OutgoingNotification } from "../../common/components/notification/outgoingNotification/OutgoingNotification";
 import { OutgoingNotificationPageOne } from "../../pages/OutgoingNotificationPageOne";
 import { NotificationSwitchTabs } from "../../common/components/notification/NotificationSwitchTabs";
+import { VacancyTabs } from "../../common/components/ads/tabsComponentAds/vacancyTabs/VacancyTabs";
+import { AdsTabs } from "../../common/components/ads/tabsComponentAds/adsTabs/AdsTabs";
+import { QuestionnaireTabs } from "../../common/components/ads/tabsComponentAds/questionnaireTabs/QuestionnaireTabs";
 
 //const Ads = React.lazy(() =>
 // import(
@@ -63,48 +66,94 @@ import { NotificationSwitchTabs } from "../../common/components/notification/Not
 // );
 
 export const AppRouter = () => {
-  const auth = useAppSelector((state) => state.authSliceReducer.isAuth);
-  const [preloaderPages, setPreloaderPages] = useState(false);
+ const auth = useAppSelector(
+  (state) => state.authSliceReducer.isAuth
+ );
+ const [preloaderPages, setPreloaderPages] =
+  useState(false);
 
-  const setPreloaderPagesFu = () => setPreloaderPages((prev) => !prev);
+ const setPreloaderPagesFu = () =>
+  setPreloaderPages((prev) => !prev);
 
-  return (
-    <Routes>
-      <Route element={<ProtectedRoute auth={auth} />}>
-        <Route path={RouteNames.HOME} element={<MainScreen />}>
-          <Route element={<Home />}>
-            <Route index element={<NewsAll />} />
-            <Route path={`${RouteNames.NEWS}/:id_news`} element={<NewsPagesOne />} />
-          </Route>
+ return (
+  <Routes>
+   <Route element={<ProtectedRoute auth={auth} />}>
+    <Route path={RouteNames.HOME} element={<MainScreen />}>
+     <Route element={<Home />}>
+      <Route index element={<NewsAll />} />
+      <Route
+       path={`${RouteNames.NEWS}/:id_news`}
+       element={<NewsPagesOne />}
+      />
+     </Route>
 
-          {/*<Route
+     {/*<Route
       path={`${RouteNames.NEWS}/:id_news`}
       element={<NewsPagesOne />}
      />*/}
 
-          <Route path={RouteNames.ADS} element={<Ads />}>
-            <Route index element={<AdsAll />} />
-            <Route path={`${RouteNames.ADS}/:id_ads`} element={<AdsPageOne />} />
-          </Route>
-          <Route path={RouteNames.CREATE_ADS} element={<CreateNewAds />} />
+     <Route path={RouteNames.ADS} element={<Ads />}>
+      <Route element={<AdsAll />}>
+       <Route index element={<VacancyTabs />} />
+       <Route
+        path={RouteNames.ADS_LIST}
+        element={<AdsTabs />}
+       />
+       <Route
+        path={RouteNames.ADS_QUESTIONNAIRE_LIST}
+        element={<QuestionnaireTabs />}
+       />
+      </Route>
+      <Route
+       path={`${RouteNames.ADS}/:id_ads`}
+       element={<AdsPageOne />}
+      />
+     </Route>
+     {/*<Route path={RouteNames.ADS} element={<Ads />}>
+      <Route index element={<AdsAll />} />
+      <Route
+       path={`${RouteNames.ADS}/:id_ads`}
+       element={<AdsPageOne />}
+      />
+     </Route>*/}
 
-          <Route path={RouteNames.USER} element={<User />}>
-            <Route index element={<ProfileInfo />} />
-            <Route path={RouteNames.CHANGE_PROFILE} element={<ChangeProfile />} />
+     <Route
+      path={RouteNames.CREATE_ADS}
+      element={<CreateNewAds />}
+     />
 
-            <Route path={RouteNames.SETTINGS} element={<Settings />} />
-          </Route>
+     <Route path={RouteNames.USER} element={<User />}>
+      <Route index element={<ProfileInfo />} />
+      <Route
+       path={RouteNames.CHANGE_PROFILE}
+       element={<ChangeProfile />}
+      />
 
-          {/* --------*/}
-          <Route path={RouteNames.NOTIFICATION} element={<Notification />}>
-            <Route element={<NotificationSwitchTabs />}>
-              <Route index element={<OutgoingNotification />} />
-              <Route path={`${RouteNames.IN_COMING_NOTIFICATION}`} element={<IncomingNotification />} />
-            </Route>
-            <Route path={`${RouteNames.NOTIFICATION}/:id_inComingNotification`} element={<OutgoingNotificationPageOne />} />
-          </Route>
+      <Route
+       path={RouteNames.SETTINGS}
+       element={<Settings />}
+      />
+     </Route>
 
-          {/*<Route
+     {/* --------*/}
+     <Route
+      path={RouteNames.NOTIFICATION}
+      element={<Notification />}
+     >
+      <Route element={<NotificationSwitchTabs />}>
+       <Route index element={<OutgoingNotification />} />
+       <Route
+        path={`${RouteNames.IN_COMING_NOTIFICATION}`}
+        element={<IncomingNotification />}
+       />
+      </Route>
+      <Route
+       path={`${RouteNames.NOTIFICATION}/:id_inComingNotification`}
+       element={<OutgoingNotificationPageOne />}
+      />
+     </Route>
+
+     {/*<Route
       path={RouteNames.NOTIFICATION}
       element={<Notification />}
      >
@@ -121,37 +170,75 @@ export const AppRouter = () => {
        element={<OutgoingNotificationPageOne />}
       />
      </Route>*/}
-          {/* --------*/}
+     {/* --------*/}
 
-          <Route path={`${RouteNames.OTHER_PROFILE_USER}/:id_user`} element={<OtherUserProfile />} />
-        </Route>
+     <Route
+      path={`${RouteNames.OTHER_PROFILE_USER}/:id_user`}
+      element={<OtherUserProfile />}
+     />
+    </Route>
+   </Route>
+
+   {auth ? (
+    <Route>
+     <Route
+      path={RouteNames.LOGIN}
+      element={<Navigate to={RouteNames.HOME} replace />}
+     />
+     <Route
+      path={RouteNames.REGISTER}
+      element={<Navigate to={RouteNames.HOME} replace />}
+     />
+    </Route>
+   ) : (
+    <Route>
+     <Route
+      path={RouteNames.REGISTER}
+      element={<Registration />}
+     >
+      <Route element={<FirstToStepsLayout />}>
+       <Route index element={<FirstStepFormRegister />} />
+       <Route
+        path={RouteNames.REG_TYPE_ACCOUNT}
+        element={<SecondStepFormRegister />}
+       />
       </Route>
+      <Route
+       path={RouteNames.REG_CREATE_ACCOUNT}
+       element={<ThreeStepFormRegister />}
+      />
+     </Route>
 
-      {auth ? (
-        <Route>
-          <Route path={RouteNames.LOGIN} element={<Navigate to={RouteNames.HOME} replace />} />
-          <Route path={RouteNames.REGISTER} element={<Navigate to={RouteNames.HOME} replace />} />
-        </Route>
-      ) : (
-        <Route>
-          <Route path={RouteNames.REGISTER} element={<Registration />}>
-            <Route element={<FirstToStepsLayout />}>
-              <Route index element={<FirstStepFormRegister />} />
-              <Route path={RouteNames.REG_TYPE_ACCOUNT} element={<SecondStepFormRegister />} />
-            </Route>
-            <Route path={RouteNames.REG_CREATE_ACCOUNT} element={<ThreeStepFormRegister />} />
-          </Route>
+     <Route
+      path={RouteNames.LOGIN}
+      element={
+       preloaderPages ? (
+        <Login />
+       ) : (
+        <WelcomeWindow
+         setPreloaderPagesFu={setPreloaderPagesFu}
+        />
+       )
+      }
+     />
 
-          <Route path={RouteNames.LOGIN} element={preloaderPages ? <Login /> : <WelcomeWindow setPreloaderPagesFu={setPreloaderPagesFu} />} />
+     <Route
+      path={RouteNames.RECOVERY_PASSWORD}
+      element={<RecoveryPassword />}
+     >
+      <Route
+       index
+       element={<RecoveryPasswordFirstSteps />}
+      />
+      <Route
+       path={RouteNames.RECOVERY_CREATE_PASSWORD}
+       element={<RecoveryPasswordSecondSteps />}
+      />
+     </Route>
+    </Route>
+   )}
 
-          <Route path={RouteNames.RECOVERY_PASSWORD} element={<RecoveryPassword />}>
-            <Route index element={<RecoveryPasswordFirstSteps />} />
-            <Route path={RouteNames.RECOVERY_CREATE_PASSWORD} element={<RecoveryPasswordSecondSteps />} />
-          </Route>
-        </Route>
-      )}
-
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
+   <Route path="*" element={<NotFound />} />
+  </Routes>
+ );
 };

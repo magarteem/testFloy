@@ -3,6 +3,9 @@ import Inspiration_2 from "../../../assets/images/Inspiration_2.webp";
 import avatar_1 from "../../../assets/images/avatar_1.webp";
 import avatar_2 from "../../../assets/images/avatar_2.webp";
 import avatar_3 from "../../../assets/images/avatar_3.webp";
+import avatart_11 from "../../../assets/images/avatart_11.webp";
+import avatart_22 from "../../../assets/images/avatart_22.webp";
+import avatart_33 from "../../../assets/images/avatart_33.webp";
 import { InitialStateUserType } from "../types/userSliceType";
 import {
  genreBD,
@@ -17,7 +20,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    email: "i-am-mail_test@mail.ru",
    city: { value: "magadan", label: "Магадан" },
    age: 1290163404000,
-   img_upload: "",
+   avatar: "",
    gender: { value: "female", label: "Женский" },
    type_account: {
     value: "rehearsal-point",
@@ -59,7 +62,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    email: "vova_test@mail.ru",
    city: { value: "lobnya", label: "Лобня" },
    age: 26736204000,
-   img_upload: "",
+   avatar: "",
    gender: { value: "male", label: "Мужской" },
    type_account: { value: "musician", label: "Музыкант" },
    skills: {
@@ -103,7 +106,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    email: "ulia_test@mail.ru",
    city: { value: "lyubertsy", label: "Люберцы" },
    age: 342441804000,
-   img_upload: "",
+   avatar: avatart_11,
    gender: { value: "female", label: "Женский" },
    type_account: {
     value: "rehearsal-point",
@@ -166,7 +169,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    email: "masha_test@mail.ru",
    city: { value: "makhachkala", label: "Махачкала" },
    age: 720960204000,
-   img_upload: "",
+   avatar: avatart_33,
    gender: { value: "female", label: "Женский" },
    type_account: {
     value: "sound-engineer",
@@ -227,7 +230,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    email: "vova_test@mail.ru",
    city: { value: "magadan", label: "Магадан" },
    age: 952078480000,
-   img_upload: "",
+   avatar: avatart_22,
    gender: { value: "male", label: "Мужской" },
    type_account: {
     value: "rehearsal-point",

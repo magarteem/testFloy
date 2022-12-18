@@ -1,7 +1,10 @@
+import backgroundProfileHeader from "../../../../assets/images/backgroundProfileHeader.webp";
+import noAvatar from "../../../../assets/icons/noAvatar.svg";
+
 import s from "./avatarPhoto.module.scss";
 
 interface AvatarIconsType {
- avatarPhoto: string;
+ avatarPhoto?: string;
 }
 
 export const AvatarPhoto = ({
@@ -11,7 +14,11 @@ export const AvatarPhoto = ({
   <div className={s.infoAccount}>
    <div className={s.photo}>
     <div className={s.wrapperPhoto}>
-     <img src={avatarPhoto} alt="avatar" />
+     {avatarPhoto ? (
+      <img src={avatarPhoto} alt="avatar" />
+     ) : (
+      <img src={noAvatar} alt="avatar" />
+     )}
     </div>
    </div>
   </div>

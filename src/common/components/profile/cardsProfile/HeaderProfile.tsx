@@ -1,4 +1,3 @@
-import backgroundProfileHeader from "../../../../assets/images/backgroundProfileHeader.webp";
 import { Link } from "react-router-dom";
 import pencil from "../../../../assets/icons/Pencil.webp";
 import settingsIcon from "../../../../assets/icons/settings.webp";
@@ -10,6 +9,7 @@ import { AvatarPhoto } from "../avatarIcons/AvatarPhoto";
 interface HeaderProfileType {
  textLabel: string;
  cancelImgIcon?: string;
+ avatar?: string;
  change?: boolean;
  settings?: boolean;
 }
@@ -17,6 +17,7 @@ interface HeaderProfileType {
 export const HeaderProfile = ({
  textLabel,
  cancelImgIcon,
+ avatar,
  change = false,
  settings = false,
 }: HeaderProfileType) => {
@@ -44,7 +45,7 @@ export const HeaderProfile = ({
     </div>
    </div>
 
-   <AvatarPhoto avatarPhoto={backgroundProfileHeader} />
+   <AvatarPhoto avatarPhoto={avatar} />
   </div>
  );
 };

@@ -15,7 +15,7 @@ const dataNull: InitialStateUserType = {
  email: "",
  city: { value: "", label: "" },
  age: 0,
- img_upload: "",
+ avatar: "",
  gender: { value: "", label: "" },
  type_account: { value: "", label: "" },
  skills: {
@@ -42,10 +42,12 @@ export const OtherUserProfile = () => {
   return dataOneUser && setUser(dataOneUser);
  }, [id_user]);
 
+ console.log(user);
  return (
   <>
    <HeaderWrapper>
     <HeaderProfile
+     avatar={user.avatar}
      textLabel={user.email}
      cancelImgIcon={arrowReturnWhite}
     />

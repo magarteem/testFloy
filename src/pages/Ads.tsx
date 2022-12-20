@@ -14,6 +14,9 @@ export const Ads = () => {
  const adsData = useAppSelector(
   (state) => state.adsSliceReducer
  );
+ const myProfile = useAppSelector(
+  (state) => state.userSliceReducer.profileData
+ );
 
  useEffect(() => {
   adsData.adsList.length === 0 &&
@@ -25,7 +28,7 @@ export const Ads = () => {
 
  return (
   <>
-   <Outlet context={adsData} />
+   <Outlet context={[adsData, myProfile]} />
    <PopUpNavigateGradient />
   </>
  );

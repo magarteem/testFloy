@@ -6,6 +6,8 @@ import avatar_3 from "../../../assets/images/avatar_3.webp";
 import avatart_11 from "../../../assets/images/avatart_11.webp";
 import avatart_22 from "../../../assets/images/avatart_22.webp";
 import avatart_33 from "../../../assets/images/avatart_33.webp";
+import avatart_44 from "../../../assets/images/avatart_44.webp";
+import avatart_55 from "../../../assets/images/avatart_55.webp";
 import { InitialStateUserType } from "../types/userSliceType";
 import {
  genreBD,
@@ -17,10 +19,11 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
   {
    id_user: "masha",
    name: "Маша Андреевна",
-   email: "i-am-mail_test@mail.ru",
+   email: "masha@mail.ru",
+   phone: "8 (982) 555 26 05",
    city: { value: "magadan", label: "Магадан" },
    age: 1290163404000,
-   avatar: "",
+   avatar: avatart_33,
    gender: { value: "female", label: "Женский" },
    type_account: {
     value: "rehearsal-point",
@@ -59,7 +62,8 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
   {
    id_user: "kirill",
    name: "Кирилл Белоусов",
-   email: "vova_test@mail.ru",
+   email: "kirill_test@mail.ru",
+   phone: "8 (982) 555 26 05",
    city: { value: "lobnya", label: "Лобня" },
    age: 26736204000,
    avatar: "",
@@ -104,9 +108,10 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    id_user: "ulia",
    name: "Юлия Андреевна",
    email: "ulia_test@mail.ru",
+   phone: "8 (982) 555 26 05",
    city: { value: "lyubertsy", label: "Люберцы" },
    age: 342441804000,
-   avatar: avatart_11,
+   avatar: avatart_22,
    gender: { value: "female", label: "Женский" },
    type_account: {
     value: "rehearsal-point",
@@ -166,10 +171,11 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
   {
    id_user: "iana",
    name: "Яна Калинина",
-   email: "masha_test@mail.ru",
+   email: "iana_test@mail.ru",
+   phone: "8 (982) 555 26 05",
    city: { value: "makhachkala", label: "Махачкала" },
    age: 720960204000,
-   avatar: avatart_33,
+   avatar: avatart_44,
    gender: { value: "female", label: "Женский" },
    type_account: {
     value: "sound-engineer",
@@ -177,47 +183,65 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    },
 
    skills: {
-    tool: [groupeOptions[0].options[3]],
-    genre: [genreBD[3], genreBD[5], genreBD[4]],
-    workExperience: [
-     {
-      img: avatar_1,
-      institution: "Бар “Джаз”",
-      period: "2010-2021",
-     },
-     {
-      img: avatar_2,
-      institution: "Ресторан “Гармония”",
-      period: "2016-2020",
-     },
-     {
-      img: avatar_3,
-      institution: "Бар “Джаз”",
-      period: "2011-2021",
-     },
+    tool: [
+     groupeOptions[1].options[2],
+     groupeOptions[2].options[1],
+     groupeOptions[2].options[2],
+     groupeOptions[3].options[0],
+     groupeOptions[3].options[2],
+     groupeOptions[3].options[4],
+     groupeOptions[3].options[6],
     ],
+    genre: [
+     genreBD[14],
+     genreBD[3],
+     genreBD[5],
+     genreBD[6],
+     genreBD[9],
+     genreBD[8],
+    ],
+    workExperience: "Бар “Джаз”  2010-2021",
+    //workExperience: [
+    // {
+    //  img: avatar_1,
+    //  institution: "Бар “Джаз”",
+    //  period: "2010-2021",
+    // },
+    // {
+    //  img: avatar_2,
+    //  institution: "Ресторан “Гармония”",
+    //  period: "2016-2020",
+    // },
+    // {
+    //  img: avatar_3,
+    //  institution: "Бар “Джаз”",
+    //  period: "2011-2021",
+    // },
+    //],
     master: { value: "newbie", label: "Новичок" },
-    education: [
-     {
-      img: avatar_3,
-      institution:
-       "Российская Академия музыки им. Гнесеных",
-      period: "2018-2019",
-     },
-     {
-      img: avatar_2,
-      institution:
-       "Национальная Академия музыки им. Шевченко",
-      period: "206-2018",
-     },
-     {
-      img: avatar_1,
-      institution:
-       "Российская Академия музыки им. Гнесеных",
-      period: "2016-2019",
-     },
-    ],
-    inspiration: [],
+    education:
+     "Российская Академия музыки им. Гнесеных 2018-2019, Национальная Академия музыки им. Шевченко 206-2018",
+    //education: [
+    // {
+    //  img: avatar_3,
+    //  institution:
+    //   "Российская Академия музыки им. Гнесеных",
+    //  period: "2018-2019",
+    // },
+    // {
+    //  img: avatar_2,
+    //  institution:
+    //   "Национальная Академия музыки им. Шевченко",
+    //  period: "206-2018",
+    // },
+    // {
+    //  img: avatar_1,
+    //  institution:
+    //   "Российская Академия музыки им. Гнесеных",
+    //  period: "2016-2019",
+    // },
+    //],
+    inspiration: "Шикарый гитарист",
    },
    private_settings: {
     value: "public-questionnaire",
@@ -227,10 +251,11 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
   {
    id_user: "eugenia",
    name: "Евгения Матвеева",
-   email: "vova_test@mail.ru",
+   email: "eugenia_test@mail.ru",
+   phone: "8 (982) 555 26 05",
    city: { value: "magadan", label: "Магадан" },
    age: 952078480000,
-   avatar: avatart_22,
+   avatar: avatart_55,
    gender: { value: "male", label: "Мужской" },
    type_account: {
     value: "rehearsal-point",

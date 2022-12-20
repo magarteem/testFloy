@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { BtnInGroupeSaveCancelMui } from "../common/components/navigateButton/BtnInGroupeSaveCancelMui";
 import { FormLayoutCreateADS } from "../common/layout/formLayoutCreateADS/FormLayoutCreateADS";
 import { ButtonGroupe } from "../common/mui-element/ButtonGroupe";
-import { useAppDispatch } from "../core/redux/app/hooks";
-import { getDataAdsThunk } from "../modules/ads/getDataAdsThunk";
+import {
+ useAppDispatch,
+ useAppSelector,
+} from "../core/redux/app/hooks";
 import { CreateFormADS } from "../modules/vacancy/CreateFormADS";
 import { CreateFormVacancy } from "../modules/vacancy/CreateFormVacancy";
 import { setDataAdsThunk } from "../modules/vacancy/setDataAdsThunk";
@@ -14,6 +16,11 @@ import s from "./styles/createNewAds.module.scss";
 export const CreateNewAds = () => {
  const dispatch = useAppDispatch();
  const navigate = useNavigate();
+ const myProfile = useAppSelector(
+  (state) => state.userSliceReducer.profileData
+ );
+ console.log("11111111");
+ console.log("myProfile = ", myProfile);
  const [checked, setCheckedButtom] = useState(true);
  const showVacancyButton = () => setCheckedButtom(true);
  const showAdsButton = () => setCheckedButtom(false);
@@ -40,8 +47,25 @@ export const CreateNewAds = () => {
   },
  });
  const validVacancy = methodVacancy.formState.isValid;
+
  const onSubmitVacancy = (data: any) => {
-  dispatch(setDataAdsThunk(data));
+  const changeData = {
+   ...data,
+   typeVacancyOrAds: "vacancy",
+   id: new Date().getTime(),
+   publicationDate: new Date().getTime(),
+   author: {
+    avatar: myProfile?.avatar,
+    city: myProfile?.city?.label,
+    id_user: myProfile?.id_user,
+    name: myProfile?.name,
+   },
+   waitingForResponse: {
+    status: 0,
+    userId: "",
+   },
+  };
+  dispatch(setDataAdsThunk(changeData));
   navigate(-1);
  };
 
@@ -67,9 +91,28 @@ export const CreateNewAds = () => {
    web_site: "",
   },
  });
+
  const validAds = methodAds.formState.isValid;
+
  const onSubmitAds = (data: any) => {
-  dispatch(setDataAdsThunk(data));
+  const changeData = {
+   ...data,
+   typeVacancyOrAds: "ads",
+   id: new Date().getTime(),
+   publicationDate: new Date().getTime(),
+   author: {
+    avatar: myProfile?.avatar,
+    city: myProfile?.city?.label,
+    id_user: myProfile?.id_user,
+    name: myProfile?.name,
+   },
+   waitingForResponse: {
+    status: 0,
+    userId: "",
+   },
+  };
+
+  dispatch(setDataAdsThunk(changeData));
   console.log("onSubmitAds = ", data);
   navigate(-1);
  };

@@ -1,4 +1,5 @@
 import { useAppDispatch } from "../../../../core/redux/app/hooks";
+import { updateStatusAds } from "../../../../modules/ads/adsSlice";
 import { updateDataNotificationThunk } from "../../../../modules/notification/updateDataNotificationThunk";
 import { BtnInGroupeSaveCancelMui } from "../../navigateButton/BtnInGroupeSaveCancelMui";
 import { Received } from "../waitinActionButton/action/Received";
@@ -28,6 +29,13 @@ export const ButtonlActionApplication = ({
     },
    ])
   );
+  dispatch(
+   updateStatusAds({
+    idAds: id,
+    userId,
+    status: 2,
+   })
+  );
  };
 
  const addAds = () => {
@@ -39,6 +47,14 @@ export const ButtonlActionApplication = ({
      status: 1,
     },
    ])
+  );
+
+  dispatch(
+   updateStatusAds({
+    idAds: id,
+    userId,
+    status: 1,
+   })
   );
  };
 

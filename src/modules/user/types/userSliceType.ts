@@ -24,13 +24,14 @@ export interface SkillsType {
  workExperience: string | EducationType[];
  master: DataSelectType | null;
  education: string | EducationType[];
- inspiration: string[];
+ inspiration: string[] | string;
 }
 
 export interface InitialStateUserType {
  id_user: string;
  name: string;
  email: string;
+ phone: string;
  city: DataSelectType | null;
  age: number | null;
  avatar: string;

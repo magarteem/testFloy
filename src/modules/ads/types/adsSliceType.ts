@@ -11,14 +11,21 @@ export interface AuthorType {
  avatar: string;
 }
 
-interface WorkExperience {
+interface WorkExperienceType {
  img: string;
  institution: string;
  period: string;
 }
 
+//ожидание отклика других пользователей
+export interface WaitingForResponseType {
+ userId: string;
+ status: number; // 0 - pending, 1 - принято, 2 - отклонено
+}
+
 export interface TimelineCards {
  id: number;
+ typeVacancyOrAds: "vacancy" | "ads";
  author: AuthorType;
  publicationDate: number;
  required: OptionSelectType;
@@ -29,7 +36,7 @@ export interface TimelineCards {
  gender: OptionSelectType;
  fromAge: number;
  toAge: number;
- work_experience: string | WorkExperience[];
+ work_experience: string | WorkExperienceType[];
  master: OptionSelectType;
  commit: string;
  payment: string;
@@ -38,11 +45,7 @@ export interface TimelineCards {
  phone: string;
  email: string;
  web_site: string;
- //ожидание отклика других пользователей
- waitingForResponse: {
-  userId: string;
-  status: number;
- };
+ waitingForResponse: WaitingForResponseType;
 }
 
 export interface InitialStateAdsType {

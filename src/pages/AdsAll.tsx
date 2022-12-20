@@ -21,6 +21,9 @@ export const AdsAll = () => {
  const adsData = useAppSelector(
   (state) => state.adsSliceReducer
  );
+ const myProfile = useAppSelector(
+  (state) => state.userSliceReducer.profileData
+ );
 
  useEffect(() => {
   adsData.adsList.length === 0 &&
@@ -82,7 +85,7 @@ export const AdsAll = () => {
    <TabsComponentAds />
 
    <StylesFullScreen>
-    <Outlet context={adsData} />
+    <Outlet context={[adsData, myProfile]} />
    </StylesFullScreen>
   </>
  );

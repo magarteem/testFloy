@@ -10,6 +10,7 @@ import { NameProfile } from "../nameProfile/NameProfile";
 import { WorkExperienceCard } from "./skills/WorkExperienceCards";
 import { EducationeCards } from "./skills/EducationeCards";
 import s from "./aboutProfile.module.scss";
+import { AboutProfileSkillsLayout } from "../../../layout/aboutProfileSkillsLayout/AboutProfileSkillsLayout";
 
 interface AboutProfileType {
  userDataProfile: InitialStateUserType;
@@ -72,12 +73,31 @@ export const AboutProfile = ({
      skillsCategoryTitle="Образование"
     />
 
-    {userDataProfile.skills.inspiration.length > 0 && (
+    {Array.isArray(userDataProfile.skills.inspiration) ? (
      <InspirationUser
       inspiration={userDataProfile.skills.inspiration}
       skillsCategoryTitle="Портфолио"
      />
+    ) : (
+     <AboutProfileSkillsLayout skillsCategoryTitle="Портфолио">
+      <div className={s.styleAbout}>
+       <span className={s.titleSpan}>О себе:</span>
+       {userDataProfile.skills.inspiration}
+      </div>
+     </AboutProfileSkillsLayout>
     )}
+
+    <AboutProfileSkillsLayout skillsCategoryTitle="Контакты">
+     <div className={s.styleAbout}>
+      <span className={s.titleSpan}>Телефон:</span>
+      {userDataProfile.phone}
+     </div>
+
+     <div className={s.styleAbout}>
+      <span className={s.titleSpan}>E-mail:</span>
+      {userDataProfile.email}
+     </div>
+    </AboutProfileSkillsLayout>
    </section>
   </>
  );

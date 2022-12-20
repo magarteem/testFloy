@@ -7,6 +7,7 @@ import { getDataAdsThunk } from "./getDataAdsThunk";
 import {
  InitialStateAdsType,
  TimelineCards,
+ WaitingForResponseType,
 } from "./types/adsSliceType";
 
 const initialState: InitialStateAdsType = {
@@ -18,7 +19,26 @@ const initialState: InitialStateAdsType = {
 const adsSlice = createSlice({
  name: "adsSlice",
  initialState,
- reducers: {},
+ reducers: {
+  updateStatusAds(
+   state: InitialStateAdsType,
+   action: PayloadAction<any>
+  ) {
+   state.adsList = state.adsList.map((x) => {
+    if (x.id === action.payload.idAds) {
+     return {
+      ...x,
+      waitingForResponse: {
+       userId: action.payload.userId,
+       status: action.payload.status,
+      },
+     };
+    } else {
+     return { ...x };
+    }
+   });
+  },
+ },
 
  extraReducers: (builder) => {
   builder
@@ -34,7 +54,6 @@ const adsSlice = createSlice({
      state: InitialStateAdsType,
      actions: PayloadAction<TimelineCards[]>
     ) => {
-     console.log("actions.payload = ", actions.payload);
      state.adsList = actions.payload;
      state.isLoading = false;
     }
@@ -44,9 +63,7 @@ const adsSlice = createSlice({
     (
      state: InitialStateAdsType,
      actions: PayloadAction<string>
-    ) => {
-     console.log("full1111");
-    }
+    ) => {}
    )
    //
    .addCase(
@@ -61,22 +78,7 @@ const adsSlice = createSlice({
      state: InitialStateAdsType,
      actions: PayloadAction<TimelineCards>
     ) => {
-     state.adsList.unshift({
-      ...actions.payload,
-      id: new Date().getTime(),
-      publicationDate: new Date().getTime(),
-      author: {
-       avatar:
-        "/static/media/avatart_22.656e2d550638bec4dc6d.webp",
-       city: "Ростов",
-       id_user: "iana",
-       name: "Яна Калинина",
-      },
-      waitingForResponse: {
-       status: 0,
-       userId: "masha",
-      },
-     });
+     state.adsList.unshift(actions.payload);
      state.isLoading = false;
     }
    )
@@ -85,12 +87,10 @@ const adsSlice = createSlice({
     (
      state: InitialStateAdsType,
      actions: PayloadAction<string>
-    ) => {
-     console.log("full1111");
-    }
+    ) => {}
    );
  },
 });
 
-//export const { } = adsSlice.actions;
+export const { updateStatusAds } = adsSlice.actions;
 export default adsSlice.reducer;

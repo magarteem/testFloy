@@ -13,6 +13,7 @@ const dataNull: InitialStateUserType = {
  id_user: "",
  name: "",
  email: "",
+ phone: "",
  city: { value: "", label: "" },
  age: 0,
  avatar: "",

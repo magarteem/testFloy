@@ -1,6 +1,7 @@
 import avatart_11 from "../../../assets/images/avatart_11.webp";
 import avatart_22 from "../../../assets/images/avatart_22.webp";
 import avatart_33 from "../../../assets/images/avatart_33.webp";
+import avatart_44 from "../../../assets/images/avatart_44.webp";
 import { TimelineCards } from "../../ads/types/adsSliceType";
 import {
  genreBD,
@@ -10,11 +11,12 @@ import {
 export const OutgoingNotificationData: TimelineCards[] = [
  {
   id: 1,
+  typeVacancyOrAds: "vacancy",
   author: {
-   id_user: "kirill",
-   name: "Кирилл Белоусов",
-   city: "Москва",
-   avatar: avatart_11,
+   id_user: "iana",
+   name: "Яна Калинина",
+   city: "Махачкала",
+   avatar: avatart_44,
   },
   publicationDate: 1607786743153,
   required: {
@@ -70,14 +72,14 @@ export const OutgoingNotificationData: TimelineCards[] = [
    status: 0,
   },
  },
-
  {
   id: 2,
+  typeVacancyOrAds: "vacancy",
   author: {
-   id_user: "iana",
-   name: "Яна Калинина",
-   city: "Ростов",
-   avatar: avatart_22,
+   id_user: "masha",
+   name: "Маша Андреевна",
+   city: "Магадан",
+   avatar: avatart_33,
   },
   publicationDate: 1449933940779,
   required: {
@@ -137,14 +139,14 @@ export const OutgoingNotificationData: TimelineCards[] = [
    status: 1,
   },
  },
-
  {
   id: 3,
+  typeVacancyOrAds: "ads",
   author: {
-   id_user: "ulia",
-   name: "Юлия Андреевна",
-   city: "Петербург",
-   avatar: avatart_22,
+   id_user: "kirill",
+   name: "Кирилл Белоусов",
+   city: "Лобня",
+   avatar: avatart_11,
   },
   publicationDate: 1607786743153,
   required: { value: "Музыкант", label: "Музыкант" },
@@ -199,16 +201,17 @@ export const OutgoingNotificationData: TimelineCards[] = [
   web_site: "rerererer",
   waitingForResponse: {
    userId: "",
-   status: 2,
+   status: 0,
   },
  },
  {
   id: 4,
+  typeVacancyOrAds: "ads",
   author: {
-   id_user: "masha",
-   name: "Маша Андреевна",
-   city: "Москва",
-   avatar: avatart_11,
+   id_user: "ulia",
+   name: "Юлия Андреевна",
+   city: "Люберцы",
+   avatar: avatart_22,
   },
   publicationDate: 1607786743153,
   required: { value: "Музыкант", label: "Музыкант" },
@@ -253,7 +256,7 @@ export const OutgoingNotificationData: TimelineCards[] = [
   web_site: "rerererer",
   waitingForResponse: {
    userId: "ulia",
-   status: 1,
+   status: 2,
   },
  },
 ];

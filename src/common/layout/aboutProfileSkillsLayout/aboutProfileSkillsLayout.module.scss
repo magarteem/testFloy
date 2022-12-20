@@ -6,21 +6,21 @@
  align-items: center;
  padding: 12px 0;
 
- .profileData {
+ .profileDataFields {
   width: 100%;
 
   h2 {
    font-weight: 700;
    font-size: 18px;
    color: #212121;
-   margin-bottom: 15px;
+   margin-bottom: 12px;
   }
 
   .skills_item {
    display: flex;
+   flex-direction: column;
    flex-wrap: wrap;
-   border-radius: 8px;
-   gap: 20px 12px;
+   gap: 8px;
   }
  }
 }

@@ -7,7 +7,10 @@ import {
 } from "react-router-dom";
 import { HeaderStylesWrapper } from "../common/layout/headerStylesWrapper/HeaderStylesWrapper";
 import { LongMenu } from "../common/mui-element/LongMenu";
-import { InitialStateAdsType } from "../modules/ads/types/adsSliceType";
+import {
+ InitialStateAdsType,
+ TimelineCards,
+} from "../modules/ads/types/adsSliceType";
 import { SkillsLayoutTools } from "../common/components/profile/aboutProfile/skills/SkillsLayoutTools";
 import { SkillsLayoutGenre } from "../common/components/profile/aboutProfile/skills/SkillsLayoutGenre";
 import { ButtonSubmitMui } from "../common/mui-element/ButtonSubmitMui";
@@ -17,15 +20,24 @@ import { calculateAge } from "../helpers/calculateAge";
 import { StylesFullScreen } from "../common/layout/stylesFullScreen/StylesFullScreen";
 import cn from "classnames";
 import s from "./styles/adsPageOne.module.scss";
+import { InitialStateUserType } from "../modules/user/types/userSliceType";
+import { Received } from "../common/components/notification/waitinActionButton/action/Received";
+import { Pending } from "../common/components/notification/waitinActionButton/action/Pending";
+import { Rejected } from "../common/components/notification/waitinActionButton/action/Rejected";
+import { RespondButton } from "../common/components/ads/respondButton/RespondButton";
+import { updateStatusAds } from "../modules/ads/adsSlice";
 
 const share = { img: shareIcons, action: "" };
 
 export const AdsPageOne = () => {
- const dispatch = useAppDispatch();
- const data: InitialStateAdsType = useOutletContext();
+ // const dispatch = useAppDispatch();
+ const [dataAdsList, profile]: [
+  InitialStateAdsType,
+  InitialStateUserType
+ ] = useOutletContext();
 
  const { id_ads } = useParams();
- const dataOneNews = data.adsList?.find(
+ const dataOneNews = dataAdsList.adsList?.find(
   (x) => `${x.id}` === id_ads
  );
 
@@ -35,9 +47,16 @@ export const AdsPageOne = () => {
   dataOneNews.required.label
  );
 
- const respondAds = () => {
-  dispatch(setDataNotificationThunk(dataOneNews));
- };
+ // const respondAds = (adsItem: TimelineCards) => {
+ //  dispatch(setDataNotificationThunk(adsItem));
+ //  dispatch(
+ //   updateStatusAds({
+ //    idAds: adsItem.id,
+ //    userId: profile.id_user,
+ //    status: 0,
+ //   })
+ //  );
+ // };
 
  return (
   <StylesFullScreen>
@@ -46,6 +65,7 @@ export const AdsPageOne = () => {
      cancelImgIcon={arrow_back}
      textLabel="Обявления"
      anyIconsFirst={share}
+     share={shareIcons}
      tsxElement={<LongMenu />}
     />
 
@@ -135,13 +155,46 @@ export const AdsPageOne = () => {
       />
      </div>
 
-     <div className={s.respond}>
-      <ButtonSubmitMui
-       onClick={respondAds}
-       isValidInButton={false}
-       textButton="Откликнуться"
-      />
-     </div>
+     {/*// мой профиль = profile.id_use
+          // автор поста = dataOneNews?.author?.id_user*/}
+     {
+      //if(dataOneNews?.author?.id_user === profile.id_user) return null
+      //else {
+      //  if (dataOneNews.waitingForResponse.userId !== profile.id_use) return <RespondButton />
+      //else if (dataOneNews.waitingForResponse.status === 0 ) return  <Pending />
+      //else if (dataOneNews.waitingForResponse.status === 1 ) return  <Received status={dataOneNews.waitingForResponse} />
+      //else if (dataOneNews.waitingForResponse.status === 2 ) return  <Rejected />
+      //}
+     }
+
+     {profile.id_user !== dataOneNews?.author?.id_user &&
+      profile.id_user !==
+       dataOneNews.waitingForResponse.userId && (
+       <RespondButton
+        respondAdsData={dataOneNews}
+        profile={profile}
+       />
+       //{/*<ButtonSubmitMui
+       // onClick={() => respondAds(dataOneNews)}
+       // isValidInButton={false}
+       // textButton="Откликнуться"
+       ///>*/}
+      )}
+
+     {profile.id_user ===
+      dataOneNews.waitingForResponse.userId && (
+      <div className={s.pending}>
+       {dataOneNews.waitingForResponse.status === 0 && (
+        <Pending />
+       )}
+       {dataOneNews.waitingForResponse.status === 1 && (
+        <Received status={dataOneNews.waitingForResponse} />
+       )}
+       {dataOneNews.waitingForResponse.status === 2 && (
+        <Rejected />
+       )}
+      </div>
+     )}
     </section>
    </div>
   </StylesFullScreen>

@@ -33,6 +33,18 @@ export const AboutProfile = ({
     />
 
     {id_user && (
+     <div className={s.noBorder}>
+      <BtnUserContact>
+       <div className={s.btnUserContact}>
+        <button className={s.buttonContactWrapper}>
+         Запросить контакты
+        </button>
+       </div>
+      </BtnUserContact>
+     </div>
+    )}
+
+    {/*{id_user && (
      <BtnUserContact>
       <div className={s.btnUserContact}>
        <ContactButton textButton="Подписаться" />
@@ -44,7 +56,7 @@ export const AboutProfile = ({
        </button>
       </div>
      </BtnUserContact>
-    )}
+    )}*/}
 
     <SkillsLayoutTools
      skillsDataItem={userDataProfile.skills.tool}

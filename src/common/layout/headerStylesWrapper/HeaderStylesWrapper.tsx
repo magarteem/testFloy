@@ -7,8 +7,6 @@ import s from "./headerStylesWrapper.module.scss";
 interface HeaderStylesWrapperType {
  textLabel?: string;
  cancelImgIcon?: string;
- //filterIcons?: string;
- //addIcons?: string;
  anyIconsFirst?: { img: string; action: string };
  anyIconsSecond?: { img: string; action: string };
  tsxElement?: any;
@@ -19,8 +17,6 @@ interface HeaderStylesWrapperType {
 export const HeaderStylesWrapper = ({
  textLabel,
  cancelImgIcon,
- //filterIcons,
- //addIcons,
  anyIconsFirst,
  anyIconsSecond,
  tsxElement,
@@ -38,16 +34,6 @@ export const HeaderStylesWrapper = ({
    </div>
 
    <div className={s.titleSettings}>
-    {/*{addIcons && (
-          <Link to={RouteNames.CHANGE_PROFILE}>
-            <img src={addIcons} alt={addIcons} />
-          </Link>
-        )}
-        {filterIcons && (
-          <Link to={RouteNames.SETTINGS}>
-            <img src={filterIcons} alt={filterIcons} />
-          </Link>
-        )}*/}
     {!!share && (
      <img src={share} alt={share} onClick={onShare} />
     )}
@@ -60,6 +46,7 @@ export const HeaderStylesWrapper = ({
       />
      </Link>
     )}
+
     {anyIconsSecond && (
      <Link to={anyIconsSecond.action}>
       <img
@@ -68,6 +55,7 @@ export const HeaderStylesWrapper = ({
       />
      </Link>
     )}
+
     {tsxElement && tsxElement}
    </div>
   </section>

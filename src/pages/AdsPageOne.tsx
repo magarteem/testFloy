@@ -64,7 +64,7 @@ export const AdsPageOne = () => {
     <HeaderStylesWrapper
      cancelImgIcon={arrow_back}
      textLabel="Обявления"
-     anyIconsFirst={share}
+     // anyIconsFirst={share}
      share={shareIcons}
      tsxElement={<LongMenu />}
     />

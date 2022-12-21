@@ -1,19 +1,23 @@
+import backGroundImg from "../assets/images/backgroundProfileHeader.webp";
 import arrowReturnWhite from "../assets/icons/arrowReturnWhite.webp";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { NavigateButtonWidthAddBtn } from "../common/components/navigateButton/NavigateButtonWidthAddBtn";
 import { AboutProfile } from "../common/components/profile/aboutProfile/AboutProfile";
 import { HeaderProfile } from "../common/components/profile/cardsProfile/HeaderProfile";
 import { HeaderWrapper } from "../common/layout/header/HeaderWrapper";
 import { tempDataOtherUserProfile } from "../modules/user/service/tempDataOtherUserProfile";
 import { InitialStateUserType } from "../modules/user/types/userSliceType";
 import { PopUpNavigateGradient } from "../common/components/navigateButton/PopUpNavigateGradient";
+import { ReactComponent as ShareIcons } from "../assets/icons/shareIcons.svg";
+import { onShare } from "../modules/pwa/onShare";
+import s from "./styles/otherUserProfile.module.scss";
 
 const dataNull: InitialStateUserType = {
  id_user: "",
  name: "",
  email: "",
  phone: "",
+ webSite: "",
  city: { value: "", label: "" },
  age: 0,
  avatar: "",
@@ -22,8 +26,8 @@ const dataNull: InitialStateUserType = {
  skills: {
   tool: [],
   genre: [],
-  workExperience: [],
-  education: [],
+  workExperience: "",
+  education: "",
   master: { value: "", label: "" },
   inspiration: [],
  },
@@ -43,12 +47,17 @@ export const OtherUserProfile = () => {
   return dataOneUser && setUser(dataOneUser);
  }, [id_user]);
 
- console.log(user);
  return (
   <>
-   <HeaderWrapper>
+   <HeaderWrapper srcPhoto={user.avatar && backGroundImg}>
     <HeaderProfile
      avatar={user.avatar}
+     share={
+      <ShareIcons
+       onClick={onShare}
+       className={s.shareIcon}
+      />
+     }
      textLabel={user.email}
      cancelImgIcon={arrowReturnWhite}
     />

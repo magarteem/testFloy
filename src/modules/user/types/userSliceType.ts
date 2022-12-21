@@ -12,18 +12,12 @@ export interface GenreSliceType extends DataSelectType {
  hexColor: string;
 }
 
-export interface EducationType {
- img: string;
- institution: string;
- period: string;
-}
-
 export interface SkillsType {
  tool: ToolsSliceType[];
  genre: GenreSliceType[];
- workExperience: string | EducationType[];
+ workExperience: string;
  master: DataSelectType | null;
- education: string | EducationType[];
+ education: string;
  inspiration: string[] | string;
 }
 
@@ -32,6 +26,7 @@ export interface InitialStateUserType {
  name: string;
  email: string;
  phone: string;
+ webSite: string;
  city: DataSelectType | null;
  age: number | null;
  avatar: string;
@@ -51,5 +46,5 @@ export interface InitialStateType {
 // ===========
 export type ChangeProfileFormValues = Omit<
  ISignUpFormValues,
- "email" | "password" | "img_upload" | "type_account"
+ "emailNew" | "password" | "img_upload" | "type_account"
 >;

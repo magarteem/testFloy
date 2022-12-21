@@ -74,12 +74,14 @@ export const AboutProfile = ({
      />
     )}
 
+    {/*tasks =>>> WorkExperienceCard and EducationeCards сделать один layout*/}
     <WorkExperienceCard
      workEducationeData={
       userDataProfile.skills.workExperience
      }
      skillsCategoryTitle="Опыт работы"
     />
+
     <EducationeCards
      workEducationeData={userDataProfile.skills.education}
      skillsCategoryTitle="Образование"
@@ -94,7 +96,9 @@ export const AboutProfile = ({
      <AboutProfileSkillsLayout skillsCategoryTitle="Портфолио">
       <div className={s.styleAbout}>
        <span className={s.titleSpan}>О себе:</span>
-       {userDataProfile.skills.inspiration}
+       {userDataProfile.skills.inspiration
+        ? userDataProfile.skills.inspiration
+        : "Не указан"}
       </div>
      </AboutProfileSkillsLayout>
     )}
@@ -108,6 +112,11 @@ export const AboutProfile = ({
      <div className={s.styleAbout}>
       <span className={s.titleSpan}>E-mail:</span>
       {userDataProfile.email}
+     </div>
+
+     <div className={s.styleAbout}>
+      <span className={s.titleSpan}>Вебсайт:</span>
+      {userDataProfile.webSite}
      </div>
     </AboutProfileSkillsLayout>
    </section>

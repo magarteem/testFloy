@@ -9,33 +9,50 @@ import { ReactComponent as Chats } from "../../../assets/icons/Chats.svg";
 import s from "./navigateButton.module.scss";
 
 interface LinkActiveType {
-  isActive: boolean;
+ isActive: boolean;
 }
 
 export const NavigateButton = () => {
-  const setActive = ({ isActive }: LinkActiveType) => cn({ [s.active]: isActive });
+ const setActive = ({ isActive }: LinkActiveType) =>
+  cn({ [s.active]: isActive });
 
-  return (
-    <div className={s.widthAddButton}>
-      <NavLink className={setActive} to={RouteNames.HOME} aria-label="home">
-        <Home className={cn(s.icon, s.activeSpecified)} />
-      </NavLink>
+ return (
+  <div className={s.widthAddButton}>
+   <NavLink
+    className={setActive}
+    to={RouteNames.HOME}
+    aria-label="home"
+   >
+    <Home className={cn(s.icon, s.activeSpecified)} />
+   </NavLink>
 
-      <NavLink className={setActive} to={RouteNames.ADS} aria-label="ads">
-        <Ads className={cn(s.icon, s.activeSpecified)} />
-      </NavLink>
+   <NavLink
+    className={setActive}
+    to={RouteNames.ADS}
+    aria-label="ads"
+   >
+    <Ads className={cn(s.icon, s.activeSpecified)} />
+   </NavLink>
 
-      <NavLink className={setActive} to={RouteNames.USER} aria-label="user">
-        <User className={s.icon} />
-      </NavLink>
+   <NavLink
+    className={setActive}
+    to={RouteNames.USER}
+    aria-label="user"
+   >
+    <User className={s.icon} />
+   </NavLink>
 
-      {/* <NavLink className={setActive} to={RouteNames.CHATS} aria-label="chats">
+   {/* <NavLink className={setActive} to={RouteNames.CHATS} aria-label="chats">
         <Chats className={s.icon} />
       </NavLink> */}
 
-      <NavLink className={setActive} to={RouteNames.NOTIFICATION} aria-label="notification">
-        <Notification className={s.icon} />
-      </NavLink>
-    </div>
-  );
+   <NavLink
+    className={setActive}
+    to={RouteNames.NOTIFICATION}
+    aria-label="notification"
+   >
+    <Notification className={s.icon} />
+   </NavLink>
+  </div>
+ );
 };

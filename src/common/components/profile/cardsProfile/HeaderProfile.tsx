@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import pencil from "../../../../assets/icons/Pencil.webp";
 import settingsIcon from "../../../../assets/icons/settings.webp";
@@ -12,6 +13,7 @@ interface HeaderProfileType {
  avatar?: string;
  change?: boolean;
  settings?: boolean;
+ share?: ReactNode;
 }
 
 export const HeaderProfile = ({
@@ -20,6 +22,7 @@ export const HeaderProfile = ({
  avatar,
  change = false,
  settings = false,
+ share,
 }: HeaderProfileType) => {
  return (
   <div className={s.headerProfile}>
@@ -42,6 +45,8 @@ export const HeaderProfile = ({
        <img src={settingsIcon} alt={settingsIcon} />
       </Link>
      )}
+
+     {!!share && share}
     </div>
    </div>
 

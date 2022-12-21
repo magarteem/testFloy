@@ -143,7 +143,7 @@ export const AppRouter = () => {
       <Route element={<NotificationSwitchTabs />}>
        <Route index element={<OutgoingNotification />} />
        <Route
-        path={`${RouteNames.IN_COMING_NOTIFICATION}`}
+        path={RouteNames.IN_COMING_NOTIFICATION}
         element={<IncomingNotification />}
        />
       </Route>
@@ -152,24 +152,6 @@ export const AppRouter = () => {
        element={<OutgoingNotificationPageOne />}
       />
      </Route>
-
-     {/*<Route
-      path={RouteNames.NOTIFICATION}
-      element={<Notification />}
-     >
-      <Route element={<NotificationSwitchTabs />}>
-       <Route index element={<OutgoingNotification />} />
-       <Route
-        path={`${RouteNames.IN_COMING_NOTIFICATION}`}
-        element={<IncomingNotification />}
-       />
-      </Route>
-
-      <Route
-       path={`${RouteNames.NOTIFICATION}/:id_inComingNotification`}
-       element={<OutgoingNotificationPageOne />}
-      />
-     </Route>*/}
      {/* --------*/}
 
      <Route

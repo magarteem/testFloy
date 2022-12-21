@@ -1,58 +1,62 @@
 import { ChangeEvent, ReactNode } from "react";
 import { TextField } from "@mui/material";
-import { handlePhoneInput, handlePhoneKeyDown, handlePhonePaste } from "./maskPhone";
+import {
+ handlePhoneInput,
+ handlePhoneKeyDown,
+ handlePhonePaste,
+} from "./maskPhone";
 import { stylePhoneSX } from "./stylePhoneSX";
 
 interface TextFieldPhoneElementMuiType {
-  type?: string;
-  multiline?: boolean;
-  required?: boolean;
-  helperText?: string;
-  errors?: any;
-  inputValue?: string;
-  children?: ReactNode;
-  placeholder: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  ItemRef?: any;
-  onClick?: () => void;
+ type?: string;
+ multiline?: boolean;
+ required?: boolean;
+ helperText?: string;
+ errors?: any;
+ inputValue?: string;
+ children?: ReactNode;
+ placeholder: string;
+ onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+ ItemRef?: any;
+ onClick?: () => void;
 }
 
 export default function TextFieldPhoneElementMui({
-  children,
-  multiline = false,
-  required = false,
-  helperText = "",
-  errors,
-  inputValue,
-  placeholder,
-  ItemRef,
-  onChange,
-  onClick,
-  ...props
+ children,
+ multiline = false,
+ required = false,
+ helperText = "",
+ errors,
+ inputValue,
+ placeholder,
+ ItemRef,
+ onChange,
+ onClick,
+ ...props
 }: TextFieldPhoneElementMuiType) {
-  return (
-    <TextField
-      helperText={errors && errors.message}
-      multiline={multiline}
-      maxRows={4}
-      error={errors}
-      type="number"
-      value={inputValue}
-      onInput={handlePhoneInput}
-      onKeyDown={handlePhoneKeyDown}
-      onPaste={handlePhonePaste}
-      sx={stylePhoneSX.input}
-      fullWidth
-      label={placeholder}
-      autoComplete="off"
-      placeholder={placeholder}
-      variant="outlined"
-      required={required}
-      onChange={onChange}
-      onClick={onClick}
-      {...props}
-    />
-  );
+ return (
+  <TextField
+   helperText={errors && errors.message}
+   multiline={multiline}
+   maxRows={4}
+   error={errors}
+   type="number"
+   value={inputValue}
+   onInput={handlePhoneInput}
+   onKeyDown={handlePhoneKeyDown}
+   onPaste={handlePhonePaste}
+   sx={stylePhoneSX.input}
+   fullWidth
+   label={placeholder}
+   autoComplete="off"
+   placeholder={placeholder}
+   variant="outlined"
+   required={required}
+   onChange={onChange}
+   onClick={onClick}
+   {...props}
+  />
+ );
 }
 
 //const handleInput = (

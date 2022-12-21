@@ -21,6 +21,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    name: "Маша Андреевна",
    email: "masha@mail.ru",
    phone: "8 (982) 555 26 05",
+   webSite: "http://triton.ru",
    city: { value: "magadan", label: "Магадан" },
    age: 1290163404000,
    avatar: avatart_33,
@@ -64,6 +65,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    name: "Кирилл Белоусов",
    email: "kirill_test@mail.ru",
    phone: "8 (982) 555 26 05",
+   webSite: "http://triton.ru",
    city: { value: "lobnya", label: "Лобня" },
    age: 26736204000,
    avatar: "",
@@ -82,18 +84,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
      genreBD[10],
      genreBD[6],
     ],
-    workExperience: [
-     {
-      img: avatar_1,
-      institution: "Бар “Джаз”",
-      period: "2020-2021",
-     },
-     {
-      img: avatar_2,
-      institution: "Ресторан “Гармония”",
-      period: "2016-2020",
-     },
-    ],
+    workExperience: "Бар “Джаз”  2010-2021",
     master: { value: "master", label: "Мастер" },
     education:
      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.",
@@ -109,6 +100,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    name: "Юлия Андреевна",
    email: "ulia_test@mail.ru",
    phone: "8 (982) 555 26 05",
+   webSite: "http://triton.ru",
    city: { value: "lyubertsy", label: "Люберцы" },
    age: 342441804000,
    avatar: avatart_22,
@@ -137,26 +129,8 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
     workExperience:
      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.",
     master: { value: "teacher", label: "Преподаватель" },
-    education: [
-     {
-      img: avatar_1,
-      institution:
-       "Российская Академия музыки им. Гнесеных",
-      period: "2017-2019",
-     },
-     {
-      img: avatar_2,
-      institution:
-       "Национальная Академия музыки им. Шевченко",
-      period: "206-2018",
-     },
-     {
-      img: avatar_3,
-      institution:
-       "Российская Академия музыки им. Гнесеных",
-      period: "2016-2019",
-     },
-    ],
+    education:
+     "Российская Академия музыки им. Гнесеных 2018-2019, Национальная Академия музыки им. Шевченко 206-2018",
     inspiration: [
      Inspiration_1,
      Inspiration_2,
@@ -173,6 +147,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    name: "Яна Калинина",
    email: "iana_test@mail.ru",
    phone: "8 (982) 555 26 05",
+   webSite: "http://triton.ru",
    city: { value: "makhachkala", label: "Махачкала" },
    age: 720960204000,
    avatar: avatart_44,
@@ -201,46 +176,9 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
      genreBD[8],
     ],
     workExperience: "Бар “Джаз”  2010-2021",
-    //workExperience: [
-    // {
-    //  img: avatar_1,
-    //  institution: "Бар “Джаз”",
-    //  period: "2010-2021",
-    // },
-    // {
-    //  img: avatar_2,
-    //  institution: "Ресторан “Гармония”",
-    //  period: "2016-2020",
-    // },
-    // {
-    //  img: avatar_3,
-    //  institution: "Бар “Джаз”",
-    //  period: "2011-2021",
-    // },
-    //],
     master: { value: "newbie", label: "Новичок" },
     education:
      "Российская Академия музыки им. Гнесеных 2018-2019, Национальная Академия музыки им. Шевченко 206-2018",
-    //education: [
-    // {
-    //  img: avatar_3,
-    //  institution:
-    //   "Российская Академия музыки им. Гнесеных",
-    //  period: "2018-2019",
-    // },
-    // {
-    //  img: avatar_2,
-    //  institution:
-    //   "Национальная Академия музыки им. Шевченко",
-    //  period: "206-2018",
-    // },
-    // {
-    //  img: avatar_1,
-    //  institution:
-    //   "Российская Академия музыки им. Гнесеных",
-    //  period: "2016-2019",
-    // },
-    //],
     inspiration: "Шикарый гитарист",
    },
    private_settings: {
@@ -253,6 +191,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    name: "Евгения Матвеева",
    email: "eugenia_test@mail.ru",
    phone: "8 (982) 555 26 05",
+   webSite: "http://triton.ru",
    city: { value: "magadan", label: "Магадан" },
    age: 952078480000,
    avatar: avatart_55,

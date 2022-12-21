@@ -1,9 +1,8 @@
-import { EducationType } from "../../../../../modules/user/types/userSliceType";
 import { ExperienceEducationLayout } from "../../../../layout/experienceEducationLayout/ExperienceEducationLayout";
 import s from "./workExperienceCard.module.scss";
 
 interface WorkExperienceType {
- workEducationeData: string | EducationType[];
+ workEducationeData: string;
  skillsCategoryTitle: string;
 }
 

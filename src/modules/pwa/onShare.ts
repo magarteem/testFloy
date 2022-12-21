@@ -4,7 +4,8 @@ export const onShare = async () => {
   ? //@ts-ignore
     document.querySelector("link[rel=canonical]").href
   : document.location.href;
- const text = "Learn how to use the share api";
+ const text =
+  "Страница из https://v2-triton-preview.vercel.app";
 
  if (navigator.share) {
   try {
@@ -14,7 +15,7 @@ export const onShare = async () => {
     text,
    });
    /*Show a message if the user share something*/
-   alert(`Thanks for Sharing!`);
+   // alert(`Thanks for Sharing!`);
   } catch (err) {
    /*This error will appear if the user cancel the action of sharing.*/
    alert(`Couldn't share ${err}`);

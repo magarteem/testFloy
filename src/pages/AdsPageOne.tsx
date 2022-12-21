@@ -27,8 +27,6 @@ import { Rejected } from "../common/components/notification/waitinActionButton/a
 import { RespondButton } from "../common/components/ads/respondButton/RespondButton";
 import { updateStatusAds } from "../modules/ads/adsSlice";
 
-const share = { img: shareIcons, action: "" };
-
 export const AdsPageOne = () => {
  // const dispatch = useAppDispatch();
  const [dataAdsList, profile]: [

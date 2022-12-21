@@ -19,11 +19,19 @@ export const CreateNewAds = () => {
  const myProfile = useAppSelector(
   (state) => state.userSliceReducer.profileData
  );
- console.log("11111111");
- console.log("myProfile = ", myProfile);
+
  const [checked, setCheckedButtom] = useState(true);
- const showVacancyButton = () => setCheckedButtom(true);
- const showAdsButton = () => setCheckedButtom(false);
+ const [titleForm, setTitleForm] = useState(
+  "Создать вакансию"
+ );
+ const showVacancyButton = () => {
+  setTitleForm("Создать вакансию");
+  setCheckedButtom(true);
+ };
+ const showAdsButton = () => {
+  setTitleForm("Создать объявление");
+  setCheckedButtom(false);
+ };
 
  const methodVacancy = useForm<any>({
   mode: "onBlur",
@@ -49,6 +57,7 @@ export const CreateNewAds = () => {
  const validVacancy = methodVacancy.formState.isValid;
 
  const onSubmitVacancy = (data: any) => {
+  console.log("onSubmitVacancy = ", data);
   const changeData = {
    ...data,
    typeVacancyOrAds: "vacancy",
@@ -95,6 +104,7 @@ export const CreateNewAds = () => {
  const validAds = methodAds.formState.isValid;
 
  const onSubmitAds = (data: any) => {
+  console.log("onSubmitAds = ", data);
   const changeData = {
    ...data,
    typeVacancyOrAds: "ads",
@@ -113,15 +123,11 @@ export const CreateNewAds = () => {
   };
 
   dispatch(setDataAdsThunk(changeData));
-  console.log("onSubmitAds = ", data);
   navigate(-1);
  };
 
  return (
-  <FormLayoutCreateADS
-   textLabel="Создать обявление"
-   closed={true}
-  >
+  <FormLayoutCreateADS textLabel={titleForm}>
    <ButtonGroupe
     checked={checked}
     showVacancyButton={showVacancyButton}
@@ -131,33 +137,35 @@ export const CreateNewAds = () => {
    {checked ? (
     <FormProvider {...methodVacancy}>
      <form
+      noValidate
       className={s.formVacancy}
       onSubmit={methodVacancy.handleSubmit(onSubmitVacancy)}
      >
       <CreateFormVacancy />
-      <div className={s.btnFormWrapper}>
+      {/*<div className={s.btnFormWrapper}>
        <BtnInGroupeSaveCancelMui
         textCancelButton="Назад"
         textButton="Создать вакансию"
         isValidInButton={!validVacancy}
        />
-      </div>
+      </div>*/}
      </form>
     </FormProvider>
    ) : (
     <FormProvider {...methodAds}>
      <form
+      noValidate
       className={s.formVacancy}
       onSubmit={methodAds.handleSubmit(onSubmitAds)}
      >
       <CreateFormADS />
-      <div className={s.btnFormWrapper}>
+      {/*<div className={s.btnFormWrapper}>
        <BtnInGroupeSaveCancelMui
         textCancelButton="Назад"
         textButton="Создать обявление"
         isValidInButton={!validAds}
        />
-      </div>
+      </div>*/}
      </form>
     </FormProvider>
    )}

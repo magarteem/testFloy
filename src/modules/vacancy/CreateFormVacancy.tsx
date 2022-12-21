@@ -34,7 +34,8 @@ export const CreateFormVacancy = () => {
      <InputFormGenre control={control} />
      <InputFormCity control={control} />
 
-     {typeVacancy === "Музыкант" && (
+     {(typeVacancy === "Музыкант" ||
+      typeVacancy === "Звукорежиссёр") && (
       <>
        <InputFormGender control={control} />
        <InputFormFromAndToAge
@@ -49,7 +50,8 @@ export const CreateFormVacancy = () => {
      </div>
 
      <InputFormWorkExperience control={control} />
-     {typeVacancy === "Музыкант" && (
+     {(typeVacancy === "Музыкант" ||
+      typeVacancy === "Звукорежиссёр") && (
       <InputFormMaster control={control} />
      )}
      <InputFormCommit control={control} />

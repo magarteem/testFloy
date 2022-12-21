@@ -10,9 +10,11 @@ export const HeaderAds = ({
  required,
  payment,
 }: HeaderAdsType) => {
- const looking = ["Музыкант", "Коллектив"].indexOf(
-  required
- );
+ const looking = [
+  "Музыкант",
+  "Коллектив",
+  "Звукорежиссёр",
+ ].indexOf(required);
 
  return (
   <div className={s.headerAds}>

@@ -4,6 +4,7 @@ import { OptionSelectType } from "../types/vacancyTypes";
 export const requiredVacancy: OptionSelectType[] = [
  { value: "musician", label: "Музыкант" },
  { value: "team", label: "Коллектив" },
+ { value: "soundEngineer", label: "Звукорежиссёр" },
 ];
 
 export const workingConditionsBD: OptionSelectType[] = [

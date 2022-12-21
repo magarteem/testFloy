@@ -18,6 +18,7 @@ import { InputFormGender } from "./formFieldsVacancy/InputFormGender";
 import { InputFormCity } from "./formFieldsVacancy/InputFormCity";
 import { InputFormTools } from "./formFieldsVacancy/InputFormTools";
 import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
+import { InputFormWorkingConditionsTextFields } from "./formFieldsVacancy/InputFormWorkingConditionsTextFields";
 
 export const CreateFormADS = () => {
  const { control, watch } = useFormContext();
@@ -72,7 +73,15 @@ export const CreateFormADS = () => {
      {typeAds === "Работу" && (
       <InputFormPayment control={control} />
      )}
-     <InputFormWorkingConditions control={control} />
+
+     {typeAds === "Работу" ? (
+      <InputFormWorkingConditions control={control} />
+     ) : (
+      <InputFormWorkingConditionsTextFields
+       control={control}
+      />
+     )}
+
      {typeAds === "Работу" && (
       <InputFormCommitAbout control={control} />
      )}

@@ -8,8 +8,16 @@ import { HeaderStylesWrapper } from "../common/layout/headerStylesWrapper/Header
 import { StylesFullScreen } from "../common/layout/stylesFullScreen/StylesFullScreen";
 import { InitialStateType } from "../modules/timeLine/types/timlineSliceType";
 import { LongMenu } from "../common/mui-element/LongMenu";
-import { HeaderCards } from "../common/components/timeLine/headerCards/HeaderCards";
 import s from "./styles/newsPagesOne.module.scss";
+import { HeaderCardsNews } from "../common/components/timeLine/headerCards/HeaderCardsNews";
+import { dateDeclension } from "../helpers/dateDeclension";
+
+import dayjs from "dayjs";
+import relativeTIme from "dayjs/plugin/relativeTime";
+import isToday from "dayjs/plugin/isToday";
+dayjs.locale("ru");
+//dayjs.extend(relativeTIme);
+dayjs.extend(isToday);
 
 export const NewsPagesOne = () => {
  const data: InitialStateType = useOutletContext();
@@ -20,6 +28,24 @@ export const NewsPagesOne = () => {
  );
 
  if (!dataOneNews) return <h1>Loading ...</h1>;
+
+ const datePub = (date: number): string => {
+  let newDate = new Date();
+  let datePublicationMS = new Date(date).getTime();
+  newDate.setDate(newDate.getDate() - 2);
+  newDate.setHours(0, 0, 0, 0);
+
+  const renderDate =
+   newDate.getTime() > datePublicationMS
+    ? `${dayjs(datePublicationMS).format(
+       "D.MM.YYYY в HH:MM"
+      )}`
+    : `${
+       dayjs(date).isToday() ? "сегодня" : "вчера"
+      } в ${dayjs(date).format("H:M")}`;
+
+  return renderDate;
+ };
 
  return (
   <StylesFullScreen>
@@ -32,10 +58,11 @@ export const NewsPagesOne = () => {
 
    <section className={s.timeline}>
     {
-     <HeaderCards
+     <HeaderCardsNews
       author={dataOneNews.author}
       date={dataOneNews.date}
       menu={false}
+      theme={dataOneNews.timeLinePost.theme}
      />
     }
 
@@ -53,6 +80,7 @@ export const NewsPagesOne = () => {
      <span className={s.theme}>
       {dataOneNews.timeLinePost.theme}
      </span>
+
      {dataOneNews.timeLinePost.genre.map((elem) => (
       <span
        className={s.genre}

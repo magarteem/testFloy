@@ -19,7 +19,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    city: "Лобня",
    avatar: "",
   },
-  date: 1670447887000,
+  date: 1671668793000,
   timeLinePost: {
    photo: [cardsItem_1],
    text:
@@ -47,7 +47,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    city: "Махачкала",
    avatar: avatart_44,
   },
-  date: 1669976080000,
+  date: 1671512640000,
   timeLinePost: {
    photo: [],
    text:
@@ -77,7 +77,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    city: "Лобня",
    avatar: "",
   },
-  date: 1669803280000,
+  date: 1671491793000,
   timeLinePost: {
    photo: [imgTest10],
    text:
@@ -105,7 +105,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    city: "Люберцы",
    avatar: avatart_22,
   },
-  date: 1669371280000,
+  date: 1671138660000,
   timeLinePost: {
    photo: [],
    text:
@@ -134,7 +134,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    city: "Махачкала",
    avatar: avatart_44,
   },
-  date: 1668420880000,
+  date: 1639929600000,
   timeLinePost: {
    photo: [cardsItem_2],
    text:
@@ -173,7 +173,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    city: "Магадан",
    avatar: avatart_33,
   },
-  date: 1668420880000,
+  date: 1608375420000,
   timeLinePost: {
    photo: [imgTest1],
    text:
@@ -212,7 +212,7 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    city: "Магадан",
    avatar: avatart_55,
   },
-  date: 1668420880000,
+  date: 1608258550000,
   timeLinePost: {
    photo: [cardsItem_2],
    text:

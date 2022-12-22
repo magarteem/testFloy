@@ -17,6 +17,10 @@ export const OutgoingNotificationData: TimelineCards[] = [
    name: "Яна Калинина",
    city: "Махачкала",
    avatar: avatart_44,
+   private_settings: {
+    value: "public-questionnaire",
+    label: "Публичная анкета",
+   },
   },
   publicationDate: 1607786743153,
   required: {
@@ -80,6 +84,10 @@ export const OutgoingNotificationData: TimelineCards[] = [
    name: "Маша Андреевна",
    city: "Магадан",
    avatar: avatart_33,
+   private_settings: {
+    value: "public-questionnaire",
+    label: "Публичная анкета",
+   },
   },
   publicationDate: 1449933940779,
   required: {
@@ -147,6 +155,10 @@ export const OutgoingNotificationData: TimelineCards[] = [
    name: "Кирилл Белоусов",
    city: "Лобня",
    avatar: avatart_11,
+   private_settings: {
+    value: "closed-profile",
+    label: "Закрытая анкета ",
+   },
   },
   publicationDate: 1607786743153,
   required: { value: "Музыкант", label: "Музыкант" },
@@ -212,6 +224,10 @@ export const OutgoingNotificationData: TimelineCards[] = [
    name: "Юлия Андреевна",
    city: "Люберцы",
    avatar: avatart_22,
+   private_settings: {
+    value: "partially-open-questionnaire",
+    label: "Частично открытая анкета",
+   },
   },
   publicationDate: 1607786743153,
   required: { value: "Музыкант", label: "Музыкант" },

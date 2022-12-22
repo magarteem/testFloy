@@ -3,23 +3,28 @@ import { LongMenu } from "../../../mui-element/LongMenu";
 import { AuthorType } from "../../../../modules/timeLine/types/timlineSliceType";
 import { Link } from "react-router-dom";
 import { RouteNames } from "../../../../core/router/RouteNames";
-import s from "./headerCards.module.scss";
-import { dateDeclension } from "../../../../helpers/dateDeclension";
+import {
+ dateDeclension,
+ datePub,
+} from "../../../../helpers/dateDeclension";
 import noAvatar from "../../../../assets/icons/noAvatar.svg";
+import s from "./headerCardsNews.module.scss";
 
 interface HeaderCardsType {
  author: AuthorType | undefined;
  date: number;
  menu?: boolean;
+ theme: any;
 }
 
-export const HeaderCards = ({
+export const HeaderCardsNews = ({
  author,
  date,
  menu = true,
+ theme,
 }: HeaderCardsType) => {
  return (
-  <div className={s.headerCards}>
+  <div className={s.headerCardsNews}>
    <Link
     to={`${RouteNames.OTHER_PROFILE_USER}/${author?.id_user}`}
     className={s.author}
@@ -32,9 +37,10 @@ export const HeaderCards = ({
     </div>
     <div className={s.infoAuthor}>
      <h2 className={s.name}>{author?.name}</h2>
-     <span className={s.visit}>{`${dateDeclension(date)}, ${
+     <span className={s.visit}>{`${datePub(date)}, ${
       author?.city
      }`}</span>
+     {/*<span className={s.theme}>{theme}</span>*/}
     </div>
    </Link>
 

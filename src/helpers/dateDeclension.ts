@@ -1,6 +1,28 @@
 import Dayjs from "dayjs";
 import relativeTIme from "dayjs/plugin/relativeTime";
+import isToday from "dayjs/plugin/isToday";
+
 Dayjs.locale("ru");
 Dayjs.extend(relativeTIme);
+Dayjs.extend(isToday);
 
-export const dateDeclension = (date: number) => Dayjs(date).fromNow()
+export const dateDeclension = (date: number) =>
+ Dayjs(date).fromNow();
+
+export const datePub = (date: number): string => {
+ let newDate = new Date();
+ let datePublicationMS = new Date(date).getTime();
+ newDate.setDate(newDate.getDate() - 2);
+ newDate.setHours(0, 0, 0, 0);
+
+ const renderDate =
+  newDate.getTime() > datePublicationMS
+   ? `${Dayjs(datePublicationMS).format(
+      "D.MM.YYYY в HH:MM"
+     )}`
+   : `${
+      Dayjs(date).isToday() ? "сегодня" : "вчера"
+     } в ${Dayjs(date).format("H:M")}`;
+
+ return renderDate;
+};

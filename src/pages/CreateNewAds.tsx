@@ -68,6 +68,7 @@ export const CreateNewAds = () => {
     city: myProfile?.city?.label,
     id_user: myProfile?.id_user,
     name: myProfile?.name,
+    private_settings: myProfile?.private_settings,
    },
    waitingForResponse: {
     status: 0,
@@ -115,6 +116,7 @@ export const CreateNewAds = () => {
     city: myProfile?.city?.label,
     id_user: myProfile?.id_user,
     name: myProfile?.name,
+    private_settings: myProfile?.private_settings,
    },
    waitingForResponse: {
     status: 0,

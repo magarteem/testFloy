@@ -1,4 +1,3 @@
-import { HeaderCards } from "../../timeLine/headerCards/HeaderCards";
 import {
  useAppDispatch,
  useAppSelector,
@@ -12,6 +11,7 @@ import { useEffect } from "react";
 import { ButtonlActionApplication } from "../buttonlActionApplication/ButtonlActionApplication";
 import { dateDeclension } from "../../../../helpers/dateDeclension";
 import s from "./incomingNotification.module.scss";
+import { HeaderCardsIncoming } from "../headerCardsIncoming/HeaderCardsIncoming";
 
 export const IncomingNotification = () => {
  const dispatch = useAppDispatch();
@@ -32,7 +32,7 @@ export const IncomingNotification = () => {
     //<AdsLayoutItem key={x.id}>
     <CardsLayoutItem key={x.id}>
      <div className={s.addGapStyle}>
-      <HeaderCards
+      <HeaderCardsIncoming
        key={x.id}
        author={x.author}
        date={x.publicationDate}

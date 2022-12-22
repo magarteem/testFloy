@@ -38,7 +38,8 @@ export const BodyCards = ({
     <p onClick={toggleShowMore} className={s.showMore}>
      {hidden ? "Показать полностью" : "Скрыть"}
     </p>
-    <p className={s.theme}>{timeLinePost.theme}</p>
+
+    <span className={s.theme}>{timeLinePost.theme}</span>
    </div>
   </div>
  );

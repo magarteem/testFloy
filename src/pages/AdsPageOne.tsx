@@ -2,6 +2,7 @@ import arrow_back from "../assets/icons/arrow_back.svg";
 import shareIcons from "../assets/icons/shareIcons.svg";
 import avatar_1 from "../assets/images/avatar_1.webp";
 import {
+ Link,
  useOutletContext,
  useParams,
 } from "react-router-dom";
@@ -26,6 +27,8 @@ import { Pending } from "../common/components/notification/waitinActionButton/ac
 import { Rejected } from "../common/components/notification/waitinActionButton/action/Rejected";
 import { RespondButton } from "../common/components/ads/respondButton/RespondButton";
 import { updateStatusAds } from "../modules/ads/adsSlice";
+import { RouteNames } from "../core/router/RouteNames";
+import Avatar from "@mui/material/Avatar";
 
 export const AdsPageOne = () => {
  // const dispatch = useAppDispatch();
@@ -131,15 +134,26 @@ export const AdsPageOne = () => {
       </div>
      )}
 
-     <div className={s.educatione}>
+     <Link
+      to={
+       dataOneNews.author.private_settings.value !==
+       "closed-profile"
+        ? `${RouteNames.OTHER_PROFILE_USER}/${dataOneNews.author.id_user}`
+        : "#"
+      }
+      className={s.educatione}
+     >
       <div className={s.itemImg}>
-       <img src={avatar_1} alt={avatar_1} />
+       <Avatar
+        alt="Remy Sharp"
+        src={dataOneNews.author.avatar}
+       />
       </div>
       <div className={s.text}>
-       <p>Караоке-бар "Огурцы"</p>
-       <p>Омск, ул. Крапоткинская, 21</p>
+       <p>{dataOneNews.author.name}</p>
+       <p>{dataOneNews.author.city}</p>
       </div>
-     </div>
+     </Link>
 
      <div className={cn(s.reStyleImportant, s.border)}>
       <SkillsLayoutTools

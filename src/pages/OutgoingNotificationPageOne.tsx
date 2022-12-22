@@ -28,9 +28,11 @@ export const OutgoingNotificationPageOne = () => {
 
  if (!dataOneNews) return <h1>Loading ...</h1>;
 
- const looking = ["Музыкант", "Коллектив"].indexOf(
-  dataOneNews.required.label
- );
+ const looking = [
+  "Музыкант",
+  "Коллектив",
+  "Звукорежиссёр",
+ ].indexOf(dataOneNews.required.label);
 
  return (
   <>

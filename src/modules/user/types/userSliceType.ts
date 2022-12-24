@@ -27,7 +27,7 @@ export interface InitialStateUserType {
  email: string;
  phone: string;
  webSite: string;
- city: DataSelectType | null;
+ city: DataSelectType;
  age: number | null;
  avatar: string;
  //img_upload: string;

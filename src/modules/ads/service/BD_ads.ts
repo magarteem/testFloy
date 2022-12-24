@@ -16,7 +16,7 @@ export const adsListData: TimelineCards[] = [
   author: {
    id_user: "iana",
    name: "Яна Калинина",
-   city: "Махачкала",
+   city: { value: "makhachkala", label: "Махачкала" },
    avatar: avatart_44,
    private_settings: {
     value: "public-questionnaire",
@@ -83,7 +83,7 @@ export const adsListData: TimelineCards[] = [
   author: {
    id_user: "iana",
    name: "Яна Калинина",
-   city: "Махачкала",
+   city: { value: "makhachkala", label: "Махачкала" },
    avatar: avatart_44,
    private_settings: {
     value: "public-questionnaire",
@@ -150,7 +150,7 @@ export const adsListData: TimelineCards[] = [
   author: {
    id_user: "iana",
    name: "Яна Калинина",
-   city: "Махачкала",
+   city: { value: "makhachkala", label: "Махачкала" },
    avatar: avatart_44,
    private_settings: {
     value: "public-questionnaire",
@@ -217,7 +217,7 @@ export const adsListData: TimelineCards[] = [
   author: {
    id_user: "iana",
    name: "Яна Калинина",
-   city: "Махачкала",
+   city: { value: "makhachkala", label: "Махачкала" },
    avatar: avatart_44,
    private_settings: {
     value: "public-questionnaire",
@@ -284,7 +284,7 @@ export const adsListData: TimelineCards[] = [
   author: {
    id_user: "masha",
    name: "Маша Андреевна",
-   city: "Магадан",
+   city: { value: "makhachkala", label: "Махачкала" },
    avatar: avatart_33,
    private_settings: {
     value: "public-questionnaire",
@@ -355,7 +355,7 @@ export const adsListData: TimelineCards[] = [
   author: {
    id_user: "kirill",
    name: "Кирилл Белоусов",
-   city: "Лобня",
+   city: { value: "makhachkala", label: "Махачкала" },
    avatar: avatart_11,
    private_settings: {
     value: "closed-profile",
@@ -424,7 +424,7 @@ export const adsListData: TimelineCards[] = [
   author: {
    id_user: "ulia",
    name: "Юлия Андреевна",
-   city: "Люберцы",
+   city: { value: "lobnya", label: "Лобня" },
    avatar: avatart_22,
    private_settings: {
     value: "partially-open-questionnaire",

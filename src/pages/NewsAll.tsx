@@ -9,9 +9,16 @@ import { RibbonLayout } from "../common/layout/ribbonLayout/RibbonLayout";
 import { BodyCards } from "../common/components/timeLine/bodyCards/BodyCards";
 import s from "./styles/newsAll.module.scss";
 import { HeaderCardsNews } from "../common/components/timeLine/headerCards/HeaderCardsNews";
+import { RouteNames } from "../core/router/RouteNames";
 
-const add = { img: addIcons, action: "" };
-const filter = { img: filterIconsNew, action: "" };
+const add = {
+ img: addIcons,
+ action: RouteNames.ADD_NEW_NEWS,
+};
+const filter = {
+ img: filterIconsNew,
+ action: "",
+};
 
 export const NewsAll = () => {
  const data: InitialStateType = useOutletContext();
@@ -33,11 +40,7 @@ export const NewsAll = () => {
       {data.timeLineData?.map((x) => (
        <div className={s.cardsItemWrapp} key={x.id}>
         <div className={s.customStyleA}>
-         <HeaderCardsNews
-          author={x.author}
-          date={x.date}
-          theme={x.timeLinePost.theme}
-         />
+         <HeaderCardsNews author={x.author} date={x.date} />
         </div>
         <BodyCards
          timeLinePost={x.timeLinePost}

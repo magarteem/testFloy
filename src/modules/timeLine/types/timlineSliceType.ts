@@ -1,17 +1,29 @@
-import { GenreType } from "../../authorization/types/authType";
+import {
+ GenreType,
+ ToolsType,
+} from "../../authorization/types/authType";
+import { DataSelectType } from "../../user/types/userSliceType";
+
+export interface OptionLongMenuType {
+ label: string;
+ link: string;
+ action: () => void;
+}
 
 // Лента новостей (кнопка домик)
 export interface AuthorType {
  id_user: string;
  name: string;
- city: string;
+ city: DataSelectType;
  avatar: string;
 }
 export interface TimeLinePostType {
  photo: string[];
  text: string;
- theme: string;
+ typeCategory: DataSelectType | null;
  genre: GenreType[];
+ tools?: ToolsType[];
+ city: DataSelectType;
 }
 export interface InitialStateTeamLineType {
  id: number;
@@ -21,7 +33,7 @@ export interface InitialStateTeamLineType {
 }
 
 export interface InitialStateType {
- timeLineData: InitialStateTeamLineType[] | null;
+ timeLineData: InitialStateTeamLineType[];
  error: Error | null;
  isLoading: boolean;
 }

@@ -151,7 +151,7 @@ export const AdsPageOne = () => {
       </div>
       <div className={s.text}>
        <p>{dataOneNews.author.name}</p>
-       <p>{dataOneNews.author.city}</p>
+       <p>{dataOneNews.author.city.label}</p>
       </div>
      </Link>
 

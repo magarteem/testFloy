@@ -1,51 +1,60 @@
 import {
+ Navigate,
  useOutletContext,
  useParams,
 } from "react-router-dom";
+import moreButtonCircle from "../assets/icons/more-button-circle.svg";
 import arrow_back from "../assets/icons/arrow_back.svg";
 import shareIcons from "../assets/icons/shareIcons.svg";
 import { HeaderStylesWrapper } from "../common/layout/headerStylesWrapper/HeaderStylesWrapper";
 import { StylesFullScreen } from "../common/layout/stylesFullScreen/StylesFullScreen";
-import { InitialStateType } from "../modules/timeLine/types/timlineSliceType";
+import {
+ InitialStateType,
+ OptionLongMenuType,
+} from "../modules/timeLine/types/timlineSliceType";
 import { LongMenu } from "../common/mui-element/LongMenu";
-import s from "./styles/newsPagesOne.module.scss";
 import { HeaderCardsNews } from "../common/components/timeLine/headerCards/HeaderCardsNews";
-import { dateDeclension } from "../helpers/dateDeclension";
-
-import dayjs from "dayjs";
-import relativeTIme from "dayjs/plugin/relativeTime";
-import isToday from "dayjs/plugin/isToday";
-dayjs.locale("ru");
-//dayjs.extend(relativeTIme);
-dayjs.extend(isToday);
+import s from "./styles/newsPagesOne.module.scss";
+import { RouteNames } from "../core/router/RouteNames";
+import { useAppDispatch } from "../core/redux/app/hooks";
+import { deleteNewsTimeLineThunk } from "../modules/timeLine/deleteNewsTimeLineThunk";
 
 export const NewsPagesOne = () => {
+ const dispatch = useAppDispatch();
  const data: InitialStateType = useOutletContext();
 
  const { id_news } = useParams();
  const dataOneNews = data.timeLineData?.find(
   (x) => `${x.id}` === id_news
  );
-
  if (!dataOneNews) return <h1>Loading ...</h1>;
 
- const datePub = (date: number): string => {
-  let newDate = new Date();
-  let datePublicationMS = new Date(date).getTime();
-  newDate.setDate(newDate.getDate() - 2);
-  newDate.setHours(0, 0, 0, 0);
+ const changeThisNews = () => (
+  <Navigate to={RouteNames.CHANGE_THIS_NEWS} />
+ );
 
-  const renderDate =
-   newDate.getTime() > datePublicationMS
-    ? `${dayjs(datePublicationMS).format(
-       "D.MM.YYYY в HH:MM"
-      )}`
-    : `${
-       dayjs(date).isToday() ? "сегодня" : "вчера"
-      } в ${dayjs(date).format("H:M")}`;
-
-  return renderDate;
+ const deleteThisNews = () => {
+  dispatch(deleteNewsTimeLineThunk(dataOneNews.id));
  };
+
+ const options: OptionLongMenuType[] = [
+  {
+   label: "Редактировать",
+   link: `${RouteNames.CHANGE_THIS_NEWS}/${dataOneNews.id}`,
+   action: changeThisNews,
+  },
+  { label: "Архивировать", link: "", action: () => {} },
+  {
+   label: "Скопировать ссылку",
+   link: "",
+   action: () => {},
+  },
+  {
+   label: "Удалить",
+   link: RouteNames.HOME,
+   action: deleteThisNews,
+  },
+ ];
 
  return (
   <StylesFullScreen>
@@ -53,7 +62,12 @@ export const NewsPagesOne = () => {
     cancelImgIcon={arrow_back}
     textLabel="Новость"
     share={shareIcons}
-    tsxElement={<LongMenu />}
+    tsxElement={
+     <LongMenu
+      moreButtonCircle={moreButtonCircle}
+      options={options}
+     />
+    }
    />
 
    <section className={s.timeline}>
@@ -62,7 +76,6 @@ export const NewsPagesOne = () => {
       author={dataOneNews.author}
       date={dataOneNews.date}
       menu={false}
-      theme={dataOneNews.timeLinePost.theme}
      />
     }
 
@@ -78,7 +91,7 @@ export const NewsPagesOne = () => {
 
     <div className={s.footerNews}>
      <span className={s.theme}>
-      {dataOneNews.timeLinePost.theme}
+      {dataOneNews.timeLinePost.typeCategory?.label}
      </span>
 
      {dataOneNews.timeLinePost.genre.map((elem) => (

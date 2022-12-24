@@ -1,0 +1,18 @@
+@import "src/styles/variable";
+
+.wrapperBlockInput {
+ height: 40px;
+ font-size: 14px;
+ width: 100%;
+
+ input {
+  height: 48px !important;
+  padding: 18px 20px 17px;
+
+  font-weight: 600;
+ }
+
+ fieldset {
+  display: none;
+ }
+}

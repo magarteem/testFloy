@@ -6,10 +6,10 @@ Dayjs.locale("ru");
 Dayjs.extend(relativeTIme);
 Dayjs.extend(isToday);
 
-export const dateDeclension = (date: number) =>
- Dayjs(date).fromNow();
+//export const dateDeclension = (date: number) =>
+// Dayjs(date).fromNow();
 
-export const datePub = (date: number): string => {
+export const dateDeclension = (date: number): string => {
  let newDate = new Date();
  let datePublicationMS = new Date(date).getTime();
  newDate.setDate(newDate.getDate() - 2);
@@ -17,12 +17,10 @@ export const datePub = (date: number): string => {
 
  const renderDate =
   newDate.getTime() > datePublicationMS
-   ? `${Dayjs(datePublicationMS).format(
-      "D.MM.YYYY в HH:MM"
-     )}`
+   ? `${Dayjs(datePublicationMS).format("D.MM.YYYY в h:m")}`
    : `${
       Dayjs(date).isToday() ? "сегодня" : "вчера"
-     } в ${Dayjs(date).format("H:M")}`;
+     } в ${Dayjs(date).format("h:m")}`;
 
  return renderDate;
 };

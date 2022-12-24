@@ -5,7 +5,6 @@ import { ReactComponent as Home } from "../../../assets/icons/Home.svg";
 import { ReactComponent as Notification } from "../../../assets/icons/Notification.svg";
 import { ReactComponent as Ads } from "../../../assets/icons/Ads.svg";
 import { ReactComponent as User } from "../../../assets/icons/User.svg";
-import { ReactComponent as Chats } from "../../../assets/icons/Chats.svg";
 import s from "./navigateButton.module.scss";
 
 interface LinkActiveType {
@@ -41,10 +40,6 @@ export const NavigateButton = () => {
    >
     <User className={s.icon} />
    </NavLink>
-
-   {/* <NavLink className={setActive} to={RouteNames.CHATS} aria-label="chats">
-        <Chats className={s.icon} />
-      </NavLink> */}
 
    <NavLink
     className={setActive}

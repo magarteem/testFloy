@@ -7,13 +7,10 @@ import s from "./uploadPhoto.module.scss";
 
 interface UploadPhotoType {
  register: UseFormRegister<FieldValues>;
- // onChange: () => void;
 }
 export const UploadPhoto = ({
  register,
-}: // onChange,
-// ...props
-UploadPhotoType) => {
+}: UploadPhotoType) => {
  const filePicker = useRef<HTMLInputElement | null>(null);
  const { ref, ...rest } = register("img_upload");
 

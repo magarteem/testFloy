@@ -22,7 +22,7 @@ export interface ISignUpFormValues
  type_account: OptionSelectType | null;
  name_field: string;
  img_upload: string;
- city: OptionSelectType | null;
+ city: OptionSelectType;
  phone: string;
  webSite: string;
  gender: OptionSelectType | null;

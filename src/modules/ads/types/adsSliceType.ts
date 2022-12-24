@@ -7,7 +7,7 @@ import {
 export interface AuthorType {
  id_user: string;
  name: string;
- city: string;
+ city: OptionSelectType;
  avatar: string;
  private_settings: OptionSelectType;
 }

@@ -15,7 +15,7 @@ export const OutgoingNotificationData: TimelineCards[] = [
   author: {
    id_user: "iana",
    name: "Яна Калинина",
-   city: "Махачкала",
+   city: { value: "magadan", label: "Магадан" },
    avatar: avatart_44,
    private_settings: {
     value: "public-questionnaire",
@@ -82,7 +82,7 @@ export const OutgoingNotificationData: TimelineCards[] = [
   author: {
    id_user: "masha",
    name: "Маша Андреевна",
-   city: "Магадан",
+   city: { value: "magadan", label: "Магадан" },
    avatar: avatart_33,
    private_settings: {
     value: "public-questionnaire",
@@ -153,7 +153,7 @@ export const OutgoingNotificationData: TimelineCards[] = [
   author: {
    id_user: "kirill",
    name: "Кирилл Белоусов",
-   city: "Лобня",
+   city: { value: "lobnya", label: "Лобня" },
    avatar: avatart_11,
    private_settings: {
     value: "closed-profile",
@@ -222,7 +222,7 @@ export const OutgoingNotificationData: TimelineCards[] = [
   author: {
    id_user: "ulia",
    name: "Юлия Андреевна",
-   city: "Люберцы",
+   city: { value: "lyubertsy", label: "Люберцы" },
    avatar: avatart_22,
    private_settings: {
     value: "partially-open-questionnaire",

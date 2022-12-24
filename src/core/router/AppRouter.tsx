@@ -35,6 +35,9 @@ import { NotificationSwitchTabs } from "../../common/components/notification/Not
 import { VacancyTabs } from "../../common/components/ads/tabsComponentAds/vacancyTabs/VacancyTabs";
 import { AdsTabs } from "../../common/components/ads/tabsComponentAds/adsTabs/AdsTabs";
 import { QuestionnaireTabs } from "../../common/components/ads/tabsComponentAds/questionnaireTabs/QuestionnaireTabs";
+import { News } from "../../pages/News";
+import { AddNewNews } from "../../pages/AddNewNews";
+import { ChangeThisNews } from "../../pages/ChangeThisNews";
 
 //const Ads = React.lazy(() =>
 // import(
@@ -79,18 +82,34 @@ export const AppRouter = () => {
   <Routes>
    <Route element={<ProtectedRoute auth={auth} />}>
     <Route path={RouteNames.HOME} element={<MainScreen />}>
+     {/*  */}
      <Route element={<Home />}>
+      {/*  */}
+      <Route element={<News />}>
+       <Route index element={<NewsAll />} />
+       <Route
+        path={RouteNames.ADD_NEW_NEWS}
+        element={<AddNewNews />}
+       />
+       <Route
+        path={`${RouteNames.CHANGE_THIS_NEWS}/:change_id_news`}
+        element={<ChangeThisNews />}
+       />
+       <Route
+        path={`${RouteNames.NEWS}/:id_news`}
+        element={<NewsPagesOne />}
+       />
+      </Route>
+     </Route>
+     {/*  */}
+
+     {/*<Route element={<Home />}>
       <Route index element={<NewsAll />} />
       <Route
        path={`${RouteNames.NEWS}/:id_news`}
        element={<NewsPagesOne />}
       />
-     </Route>
-
-     {/*<Route
-      path={`${RouteNames.NEWS}/:id_news`}
-      element={<NewsPagesOne />}
-     />*/}
+     </Route>*/}
 
      <Route path={RouteNames.ADS} element={<Ads />}>
       <Route element={<AdsAll />}>

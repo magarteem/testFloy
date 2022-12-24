@@ -4,7 +4,6 @@ import { AuthorType } from "../../../../modules/timeLine/types/timlineSliceType"
 import { Link } from "react-router-dom";
 import { RouteNames } from "../../../../core/router/RouteNames";
 import s from "./headerCardsIncoming.module.scss";
-import { dateDeclension } from "../../../../helpers/dateDeclension";
 import noAvatar from "../../../../assets/icons/noAvatar.svg";
 
 interface HeaderCardsType {
@@ -32,9 +31,12 @@ export const HeaderCardsIncoming = ({
     </div>
     <div className={s.infoAuthor}>
      <h2 className={s.name}>{author?.name}</h2>
-     <span className={s.visit}>{`${dateDeclension(date)}, ${
+     {/*<span className={s.visit}>{`${dateDeclension(date)}, ${
       author?.city
-     }`}</span>
+     }`}</span>*/}
+     <span
+      className={s.visit}
+     >{`Музыкант, ${author?.city.label}`}</span>
     </div>
    </Link>
 

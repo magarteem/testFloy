@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { InitialStateUserType } from "../../../../modules/user/types/userSliceType";
 import { BtnUserContact } from "./skills/BtnUserContact";
 import { InspirationUser } from "./skills/InspirationUser";
@@ -104,20 +104,29 @@ export const AboutProfile = ({
     )}
 
     <AboutProfileSkillsLayout skillsCategoryTitle="Контакты">
-     <div className={s.styleAbout}>
+     <a
+      href={`tel:${userDataProfile.phone}`}
+      className={s.styleAbout}
+     >
       <span className={s.titleSpan}>Телефон:</span>
       {userDataProfile.phone}
-     </div>
+     </a>
 
-     <div className={s.styleAbout}>
+     <a
+      href={`mailto:${userDataProfile.email}`}
+      className={s.styleAbout}
+     >
       <span className={s.titleSpan}>E-mail:</span>
       {userDataProfile.email}
-     </div>
+     </a>
 
-     <div className={s.styleAbout}>
+     <a
+      href={`${userDataProfile.webSite}`}
+      className={s.styleAbout}
+     >
       <span className={s.titleSpan}>Вебсайт:</span>
       {userDataProfile.webSite}
-     </div>
+     </a>
     </AboutProfileSkillsLayout>
    </section>
   </>

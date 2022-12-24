@@ -8,6 +8,8 @@ export enum RouteNames {
  LOGIN = "/login",
  HOME = "/",
  NEWS = "/news",
+ ADD_NEW_NEWS = "add-new-news",
+ CHANGE_THIS_NEWS = "/change-this-news",
 
  ADS = "/ads",
  ADS_LIST = "ads-list",

@@ -3,32 +3,45 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Link, Navigate } from "react-router-dom";
+import { RouteNames } from "../../core/router/RouteNames";
+import { OptionLongMenuType } from "../../modules/timeLine/types/timlineSliceType";
 
-const options = [
- "None",
- "Atria",
- "Callisto",
- "Dione",
- "Ganymede",
- "Hangouts Call",
- "Luna",
- "Oberon",
+interface LongMenuType {
+ moreButtonCircle?: string;
+ options?: OptionLongMenuType[];
+}
+
+const optionsTemp: OptionLongMenuType[] = [
+ {
+  label: "Редактировать",
+  link: ``,
+  action: () => {},
+ },
+ { label: "Архивировать", link: "", action: () => {} },
+ {
+  label: "Скопировать ссылку",
+  link: "",
+  action: () => {},
+ },
+ { label: "Удалить", link: "", action: () => {} },
 ];
 
 const ITEM_HEIGHT = 48;
 
-export const LongMenu = () => {
+export const LongMenu = ({
+ moreButtonCircle,
+ options = optionsTemp,
+}: LongMenuType) => {
  const [anchorEl, setAnchorEl] =
   React.useState<null | HTMLElement>(null);
  const open = Boolean(anchorEl);
+
  const handleClick = (
   event: React.MouseEvent<HTMLElement>
- ) => {
-  setAnchorEl(event.currentTarget);
- };
- const handleClose = () => {
-  setAnchorEl(null);
- };
+ ) => setAnchorEl(event.currentTarget);
+
+ const handleClose = () => setAnchorEl(null);
 
  return (
   <div>
@@ -40,7 +53,11 @@ export const LongMenu = () => {
     aria-haspopup="true"
     onClick={handleClick}
    >
-    <MoreVertIcon />
+    {moreButtonCircle ? (
+     <img src={moreButtonCircle} alt="moreButtonCircle" />
+    ) : (
+     <MoreVertIcon />
+    )}
    </IconButton>
    <Menu
     id="long-menu"
@@ -58,13 +75,15 @@ export const LongMenu = () => {
     }}
    >
     {options.map((option) => (
-     <MenuItem
-      key={option}
-      selected={option === "Pyxis"}
-      onClick={handleClose}
-     >
-      {option}
-     </MenuItem>
+     <Link to={option.link}>
+      <MenuItem
+       key={option.label}
+       //selected={option.label === "Pyxis"}
+       onClick={option.action}
+      >
+       {option.label}
+      </MenuItem>
+     </Link>
     ))}
    </Menu>
   </div>

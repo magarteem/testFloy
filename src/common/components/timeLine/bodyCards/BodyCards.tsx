@@ -39,7 +39,9 @@ export const BodyCards = ({
      {hidden ? "Показать полностью" : "Скрыть"}
     </p>
 
-    <span className={s.theme}>{timeLinePost.theme}</span>
+    <span className={s.theme}>
+     {timeLinePost.typeCategory?.label}
+    </span>
    </div>
   </div>
  );

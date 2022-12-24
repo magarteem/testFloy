@@ -28,6 +28,7 @@ import TextFieldElementMui from "../../common/mui-element/textFieldElementMui/te
 import { DatePickerMui } from "../../common/mui-element/datePicker/DatePickerMui";
 import { SelectGenreElementMui } from "../../common/mui-element/selectGenreElementMui/SelectGenreElementMui";
 import { SelectToolsElementMui } from "../../common/mui-element/selectToolsElementMui/SelectToolsElementMui";
+import TextField from "@mui/material/TextField";
 
 export const ThreeStepFormRegister = () => {
  const {
@@ -263,13 +264,16 @@ export const ThreeStepFormRegister = () => {
       control={control}
       render={({ field: { onChange, ref, ...field } }) => (
        <div className={s.sizeInput}>
-        <TextFieldTextareaElementMui
-         ItemRef={ref}
-         placeholder="Опыт работы/выступлений"
+        <TextField
+         multiline
+         maxRows={40}
+         //sx={styleTextAreaSX.input}
+         fullWidth
+         label="Чем вы хотите поделиться?"
+         autoComplete="off"
+         placeholder="Чем вы хотите поделиться?"
+         variant="outlined"
          onChange={onChange}
-         multiline={true}
-         helperText="Опишите ваш опыт"
-         {...field}
         />
        </div>
       )}

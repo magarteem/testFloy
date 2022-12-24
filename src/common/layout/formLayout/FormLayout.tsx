@@ -1,5 +1,6 @@
-import s from "./formLayout.module.scss";
+import cancelImgIcon from "../../../assets/icons/arrowReturnWhite.webp";
 import { NavigateHeader } from "./NavigateHeader";
+import s from "./formLayout.module.scss";
 
 interface FormLayoutType {
  children: React.ReactNode;
@@ -14,7 +15,11 @@ export const FormLayout = ({
 }: FormLayoutType) => {
  return (
   <div className={s.formLayout}>
-   <NavigateHeader textLabel={textLabel} closed={closed} />
+   <NavigateHeader
+    textLabel={textLabel}
+    closed={closed}
+    arrowCanselImgIcon={cancelImgIcon}
+   />
 
    <div className={s.formFieldsWrapper}>{children}</div>
   </div>

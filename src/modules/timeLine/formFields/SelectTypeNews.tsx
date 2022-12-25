@@ -58,9 +58,14 @@ export const SelectTypeNews = ({
         required={required}
         id="demo-simple-select-error-label"
         sx={{
-         transform: " translate(14px, 12px) scale(1)",
+         transform: "translate(14px, 12px) scale(1)",
          color: "#1A1C18 !important",
          fontSize: "14px !important",
+
+         ["@media (max-width:340px)"]: {
+          transform: "translate(14px, 17px) scale(1)",
+         },
+
          "&.MuiInputLabel-shrink": {
           display: "none",
          },
@@ -115,6 +120,9 @@ export const SelectTypeNews = ({
          "& .MuiSelect-select": {
           color: "#43483E",
           padding: "0 14px",
+          ["@media (max-width:360px)"]: {
+           // padding: "0 5px",
+          },
           fontFamily: `Mulish_Regular, sans-serif !important`,
           fontSize: "14px !important",
           display: "flex",

@@ -193,7 +193,7 @@ export const ChangeThisNewsForm = ({
     </div>
 
     <div className={s.sendBlock}>
-     <div className={s.btnWrapper}>
+     <div className={cn(s.btnWrapper, s.imgSend)}>
       <Controller
        name="tools"
        control={control}

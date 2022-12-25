@@ -8,6 +8,7 @@ import cardsItem_2 from "../../../assets/images/cardsItem_2.webp";
 import imgTest10 from "../../../assets/images/imgTest10.webp";
 import imgTest1 from "../../../assets/images/imgTest1.webp";
 import { InitialStateTeamLineType } from "../types/timlineSliceType";
+import { groupeOptions } from "../../authorization/service/BD";
 
 // Лента новостей (кнопка домик)
 export const timeLineBD: InitialStateTeamLineType[] = [
@@ -26,6 +27,12 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    text:
     "Рок-группа «Сияние нС» после пятилетнего отпуска воскресла! С обновленным составом уже выступает и радует зрителей города. В новом составе собрались харизматичные музыканты в образах ангела, эльфа, друида, воинов, так что будет не только интересно слушать, но и приятно смотреть. Стиль музыки электро-лирик рок. Драйв, бунтарство, глубокие чувства и переживания заденут струны души. В концертной программе взяты лучшие песни и инструментальные композиции за всю эпоху группы, а так же порадуют слушателя и новыми произведениями. На концерте зрители погрузятся в сюжет, основанный на мифах и легендах, а также всех ожидает множество сюрпризов: светошоу, каскадеры и многое другое на сцене ДК «Современник» 3 декабря в 17.00.",
    typeCategory: { value: "poster", label: "Афиша" },
+   tools: [
+    groupeOptions[1].options[2],
+    groupeOptions[2].options[1],
+    groupeOptions[2].options[3],
+    groupeOptions[3].options[4],
+   ],
    genre: [
     {
      value: "classical",
@@ -58,6 +65,12 @@ export const timeLineBD: InitialStateTeamLineType[] = [
     value: "world_of_music",
     label: "В мире музыки",
    },
+   tools: [
+    groupeOptions[1].options[2],
+    groupeOptions[2].options[1],
+    groupeOptions[2].options[3],
+    groupeOptions[3].options[4],
+   ],
    genre: [
     {
      value: "country",
@@ -92,6 +105,12 @@ export const timeLineBD: InitialStateTeamLineType[] = [
     value: "technical_questions",
     label: "Технические вопросы",
    },
+   tools: [
+    groupeOptions[1].options[2],
+    groupeOptions[2].options[1],
+    groupeOptions[2].options[3],
+    groupeOptions[3].options[4],
+   ],
    genre: [
     {
      value: "electron",
@@ -121,6 +140,12 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    text:
     "Ру́сская Википе́дия — русскоязычный раздел Википедии, основанный 11 мая 2001 года. Входит в десятку самых крупных языковых разделов Википедии по всем основным показателям. Используется MediaWiki с рядом расширений. Включает в себя 1 867 178 статей, а также служебные страницы. ",
    typeCategory: { value: "memology", label: "Мемология" },
+   tools: [
+    groupeOptions[1].options[2],
+    groupeOptions[2].options[1],
+    groupeOptions[2].options[3],
+    groupeOptions[3].options[4],
+   ],
    genre: [
     { value: "jazz", label: "Джаз", hexColor: "#C4764A" },
     {
@@ -151,6 +176,15 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    text:
     "Рок-группа «Сияние нС» после пятилетнего отпуска воскресла! С обновленным составом уже выступает и радует зрителей города. В новом составе собрались харизматичные музыканты в образах ангела, эльфа, друида, воинов, так что будет не только интересно слушать, но и приятно смотреть. Стиль музыки электро-лирик рок. Драйв, бунтарство, глубокие чувства и переживания заденут струны души. В концертной программе взяты лучшие песни и инструментальные композиции за всю эпоху группы, а так же порадуют слушателя и новыми произведениями. На концерте зрители погрузятся в сюжет, основанный на мифах и легендах, а также всех ожидает множество сюрпризов: светошоу, каскадеры и многое другое на сцене ДК «Современник» 3 декабря в 17.00.",
    typeCategory: { value: "advertising", label: "Реклама" },
+   tools: [
+    groupeOptions[0].options[0],
+    groupeOptions[1].options[0],
+    groupeOptions[2].options[2],
+    groupeOptions[3].options[1],
+    groupeOptions[0].options[3],
+    groupeOptions[1].options[2],
+    groupeOptions[2].options[1],
+   ],
    genre: [
     {
      value: "classical",
@@ -191,6 +225,10 @@ export const timeLineBD: InitialStateTeamLineType[] = [
    text:
     "Рок-группа «Сияние нС» после пятилетнего отпуска воскресла! С обновленным составом уже выступает и радует зрителей города. В новом составе собрались харизматичные музыканты в образах ангела, эльфа, друида, воинов, так что будет не только интересно слушать, но и приятно смотреть. Стиль музыки электро-лирик рок. Драйв, бунтарство, глубокие чувства и переживания заденут струны души. В концертной программе взяты лучшие песни и инструментальные композиции за всю эпоху группы, а так же порадуют слушателя и новыми произведениями. На концерте зрители погрузятся в сюжет, основанный на мифах и легендах, а также всех ожидает множество сюрпризов: светошоу, каскадеры и многое другое на сцене ДК «Современник» 3 декабря в 17.00.",
    typeCategory: { value: "poster", label: "Афиша" },
+   tools: [
+    groupeOptions[0].options[0],
+    groupeOptions[1].options[0],
+   ],
    genre: [
     {
      value: "classical",
@@ -234,6 +272,10 @@ export const timeLineBD: InitialStateTeamLineType[] = [
     value: "world_of_music",
     label: "В мире музыки",
    },
+   tools: [
+    groupeOptions[0].options[0],
+    groupeOptions[1].options[0],
+   ],
    genre: [
     {
      value: "classical",

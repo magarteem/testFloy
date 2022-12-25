@@ -6,7 +6,7 @@ import s from "./headerStylesWrapper.module.scss";
 
 interface HeaderStylesWrapperType {
  textLabel?: string;
- cancelImgIcon?: string;
+ cancelImgIcon?: string | ReactNode;
  anyIconsFirst?: { img: string; action: string };
  anyIconsSecond?: { img: string; action: string };
  tsxElement?: any;

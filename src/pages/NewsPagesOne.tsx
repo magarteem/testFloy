@@ -18,6 +18,8 @@ import s from "./styles/newsPagesOne.module.scss";
 import { RouteNames } from "../core/router/RouteNames";
 import { useAppDispatch } from "../core/redux/app/hooks";
 import { deleteNewsTimeLineThunk } from "../modules/timeLine/deleteNewsTimeLineThunk";
+import { ChipsGenreItem } from "../common/ui-elements/chips/ChipsGenreItem";
+import { ChipsToolItem } from "../common/ui-elements/chips/ChipsToolItem";
 
 export const NewsPagesOne = () => {
  const dispatch = useAppDispatch();
@@ -56,6 +58,12 @@ export const NewsPagesOne = () => {
   },
  ];
 
+ const objectSkills = [
+  ...dataOneNews.timeLinePost.genre,
+  ...dataOneNews.timeLinePost.tools,
+ ];
+
+ console.log(dataOneNews);
  return (
   <StylesFullScreen>
    <HeaderStylesWrapper
@@ -94,6 +102,22 @@ export const NewsPagesOne = () => {
       {dataOneNews.timeLinePost.typeCategory?.label}
      </span>
 
+     {objectSkills.map((x: any) => {
+      if (x.imgIcons) {
+       return <ChipsToolItem itemLabel={x} key={x.value} />;
+      } else {
+       return (
+        <ChipsGenreItem itemLabel={x} key={x.value} />
+       );
+      }
+     })}
+    </div>
+
+    {/*<div className={s.footerNews}>
+     <span className={s.theme}>
+      {dataOneNews.timeLinePost.typeCategory?.label}
+     </span>
+
      {dataOneNews.timeLinePost.genre.map((elem) => (
       <span
        className={s.genre}
@@ -102,7 +126,7 @@ export const NewsPagesOne = () => {
        {elem.label}
       </span>
      ))}
-    </div>
+    </div>*/}
    </section>
   </StylesFullScreen>
  );

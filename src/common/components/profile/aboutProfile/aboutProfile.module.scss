@@ -9,6 +9,22 @@
   border-top: 1px solid #ebeceb;
  }
 
+ .linkPublicationsMusician {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 12px 0;
+
+  a {
+   display: flex;
+   align-items: center;
+   height: 40px;
+   font-weight: 600;
+   font-size: 14px;
+   color: #2b6c00;
+  }
+ }
+
  .btnUserContact {
   @include flex_position();
   //width: 166px;
@@ -55,6 +71,10 @@
    padding-right: 8px;
    font-weight: 600;
    color: #1a1c18;
+  }
+
+  .underline {
+   text-decoration: underline;
   }
  }
 }

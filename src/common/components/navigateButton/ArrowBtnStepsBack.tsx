@@ -1,8 +1,9 @@
+import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./arrowBtnStepsBack.module.scss";
 
 interface ArrowBtnStepsBackType {
- cancelImgIcon: string;
+ cancelImgIcon: string | ReactNode;
 }
 
 export const ArrowBtnStepsBack = ({
@@ -13,11 +14,15 @@ export const ArrowBtnStepsBack = ({
 
  return (
   <div className={s.btnBack} onClick={goBack}>
-   <img
-    src={cancelImgIcon}
-    //src={darkArrow ? arrowReturnBlack : arrowReturnWhite}
-    alt="back"
-   />
+   {typeof cancelImgIcon === "string" ? (
+    <img
+     src={cancelImgIcon}
+     //src={darkArrow ? arrowReturnBlack : arrowReturnWhite}
+     alt="back"
+    />
+   ) : (
+    cancelImgIcon
+   )}
   </div>
  );
 };

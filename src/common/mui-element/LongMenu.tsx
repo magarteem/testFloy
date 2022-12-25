@@ -73,13 +73,26 @@ export const LongMenu = ({
       width: "20ch",
      },
     }}
+    sx={{
+     "& .MuiList-root": {
+      background:
+       "linear-gradient(0deg, rgba(42, 108, 4, 0.08), rgba(42, 108, 4, 0.08)), #FDFDF5",
+      boxShadow:
+       "0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15)",
+      borderRadius: "4px",
+     },
+    }}
    >
     {options.map((option) => (
      <Link to={option.link}>
       <MenuItem
        key={option.label}
-       //selected={option.label === "Pyxis"}
        onClick={option.action}
+       sx={{
+        fontSize: "16px",
+        color: "#1A1C18",
+        height: "45px",
+       }}
       >
        {option.label}
       </MenuItem>

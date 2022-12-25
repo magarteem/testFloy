@@ -16,8 +16,11 @@ export const styleSxGenre = {
  menuProps: {
   //height: "300px !important",
   "& .MuiPaper-root": {
-   top: "50px !important",
-   bottom: "10px !important",
+   // top: "0",
+   // top: "250px !important",
+   // top: "150px !important",
+   // bottom: "10px !important",
+   maxHeight: "75vh",
   },
 
   ".MuiList-root li": {

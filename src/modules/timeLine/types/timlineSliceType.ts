@@ -22,7 +22,7 @@ export interface TimeLinePostType {
  text: string;
  typeCategory: DataSelectType | null;
  genre: GenreType[];
- tools?: ToolsType[];
+ tools: ToolsType[];
  city: DataSelectType;
 }
 export interface InitialStateTeamLineType {

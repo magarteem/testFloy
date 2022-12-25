@@ -168,18 +168,7 @@ export const SelectGenreElementMui = ({
    >
     {options.map((x: any) => {
      return (
-      <MenuItem
-       key={x.label}
-       value={x.label}
-       sx={
-        {
-         //"& .MuiPaper-root": {
-         //top: "50px !important",
-         //maxHeight: "70vh !important",
-         //},
-        }
-       }
-      >
+      <MenuItem key={x.label} value={x.label}>
        <Checkbox
         style={{ width: "15px", height: "15px" }}
         sx={styleSxGenre.checkbox}

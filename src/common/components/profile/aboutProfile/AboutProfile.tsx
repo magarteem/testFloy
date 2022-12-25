@@ -44,19 +44,11 @@ export const AboutProfile = ({
      </div>
     )}
 
-    {/*{id_user && (
-     <BtnUserContact>
-      <div className={s.btnUserContact}>
-       <ContactButton textButton="Подписаться" />
-      </div>
-
-      <div className={s.btnUserContact}>
-       <button className={s.buttonContactWrapper}>
-        Связаться
-       </button>
-      </div>
-     </BtnUserContact>
-    )}*/}
+    {id_user && (
+     <div className={s.linkPublicationsMusician}>
+      <Link to="">Публикации музыканта</Link>
+     </div>
+    )}
 
     <SkillsLayoutTools
      skillsDataItem={userDataProfile.skills.tool}
@@ -109,7 +101,9 @@ export const AboutProfile = ({
       className={s.styleAbout}
      >
       <span className={s.titleSpan}>Телефон:</span>
-      {userDataProfile.phone}
+      <span className={s.underline}>
+       {userDataProfile.phone}
+      </span>
      </a>
 
      <a
@@ -117,15 +111,20 @@ export const AboutProfile = ({
       className={s.styleAbout}
      >
       <span className={s.titleSpan}>E-mail:</span>
-      {userDataProfile.email}
+      <span className={s.underline}>
+       {userDataProfile.email}
+      </span>
      </a>
 
      <a
+      target={"_blank"}
       href={`${userDataProfile.webSite}`}
       className={s.styleAbout}
      >
       <span className={s.titleSpan}>Вебсайт:</span>
-      {userDataProfile.webSite}
+      <span className={s.underline}>
+       {userDataProfile.webSite}
+      </span>
      </a>
     </AboutProfileSkillsLayout>
    </section>

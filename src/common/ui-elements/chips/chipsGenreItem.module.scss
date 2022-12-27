@@ -1,6 +1,7 @@
 @import "src/styles/variable";
 
 .item {
+ white-space: nowrap;
  color: $white;
  font-size: 14px;
  padding: 7px 12px;

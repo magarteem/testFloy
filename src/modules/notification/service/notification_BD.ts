@@ -21,6 +21,10 @@ export const OutgoingNotificationData: TimelineCards[] = [
     value: "public-questionnaire",
     label: "Публичная анкета",
    },
+   type_account: {
+    value: "school-of-music",
+    label: "Музыкальная школа",
+   },
   },
   publicationDate: 1607786743153,
   required: {
@@ -88,6 +92,7 @@ export const OutgoingNotificationData: TimelineCards[] = [
     value: "public-questionnaire",
     label: "Публичная анкета",
    },
+   type_account: { value: "musician", label: "Музыкант" },
   },
   publicationDate: 1449933940779,
   required: {
@@ -159,6 +164,10 @@ export const OutgoingNotificationData: TimelineCards[] = [
     value: "closed-profile",
     label: "Закрытая анкета ",
    },
+   type_account: {
+    value: "group-collective",
+    label: "Группа / Коллектив",
+   },
   },
   publicationDate: 1607786743153,
   required: { value: "Музыкант", label: "Музыкант" },
@@ -227,6 +236,10 @@ export const OutgoingNotificationData: TimelineCards[] = [
    private_settings: {
     value: "partially-open-questionnaire",
     label: "Частично открытая анкета",
+   },
+   type_account: {
+    value: "performance-venue",
+    label: "Заведение / Площадка для выступлений",
    },
   },
   publicationDate: 1607786743153,

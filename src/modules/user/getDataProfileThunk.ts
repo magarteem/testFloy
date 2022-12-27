@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { tempDataOtherUserProfile } from "./service/tempDataOtherUserProfile";
 import { InitialStateUserType } from "./types/userSliceType";
 
 export const getDataProfileThunk = createAsyncThunk<

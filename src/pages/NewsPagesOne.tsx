@@ -84,6 +84,7 @@ export const NewsPagesOne = () => {
       author={dataOneNews.author}
       date={dataOneNews.date}
       menu={false}
+      timeLinePost={dataOneNews.timeLinePost}
      />
     }
 

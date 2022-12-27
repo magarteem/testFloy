@@ -3,9 +3,9 @@
 .сhipsLayout {
  display: flex;
  flex-wrap: wrap;
- gap: 8px;
+ gap: 4px;
 
- @media (max-width: $mediaMaxWidth340px) {
-  gap: 4px;
- }
+ // @media (max-width: $mediaMaxWidth340px) {
+ //  gap: 4px;
+ // }
 }

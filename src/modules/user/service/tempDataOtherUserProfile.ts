@@ -26,10 +26,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    age: 1290163404000,
    avatar: avatart_33,
    gender: { value: "female", label: "Женский" },
-   type_account: {
-    value: "rehearsal-point",
-    label: "Репетиционная точка",
-   },
+   type_account: { value: "musician", label: "Музыкант" },
    skills: {
     tool: [
      groupeOptions[2].options[1],
@@ -70,7 +67,10 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    age: 26736204000,
    avatar: "",
    gender: { value: "male", label: "Мужской" },
-   type_account: { value: "musician", label: "Музыкант" },
+   type_account: {
+    value: "group-collective",
+    label: "Группа / Коллектив",
+   },
    skills: {
     tool: [
      groupeOptions[1].options[2],
@@ -106,8 +106,8 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    avatar: avatart_22,
    gender: { value: "female", label: "Женский" },
    type_account: {
-    value: "rehearsal-point",
-    label: "Репетиционная точка",
+    value: "performance-venue",
+    label: "Заведение / Площадка для выступлений",
    },
    skills: {
     tool: [
@@ -153,8 +153,8 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    avatar: avatart_44,
    gender: { value: "female", label: "Женский" },
    type_account: {
-    value: "sound-engineer",
-    label: "Звукорежиссёр",
+    value: "school-of-music",
+    label: "Музыкальная школа",
    },
 
    skills: {
@@ -197,8 +197,8 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
    avatar: avatart_55,
    gender: { value: "male", label: "Мужской" },
    type_account: {
-    value: "rehearsal-point",
-    label: "Репетиционная точка",
+    value: "recording-studio",
+    label: "Студия звукозаписи",
    },
    skills: {
     tool: [

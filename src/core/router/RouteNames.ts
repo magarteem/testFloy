@@ -22,6 +22,10 @@ export enum RouteNames {
  SETTINGS = "settings",
 
  OTHER_PROFILE_USER = "/other-user-profile",
+ OTHER_USER_POSTS = "posts",
+ OTHER_USER_VACANCY = "other-user-vacancy",
+ OTHER_USER_ADS = "other-user-ads",
+ OTHER_USER_QUESTIONNAIRE = "other-user-questionnaire",
 
  NOTIFICATION = "/notification",
  OUT_GOING_NOTIFICATION = "outgoing",

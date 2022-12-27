@@ -9,6 +9,7 @@ import { ChipsToolItem } from "../../../ui-elements/chips/ChipsToolItem";
 import { dateDeclension } from "../../../../helpers/dateDeclension";
 import cn from "classnames";
 import s from "./bodyAds.module.scss";
+import { GroupeToolsAndGenreChips } from "../groupeToolsAndGenreChips/GroupeToolsAndGenreChips";
 
 interface BodyAdsType {
  city: string;
@@ -27,14 +28,14 @@ export const BodyAds = ({
  tools,
  typeOfInstitution,
 }: BodyAdsType) => {
- const [showMore, setShowMore] = useState(true);
- const [maxShowChips, setMaxShowChips] = useState(5);
- const objectSkills = [...tools, ...genre];
+ // const [showMore, setShowMore] = useState(true);
+ // const [maxShowChips, setMaxShowChips] = useState(5);
+ // const objectSkills = [...tools, ...genre];
 
- const toggle = (num: number) => {
-  setShowMore((prev) => !prev);
-  setMaxShowChips(num);
- };
+ // const toggle = (num: number) => {
+ //  setShowMore((prev) => !prev);
+ //  setMaxShowChips(num);
+ // };
 
  return (
   <div className={s.bodyAds}>
@@ -44,7 +45,8 @@ export const BodyAds = ({
    </div>
 
    <div className={s.skills}>
-    <ChipsLayout>
+    <GroupeToolsAndGenreChips tools={tools} genre={genre} />
+    {/*<ChipsLayout>
      {objectSkills.slice(0, maxShowChips).map((x: any) => {
       if (x.imgIcons) {
        return <ChipsToolItem itemLabel={x} key={x.value} />;
@@ -78,7 +80,7 @@ export const BodyAds = ({
        Скрыть
       </div>
      )}
-    </ChipsLayout>
+    </ChipsLayout>*/}
    </div>
 
    <div className={s.about}>{commitAbout}</div>

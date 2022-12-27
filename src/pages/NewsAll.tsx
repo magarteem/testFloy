@@ -22,7 +22,7 @@ const filter = {
 
 export const NewsAll = () => {
  const data: InitialStateType = useOutletContext();
-
+ console.log(data);
  return (
   <>
    <StylesFullScreen>
@@ -40,11 +40,16 @@ export const NewsAll = () => {
       {data.timeLineData?.map((x) => (
        <div className={s.cardsItemWrapp} key={x.id}>
         <div className={s.customStyleA}>
-         <HeaderCardsNews author={x.author} date={x.date} />
+         <HeaderCardsNews
+          author={x.author}
+          date={x.date}
+          timeLinePost={x.timeLinePost}
+         />
         </div>
         <BodyCards
          timeLinePost={x.timeLinePost}
          id_news={x.id}
+         date={x.date}
         />
        </div>
       ))}

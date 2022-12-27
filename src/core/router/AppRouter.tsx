@@ -38,6 +38,11 @@ import { QuestionnaireTabs } from "../../common/components/ads/tabsComponentAds/
 import { News } from "../../pages/News";
 import { AddNewNews } from "../../pages/AddNewNews";
 import { ChangeThisNews } from "../../pages/ChangeThisNews";
+import { OtherUserРosts } from "../../pages/OtherUserРosts";
+import { OtherUserVacancyTabs } from "../../common/components/profile/otherUserProfile/otherUserVacancyTabs/OtherUserVacancyTabs";
+import { OtherUserNewsTabs } from "../../common/components/profile/otherUserProfile/otherUserNewsTabs/OtherUserNewsTabs";
+import { OtherUserAdsTabs } from "../../common/components/profile/otherUserProfile/otherUserAdsTabs/OtherUserAdsTabs";
+import { OtherUserQuestionnaireTabs } from "../../common/components/profile/otherUserProfile/otherUserQuestionnaireTabs/OtherUserQuestionnaireTabs";
 
 //const Ads = React.lazy(() =>
 // import(
@@ -128,13 +133,6 @@ export const AppRouter = () => {
        element={<AdsPageOne />}
       />
      </Route>
-     {/*<Route path={RouteNames.ADS} element={<Ads />}>
-      <Route index element={<AdsAll />} />
-      <Route
-       path={`${RouteNames.ADS}/:id_ads`}
-       element={<AdsPageOne />}
-      />
-     </Route>*/}
 
      <Route
       path={RouteNames.CREATE_ADS}
@@ -177,6 +175,24 @@ export const AppRouter = () => {
       path={`${RouteNames.OTHER_PROFILE_USER}/:id_user`}
       element={<OtherUserProfile />}
      />
+     <Route
+      path={`${RouteNames.OTHER_PROFILE_USER}/:id_user/${RouteNames.OTHER_USER_POSTS}`}
+      element={<OtherUserРosts />}
+     >
+      <Route index element={<OtherUserNewsTabs />} />
+      <Route
+       path={RouteNames.OTHER_USER_VACANCY}
+       element={<OtherUserVacancyTabs />}
+      />
+      <Route
+       path={RouteNames.OTHER_USER_ADS}
+       element={<OtherUserAdsTabs />}
+      />
+      <Route
+       path={RouteNames.OTHER_USER_QUESTIONNAIRE}
+       element={<OtherUserQuestionnaireTabs />}
+      />
+     </Route>
     </Route>
    </Route>
 

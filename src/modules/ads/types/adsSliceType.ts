@@ -9,6 +9,7 @@ export interface AuthorType {
  name: string;
  city: OptionSelectType;
  avatar: string;
+ type_account: OptionSelectType;
  private_settings: OptionSelectType;
 }
 

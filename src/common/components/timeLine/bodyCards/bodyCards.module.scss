@@ -20,19 +20,19 @@
    font-size: 14px;
    color: #43483e;
    height: auto;
+   margin-bottom: 8px;
    line-height: 20px;
    transition: all 0.5s ease;
   }
 
   .textHidden {
-   height: calc(20px * 2);
+   // height: calc(20px * 2);
    overflow: hidden;
    line-height: 20px;
    text-align: justify;
    display: -webkit-box;
    -webkit-line-clamp: 2;
    -webkit-box-orient: vertical;
-
    transition: all 0.5s;
   }
  }
@@ -42,31 +42,15 @@
 
   .showMore {
    cursor: pointer;
-   margin: 8px 0;
+   margin-bottom: 8px;
    font-size: 14px;
+   font-weight: 600;
    color: #2b6c00;
   }
 
-  //# any переделать
   .theme {
-   margin-top: 8px;
    font-size: 14px;
-   color: #66784e;
-
-   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3),
-    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-   border-radius: 30px;
-   padding: 6px 12px;
-
-   background: linear-gradient(
-     0deg,
-     rgba(43, 108, 0, 0.08),
-     rgba(43, 108, 0, 0.08)
-    ),
-    #fdfdf5;
-   border: 1px solid #66784e;
-   color: #43483e;
-   margin-right: 6px;
+   color: #1a1c18;
   }
  }
 }

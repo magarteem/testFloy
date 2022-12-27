@@ -12,7 +12,7 @@ import { PopUpNavigateGradient } from "../common/components/navigateButton/PopUp
 import s from "./styles/settings.module.scss";
 import { StylesFullScreen } from "../common/layout/stylesFullScreen/StylesFullScreen";
 import { HeaderStylesWrapper } from "../common/layout/headerStylesWrapper/HeaderStylesWrapper";
-import Switch from "@mui/material/Switch";
+import { SwitchMui } from "../common/mui-element/Switch";
 
 export const Settings = () => {
  const dispatch = useAppDispatch();
@@ -35,7 +35,8 @@ export const Settings = () => {
       <img src={moon} alt="moon" />
       <p>Ночная тема</p>
      </div>
-     <Switch defaultChecked />
+
+     <SwitchMui />
     </div>
 
     <a

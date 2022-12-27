@@ -11,6 +11,7 @@ import { WorkExperienceCard } from "./skills/WorkExperienceCards";
 import { EducationeCards } from "./skills/EducationeCards";
 import s from "./aboutProfile.module.scss";
 import { AboutProfileSkillsLayout } from "../../../layout/aboutProfileSkillsLayout/AboutProfileSkillsLayout";
+import { RouteNames } from "../../../../core/router/RouteNames";
 
 interface AboutProfileType {
  userDataProfile: InitialStateUserType;
@@ -46,7 +47,9 @@ export const AboutProfile = ({
 
     {id_user && (
      <div className={s.linkPublicationsMusician}>
-      <Link to="">Публикации музыканта</Link>
+      <Link to={RouteNames.OTHER_USER_POSTS}>
+       Публикации музыканта
+      </Link>
      </div>
     )}
 

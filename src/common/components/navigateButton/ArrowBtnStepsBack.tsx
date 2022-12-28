@@ -1,3 +1,4 @@
+import { IconButton } from "@mui/material";
 import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./arrowBtnStepsBack.module.scss";
@@ -15,13 +16,15 @@ export const ArrowBtnStepsBack = ({
  return (
   <div className={s.btnBack} onClick={goBack}>
    {typeof cancelImgIcon === "string" ? (
-    <img
-     src={cancelImgIcon}
-     //src={darkArrow ? arrowReturnBlack : arrowReturnWhite}
-     alt="back"
-    />
+    <IconButton>
+     <img
+      src={cancelImgIcon}
+      //src={darkArrow ? arrowReturnBlack : arrowReturnWhite}
+      alt="back"
+     />
+    </IconButton>
    ) : (
-    cancelImgIcon
+    <IconButton>{cancelImgIcon}</IconButton>
    )}
   </div>
  );

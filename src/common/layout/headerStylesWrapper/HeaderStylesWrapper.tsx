@@ -1,3 +1,4 @@
+import { IconButton } from "@mui/material";
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { onShare } from "../../../modules/pwa/onShare";
@@ -12,6 +13,7 @@ interface HeaderStylesWrapperType {
  tsxElement?: any;
  children?: ReactNode;
  share?: string;
+ onClickAnyIconsFirst?: () => void;
 }
 
 export const HeaderStylesWrapper = ({
@@ -22,6 +24,7 @@ export const HeaderStylesWrapper = ({
  tsxElement,
  children,
  share,
+ onClickAnyIconsFirst,
 }: HeaderStylesWrapperType) => {
  return (
   <section className={s.headerStylesWrapper}>
@@ -35,25 +38,38 @@ export const HeaderStylesWrapper = ({
 
    <div className={s.titleSettings}>
     {!!share && (
-     <img src={share} alt={share} onClick={onShare} />
+     <IconButton onClick={onShare}>
+      <img src={share} alt={share} />
+     </IconButton>
     )}
 
     {anyIconsFirst && (
-     <Link to={anyIconsFirst.action}>
+     <IconButton onClick={onClickAnyIconsFirst}>
       <img
        src={anyIconsFirst.img}
        alt={anyIconsFirst.img}
       />
-     </Link>
+     </IconButton>
+     // <Link
+     //  to={anyIconsFirst.action}
+     //  onClick={onClickAnyIconsSecond}
+     // >
+     //  <img
+     //   src={anyIconsFirst.img}
+     //   alt={anyIconsFirst.img}
+     //  />
+     // </Link>
     )}
 
     {anyIconsSecond && (
-     <Link to={anyIconsSecond.action}>
+     // <Link to={anyIconsSecond.action}>
+     <IconButton>
       <img
        src={anyIconsSecond.img}
        alt={anyIconsSecond.img}
       />
-     </Link>
+     </IconButton>
+     // </Link>
     )}
 
     {tsxElement && tsxElement}

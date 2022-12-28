@@ -63,7 +63,6 @@ export const SelectElementMui = ({
     id="demo-simple-select-error"
     error={errors}
     value={value && value?.label}
-    //label={"Ag111e"}
     onChange={onChange}
     input={<OutlinedInput label={placeholder} />}
     fullWidth

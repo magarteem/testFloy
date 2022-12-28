@@ -6,6 +6,7 @@ import { RouteNames } from "../../../../core/router/RouteNames";
 import s from "./headerProfile.module.scss";
 import { ArrowBtnStepsBack } from "../../navigateButton/ArrowBtnStepsBack";
 import { AvatarPhoto } from "../avatarIcons/AvatarPhoto";
+import { IconButton } from "@mui/material";
 
 interface HeaderProfileType {
  textLabel: string;
@@ -37,16 +38,20 @@ export const HeaderProfile = ({
     <div className={s.titleSettings}>
      {change && (
       <Link to={RouteNames.CHANGE_PROFILE}>
-       <img src={pencil} alt={pencil} />
+       <IconButton>
+        <img src={pencil} alt={pencil} />
+       </IconButton>
       </Link>
      )}
      {settings && (
       <Link to={RouteNames.SETTINGS}>
-       <img src={settingsIcon} alt={settingsIcon} />
+       <IconButton>
+        <img src={settingsIcon} alt={settingsIcon} />
+       </IconButton>
       </Link>
      )}
 
-     {!!share && share}
+     {!!share && <IconButton>{share}</IconButton>}
     </div>
    </div>
 

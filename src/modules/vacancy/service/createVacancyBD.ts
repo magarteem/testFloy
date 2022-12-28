@@ -18,14 +18,18 @@ export const workingConditionsBD: OptionSelectType[] = [
 ];
 
 export const typeOfInstitution: OptionSelectType[] = [
- {
-  value: "restaurant",
-  label: "Ресторан",
- },
  { value: "bar", label: "Бар" },
+ { value: "restaurant", label: "Ресторан" },
+ { value: "cafe", label: "кафе" },
  { value: "club", label: "Клуб" },
+ { value: "pub", label: "Паб" },
+ { value: "hall", label: "Зал" },
+ { value: "room", label: "помещение" },
+ { value: "theater", label: "театр" },
+ { value: "playground", label: "площадка" },
  { value: "music-shop", label: "Музыкальный магазин" },
  { value: "group", label: "Группа" },
+ { value: "other", label: "другое" },
 ];
 
 //!         ADS

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import filterIconsNew from "../assets/icons/filterIconsNew.svg";
 import searchIcon from "../assets/icons/searchIcon.svg";
@@ -13,6 +13,8 @@ import {
 } from "../core/redux/app/hooks";
 import { adsListData } from "../modules/ads/service/BD_ads";
 import { StylesFullScreen } from "../common/layout/stylesFullScreen/StylesFullScreen";
+import { FilterModalLayout } from "../common/layout/filterModalLayout/FilterModalLayout";
+import { FilterFormsAds } from "../modules/ads/FilterFormsAds";
 
 const filter = { img: filterIconsNew, action: "" };
 
@@ -24,6 +26,10 @@ export const AdsAll = () => {
  const myProfile = useAppSelector(
   (state) => state.userSliceReducer.profileData
  );
+
+ const [open, setOpen] = useState(false);
+ const handleClickOpen = () => setOpen(true);
+ const handleClose = () => setOpen(false);
 
  useEffect(() => {
   adsData.adsList.length === 0 &&
@@ -37,7 +43,10 @@ export const AdsAll = () => {
   <>
    <StylesFullScreen>
     <div className={s.customAddPadding}>
-     <HeaderStylesWrapper anyIconsFirst={filter}>
+     <HeaderStylesWrapper
+      anyIconsFirst={filter}
+      onClickAnyIconsFirst={handleClickOpen}
+     >
       <div className={s.styleInput}>
        <div className={s.sizeInput}>
         <TextField
@@ -76,7 +85,11 @@ export const AdsAll = () => {
          }}
         />
        </div>
-       <img src={searchIcon} alt="search" />
+       <img
+        src={searchIcon}
+        alt="search"
+        //onClick={handleClickOpen}
+       />
       </div>
      </HeaderStylesWrapper>
     </div>
@@ -86,6 +99,13 @@ export const AdsAll = () => {
 
    <StylesFullScreen>
     <Outlet context={[adsData, myProfile]} />
+
+    <FilterModalLayout
+     madalOpen={open}
+     handleClose={handleClose}
+    >
+     <FilterFormsAds handleClose={handleClose} />
+    </FilterModalLayout>
    </StylesFullScreen>
   </>
  );

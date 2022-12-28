@@ -18,6 +18,20 @@ import { InputFormGender } from "./formFieldsAds/InputFormGender";
 import { InputFormWhoIsLookingAds } from "./formFieldsAds/InputFormWhoIsLookingAds";
 import { InputFormWhoIsLookingQestionnarie } from "./formFieldsAds/InputFormWhoIsLookingQestionnarie";
 
+const defaultValues = {
+ city: {},
+ tool: [],
+ genre: [],
+ typeOfInstitution: [],
+ who_is_looking_vacancy: {},
+ who_is_looking_vacancy_partner: {},
+ who_is_looking_ads: {},
+ who_is_looking_qestionnarie: {},
+ type_account: null,
+ fromAge: null,
+ toAge: null,
+};
+
 interface FilterFormsAdsType {
  handleClose: () => void;
 }
@@ -28,21 +42,9 @@ export const FilterFormsAds = ({
  const locationTabs = location.pathname;
 
  const { control, handleSubmit, watch, reset, setValue } =
-  useForm<FormsFilterType>({
+  useForm<any>({
    mode: "onBlur",
-   defaultValues: {
-    city: {},
-    tool: [],
-    genre: [],
-    typeOfInstitution: [],
-    who_is_looking_vacancy: {},
-    who_is_looking_vacancy_partner: {},
-    who_is_looking_ads: {},
-    who_is_looking_qestionnarie: {},
-    type_account: null,
-    fromAge: null,
-    toAge: null,
-   },
+   defaultValues,
   });
  console.log(watch("who_is_looking_ads").value);
  const onSubmit = (data: FormsFilterType) => {
@@ -54,8 +56,42 @@ export const FilterFormsAds = ({
   "who_is_looking_vacancy"
  ).value;
 
- const t = () => setValue("city", { value: "", label: "" });
+ const t = () => {
+  reset();
+ };
+ // const t = () => {
+ //  reset({
+ //   ...defaultValues,
+ //  });
+ // };
+ // const t = () => {
+ //  setValue([
+ //   { city: { value: "", label: "" } },
+ //   { who_is_looking_vacancy: { value: "", label: "" } },
+ //  ]);
+ // };
+ // const t = () => {
+ //  setValue([
+ //   { city: {} },
+ //   { tool: [] },
+ //   { genre: [] },
+ //   { typeOfInstitution: [] },
+ //   { who_is_looking_vacancy: {} },
+ //   { who_is_looking_vacancy_partner: {} },
+ //   { who_is_looking_ads: {} },
+ //   { who_is_looking_qestionnarie: {} },
+ //   { type_account: null },
+ //   { fromAge: null },
+ //   { toAge: null },
+ //  ]);
+ // };
 
+ //
+ // setValue([
+ //            { name: userData.name },
+ //            { phone: userData.phone }
+ //        ]);
+ //
  return (
   <div className={s.filterForAds}>
    <div className={s.toutchLine} />

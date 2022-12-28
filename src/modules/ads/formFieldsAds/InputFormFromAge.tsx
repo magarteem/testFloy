@@ -2,7 +2,7 @@ import { Controller } from "react-hook-form";
 import { DatePickerMui } from "../../../common/mui-element/datePicker/DatePickerMui";
 import s from "../style/filterFieldsFormAds.module.scss";
 
-export interface InputFormFromAgeType {
+interface InputFormFromAgeType {
  control: any;
  watch: any;
 }

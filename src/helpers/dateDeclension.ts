@@ -17,7 +17,9 @@ export const dateDeclension = (date: number): string => {
 
  const renderDate =
   newDate.getTime() > datePublicationMS
-   ? `${Dayjs(datePublicationMS).format("D.MM.YYYY в h:m")}`
+   ? `${Dayjs(datePublicationMS).format(
+      "D MMMM YYYY в hh:mm"
+     )}`
    : `${
       Dayjs(date).isToday() ? "сегодня" : "вчера"
      } в ${Dayjs(date).format("h:m")}`;

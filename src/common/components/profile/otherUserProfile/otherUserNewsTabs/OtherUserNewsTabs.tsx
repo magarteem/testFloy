@@ -5,26 +5,29 @@ import {
 import { InitialStateAdsType } from "../../../../../modules/ads/types/adsSliceType";
 import { InitialStateTeamLineType } from "../../../../../modules/timeLine/types/timlineSliceType";
 import { InitialStateUserType } from "../../../../../modules/user/types/userSliceType";
+import { RibbonLayout } from "../../../../layout/ribbonLayout/RibbonLayout";
 import { AnnouncementFeed } from "../../../ads/announcementFeed/AnnouncementFeed";
+import { BodyCards } from "../../../timeLine/bodyCards/BodyCards";
+import { CardsNewsItemPreview } from "../../../timeLine/cardsNewsItemPreview/CardsNewsItemPreview";
+import { HeaderCardsNews } from "../../../timeLine/headerCards/HeaderCardsNews";
 
 export const OtherUserNewsTabs = () => {
  const [adsNews, dataAdsList, profile, id_user]: [
-  InitialStateTeamLineType,
+  InitialStateTeamLineType[],
   InitialStateAdsType,
   InitialStateUserType,
   string
  ] = useOutletContext();
 
- const filterForVacancy = dataAdsList.adsList.filter(
-  (x) =>
-   x.typeVacancyOrAds === "vacancy" &&
-   x.author.id_user === id_user
+ const filterForNewsThisUther = adsNews.filter(
+  (x) => x.author.id_user === id_user
  );
 
  return (
-  <AnnouncementFeed
-   adsList={filterForVacancy}
-   profile={profile}
-  />
+  <RibbonLayout>
+   {filterForNewsThisUther.map((x) => (
+    <CardsNewsItemPreview itemDataNews={x} />
+   ))}
+  </RibbonLayout>
  );
 };

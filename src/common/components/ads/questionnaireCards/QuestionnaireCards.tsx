@@ -7,6 +7,13 @@ import { InitialStateUserType } from "../../../../modules/user/types/userSliceTy
 import s from "./questionnaireCards.module.scss";
 import { GroupeToolsAndGenreChips } from "../groupeToolsAndGenreChips/GroupeToolsAndGenreChips";
 import { SkillsLayoutGenre } from "../../profile/aboutProfile/skills/SkillsLayoutGenre";
+import { calculateAge } from "../../../../helpers/calculateAge";
+
+const formatter = new Intl.NumberFormat("ru", {
+ style: "unit",
+ unit: "year",
+ unitDisplay: "long",
+});
 
 interface QuestionnaireCardsType {
  otherUserProfile: InitialStateUserType;
@@ -15,6 +22,12 @@ interface QuestionnaireCardsType {
 export const QuestionnaireCards = ({
  otherUserProfile,
 }: QuestionnaireCardsType) => {
+ const typeMusicant =
+  otherUserProfile.type_account.value === "musician";
+ const typeGroupe =
+  otherUserProfile.type_account.value ===
+  "group-collective";
+
  return (
   <div className={s.questionnaireCards}>
    <div className={s.headerQuestionnaireCards}>
@@ -35,9 +48,17 @@ export const QuestionnaireCards = ({
      <div className={s.infoAuthor}>
       <h2 className={s.name}>{otherUserProfile?.name}</h2>
 
-      <span
-       className={s.visit}
-      >{`${otherUserProfile.city.label}, ${otherUserProfile.type_account.label}`}</span>
+      <span className={s.visit}>
+       {`${otherUserProfile.city.label},        
+       ${
+        typeMusicant
+         ? formatter.format(
+            +calculateAge(otherUserProfile.age || 0)
+           )
+         : otherUserProfile.type_account.label
+       }
+       `}
+      </span>
      </div>
     </Link>
 
@@ -46,7 +67,7 @@ export const QuestionnaireCards = ({
     </div>
    </div>
 
-   {otherUserProfile.type_account.value === "musician" && (
+   {typeMusicant && (
     <div className={s.mainQuestionnaireCards}>
      <GroupeToolsAndGenreChips
       tools={otherUserProfile.skills.tool}
@@ -55,8 +76,7 @@ export const QuestionnaireCards = ({
     </div>
    )}
 
-   {otherUserProfile.type_account.value ===
-    "group-collective" && (
+   {typeGroupe && (
     <div className={s.reStyleImportant}>
      <SkillsLayoutGenre
       skillsDataItem={otherUserProfile.skills.genre}

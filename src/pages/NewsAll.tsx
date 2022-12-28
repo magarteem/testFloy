@@ -10,6 +10,7 @@ import { BodyCards } from "../common/components/timeLine/bodyCards/BodyCards";
 import s from "./styles/newsAll.module.scss";
 import { HeaderCardsNews } from "../common/components/timeLine/headerCards/HeaderCardsNews";
 import { RouteNames } from "../core/router/RouteNames";
+import { CardsNewsItemPreview } from "../common/components/timeLine/cardsNewsItemPreview/CardsNewsItemPreview";
 
 const add = {
  img: addIcons,
@@ -38,6 +39,9 @@ export const NewsAll = () => {
      // <TimeLine timeLineData={data.timeLineData} />
      <RibbonLayout>
       {data.timeLineData?.map((x) => (
+       <CardsNewsItemPreview itemDataNews={x} key={x.id} />
+      ))}
+      {/*{data.timeLineData?.map((x) => (
        <div className={s.cardsItemWrapp} key={x.id}>
         <div className={s.customStyleA}>
          <HeaderCardsNews
@@ -52,7 +56,7 @@ export const NewsAll = () => {
          date={x.date}
         />
        </div>
-      ))}
+      ))}*/}
      </RibbonLayout>
     )}
    </StylesFullScreen>

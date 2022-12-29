@@ -3,7 +3,7 @@ import { OptionSelectType } from "../types/vacancyTypes";
 //!         Vacancy
 export const requiredVacancy: OptionSelectType[] = [
  { value: "musician", label: "Музыкант" },
- { value: "team", label: "Коллектив" },
+ { value: "group-collective", label: "Коллектив" },
  { value: "soundEngineer", label: "Звукорежиссёр" },
 ];
 
@@ -36,5 +36,5 @@ export const typeOfInstitution: OptionSelectType[] = [
 export const requiredADS: OptionSelectType[] = [
  { value: "work", label: "Работу" },
  { value: "musician", label: "Музыканта" },
- { value: "team", label: "Коллектив" },
+ { value: "group-collective", label: "Коллектив" },
 ];

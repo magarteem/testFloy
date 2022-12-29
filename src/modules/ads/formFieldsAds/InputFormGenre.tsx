@@ -5,19 +5,18 @@ import s from "../style/filterFieldsFormAds.module.scss";
 
 export interface InputFormGenreType {
  control: any;
+ name: string;
 }
 
 export const InputFormGenre = ({
  control,
+ name,
 }: InputFormGenreType) => {
  return (
   <div className={s.selectFieldCustomHeight}>
    <Controller
-    name="genre"
+    name={name}
     control={control}
-    //rules={{
-    // required: "Обязательное поле",
-    //}}
     render={({
      field: { onChange, value, ref, ...field },
      formState: { errors },
@@ -26,7 +25,6 @@ export const InputFormGenre = ({
       ItemRef={ref}
       value={value}
       placeholder="Жанр"
-      //required={true}
       options={genreBD}
       onChange={onChange}
       errors={errors.genre}

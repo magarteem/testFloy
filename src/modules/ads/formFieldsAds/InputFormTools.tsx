@@ -5,19 +5,18 @@ import s from "../style/filterFieldsFormAds.module.scss";
 
 export interface InputFormToolsType {
  control: any;
+ name: string;
 }
 
 export const InputFormTools = ({
  control,
+ name,
 }: InputFormToolsType) => {
  return (
   <div className={s.selectFieldCustomHeight}>
    <Controller
-    name="tool"
+    name={name}
     control={control}
-    //rules={{
-    // required: "Обязательное поле",
-    //}}
     render={({
      field: { onChange, value, ref, ...field },
      formState: { errors },
@@ -27,7 +26,6 @@ export const InputFormTools = ({
       ItemRef={ref}
       value={value}
       placeholder="Инструмент (род деятельности)"
-      //required={true}
       options={groupeOptions}
       onChange={onChange}
       errors={errors.tool}

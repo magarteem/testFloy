@@ -6,9 +6,6 @@ import { HeaderStylesWrapper } from "../common/layout/headerStylesWrapper/Header
 import { useOutletContext } from "react-router-dom";
 import { InitialStateType } from "../modules/timeLine/types/timlineSliceType";
 import { RibbonLayout } from "../common/layout/ribbonLayout/RibbonLayout";
-import { BodyCards } from "../common/components/timeLine/bodyCards/BodyCards";
-import s from "./styles/newsAll.module.scss";
-import { HeaderCardsNews } from "../common/components/timeLine/headerCards/HeaderCardsNews";
 import { RouteNames } from "../core/router/RouteNames";
 import { CardsNewsItemPreview } from "../common/components/timeLine/cardsNewsItemPreview/CardsNewsItemPreview";
 
@@ -23,7 +20,7 @@ const filter = {
 
 export const NewsAll = () => {
  const data: InitialStateType = useOutletContext();
- console.log(data);
+
  return (
   <>
    <StylesFullScreen>
@@ -36,27 +33,10 @@ export const NewsAll = () => {
     {data.isLoading ? (
      <h1>Loading....</h1>
     ) : (
-     // <TimeLine timeLineData={data.timeLineData} />
      <RibbonLayout>
       {data.timeLineData?.map((x) => (
        <CardsNewsItemPreview itemDataNews={x} key={x.id} />
       ))}
-      {/*{data.timeLineData?.map((x) => (
-       <div className={s.cardsItemWrapp} key={x.id}>
-        <div className={s.customStyleA}>
-         <HeaderCardsNews
-          author={x.author}
-          date={x.date}
-          timeLinePost={x.timeLinePost}
-         />
-        </div>
-        <BodyCards
-         timeLinePost={x.timeLinePost}
-         id_news={x.id}
-         date={x.date}
-        />
-       </div>
-      ))}*/}
      </RibbonLayout>
     )}
    </StylesFullScreen>

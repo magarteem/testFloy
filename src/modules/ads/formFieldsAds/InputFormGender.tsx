@@ -5,15 +5,17 @@ import s from "../style/filterFieldsFormAds.module.scss";
 
 export interface InputFormGenderType {
  control: any;
+ name: string;
 }
 
 export const InputFormGender = ({
  control,
+ name,
 }: InputFormGenderType) => {
  return (
   <div className={s.selectField}>
    <Controller
-    name="gender"
+    name={name}
     control={control}
     render={({
      field: { onChange, value, ref, ...field },
@@ -21,7 +23,7 @@ export const InputFormGender = ({
     }) => (
      <SelectElementMui
       ItemRef={ref}
-      value={value}
+      value={value || ""}
       placeholder="Пол"
       options={genderBD}
       //@ts-ignore

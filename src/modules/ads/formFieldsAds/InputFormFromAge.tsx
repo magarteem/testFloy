@@ -5,17 +5,21 @@ import s from "../style/filterFieldsFormAds.module.scss";
 interface InputFormFromAgeType {
  control: any;
  watch: any;
+ nameFromAge: string;
+ toAge: string;
 }
 
 export const InputFormFromAndToAge = ({
  control,
  watch,
+ nameFromAge,
+ toAge,
 }: InputFormFromAgeType) => {
  return (
   <div className={s.ageRange}>
    <div className={s.styleInput}>
     <Controller
-     name="fromAge"
+     name={nameFromAge}
      control={control}
      rules={{
       required: "Обязательное поле",
@@ -44,7 +48,7 @@ export const InputFormFromAndToAge = ({
 
    <div className={s.styleInput}>
     <Controller
-     name="toAge"
+     name={toAge}
      control={control}
      rules={{
       required: "Обязательное поле",

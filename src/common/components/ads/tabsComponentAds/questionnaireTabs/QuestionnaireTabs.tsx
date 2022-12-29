@@ -13,7 +13,10 @@ export const QuestionnaireTabs = () => {
    <h2 className={s.recommendations}>Рекомендации</h2>
    <div className={s.mainQuestionnaire}>
     {otherUserProfile.map((x) => (
-     <QuestionnaireCards otherUserProfile={x} />
+     <QuestionnaireCards
+      key={x.id_user}
+      otherUserProfile={x}
+     />
     ))}
    </div>
   </RibbonLayout>

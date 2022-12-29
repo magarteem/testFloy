@@ -4,19 +4,19 @@ import { optionsTypeAccount } from "../../authorization/service/BD";
 import { OptionSelectType } from "../../authorization/types/authType";
 import s from "../style/filterFieldsFormAds.module.scss";
 
-export interface InputFormWhoIsLookingQestionnarieType {
+export interface InputFormWhoIsLookingQestionnaireType {
  control: any;
  placeholder: string;
  name: string;
  options: OptionSelectType[];
 }
 
-export const InputFormWhoIsLookingQestionnarie = ({
+export const InputFormWhoIsLookingQestionnaire = ({
  control,
  placeholder,
  name,
  options,
-}: InputFormWhoIsLookingQestionnarieType) => {
+}: InputFormWhoIsLookingQestionnaireType) => {
  return (
   <div className={s.selectField}>
    <Controller
@@ -28,7 +28,7 @@ export const InputFormWhoIsLookingQestionnarie = ({
     }) => (
      <SelectElementMui
       ItemRef={ref}
-      value={value}
+      value={value || ""}
       placeholder={placeholder}
       options={options}
       //onChange={onChange}

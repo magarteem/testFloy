@@ -5,15 +5,17 @@ import s from "../style/filterFieldsFormAds.module.scss";
 
 export interface InputFormCityType {
  control: any;
+ name: string;
 }
 
 export const InputFormCity = ({
  control,
+ name,
 }: InputFormCityType) => {
  return (
   <div className={s.selectField}>
    <Controller
-    name="city"
+    name={name}
     control={control}
     render={({
      field: { onChange, value, ref, ...field },
@@ -21,7 +23,7 @@ export const InputFormCity = ({
     }) => (
      <SelectElementMui
       ItemRef={ref}
-      value={value}
+      value={value || ""}
       placeholder="Город"
       options={cityBD}
       //onChange={onChange}

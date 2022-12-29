@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import s from "./style/filterFormsAds.module.scss";
 import { InputFormCity } from "./formFieldsAds/InputFormCity";
@@ -10,31 +9,21 @@ import { InputFormTypeOfInstitution } from "./formFieldsAds/InputFormTypeOfInsti
 import { FormsFilterType } from "./types/formsFilterType";
 import { useLocation } from "react-router-dom";
 import { IconButton } from "@mui/material";
-import { optionsTypeAccountWhoos } from "./service/selectFilterOptionsBD";
 import { optionsTypeAccount } from "../authorization/service/BD";
-import { requiredADS } from "../vacancy/service/createVacancyBD";
+import {
+ requiredADS,
+ requiredVacancy,
+} from "../vacancy/service/createVacancyBD";
 import { InputFormFromAndToAge } from "./formFieldsAds/InputFormFromAge";
 import { InputFormGender } from "./formFieldsAds/InputFormGender";
 import { InputFormWhoIsLookingAds } from "./formFieldsAds/InputFormWhoIsLookingAds";
-import { InputFormWhoIsLookingQestionnarie } from "./formFieldsAds/InputFormWhoIsLookingQestionnarie";
-
-const defaultValues = {
- city: {},
- tool: [],
- genre: [],
- typeOfInstitution: [],
- who_is_looking_vacancy: {},
- who_is_looking_vacancy_partner: {},
- who_is_looking_ads: {},
- who_is_looking_qestionnarie: {},
- type_account: null,
- fromAge: null,
- toAge: null,
-};
+import { InputFormWhoIsLookingQestionnaire } from "./formFieldsAds/InputFormWhoIsLookingQestionnaire";
+import { SelectElementMui } from "../../common/mui-element/SelectElementMui";
 
 interface FilterFormsAdsType {
  handleClose: () => void;
 }
+
 export const FilterFormsAds = ({
  handleClose,
 }: FilterFormsAdsType) => {
@@ -42,11 +31,25 @@ export const FilterFormsAds = ({
  const locationTabs = location.pathname;
 
  const { control, handleSubmit, watch, reset, setValue } =
-  useForm<any>({
+  useForm<FormsFilterType>({
    mode: "onBlur",
-   defaultValues,
+   defaultValues: {
+    city: null,
+    tool: [],
+    genre: [],
+    gender: null,
+    typeOfInstitution: [],
+    who_is_looking_vacancy: null,
+    who_is_looking_vacancy_partner: null,
+    who_is_looking_ads: null,
+    who_is_looking_questionnaire: null,
+    type_account: null,
+    fromAge: null,
+    toAge: null,
+   },
   });
- console.log(watch("who_is_looking_ads").value);
+
+ const resetFormFields = () => reset();
  const onSubmit = (data: FormsFilterType) => {
   console.log("onSubmitAds = ", data);
   handleClose();
@@ -54,44 +57,8 @@ export const FilterFormsAds = ({
 
  const who_is_looking_vacancy = watch(
   "who_is_looking_vacancy"
- ).value;
+ )?.value;
 
- const t = () => {
-  reset();
- };
- // const t = () => {
- //  reset({
- //   ...defaultValues,
- //  });
- // };
- // const t = () => {
- //  setValue([
- //   { city: { value: "", label: "" } },
- //   { who_is_looking_vacancy: { value: "", label: "" } },
- //  ]);
- // };
- // const t = () => {
- //  setValue([
- //   { city: {} },
- //   { tool: [] },
- //   { genre: [] },
- //   { typeOfInstitution: [] },
- //   { who_is_looking_vacancy: {} },
- //   { who_is_looking_vacancy_partner: {} },
- //   { who_is_looking_ads: {} },
- //   { who_is_looking_qestionnarie: {} },
- //   { type_account: null },
- //   { fromAge: null },
- //   { toAge: null },
- //  ]);
- // };
-
- //
- // setValue([
- //            { name: userData.name },
- //            { phone: userData.phone }
- //        ]);
- //
  return (
   <div className={s.filterForAds}>
    <div className={s.toutchLine} />
@@ -99,13 +66,20 @@ export const FilterFormsAds = ({
    <form noValidate onSubmit={handleSubmit(onSubmit)}>
     <div className={s.headerForms}>
      <h1>Фильтр</h1>
-     <h5 onClick={t}>Очистить</h5>
+     <IconButton
+      sx={{
+       borderRadius: "10px",
+       padding: "13px",
+      }}
+     >
+      <h5 onClick={resetFormFields}>Очистить</h5>
+     </IconButton>
     </div>
 
     <div className={s.gawField}>
-     <InputFormCity control={control} />
-     <InputFormTools control={control} />
-     <InputFormGenre control={control} />
+     <InputFormCity control={control} name="city" />
+     <InputFormTools control={control} name="tool" />
+     <InputFormGenre control={control} name="genre" />
 
      <h2 className={s.filterForVacancy}>
       {locationTabs === "/ads"
@@ -130,10 +104,10 @@ export const FilterFormsAds = ({
        options={requiredADS}
       />
      ) : (
-      <InputFormWhoIsLookingQestionnarie
+      <InputFormWhoIsLookingQestionnaire
        control={control}
        placeholder="Тип аккаунта"
-       name="who_is_looking_qestionnarie"
+       name="who_is_looking_questionnaire"
        options={optionsTypeAccount}
       />
      )}
@@ -147,32 +121,38 @@ export const FilterFormsAds = ({
          control={control}
          placeholder="Кого ищет?"
          name="who_is_looking_vacancy_partner"
-         options={optionsTypeAccountWhoos}
+         options={requiredVacancy}
+         //options={optionsTypeAccountWhoos}
         />
        </>
       )}
 
      {locationTabs !== "/ads" &&
       locationTabs === "/ads/ads-list" &&
-      watch("who_is_looking_ads").label === "Музыканта" && (
+      watch("who_is_looking_ads")?.label ===
+       "Музыканта" && (
        <>
-        <InputFormGender control={control} />
+        <InputFormGender control={control} name="gender" />
         <InputFormFromAndToAge
          watch={watch}
          control={control}
+         nameFromAge="fromAge"
+         toAge="toAge"
         />
        </>
       )}
 
      {locationTabs !== "/ads" &&
       locationTabs === "/ads/questionnaire-list" &&
-      watch("who_is_looking_qestionnarie").label ===
+      watch("who_is_looking_questionnaire")?.label ===
        "Музыкант" && (
        <>
-        <InputFormGender control={control} />
+        <InputFormGender control={control} name="gender" />
         <InputFormFromAndToAge
          watch={watch}
          control={control}
+         nameFromAge="fromAge"
+         toAge="toAge"
         />
        </>
       )}

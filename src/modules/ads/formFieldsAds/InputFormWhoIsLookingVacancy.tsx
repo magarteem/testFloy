@@ -28,7 +28,7 @@ export const InputFormWhoIsLookingVacancy = ({
     }) => (
      <SelectElementMui
       ItemRef={ref}
-      value={value}
+      value={value || ""}
       placeholder={placeholder}
       options={options}
       //onChange={onChange}

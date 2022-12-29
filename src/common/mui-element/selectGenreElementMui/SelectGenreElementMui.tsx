@@ -64,12 +64,17 @@ export const SelectGenreElementMui = ({
  useEffect(() => {
   //@ts-ignore
   let u = options.filter((x) => {
-   // console.log(x);
    return personName.includes(x.label);
   });
 
   onChange(u);
  }, [personName]);
+
+ useEffect(() => {
+  !!!value.length &&
+   !!personName.length &&
+   setPersonName([]);
+ }, [value]);
 
  return (
   <FormControl

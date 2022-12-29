@@ -31,6 +31,11 @@ export const SelectElementMui = ({
  required = false,
  ...props
 }: SelectElementMuiType) => {
+ // console.log("----- SelectElementMui -----");
+ // console.log("value =", value);
+ // console.log("options =", options);
+ // console.log("----- SelectElementMui -----");
+
  return (
   <FormControl
    error={errors}

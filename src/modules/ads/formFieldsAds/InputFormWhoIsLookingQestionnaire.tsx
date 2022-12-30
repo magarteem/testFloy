@@ -9,6 +9,7 @@ export interface InputFormWhoIsLookingQestionnaireType {
  placeholder: string;
  name: string;
  options: OptionSelectType[];
+ required: boolean;
 }
 
 export const InputFormWhoIsLookingQestionnaire = ({
@@ -16,17 +17,22 @@ export const InputFormWhoIsLookingQestionnaire = ({
  placeholder,
  name,
  options,
+ required,
 }: InputFormWhoIsLookingQestionnaireType) => {
  return (
   <div className={s.selectField}>
    <Controller
     name={name}
     control={control}
+    rules={{
+     required: "Обязательное поле",
+    }}
     render={({
      field: { onChange, value, ref, ...field },
      formState: { errors },
     }) => (
      <SelectElementMui
+      required={required}
       ItemRef={ref}
       value={value || ""}
       placeholder={placeholder}
@@ -39,7 +45,7 @@ export const InputFormWhoIsLookingQestionnaire = ({
         label: e.target.value,
        })
       }
-      errors={errors.city}
+      errors={errors[name]}
       {...field}
      />
     )}

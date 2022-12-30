@@ -65,7 +65,6 @@ export const OtherUserProfile = () => {
 
    <AboutProfile userDataProfile={user} />
 
-   {/*<NavigateButtonWidthAddBtn />*/}
    <PopUpNavigateGradient />
   </>
  );

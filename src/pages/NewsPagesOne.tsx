@@ -63,7 +63,6 @@ export const NewsPagesOne = () => {
   ...dataOneNews.timeLinePost.tools,
  ];
 
- console.log(dataOneNews);
  return (
   <StylesFullScreen>
    <HeaderStylesWrapper

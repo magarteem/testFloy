@@ -12,6 +12,7 @@ import { EducationeCards } from "./skills/EducationeCards";
 import s from "./aboutProfile.module.scss";
 import { AboutProfileSkillsLayout } from "../../../layout/aboutProfileSkillsLayout/AboutProfileSkillsLayout";
 import { RouteNames } from "../../../../core/router/RouteNames";
+import { SwiperGallery } from "../../../../modules/user/SwiperGallery";
 
 interface AboutProfileType {
  userDataProfile: InitialStateUserType;
@@ -83,11 +84,15 @@ export const AboutProfile = ({
     />
 
     {Array.isArray(userDataProfile.skills.inspiration) ? (
-     <InspirationUser
+     <SwiperGallery
       inspiration={userDataProfile.skills.inspiration}
       skillsCategoryTitle="Портфолио"
      />
     ) : (
+     // <InspirationUser
+     //  inspiration={userDataProfile.skills.inspiration}
+     //  skillsCategoryTitle="Портфолио"
+     // />
      <AboutProfileSkillsLayout skillsCategoryTitle="Портфолио">
       <div className={s.styleAbout}>
        <span className={s.titleSpan}>О себе:</span>

@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import s from "./style/filterFormsAds.module.scss";
 import { InputFormCity } from "./formFieldsAds/InputFormCity";
 import { InputFormGenre } from "./formFieldsAds/InputFormGenre";
 import { InputFormTools } from "./formFieldsAds/InputFormTools";
@@ -13,12 +12,14 @@ import { optionsTypeAccount } from "../authorization/service/BD";
 import {
  requiredADS,
  requiredVacancy,
+ teamTypeADS,
 } from "../vacancy/service/createVacancyBD";
 import { InputFormFromAndToAge } from "./formFieldsAds/InputFormFromAge";
 import { InputFormGender } from "./formFieldsAds/InputFormGender";
 import { InputFormWhoIsLookingAds } from "./formFieldsAds/InputFormWhoIsLookingAds";
 import { InputFormWhoIsLookingQestionnaire } from "./formFieldsAds/InputFormWhoIsLookingQestionnaire";
-import { SelectElementMui } from "../../common/mui-element/SelectElementMui";
+import s from "./style/filterFormsAds.module.scss";
+import { InputFormMaster } from "./formFieldsAds/InputFormMaster";
 
 interface FilterFormsAdsType {
  handleClose: () => void;
@@ -43,21 +44,27 @@ export const FilterFormsAds = ({
     who_is_looking_vacancy_partner: null,
     who_is_looking_ads: null,
     who_is_looking_questionnaire: null,
-    type_account: null,
     fromAge: null,
     toAge: null,
+    master: null,
    },
   });
+
+ const watch_vacancy_partner = watch(
+  "who_is_looking_vacancy_partner"
+ )?.label;
+ const watch_looking_ads = watch(
+  "who_is_looking_ads"
+ )?.label;
+ const watch_questionnaire = watch(
+  "who_is_looking_questionnaire"
+ )?.label;
 
  const resetFormFields = () => reset();
  const onSubmit = (data: FormsFilterType) => {
   console.log("onSubmitAds = ", data);
   handleClose();
  };
-
- const who_is_looking_vacancy = watch(
-  "who_is_looking_vacancy"
- )?.value;
 
  return (
   <div className={s.filterForAds}>
@@ -105,6 +112,7 @@ export const FilterFormsAds = ({
       />
      ) : (
       <InputFormWhoIsLookingQestionnaire
+       required={true}
        control={control}
        placeholder="Тип аккаунта"
        name="who_is_looking_questionnaire"
@@ -112,50 +120,65 @@ export const FilterFormsAds = ({
       />
      )}
 
+     {locationTabs === "/ads" && (
+      <>
+       <InputFormWhoIsLookingVacancy
+        control={control}
+        placeholder="Кого ищет?"
+        name="who_is_looking_vacancy_partner"
+        options={requiredVacancy}
+       />
+      </>
+     )}
+
      {locationTabs === "/ads" &&
-      who_is_looking_vacancy ===
-       "Заведение / Площадка для выступлений" && (
-       <>
-        <InputFormTypeOfInstitution control={control} />
-        <InputFormWhoIsLookingVacancy
-         control={control}
-         placeholder="Кого ищет?"
-         name="who_is_looking_vacancy_partner"
-         options={requiredVacancy}
-         //options={optionsTypeAccountWhoos}
-        />
-       </>
-      )}
+      (watch_vacancy_partner === "Коллектив" ? (
+       <InputFormWhoIsLookingVacancy
+        control={control}
+        placeholder="Вид коллектива"
+        name="team_type"
+        options={teamTypeADS}
+       />
+      ) : (
+       watch_vacancy_partner === "Музыкант" && (
+        <WatchMusician control={control} watch={watch} />
+       )
+      ))}
 
-     {locationTabs !== "/ads" &&
-      locationTabs === "/ads/ads-list" &&
-      watch("who_is_looking_ads")?.label ===
-       "Музыканта" && (
-       <>
-        <InputFormGender control={control} name="gender" />
-        <InputFormFromAndToAge
-         watch={watch}
-         control={control}
-         nameFromAge="fromAge"
-         toAge="toAge"
-        />
-       </>
-      )}
+     {locationTabs === "/ads/ads-list" &&
+      (watch_looking_ads === "Коллектив" ? (
+       <InputFormWhoIsLookingVacancy
+        control={control}
+        placeholder="Вид коллектива"
+        name="team_type"
+        options={teamTypeADS}
+       />
+      ) : watch_looking_ads === "Музыканта" ? (
+       <WatchMusician control={control} watch={watch} />
+      ) : watch_looking_ads === "Работу" ? (
+       <InputFormTypeOfInstitution
+        control={control}
+        placeholder="Место работы"
+       />
+      ) : null)}
 
-     {locationTabs !== "/ads" &&
-      locationTabs === "/ads/questionnaire-list" &&
-      watch("who_is_looking_questionnaire")?.label ===
-       "Музыкант" && (
-       <>
-        <InputFormGender control={control} name="gender" />
-        <InputFormFromAndToAge
-         watch={watch}
-         control={control}
-         nameFromAge="fromAge"
-         toAge="toAge"
-        />
-       </>
-      )}
+     {locationTabs === "/ads/questionnaire-list" &&
+      (watch_questionnaire === "Музыкант" ? (
+       <WatchMusician control={control} watch={watch} />
+      ) : watch_questionnaire === "Группа / Коллектив" ? (
+       <InputFormWhoIsLookingVacancy
+        control={control}
+        placeholder="Вид коллектива"
+        name="team_type"
+        options={teamTypeADS}
+       />
+      ) : watch_questionnaire ===
+        "Заведение / Площадка для выступлений" ? (
+       <InputFormTypeOfInstitution
+        control={control}
+        placeholder="Тип заведения"
+       />
+      ) : null)}
     </div>
 
     <div className={s.btnWrapper}>
@@ -166,5 +189,28 @@ export const FilterFormsAds = ({
     </div>
    </form>
   </div>
+ );
+};
+
+interface WatchMusicianType {
+ watch: any;
+ control: any;
+}
+
+const WatchMusician = ({
+ watch,
+ control,
+}: WatchMusicianType) => {
+ return (
+  <>
+   <InputFormGender control={control} name="gender" />
+   <InputFormFromAndToAge
+    watch={watch}
+    control={control}
+    nameFromAge="fromAge"
+    toAge="toAge"
+   />
+   <InputFormMaster control={control} />
+  </>
  );
 };

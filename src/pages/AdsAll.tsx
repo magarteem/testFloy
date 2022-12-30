@@ -85,11 +85,7 @@ export const AdsAll = () => {
          }}
         />
        </div>
-       <img
-        src={searchIcon}
-        alt="search"
-        //onClick={handleClickOpen}
-       />
+       <img src={searchIcon} alt="search" />
       </div>
      </HeaderStylesWrapper>
     </div>
@@ -101,7 +97,20 @@ export const AdsAll = () => {
     <Outlet context={[adsData, myProfile]} />
 
     <FilterModalLayout
-     madalOpen={open}
+     style={{
+      "& .MuiDialog-container": {
+       alignItems: "flex-end",
+
+       "& .MuiPaper-root": {
+        background: "#FDFDF5",
+        borderRadius: "28px 28px 0px 0px",
+        width: "100%",
+        margin: 0,
+        padding: "16px",
+       },
+      },
+     }}
+     modalOpen={open}
      handleClose={handleClose}
     >
      <FilterFormsAds handleClose={handleClose} />

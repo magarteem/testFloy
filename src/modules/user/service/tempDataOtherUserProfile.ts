@@ -1,5 +1,8 @@
-import Inspiration_1 from "../../../assets/images/Inspiration_1.webp";
-import Inspiration_2 from "../../../assets/images/Inspiration_2.webp";
+import imgTest5 from "../../../assets/images/imgTest5.webp";
+import imgTest3 from "../../../assets/images/imgTest3.webp";
+import imgTest9 from "../../../assets/images/imgTest9.webp";
+import imgTest6 from "../../../assets/images/imgTest6.webp";
+import imgTest1 from "../../../assets/images/imgTest1.webp";
 import avatar_1 from "../../../assets/images/avatar_1.webp";
 import avatar_2 from "../../../assets/images/avatar_2.webp";
 import avatar_3 from "../../../assets/images/avatar_3.webp";
@@ -47,9 +50,12 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
     master: { value: "newbie", label: "Новичок" },
     education: "Российская Академия музыки им. Гнесеных",
     inspiration: [
-     Inspiration_1,
-     Inspiration_2,
-     Inspiration_1,
+     imgTest5,
+     imgTest3,
+     imgTest9,
+     avatart_11,
+     imgTest6,
+     imgTest1,
     ],
    },
    private_settings: {
@@ -88,7 +94,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
     master: { value: "master", label: "Мастер" },
     education:
      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.",
-    inspiration: [Inspiration_1, Inspiration_2],
+    inspiration: [imgTest3, imgTest9, avatart_11],
    },
    private_settings: {
     value: "closed-profile",
@@ -131,11 +137,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
     master: { value: "teacher", label: "Преподаватель" },
     education:
      "Российская Академия музыки им. Гнесеных 2018-2019, Национальная Академия музыки им. Шевченко 206-2018",
-    inspiration: [
-     Inspiration_1,
-     Inspiration_2,
-     Inspiration_1,
-    ],
+    inspiration: [avatart_11, imgTest6, imgTest1, imgTest9],
    },
    private_settings: {
     value: "partially-open-questionnaire",
@@ -227,11 +229,7 @@ export const tempDataOtherUserProfile: InitialStateUserType[] =
      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus. Eget dictumst vitae enim, felis morbi. Quis risus, neque cursus risus.",
     master: { value: "newbie", label: "Новичок" },
     education: "Российская Академия музыки им. Гнесеных",
-    inspiration: [
-     Inspiration_1,
-     Inspiration_2,
-     Inspiration_1,
-    ],
+    inspiration: [imgTest9, avatart_11, imgTest6, imgTest1],
    },
    private_settings: {
     value: "public-questionnaire",

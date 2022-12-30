@@ -1,0 +1,45 @@
+@import "src/styles/variable";
+
+.swiper {
+ // width: 100%;
+ // display: flex;
+ //  justify-content: space-between;
+ // align-items: center;
+ padding: 12px 0;
+ overflow: auto;
+
+ .swiper-wrapper li:last-of-type {
+  //margin-right: 20px;
+ }
+
+ & > div {
+  padding: 0 10px;
+
+  & > div {
+   display: flex;
+   justify-content: space-between;
+  }
+ }
+
+ .swiperCard {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  width: 124px;
+  height: 124px;
+  border-radius: 4px;
+  transition: all 0.3s;
+
+  &:hover {
+   transition: all 0.3s;
+   transform: translateY(-5px) scale(1.02);
+   box-shadow: 0px 14px 30px rgba(104, 73, 73, 0.05);
+  }
+
+  img {
+   height: 124px;
+   object-fit: cover;
+  }
+ }
+}

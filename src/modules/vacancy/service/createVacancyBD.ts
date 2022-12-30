@@ -7,6 +7,13 @@ export const requiredVacancy: OptionSelectType[] = [
  { value: "soundEngineer", label: "Звукорежиссёр" },
 ];
 
+//          тип коллектива
+export const teamTypeADS: OptionSelectType[] = [
+ { value: "ensemble", label: "Ансамбль" },
+ { value: "group", label: "Группа" },
+ { value: "orchestra", label: "Оркестр" },
+];
+
 export const workingConditionsBD: OptionSelectType[] = [
  {
   value: "part-time-employment",

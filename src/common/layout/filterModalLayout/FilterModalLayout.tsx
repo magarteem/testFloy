@@ -1,13 +1,5 @@
 import React, { ReactNode } from "react";
-import {
- Button,
- Dialog,
- DialogActions,
- DialogContent,
- DialogContentText,
- DialogTitle,
- Slide,
-} from "@mui/material";
+import { Dialog, Slide } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
 
 const Transition = React.forwardRef(function Transition(
@@ -21,49 +13,27 @@ const Transition = React.forwardRef(function Transition(
 
 interface FilterModalLayoutType {
  children: ReactNode;
- madalOpen: boolean;
+ modalOpen: boolean;
  handleClose: () => void;
+ style: {};
 }
 
 export const FilterModalLayout = ({
  children,
- madalOpen,
+ modalOpen,
  handleClose,
+ style,
 }: FilterModalLayoutType) => {
  return (
   <Dialog
-   open={madalOpen}
+   open={modalOpen}
    TransitionComponent={Transition}
    keepMounted
    onClose={handleClose}
    aria-describedby="alert-dialog-slide-description"
-   sx={{
-    "& .MuiDialog-container": {
-     alignItems: "flex-end",
-
-     "& .MuiPaper-root": {
-      background: "#FDFDF5",
-      borderRadius: "28px 28px 0px 0px",
-      width: "100%",
-      margin: 0,
-      padding: "16px",
-     },
-    },
-   }}
+   sx={style}
   >
    {children}
-   {/*<DialogTitle>
-    {"Use Google's location service?"}
-   </DialogTitle>
-   <DialogContent>
-    <DialogContentText id="alert-dialog-slide-description">
-     Let Google help apps determine location. This means
-    </DialogContentText>
-   </DialogContent>
-   <DialogActions>
-    <Button onClick={handleClose}>Disagree</Button>
-    <Button onClick={handleClose}>Agree</Button>
-   </DialogActions>*/}
   </Dialog>
  );
 };

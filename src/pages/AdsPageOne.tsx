@@ -1,8 +1,9 @@
 import arrow_back from "../assets/icons/arrow_back.svg";
 import shareIcons from "../assets/icons/shareIcons.svg";
-import avatar_1 from "../assets/images/avatar_1.webp";
+import moreButtonCircle from "../assets/icons/more-button-circle.svg";
 import {
  Link,
+ Navigate,
  useOutletContext,
  useParams,
 } from "react-router-dom";
@@ -14,7 +15,6 @@ import {
 } from "../modules/ads/types/adsSliceType";
 import { SkillsLayoutTools } from "../common/components/profile/aboutProfile/skills/SkillsLayoutTools";
 import { SkillsLayoutGenre } from "../common/components/profile/aboutProfile/skills/SkillsLayoutGenre";
-import { ButtonSubmitMui } from "../common/mui-element/ButtonSubmitMui";
 import { useAppDispatch } from "../core/redux/app/hooks";
 import { setDataNotificationThunk } from "../modules/notification/setDataNotificationThunk";
 import { calculateAge } from "../helpers/calculateAge";
@@ -29,9 +29,10 @@ import { RespondButton } from "../common/components/ads/respondButton/RespondBut
 import { updateStatusAds } from "../modules/ads/adsSlice";
 import { RouteNames } from "../core/router/RouteNames";
 import Avatar from "@mui/material/Avatar";
+import { OptionLongMenuType } from "../modules/timeLine/types/timlineSliceType";
 
 export const AdsPageOne = () => {
- // const dispatch = useAppDispatch();
+ const dispatch = useAppDispatch();
  const [dataAdsList, profile]: [
   InitialStateAdsType,
   InitialStateUserType
@@ -61,6 +62,31 @@ export const AdsPageOne = () => {
  //  );
  // };
 
+ const changeThisNews = () => {
+  //<Navigate to={RouteNames.CHANGE_THIS_NEWS} />
+ };
+
+ const deleteThisNews = () => {};
+
+ const options: OptionLongMenuType[] = [
+  {
+   label: "Редактировать",
+   link: ``,
+   action: changeThisNews,
+  },
+  { label: "Архивировать", link: "", action: () => {} },
+  {
+   label: "Скопировать ссылку",
+   link: "",
+   action: () => {},
+  },
+  {
+   label: "Удалить",
+   link: "",
+   action: deleteThisNews,
+  },
+ ];
+
  return (
   <StylesFullScreen>
    <div className={s.adsPageOne}>
@@ -69,7 +95,12 @@ export const AdsPageOne = () => {
      textLabel="Обявления"
      // anyIconsFirst={share}
      share={shareIcons}
-     tsxElement={<LongMenu />}
+     tsxElement={
+      <LongMenu
+       moreButtonCircle={moreButtonCircle}
+       options={options}
+      />
+     }
     />
 
     <section className={s.bodyAdsPageOne}>
@@ -170,16 +201,7 @@ export const AdsPageOne = () => {
      </div>
 
      {/*// мой профиль = profile.id_use
-          // автор поста = dataOneNews?.author?.id_user*/}
-     {
-      //if(dataOneNews?.author?.id_user === profile.id_user) return null
-      //else {
-      //  if (dataOneNews.waitingForResponse.userId !== profile.id_use) return <RespondButton />
-      //else if (dataOneNews.waitingForResponse.status === 0 ) return  <Pending />
-      //else if (dataOneNews.waitingForResponse.status === 1 ) return  <Received status={dataOneNews.waitingForResponse} />
-      //else if (dataOneNews.waitingForResponse.status === 2 ) return  <Rejected />
-      //}
-     }
+      // автор поста = dataOneNews?.author?.id_user*/}
 
      {profile.id_user !== dataOneNews?.author?.id_user &&
       profile.id_user !==
@@ -188,11 +210,6 @@ export const AdsPageOne = () => {
         respondAdsData={dataOneNews}
         profile={profile}
        />
-       //{/*<ButtonSubmitMui
-       // onClick={() => respondAds(dataOneNews)}
-       // isValidInButton={false}
-       // textButton="Откликнуться"
-       ///>*/}
       )}
 
      {profile.id_user ===

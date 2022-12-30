@@ -1,3 +1,9 @@
+import cn from "classnames";
+import { useState } from "react";
+import { ReactComponent as ArrowLeft } from "../../../../../assets/icons/arrowLeft.svg";
+import { ReactComponent as ArrowRight } from "../../../../../assets/icons/arrowRight.svg";
+import { Gallery } from "../../../../../modules/ads/Gallery";
+import { FilterModalLayout } from "../../../../layout/filterModalLayout/FilterModalLayout";
 import s from "./skillsLayoutMaster.module.scss";
 
 interface InspirationType {
@@ -10,20 +16,9 @@ export const InspirationUser = ({
  inspiration,
 }: InspirationType) => {
  return (
-  <div className={s.skills}>
-   <div className={s.profileDataFields}>
-    <h2>{skillsCategoryTitle}</h2>
-
-    <div className={s.skills_item}>
-     <div className={s.containerImg}>
-      {inspiration.map((x, index) => (
-       <div key={index} className={s.img}>
-        <img src={x} alt={x} />
-       </div>
-      ))}
-     </div>
-    </div>
-   </div>
-  </div>
+  <Gallery
+   inspiration={inspiration}
+   skillsCategoryTitle={skillsCategoryTitle}
+  />
  );
 };

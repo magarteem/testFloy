@@ -89,10 +89,6 @@ export const AboutProfile = ({
       skillsCategoryTitle="Портфолио"
      />
     ) : (
-     // <InspirationUser
-     //  inspiration={userDataProfile.skills.inspiration}
-     //  skillsCategoryTitle="Портфолио"
-     // />
      <AboutProfileSkillsLayout skillsCategoryTitle="Портфолио">
       <div className={s.styleAbout}>
        <span className={s.titleSpan}>О себе:</span>

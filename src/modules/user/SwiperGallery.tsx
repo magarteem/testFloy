@@ -27,39 +27,23 @@ export const SwiperGallery = ({
 
  return (
   <div className={s.swiper}>
+   <h2>{skillsCategoryTitle}</h2>
+
    <Swiper
     spaceBetween={1}
     speed={1500}
     autoplay
     modules={[Autoplay]}
     slidesPerView={"auto"}
-    //style={{ display: "flex" }}
    >
     {inspiration.map((x, index) => (
      <SwiperSlide key={x} className={s.swiperCard}>
-      {/*<FilterModalLayout
-       modalOpen={openModal}
-       handleClose={handleClickOpen}
-       style={{
-        "& .MuiDialog-container": {
-         "& .MuiPaper-root": {
-          background: "#000000",
-          width: "100%",
-          // height: "100%",
-          margin: 0,
-          padding: "16px",
-          color: "#fff",
-         },
-        },
-       }}
-      >*/}
       <div
        className={s.wrappImg}
        onClick={() => handleClickOpen(index)}
       >
        <img src={x} alt={x} />
       </div>
-      {/*</FilterModalLayout>*/}
      </SwiperSlide>
     ))}
    </Swiper>
@@ -72,9 +56,7 @@ export const SwiperGallery = ({
       "& .MuiPaper-root": {
        background: "#000000",
        width: "100%",
-       // height: "100%",
        margin: 0,
-       // padding: "16px",
        color: "#fff",
       },
      },

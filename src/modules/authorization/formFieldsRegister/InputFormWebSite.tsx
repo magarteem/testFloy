@@ -1,28 +1,38 @@
 import { Controller } from "react-hook-form";
 import TextFieldElementMui from "../../../common/mui-element/textFieldElementMui/textField/TextFieldElementMui";
-import s from "./formFields.module.scss";
+import s from "./formFieldsRegister.module.scss";
 
 export interface InputFormWebSiteType {
  control: any;
+ name: string;
 }
 
 export const InputFormWebSite = ({
  control,
+ name,
 }: InputFormWebSiteType) => {
  return (
   <div className={s.styleInput}>
    <Controller
-    name="web_site"
+    name={name}
     control={control}
+    rules={{
+     minLength: {
+      value: 3,
+      message: "Не менее 3х символов",
+     },
+    }}
     render={({
-     field: { onChange, value, ref, ...field },
+     field: { onChange, ref, ...field },
+     formState: { errors },
     }) => (
-     <div className={s.wrapperBlockInput}>
+     <div className={s.sizeInput}>
       <TextFieldElementMui
        ItemRef={ref}
        placeholder="Вебсайт"
        onChange={onChange}
-       inputValue={value}
+       helperText="Обязательное поле"
+       errors={errors.web_site && errors.web_site}
        {...field}
       />
      </div>

@@ -24,7 +24,7 @@ export interface ISignUpFormValues
  img_upload: string;
  city: OptionSelectType;
  phone: string;
- webSite: string;
+ web_site: string;
  gender: OptionSelectType | null;
  age: number | null;
  tool: ToolsType[];
@@ -34,4 +34,15 @@ export interface ISignUpFormValues
  education: string;
  private_settings: OptionSelectType | null;
  inspiration: string | string[];
+
+ type_collective?: {};
+ typeOfInstitution?: [];
+ portfolio_photo?: [];
+ about_me: string;
+ email_contact: string;
+
+ opening_hours_from: number | null;
+ opening_hours_to: number | null;
+ room_area: string;
+ establishment_description: string;
 }

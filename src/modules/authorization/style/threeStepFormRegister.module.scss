@@ -34,8 +34,18 @@
   height: 48px;
   width: 100%;
  }
- .selectFieldCustomHeight {
-  width: 100%;
+
+ // .selectFieldCustomHeight {
+ //  width: 100%;
+ // }
+
+ .requirements {
+  align-self: flex-start;
+  h2 {
+   font-weight: 700;
+   font-size: 18px;
+   color: #212121;
+  }
  }
 }
 

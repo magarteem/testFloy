@@ -6,11 +6,21 @@ import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactS
 import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker/ReactDatePicker";
 import { TextAreaElement } from "../../common/ui-elements/textarea/TextAreaElement";
 import { useAppDispatch } from "../../core/redux/app/hooks";
-import { genderBD, genreBD, groupeOptions, profilePrivacySettings, cityBD, skillBD } from "../authorization/service/BD";
+import {
+ genderBD,
+ genreBD,
+ groupeOptions,
+ profilePrivacySettings,
+ cityBD,
+ skillBD,
+} from "../authorization/service/BD";
 import { ISignUpFormValues } from "../authorization/types/authType";
 import { changeProfileThunk } from "./changeProfileThunk";
 import s from "./style/formChangeProfile.module.scss";
-import { ChangeProfileFormValues, InitialStateUserType } from "./types/userSliceType";
+import {
+ ChangeProfileFormValues,
+ InitialStateUserType,
+} from "./types/userSliceType";
 import { CustomReactSelectGenre } from "../../common/components/signIn/customReactSelectGenre/CustomReactSelectGenre";
 import { CustomReactSelectTools } from "../../common/components/signIn/customReactSelectTools/CustomReactSelectTools";
 import TextFieldElementMui from "../../common/mui-element/textFieldElementMui/textField/TextFieldElementMui";
@@ -39,67 +49,86 @@ import { InputFormEmail } from "./formFields/InputFormEmail";
 import { InputFormWebSite } from "./formFields/InputFormWebSite";
 
 interface FormChangeProfileType {
-  userDataProfile: InitialStateUserType;
+ userDataProfile: InitialStateUserType;
 }
-export const FormChangeProfile = ({ userDataProfile }: FormChangeProfileType) => {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+export const FormChangeProfile = ({
+ userDataProfile,
+}: FormChangeProfileType) => {
+ const dispatch = useAppDispatch();
+ const navigate = useNavigate();
 
-  const { name, city, age, gender, skills, private_settings, phone, email, webSite } = userDataProfile;
+ const {
+  name,
+  city,
+  age,
+  gender,
+  skills,
+  private_settings,
+  phone,
+  email,
+  webSite,
+ } = userDataProfile;
 
-  const {
-    control,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<ISignUpFormValues>({
-    mode: "all",
-    defaultValues: {
-      name_field: name,
-      city,
-      gender,
-      age: age && new Date(age).getTime(),
-      tool: skills.tool,
-      genre: skills.genre,
-      work_experience: skills.workExperience,
-      master: skills.master,
-      education: skills.education,
-      inspiration: skills.inspiration,
-      private_settings,
-      phone,
-      email,
-      webSite,
-    },
-  });
+ const {
+  control,
+  handleSubmit,
+  watch,
+  formState: { errors },
+ } = useForm<ISignUpFormValues>({
+  mode: "all",
+  defaultValues: {
+   name_field: name,
+   city,
+   gender,
+   age: age && new Date(age).getTime(),
+   tool: skills.tool,
+   genre: skills.genre,
+   work_experience: skills.workExperience,
+   master: skills.master,
+   education: skills.education,
+   inspiration: skills.inspiration,
+   private_settings,
+   phone,
+   email,
+   web_site: webSite,
+  },
+ });
 
-  const onSubmit = (data: ChangeProfileFormValues) => {
-    console.log("data = ", data);
-    dispatch(changeProfileThunk(data));
-    navigate(-1);
-  };
+ const onSubmit = (data: ChangeProfileFormValues) => {
+  console.log("data = ", data);
+  dispatch(changeProfileThunk(data));
+  navigate(-1);
+ };
 
-  return (
-    <form noValidate onSubmit={handleSubmit(onSubmit)} className={s.formChangeProfile}>
-      <InputFormName control={control} />
-      <SelectFieldCity control={control} />
-      <SelectFieldGender control={control} />
-      <SelectFieldAge control={control} />
-      <SelectFieldTools control={control} />
-      <SelectFieldGenre control={control} />
-      <SelectFieldMaster control={control} />
-      <InputFormWorkExperience control={control} />
-      <InputFormEducation control={control} />
-      <InputFormPrivateSettings control={control} />
-      <InputFormInspiration control={control} />
-      <InputFormPhone control={control} />
-      <InputFormEmail control={control} />
-      <InputFormWebSite control={control} />
+ return (
+  <form
+   noValidate
+   onSubmit={handleSubmit(onSubmit)}
+   className={s.formChangeProfile}
+  >
+   <InputFormName control={control} />
+   <SelectFieldCity control={control} />
+   <SelectFieldGender control={control} />
+   <SelectFieldAge control={control} />
+   <SelectFieldTools control={control} />
+   <SelectFieldGenre control={control} />
+   <SelectFieldMaster control={control} />
+   <InputFormWorkExperience control={control} />
+   <InputFormEducation control={control} />
+   <InputFormPrivateSettings control={control} />
+   <InputFormInspiration control={control} />
+   <InputFormPhone control={control} />
+   <InputFormEmail control={control} />
+   <InputFormWebSite control={control} />
 
-      <div className={s.btnFormWrapper}>
-        <BtnInGroupeSaveCancelMui textCancelButton="Отмена" textButton="Сохранить" />
-      </div>
-    </form>
-  );
+   <div className={s.btnFormWrapper}>
+    <BtnInGroupeSaveCancelMui
+     textCancelButton="Отмена"
+     textButton="Сохранить"
+    />
+   </div>
+  </form>
+ );
 };
 
 //===============

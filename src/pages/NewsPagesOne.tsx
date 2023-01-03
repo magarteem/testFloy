@@ -109,21 +109,6 @@ export const NewsPagesOne = () => {
       }
      })}
     </div>
-
-    {/*<div className={s.footerNews}>
-     <span className={s.theme}>
-      {dataOneNews.timeLinePost.typeCategory?.label}
-     </span>
-
-     {dataOneNews.timeLinePost.genre.map((elem) => (
-      <span
-       className={s.genre}
-       style={{ backgroundColor: elem.hexColor }}
-      >
-       {elem.label}
-      </span>
-     ))}
-    </div>*/}
    </section>
   </StylesFullScreen>
  );

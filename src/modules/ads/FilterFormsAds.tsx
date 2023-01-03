@@ -136,7 +136,7 @@ export const FilterFormsAds = ({
        <InputFormWhoIsLookingVacancy
         control={control}
         placeholder="Вид коллектива"
-        name="team_type"
+        name="typeOfInstitution"
         options={teamTypeADS}
        />
       ) : (
@@ -150,7 +150,7 @@ export const FilterFormsAds = ({
        <InputFormWhoIsLookingVacancy
         control={control}
         placeholder="Вид коллектива"
-        name="team_type"
+        name="typeOfInstitution"
         options={teamTypeADS}
        />
       ) : watch_looking_ads === "Музыканта" ? (
@@ -169,7 +169,7 @@ export const FilterFormsAds = ({
        <InputFormWhoIsLookingVacancy
         control={control}
         placeholder="Вид коллектива"
-        name="team_type"
+        name="typeOfInstitution"
         options={teamTypeADS}
        />
       ) : watch_questionnaire ===

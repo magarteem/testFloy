@@ -1,333 +1,163 @@
-import {
- Controller,
- useFormContext,
-} from "react-hook-form";
-import { InputLabel } from "../../common/ui-elements/Input/InputLabel";
-
-import { BtnInFormSaveCancel } from "../../common/components/navigateButton/BtnInFormSaveCancel";
-import s from "./style/threeStepFormRegister.module.scss";
-import { Input } from "../../common/ui-elements/Input/Input";
-
+import { useFormContext } from "react-hook-form";
 import { FormLayout } from "../../common/layout/formLayout/FormLayout";
-import { UploadPhoto } from "../../common/components/signIn/uploadPhoto/UploadPhoto";
-import { ReactSelectElement } from "../../common/ui-elements/react-select/ReactSelectElement";
-import {
- genderBD,
- genreBD,
- groupeOptions,
- profilePrivacySettings,
- cityBD,
- skillBD,
-} from "./service/BD";
-import { SelectElementMui } from "../../common/mui-element/SelectElementMui";
-import { ReactDatePickerElement } from "../../common/ui-elements/reactDatePicker/ReactDatePicker";
-import { CustomReactSelectToolsMui } from "../../common/mui-element/CustomReactSelectToolsMui";
 import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
-import TextFieldTextareaElementMui from "../../common/mui-element/textFieldElementMui/textAreaInput/TextFieldTextareaElementMui";
-import TextFieldElementMui from "../../common/mui-element/textFieldElementMui/textField/TextFieldElementMui";
-import { DatePickerMui } from "../../common/mui-element/datePicker/DatePickerMui";
-import { SelectGenreElementMui } from "../../common/mui-element/selectGenreElementMui/SelectGenreElementMui";
-import { SelectToolsElementMui } from "../../common/mui-element/selectToolsElementMui/SelectToolsElementMui";
-import TextField from "@mui/material/TextField";
+import { InputRegFormFieldName } from "./formFieldsRegister/InputRegFormFieldName";
+import { InputFormTypeCollective } from "./formFieldsRegister/InputFormTypeCollective";
+import { teamTypeADS } from "../vacancy/service/createVacancyBD";
+import { InputFormTypeOfInstitution } from "./formFieldsRegister/InputFormTypeOfInstitution";
+import { InputFormCity } from "./formFieldsRegister/InputFormCity";
+import { InputFormImgUpload } from "./formFieldsRegister/InputFormImgUpload";
+import { InputFormGender } from "./formFieldsRegister/InputFormGender";
+import { InputFormAge } from "./formFieldsRegister/InputFormAge";
+import { InputFormGenre } from "./formFieldsRegister/InputFormGenre";
+import { InputFormTools } from "./formFieldsRegister/InputFormTools";
+import { InputFormMaster } from "./formFieldsRegister/InputFormMaster";
+import { InputFormWorkExperience } from "./formFieldsRegister/InputFormWorkExperience";
+import { InputFormEducation } from "./formFieldsRegister/InputFormEducation";
+import { InputFormPrivateSettings } from "./formFieldsRegister/InputFormPrivateSettings";
+import s from "./style/threeStepFormRegister.module.scss";
+import { InputFormAboutMe } from "./formFieldsRegister/InputFormAboutMe";
+import { InputFormPhone } from "./formFieldsRegister/InputFormPhone";
+import { InputFormEmail } from "./formFieldsRegister/InputFormEmail";
+import { InputFormWebSite } from "./formFieldsRegister/InputFormWebSite";
+import { InputFormEstablishmentDescription } from "./formFieldsRegister/InputFormEstablishmentDescription";
+import { InputRegFormRoomArea } from "./formFieldsRegister/InputRegFormRoomArea";
+import { InputFormOpeningHours } from "./formFieldsRegister/InputFormOpeningHours";
 
 export const ThreeStepFormRegister = () => {
  const {
+  watch,
   register,
   control,
-  formState: { errors, isValid },
+  formState: { isValid },
  } = useFormContext();
+
+ const watchFieldName =
+  watch("type_account").value === "musician";
+
+ const watchFieldType = watch("type_account").value;
+ console.log(watch("type_account").value);
 
  return (
   <FormLayout textLabel="Регистрация">
    <div className={s.main}>
-    <div className={s.styleInput}>
-     <Controller
-      name="name_field"
+    {watchFieldType === "group-collective" && (
+     <InputFormTypeCollective
       control={control}
-      rules={{
-       required: "Обязательное поле",
-       minLength: {
-        value: 3,
-        message: "Не менее 3х символов",
-       },
-      }}
-      render={({ field: { onChange, ref, ...field } }) => (
-       <div className={s.sizeInput}>
-        <TextFieldElementMui
-         ItemRef={ref}
-         placeholder="Ваше имя"
-         required={true}
-         onChange={onChange}
-         errors={errors.name_field}
-         {...field}
-        />
-       </div>
-      )}
+      name="type_collective"
+      placeholder="Вид коллектива"
+      options={teamTypeADS}
      />
-    </div>
+    )}
 
-    <div className={s.selectField}>
-     <Controller
-      name="img_upload"
+    {watchFieldType === "performance-venue" && (
+     <InputFormTypeOfInstitution control={control} />
+    )}
+
+    <InputRegFormFieldName
+     control={control}
+     name="name_field"
+     placeholder={watchFieldName ? "Ваше имя" : "Название"}
+     required={true}
+    />
+
+    <InputFormImgUpload
+     register={register}
+     control={control}
+     name="img_upload"
+    />
+
+    <InputFormCity control={control} name="city" />
+
+    {watchFieldName && (
+     <>
+      <InputFormGender control={control} name="gender" />
+      <InputFormAge control={control} name="age" />
+     </>
+    )}
+
+    <InputFormTools
+     control={control}
+     name="tool"
+     typeAccount={watchFieldType}
+    />
+
+    <InputFormGenre control={control} name="genre" />
+
+    {watchFieldName && (
+     <InputFormMaster control={control} name="master" />
+    )}
+
+    {(watchFieldType === "musician" ||
+     watchFieldType === "group-collective") && (
+     <InputFormWorkExperience
       control={control}
-      render={({ field: { onChange, ...field } }) => (
-       <UploadPhoto register={register} />
-      )}
-     />
-    </div>
-
-    <div className={s.selectField}>
-     <Controller
-      name="city"
-      control={control}
-      rules={{
-       required: "Обязательное поле",
-      }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <SelectElementMui
-        ItemRef={ref}
-        value={value}
-        placeholder="Город"
-        required={true}
-        options={cityBD}
-        //onChange={onChange}
-        //@ts-ignore
-        onChange={(e) =>
-         onChange({
-          value: e.target.value,
-          label: e.target.value,
-         })
-        }
-        errors={errors.city}
-        {...field}
-       />
-      )}
-     />
-    </div>
-
-    <div className={s.selectField}>
-     <Controller
-      name="gender"
-      control={control}
-      rules={{
-       required: "Обязательное поле",
-      }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <SelectElementMui
-        ItemRef={ref}
-        value={value}
-        placeholder="Пол"
-        required={true}
-        options={genderBD}
-        //@ts-ignore
-        onChange={(e) =>
-         onChange({
-          value: e.target.value,
-          label: e.target.value,
-         })
-        }
-        errors={errors.gender}
-        {...field}
-       />
-      )}
-     />
-    </div>
-
-    <div className={s.styleInput}>
-     <Controller
-      name="age"
-      control={control}
-      rules={{
-       required: "Обязательное поле",
-      }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <div className={s.sizeInput}>
-        <DatePickerMui
-         placeholder="Возраст"
-         required={true}
-         value={value}
-         //value={new Date(value).getTime()}
-         onChange={onChange}
-         //onChange={(date) => onChange(new Date(date).getTime())}
-         errors={errors.age}
-         {...field}
-        />
-       </div>
-      )}
-     />
-    </div>
-
-    {/*<div className={s.selectField}>
-     <Controller
-      name="age"
-      control={control}
-      rules={{
-       required: "Обязательное поле",
-      }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <ReactDatePickerElement
-        ItemRef={ref}
-        placeholder="Возраст"
-        value={value}
-        onChange={(date) =>
-         onChange(new Date(date).getTime())
-        }
-        errors={errors.age}
-        {...field}
-       />
-      )}
-     />
-    </div>*/}
-
-    <div className={s.selectFieldCustomHeight}>
-     <Controller
-      name="tool"
-      control={control}
-      rules={{
-       required: "Обязательное поле",
-      }}
-      render={({
-       field: { onChange, value, ref, ...field },
-       formState: { errors },
-      }) => (
-       <SelectToolsElementMui
-        ItemRef={ref}
-        value={value}
-        placeholder="Инструмент (род деятельности)"
-        required={true}
-        options={groupeOptions}
-        onChange={onChange}
-        errors={errors.tool}
-        {...field}
-       />
-      )}
-     />
-    </div>
-
-    <div className={s.selectFieldCustomHeight}>
-     <Controller
-      name="genre"
-      control={control}
-      rules={{
-       required: "Обязательное поле",
-      }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <SelectGenreElementMui
-        ItemRef={ref}
-        value={value}
-        placeholder="Жанр"
-        required={true}
-        options={genreBD}
-        onChange={onChange}
-        errors={errors.genre}
-        {...field}
-       />
-      )}
-     />
-    </div>
-
-    <div className={s.selectField}>
-     <Controller
-      name="master"
-      control={control}
-      render={({ field: { onChange, ref, ...field } }) => (
-       <SelectElementMui
-        ItemRef={ref}
-        placeholder="Мастерство"
-        options={skillBD}
-        //@ts-ignore
-        onChange={(e) =>
-         onChange({
-          value: e.target.value,
-          label: e.target.value,
-         })
-        }
-        {...field}
-       />
-      )}
-     />
-    </div>
-
-    <div className={s.styleInput}>
-     <Controller
       name="work_experience"
-      control={control}
-      render={({ field: { onChange, ref, ...field } }) => (
-       <div className={s.sizeInput}>
-        <TextField
-         multiline
-         maxRows={40}
-         //sx={styleTextAreaSX.input}
-         fullWidth
-         label="Чем вы хотите поделиться?"
-         autoComplete="off"
-         placeholder="Чем вы хотите поделиться?"
-         variant="outlined"
-         onChange={onChange}
-        />
-       </div>
-      )}
      />
-    </div>
+    )}
 
-    <div className={s.styleInput}>
-     <Controller
+    {watchFieldName && (
+     <InputFormEducation
+      control={control}
       name="education"
-      control={control}
-      render={({ field: { onChange, ref, ...field } }) => (
-       <div className={s.sizeInput}>
-        <TextFieldTextareaElementMui
-         ItemRef={ref}
-         placeholder="Образование"
-         onChange={onChange}
-         multiline={true}
-         helperText="Опишите ваше образование"
-         {...field}
-        />
-       </div>
-      )}
      />
+    )}
+
+    {(watchFieldType === "musician" ||
+     watchFieldType === "group-collective") && (
+     <InputFormPrivateSettings
+      control={control}
+      name="private_settings"
+     />
+    )}
+
+    <div className={s.requirements}>
+     <h2>Портфолио</h2>
     </div>
 
-    <div className={s.selectField}>
-     <Controller
-      name="private_settings"
-      control={control}
-      rules={{
-       required: "Обязательное поле",
-      }}
-      render={({
-       field: { onChange, value, ref, ...field },
-      }) => (
-       <SelectElementMui
-        ItemRef={ref}
-        value={value}
-        placeholder="Настройки приватности анкеты"
-        required={true}
-        options={profilePrivacySettings}
-        //@ts-ignore
-        onChange={(e) =>
-         onChange({
-          value: e.target.value,
-          label: e.target.value,
-         })
-        }
-        errors={errors.private_settings}
-        {...field}
-       />
-      )}
-     />
+    <InputFormImgUpload
+     register={register}
+     control={control}
+     name="portfolio_photo"
+    />
+
+    {(watchFieldType === "musician" ||
+     watchFieldType === "group-collective") && (
+     <InputFormAboutMe control={control} name="about_me" />
+    )}
+
+    <div className={s.requirements}>
+     <h2>Контакты</h2>
     </div>
+
+    <InputFormPhone control={control} name="phone" />
+    <InputFormEmail
+     control={control}
+     name="email_contact"
+    />
+    <InputFormWebSite control={control} name="web_site" />
+
+    {watchFieldType !== "musician" &&
+     watchFieldType !== "group-collective" && (
+      <>
+       <div className={s.requirements}>
+        <h2>Описание</h2>
+       </div>
+
+       {/*<InputFormOpeningHours control={control} />*/}
+
+       {watchFieldType === "performance-venue" && (
+        <InputRegFormRoomArea
+         control={control}
+         name="room_area"
+        />
+       )}
+       <InputFormEstablishmentDescription
+        control={control}
+        name="establishment_description"
+       />
+      </>
+     )}
    </div>
 
    <div className={s.btnFormWrapper}>

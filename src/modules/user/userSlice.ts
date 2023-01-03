@@ -79,7 +79,7 @@ const userSlice = createSlice({
      state.profileData.email = actions.payload.email;
      state.profileData.skills.inspiration =
       actions.payload.inspiration;
-     state.profileData.webSite = actions.payload.webSite;
+     state.profileData.webSite = actions.payload.web_site;
      state.profileData.gender = actions.payload.gender;
      state.profileData.skills.tool = actions.payload.tool;
      state.profileData.skills.genre = actions.payload.genre;

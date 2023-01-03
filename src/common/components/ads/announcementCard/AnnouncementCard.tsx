@@ -1,24 +1,32 @@
+import { Link } from "react-router-dom";
 import { TimelineCards } from "../../../../modules/ads/types/adsSliceType";
 import { BodyAds } from "../bodyAds/BodyAds";
 import { HeaderAds } from "../headerAds/HeaderAds";
-import s from "./announcementCard.module.scss";
 
 interface AnnouncementCardType {
-  x: TimelineCards;
+ x: TimelineCards;
+ link: string;
+ options?: any;
 }
 
-export const AnnouncementCard = ({ x }: AnnouncementCardType) => {
-  return (
-    <>
-      <HeaderAds required={x.required.label} payment={x.payment} />
-      <BodyAds
-        city={x.city.label}
-        commitAbout={x.commitAbout}
-        genre={x.genre}
-        publicationDate={x.publicationDate}
-        tools={x.tool}
-        typeOfInstitution={x.typeOfInstitution}
-      />
-    </>
-  );
+export const AnnouncementCard = ({
+ x,
+ link,
+ options,
+}: AnnouncementCardType) => {
+ return (
+  <>
+   <HeaderAds x={x} link={link} options={options} />
+   <Link to={link}>
+    <BodyAds
+     city={x.city.label}
+     commitAbout={x.commitAbout}
+     genre={x.genre}
+     publicationDate={x.publicationDate}
+     tools={x.tool}
+     typeOfInstitution={x.typeOfInstitution}
+    />
+   </Link>
+  </>
+ );
 };

@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { InitialStateAdsType } from "../../../../../modules/ads/types/adsSliceType";
 import { InitialStateUserType } from "../../../../../modules/user/types/userSliceType";
+import { RibbonLayout } from "../../../../layout/ribbonLayout/RibbonLayout";
 import { AnnouncementFeed } from "../../announcementFeed/AnnouncementFeed";
 
 export const VacancyTabs = () => {
@@ -14,9 +15,10 @@ export const VacancyTabs = () => {
  );
 
  return (
-  <AnnouncementFeed
-   adsList={filterForVacancy}
-   profile={profile}
-  />
+  <RibbonLayout>
+   {filterForVacancy.map((x) => (
+    <AnnouncementFeed x={x} profile={profile} key={x.id} />
+   ))}
+  </RibbonLayout>
  );
 };

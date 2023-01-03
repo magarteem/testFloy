@@ -9,27 +9,24 @@ import {
 } from "react-router-dom";
 import { HeaderStylesWrapper } from "../common/layout/headerStylesWrapper/HeaderStylesWrapper";
 import { LongMenu } from "../common/mui-element/LongMenu";
-import {
- InitialStateAdsType,
- TimelineCards,
-} from "../modules/ads/types/adsSliceType";
+import { InitialStateAdsType } from "../modules/ads/types/adsSliceType";
 import { SkillsLayoutTools } from "../common/components/profile/aboutProfile/skills/SkillsLayoutTools";
 import { SkillsLayoutGenre } from "../common/components/profile/aboutProfile/skills/SkillsLayoutGenre";
 import { useAppDispatch } from "../core/redux/app/hooks";
-import { setDataNotificationThunk } from "../modules/notification/setDataNotificationThunk";
-import { calculateAge } from "../helpers/calculateAge";
 import { StylesFullScreen } from "../common/layout/stylesFullScreen/StylesFullScreen";
-import cn from "classnames";
-import s from "./styles/adsPageOne.module.scss";
 import { InitialStateUserType } from "../modules/user/types/userSliceType";
 import { Received } from "../common/components/notification/waitinActionButton/action/Received";
 import { Pending } from "../common/components/notification/waitinActionButton/action/Pending";
 import { Rejected } from "../common/components/notification/waitinActionButton/action/Rejected";
 import { RespondButton } from "../common/components/ads/respondButton/RespondButton";
-import { updateStatusAds } from "../modules/ads/adsSlice";
 import { RouteNames } from "../core/router/RouteNames";
-import Avatar from "@mui/material/Avatar";
 import { OptionLongMenuType } from "../modules/timeLine/types/timlineSliceType";
+import { deleteAdsThunk } from "../modules/ads/deleteAdsThunk";
+import { getThisPageURL } from "../helpers/getThisPageURL";
+import { calculateAge } from "../helpers/calculateAge";
+import Avatar from "@mui/material/Avatar";
+import cn from "classnames";
+import s from "./styles/adsPageOne.module.scss";
 
 export const AdsPageOne = () => {
  const dispatch = useAppDispatch();
@@ -63,27 +60,29 @@ export const AdsPageOne = () => {
  // };
 
  const changeThisNews = () => {
-  //<Navigate to={RouteNames.CHANGE_THIS_NEWS} />
+  <Navigate to={RouteNames.CHANGE_THIS_NEWS} />;
  };
 
- const deleteThisNews = () => {};
+ const deleteThisADS = () =>
+  id_ads && dispatch(deleteAdsThunk(+id_ads));
 
+ // вынести в useOptionsLongMenu
  const options: OptionLongMenuType[] = [
   {
    label: "Редактировать",
-   link: ``,
+   link: `${RouteNames.ADS}/${RouteNames.ADS_CHANGE_THIS_ADS}/${id_ads}`,
    action: changeThisNews,
   },
   { label: "Архивировать", link: "", action: () => {} },
   {
    label: "Скопировать ссылку",
    link: "",
-   action: () => {},
+   action: () => getThisPageURL(),
   },
   {
    label: "Удалить",
-   link: "",
-   action: deleteThisNews,
+   link: RouteNames.ADS,
+   action: deleteThisADS,
   },
  ];
 
@@ -93,7 +92,6 @@ export const AdsPageOne = () => {
     <HeaderStylesWrapper
      cancelImgIcon={arrow_back}
      textLabel="Обявления"
-     // anyIconsFirst={share}
      share={shareIcons}
      tsxElement={
       <LongMenu

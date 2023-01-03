@@ -26,6 +26,7 @@ import clearIcon from "../../assets/icons/clearIcon.svg";
 import { SelectTypeNews } from "./formFields/SelectTypeNews";
 import { ButtonSubmitMui } from "../../common/mui-element/ButtonSubmitMui";
 import { CustomButtomAddImg } from "../../common/components/timeLine/customButtomAddImg/CustomButtomAddImg";
+import { updateDataTimeLineThunk } from "./updateDataTimeLineThunk";
 
 interface ChangeNewNewsFormType {
  changeDataNews: InitialStateTeamLineType;
@@ -40,7 +41,7 @@ export const ChangeThisNewsForm = ({
  const dispatch = useAppDispatch();
  const navigate = useNavigate();
 
- const { timeLinePost, date, id } = changeDataNews;
+ const { timeLinePost, author, date, id } = changeDataNews;
 
  const {
   watch,
@@ -64,19 +65,19 @@ export const ChangeThisNewsForm = ({
  const onSubmit = (data: TimeLinePostType) => {
   myProfile &&
    dispatch(
-    setNewNewsTimeLineThunk({
-     date: new Date().getTime(),
-     id: new Date().getTime(),
+    updateDataTimeLineThunk({
+     date,
+     id,
      timeLinePost: {
       ...data,
-      photo: [cardsItem_1],
+      genre: data.genre,
+      tools: data.tools,
+      photo: data.photo,
+      text: data.text,
+      typeCategory: data.typeCategory,
+      city: data.city,
      },
-     author: {
-      avatar: myProfile.avatar,
-      city: myProfile.city,
-      id_user: myProfile.id_user,
-      name: myProfile.name,
-     },
+     author,
     })
    );
   navigate(-1);

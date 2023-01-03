@@ -6,7 +6,10 @@ import { HeaderStylesWrapper } from "../common/layout/headerStylesWrapper/Header
 import { LongMenu } from "../common/mui-element/LongMenu";
 import { SkillsLayoutTools } from "../common/components/profile/aboutProfile/skills/SkillsLayoutTools";
 import { SkillsLayoutGenre } from "../common/components/profile/aboutProfile/skills/SkillsLayoutGenre";
-import { useAppSelector } from "../core/redux/app/hooks";
+import {
+ useAppDispatch,
+ useAppSelector,
+} from "../core/redux/app/hooks";
 import { RibbonLayout } from "../common/layout/ribbonLayout/RibbonLayout";
 import { StylesFullScreen } from "../common/layout/stylesFullScreen/StylesFullScreen";
 import { Pending } from "../common/components/notification/waitinActionButton/action/Pending";
@@ -15,6 +18,10 @@ import { Rejected } from "../common/components/notification/waitinActionButton/a
 import cn from "classnames";
 import s from "./styles/incomingNotificationPageOne.module.scss";
 import { calculateAge } from "../helpers/calculateAge";
+import { useOptionsLongMenu } from "../modules/ads/helpers/OptionsLongMenu";
+import { deleteAdsThunk } from "../modules/ads/deleteAdsThunk";
+import { OptionLongMenuType } from "../modules/timeLine/types/timlineSliceType";
+import { RouteNames } from "../core/router/RouteNames";
 
 export const OutgoingNotificationPageOne = () => {
  const data = useAppSelector(

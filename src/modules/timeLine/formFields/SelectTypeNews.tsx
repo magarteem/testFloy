@@ -51,7 +51,6 @@ export const SelectTypeNews = ({
         "& .Mui-focused": {
          color: "#1A1C18 !important",
         },
-        // "&.Mui-error .MuiOutlinedInput-notchedOutline": {
        }}
       >
        <InputLabel

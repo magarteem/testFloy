@@ -39,6 +39,7 @@ export const SelectToolsElementMui = ({
  required = false,
  ...props
 }: SelectToolsElementMuiType) => {
+ console.log(value);
  const [classesHiddenCount, setClassesHiddenCount] =
   useState(0);
  const [personName, setPersonName] = useState<string[]>(

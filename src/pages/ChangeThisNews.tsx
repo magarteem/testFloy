@@ -10,13 +10,12 @@ export const ChangeThisNews = () => {
   (state) => state.timeLineSliceReducer.timeLineData
  );
 
- console.log(data);
  const { change_id_news } = useParams();
  const changeDataNews = data.find(
   (x) => `${x.id}` === change_id_news
  );
  if (!changeDataNews) return <h1>Loading ...</h1>;
- console.log(changeDataNews);
+
  return (
   <FormLayoutCreateADS
    textLabel="Редактировать новость"

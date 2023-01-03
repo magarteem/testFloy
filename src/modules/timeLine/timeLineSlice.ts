@@ -9,6 +9,7 @@ import {
  InitialStateTeamLineType,
  InitialStateType,
 } from "./types/timlineSliceType";
+import { updateDataTimeLineThunk } from "./updateDataTimeLineThunk";
 
 const initialState: InitialStateType = {
  timeLineData: [],
@@ -72,6 +73,39 @@ const timeLineSlice = createSlice({
      actions: PayloadAction<string>
     ) => {
      console.log("setNewNewsTimeLineThunk");
+    }
+   )
+   //
+   .addCase(
+    updateDataTimeLineThunk.pending.type,
+    (state: InitialStateType) => {
+     state.isLoading = true;
+    }
+   )
+   .addCase(
+    updateDataTimeLineThunk.fulfilled.type,
+    (
+     state: InitialStateType,
+     actions: PayloadAction<InitialStateTeamLineType>
+    ) => {
+     state.isLoading = false;
+     state.timeLineData = state.timeLineData.map((x) => {
+      if (x.id === actions.payload.id) {
+       return {
+        ...x,
+        timeLinePost: actions.payload.timeLinePost,
+       };
+      } else return { ...x };
+     });
+    }
+   )
+   .addCase(
+    updateDataTimeLineThunk.rejected.type,
+    (
+     state: InitialStateType,
+     actions: PayloadAction<string>
+    ) => {
+     console.log("updateDataTimeLineThunk");
     }
    )
    //

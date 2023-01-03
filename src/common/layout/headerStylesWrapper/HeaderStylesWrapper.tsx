@@ -14,6 +14,7 @@ interface HeaderStylesWrapperType {
  children?: ReactNode;
  share?: string;
  onClickAnyIconsFirst?: () => void;
+ onClickAnyIconsSecond?: () => void;
 }
 
 export const HeaderStylesWrapper = ({
@@ -25,6 +26,7 @@ export const HeaderStylesWrapper = ({
  children,
  share,
  onClickAnyIconsFirst,
+ onClickAnyIconsSecond,
 }: HeaderStylesWrapperType) => {
  return (
   <section className={s.headerStylesWrapper}>
@@ -44,6 +46,16 @@ export const HeaderStylesWrapper = ({
     )}
 
     {anyIconsFirst && (
+     <Link to={anyIconsFirst.action}>
+      <IconButton onClick={onClickAnyIconsFirst}>
+       <img
+        src={anyIconsFirst.img}
+        alt={anyIconsFirst.img}
+       />
+      </IconButton>
+     </Link>
+    )}
+    {/*{anyIconsFirst && (
      <IconButton onClick={onClickAnyIconsFirst}>
       <img
        src={anyIconsFirst.img}
@@ -59,11 +71,11 @@ export const HeaderStylesWrapper = ({
      //   alt={anyIconsFirst.img}
      //  />
      // </Link>
-    )}
+    )}*/}
 
     {anyIconsSecond && (
      // <Link to={anyIconsSecond.action}>
-     <IconButton>
+     <IconButton onClick={onClickAnyIconsSecond}>
       <img
        src={anyIconsSecond.img}
        alt={anyIconsSecond.img}

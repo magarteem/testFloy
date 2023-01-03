@@ -17,7 +17,13 @@ import { InputFormWebSite } from "./formFieldsVacancy/InputFormWebSite";
 import s from "./style/createFormVacancy.module.scss";
 import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
 
-export const CreateFormVacancy = () => {
+interface CreateFormVacancyType {
+ buttonSubbmitText: string;
+}
+
+export const CreateFormVacancy = ({
+ buttonSubbmitText,
+}: CreateFormVacancyType) => {
  const { control, watch } = useFormContext();
 
  const typeVacancy = watch("required")?.value;
@@ -75,7 +81,7 @@ export const CreateFormVacancy = () => {
      <div className={s.btnFormWrapper}>
       <BtnInGroupeSaveCancelMui
        textCancelButton="Назад"
-       textButton="Создать вакансию"
+       textButton={buttonSubbmitText}
       />
      </div>
     </>

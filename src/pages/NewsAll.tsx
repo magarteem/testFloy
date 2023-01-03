@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { PopUpNavigateGradient } from "../common/components/navigateButton/PopUpNavigateGradient";
 import addIcons from "../assets/icons/addIcons.svg";
 import filterIconsNew from "../assets/icons/filterIconsNew.svg";
@@ -8,6 +9,8 @@ import { InitialStateType } from "../modules/timeLine/types/timlineSliceType";
 import { RibbonLayout } from "../common/layout/ribbonLayout/RibbonLayout";
 import { RouteNames } from "../core/router/RouteNames";
 import { CardsNewsItemPreview } from "../common/components/timeLine/cardsNewsItemPreview/CardsNewsItemPreview";
+import { FilterModalLayout } from "../common/layout/filterModalLayout/FilterModalLayout";
+import { FilterFormsTimeLine } from "../modules/timeLine/FilterFormsTimeLine";
 
 const add = {
  img: addIcons,
@@ -21,6 +24,10 @@ const filter = {
 export const NewsAll = () => {
  const data: InitialStateType = useOutletContext();
 
+ const [open, setOpen] = useState(false);
+ const handleClickOpen = () => setOpen(true);
+ const handleClose = () => setOpen(false);
+
  return (
   <>
    <StylesFullScreen>
@@ -28,6 +35,7 @@ export const NewsAll = () => {
      textLabel="Лента"
      anyIconsFirst={add}
      anyIconsSecond={filter}
+     onClickAnyIconsSecond={handleClickOpen}
     />
 
     {data.isLoading ? (
@@ -40,6 +48,26 @@ export const NewsAll = () => {
      </RibbonLayout>
     )}
    </StylesFullScreen>
+
+   <FilterModalLayout
+    style={{
+     "& .MuiDialog-container": {
+      alignItems: "flex-end",
+
+      "& .MuiPaper-root": {
+       background: "#FDFDF5",
+       borderRadius: "28px 28px 0px 0px",
+       width: "100%",
+       margin: 0,
+       padding: "16px",
+      },
+     },
+    }}
+    modalOpen={open}
+    handleClose={handleClose}
+   >
+    <FilterFormsTimeLine handleClose={handleClose} />
+   </FilterModalLayout>
 
    <PopUpNavigateGradient />
   </>

@@ -6,6 +6,12 @@ export const requiredVacancy: OptionSelectType[] = [
  { value: "group-collective", label: "Коллектив" },
  { value: "soundEngineer", label: "Звукорежиссёр" },
 ];
+//!         ADS
+export const requiredADS: OptionSelectType[] = [
+ { value: "work", label: "Работу" },
+ { value: "musician", label: "Музыканта" },
+ { value: "group-collective", label: "Коллектив" },
+];
 
 //          тип коллектива
 export const teamTypeADS: OptionSelectType[] = [
@@ -37,11 +43,4 @@ export const typeOfInstitution: OptionSelectType[] = [
  { value: "music-shop", label: "Музыкальный магазин" },
  { value: "group", label: "Группа" },
  { value: "other", label: "другое" },
-];
-
-//!         ADS
-export const requiredADS: OptionSelectType[] = [
- { value: "work", label: "Работу" },
- { value: "musician", label: "Музыканта" },
- { value: "group-collective", label: "Коллектив" },
 ];

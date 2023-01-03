@@ -15,6 +15,7 @@ interface HeaderCardsType {
  timeLinePost: TimeLinePostType;
  date: number;
  menu?: boolean;
+ options?: any;
 }
 
 export const HeaderCardsNews = ({
@@ -22,6 +23,7 @@ export const HeaderCardsNews = ({
  date,
  menu = true,
  timeLinePost,
+ options,
 }: HeaderCardsType) => {
  return (
   <div className={s.headerCardsNews}>
@@ -45,7 +47,7 @@ export const HeaderCardsNews = ({
 
    {menu && (
     <div className={s.buttonAction}>
-     <LongMenu />
+     <LongMenu options={options} />
     </div>
    )}
   </div>

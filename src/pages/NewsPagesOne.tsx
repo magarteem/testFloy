@@ -1,5 +1,4 @@
 import {
- Navigate,
  useOutletContext,
  useParams,
 } from "react-router-dom";
@@ -14,12 +13,13 @@ import {
 } from "../modules/timeLine/types/timlineSliceType";
 import { LongMenu } from "../common/mui-element/LongMenu";
 import { HeaderCardsNews } from "../common/components/timeLine/headerCards/HeaderCardsNews";
-import s from "./styles/newsPagesOne.module.scss";
 import { RouteNames } from "../core/router/RouteNames";
 import { useAppDispatch } from "../core/redux/app/hooks";
 import { deleteNewsTimeLineThunk } from "../modules/timeLine/deleteNewsTimeLineThunk";
 import { ChipsGenreItem } from "../common/ui-elements/chips/ChipsGenreItem";
 import { ChipsToolItem } from "../common/ui-elements/chips/ChipsToolItem";
+import { getThisPageURL } from "../helpers/getThisPageURL";
+import s from "./styles/newsPagesOne.module.scss";
 
 export const NewsPagesOne = () => {
  const dispatch = useAppDispatch();
@@ -31,25 +31,22 @@ export const NewsPagesOne = () => {
  );
  if (!dataOneNews) return <h1>Loading ...</h1>;
 
- const changeThisNews = () => (
-  <Navigate to={RouteNames.CHANGE_THIS_NEWS} />
- );
-
  const deleteThisNews = () => {
   dispatch(deleteNewsTimeLineThunk(dataOneNews.id));
  };
 
+ // вынести в useOptionsLongMenu
  const options: OptionLongMenuType[] = [
   {
    label: "Редактировать",
    link: `${RouteNames.CHANGE_THIS_NEWS}/${dataOneNews.id}`,
-   action: changeThisNews,
+   action: () => {},
   },
   { label: "Архивировать", link: "", action: () => {} },
   {
    label: "Скопировать ссылку",
    link: "",
-   action: () => {},
+   action: () => getThisPageURL(),
   },
   {
    label: "Удалить",

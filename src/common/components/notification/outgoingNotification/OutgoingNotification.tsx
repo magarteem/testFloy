@@ -1,4 +1,4 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { AnnouncementCard } from "../../ads/announcementCard/AnnouncementCard";
 import { AdsLayoutItem } from "../../../layout/adsLayoutItem/AdsLayoutItem";
 import { RouteNames } from "../../../../core/router/RouteNames";
@@ -13,12 +13,13 @@ export const OutgoingNotification = () => {
 
  return (
   <>
-   {data?.adsList.map((x) => {
+   {data.adsList.map((x) => {
     return (
      <AdsLayoutItem key={x.id}>
-      <Link to={`${RouteNames.NOTIFICATION}/${x.id}`}>
-       <AnnouncementCard x={x} />
-      </Link>
+      <AnnouncementCard
+       x={x}
+       link={`${RouteNames.NOTIFICATION}/${x.id}`}
+      />
 
       <div className={s.pending}>
        {x.waitingForResponse.status === 0 && <Pending />}

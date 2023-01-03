@@ -12,8 +12,11 @@ export enum RouteNames {
  CHANGE_THIS_NEWS = "/change-this-news",
 
  ADS = "/ads",
+ ADS_VACANCY = "ads-vacancy",
  ADS_LIST = "ads-list",
  ADS_QUESTIONNAIRE_LIST = "questionnaire-list",
+ ADS_CHANGE_THIS_ADS = "change-this-ads",
+ ADS_TABS = "ads-tabs",
 
  CREATE_ADS = "/create-ads",
 

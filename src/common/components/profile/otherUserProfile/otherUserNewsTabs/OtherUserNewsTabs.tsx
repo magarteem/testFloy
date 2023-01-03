@@ -6,7 +6,6 @@ import { InitialStateAdsType } from "../../../../../modules/ads/types/adsSliceTy
 import { InitialStateTeamLineType } from "../../../../../modules/timeLine/types/timlineSliceType";
 import { InitialStateUserType } from "../../../../../modules/user/types/userSliceType";
 import { RibbonLayout } from "../../../../layout/ribbonLayout/RibbonLayout";
-import { AnnouncementFeed } from "../../../ads/announcementFeed/AnnouncementFeed";
 import { BodyCards } from "../../../timeLine/bodyCards/BodyCards";
 import { CardsNewsItemPreview } from "../../../timeLine/cardsNewsItemPreview/CardsNewsItemPreview";
 import { HeaderCardsNews } from "../../../timeLine/headerCards/HeaderCardsNews";
@@ -26,7 +25,7 @@ export const OtherUserNewsTabs = () => {
  return (
   <RibbonLayout>
    {filterForNewsThisUther.map((x) => (
-    <CardsNewsItemPreview itemDataNews={x} />
+    <CardsNewsItemPreview itemDataNews={x} key={x.id} />
    ))}
   </RibbonLayout>
  );

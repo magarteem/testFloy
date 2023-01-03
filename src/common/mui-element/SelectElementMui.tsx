@@ -19,7 +19,6 @@ interface SelectElementMuiType {
  ItemRef: any;
  required?: boolean;
 }
-
 export const SelectElementMui = ({
  placeholder,
  value,

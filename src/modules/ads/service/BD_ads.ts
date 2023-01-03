@@ -28,10 +28,7 @@ export const adsListData: TimelineCards[] = [
    },
   },
   publicationDate: 1607786743153,
-  required: {
-   value: "Работу",
-   label: "Работу",
-  },
+  required: { value: "Музыкант", label: "Музыкант" },
   typeOfInstitution: [
    {
     value: "bar",
@@ -73,7 +70,7 @@ export const adsListData: TimelineCards[] = [
   },
   commitAbout:
    "Нам нужна ЗВЕЗДА! Мы ищем самого музыкального, самого талантливого, самого творческого сотрудника ВОКАЛИСТА в арт-группу караоке-бара «ОГУРЦЫ».",
-  phone: "7777777777777777777",
+  phone: "111111111111",
   email: "iana_test@mail.ru",
   web_site: "rerererer",
   waitingForResponse: {
@@ -99,10 +96,7 @@ export const adsListData: TimelineCards[] = [
    },
   },
   publicationDate: 1607786743153,
-  required: {
-   value: "Работу",
-   label: "Работу",
-  },
+  required: { value: "Музыкант", label: "Музыкант" },
   typeOfInstitution: [
    {
     value: "bar",
@@ -144,7 +138,7 @@ export const adsListData: TimelineCards[] = [
   },
   commitAbout:
    "Нам нужна ЗВЕЗДА! Мы ищем самого музыкального, самого талантливого, самого творческого сотрудника ВОКАЛИСТА в арт-группу караоке-бара «ОГУРЦЫ».",
-  phone: "7777777777777777777",
+  phone: "66666666666666777",
   email: "iana_test@mail.ru",
   web_site: "rerererer",
   waitingForResponse: {
@@ -170,10 +164,7 @@ export const adsListData: TimelineCards[] = [
    },
   },
   publicationDate: 1607786743153,
-  required: {
-   value: "Работу",
-   label: "Работу",
-  },
+  required: { value: "Музыкант", label: "Музыкант" },
   typeOfInstitution: [
    {
     value: "bar",
@@ -215,7 +206,7 @@ export const adsListData: TimelineCards[] = [
   },
   commitAbout:
    "Нам нужна ЗВЕЗДА! Мы ищем самого музыкального, самого талантливого, самого творческого сотрудника ВОКАЛИСТА в арт-группу караоке-бара «ОГУРЦЫ».",
-  phone: "7777777777777777777",
+  phone: "77888888888888877",
   email: "iana_test@mail.ru",
   web_site: "rerererer",
   waitingForResponse: {
@@ -241,10 +232,7 @@ export const adsListData: TimelineCards[] = [
    },
   },
   publicationDate: 1607786743153,
-  required: {
-   value: "Работу",
-   label: "Работу",
-  },
+  required: { value: "Музыкант", label: "Музыкант" },
   typeOfInstitution: [
    {
     value: "bar",
@@ -286,7 +274,7 @@ export const adsListData: TimelineCards[] = [
   },
   commitAbout:
    "Нам нужна ЗВЕЗДА! Мы ищем самого музыкального, самого талантливого, самого творческого сотрудника ВОКАЛИСТА в арт-группу караоке-бара «ОГУРЦЫ».",
-  phone: "7777777777777777777",
+  phone: "22222222222222222",
   email: "iana_test@mail.ru",
   web_site: "rerererer",
   waitingForResponse: {
@@ -457,7 +445,7 @@ export const adsListData: TimelineCards[] = [
    },
   },
   publicationDate: 1607786743153,
-  required: { value: "Музыкант", label: "Музыкант" },
+  required: { value: "Музыканта", label: "Музыканта" },
   typeOfInstitution: [
    {
     value: "bar",

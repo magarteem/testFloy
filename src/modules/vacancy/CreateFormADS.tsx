@@ -1,5 +1,4 @@
 import { useFormContext } from "react-hook-form";
-
 import s from "./style/createFormADS.module.scss";
 import { InputFormRequiredAds } from "./formFieldsVacancy/InputFormRequiredAds";
 import { InputFormTypeOfInstitution } from "./formFieldsVacancy/InputFormTypeOfInstitution";
@@ -20,7 +19,13 @@ import { InputFormTools } from "./formFieldsVacancy/InputFormTools";
 import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
 import { InputFormWorkingConditionsTextFields } from "./formFieldsVacancy/InputFormWorkingConditionsTextFields";
 
-export const CreateFormADS = () => {
+interface CreateFormADSType {
+ buttonSubbmitText: string;
+}
+
+export const CreateFormADS = ({
+ buttonSubbmitText,
+}: CreateFormADSType) => {
  const { control, watch } = useFormContext();
  const typeAds = watch("required")?.value;
 
@@ -97,7 +102,7 @@ export const CreateFormADS = () => {
      <div className={s.btnFormWrapper}>
       <BtnInGroupeSaveCancelMui
        textCancelButton="Назад"
-       textButton="Создать обявление"
+       textButton={buttonSubbmitText}
       />
      </div>
     </>

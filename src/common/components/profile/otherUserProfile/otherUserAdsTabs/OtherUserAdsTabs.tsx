@@ -2,7 +2,8 @@ import { useOutletContext } from "react-router-dom";
 import { InitialStateAdsType } from "../../../../../modules/ads/types/adsSliceType";
 import { InitialStateTeamLineType } from "../../../../../modules/timeLine/types/timlineSliceType";
 import { InitialStateUserType } from "../../../../../modules/user/types/userSliceType";
-import { AnnouncementFeed } from "../../../ads/announcementFeed/AnnouncementFeed";
+import { RibbonLayout } from "../../../../layout/ribbonLayout/RibbonLayout";
+import { AnnouncementFeedInNotification } from "../../../notification/announcementFeedInNotification/AnnouncementFeedInNotification";
 
 export const OtherUserAdsTabs = () => {
  const [adsNews, dataAdsList, profile, id_user]: [
@@ -19,9 +20,14 @@ export const OtherUserAdsTabs = () => {
  );
 
  return (
-  <AnnouncementFeed
-   adsList={filterForVacancy}
-   profile={profile}
-  />
+  <RibbonLayout>
+   {filterForVacancy.map((x) => (
+    <AnnouncementFeedInNotification
+     x={x}
+     profile={profile}
+     key={x.id}
+    />
+   ))}
+  </RibbonLayout>
  );
 };

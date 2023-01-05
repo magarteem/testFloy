@@ -23,6 +23,12 @@
  }
 }
 
+.ageRange {
+ display: flex;
+ width: 100%;
+ column-gap: 10px;
+}
+
 .selectField {
  height: 48px;
  width: 100%;

@@ -1,5 +1,6 @@
+import dayjs from "dayjs";
 import { Controller } from "react-hook-form";
-import { DatePickerMui } from "../../../common/mui-element/datePicker/DatePickerMui";
+import { TimePickerMui } from "../../../common/mui-element/timePicker/TimePicker";
 import s from "./formFieldsRegister.module.scss";
 
 export interface InputFormOpeningHoursType {
@@ -15,7 +16,7 @@ export const InputFormOpeningHours = ({
   <div className={s.ageRange}>
    <div className={s.styleInput}>
     <Controller
-     name="fromAge"
+     name="from_opening_hours"
      control={control}
      rules={{
       required: "Обязательное поле",
@@ -25,16 +26,12 @@ export const InputFormOpeningHours = ({
       formState: { errors },
      }) => (
       <div className={s.sizeInput}>
-       <DatePickerMui
-        views={["year"]}
-        placeholder="Возраст от"
-        required={true}
+       <TimePickerMui
+        minTime={dayjs("2023-03-01T08:00")}
+        placeholder="Часы работы с"
         value={value}
-        onChange={(date) =>
-         onChange(new Date(date).getTime())
-        }
+        onChange={onChange}
         errors={errors.fromAge}
-        helperText="Обязательное поле"
         {...field}
        />
       </div>
@@ -44,7 +41,7 @@ export const InputFormOpeningHours = ({
 
    <div className={s.styleInput}>
     <Controller
-     name="toAge"
+     name="to_opening_hours"
      control={control}
      rules={{
       required: "Обязательное поле",
@@ -54,17 +51,13 @@ export const InputFormOpeningHours = ({
       formState: { errors },
      }) => (
       <div className={s.sizeInput}>
-       <DatePickerMui
-        views={["year"]}
-        minDate={watch("fromAge")}
+       <TimePickerMui
+        maxTime={dayjs("2023-03-01T21:00")}
+        watch={watch("from_opening_hours")}
         placeholder="До"
-        required={true}
         value={value}
-        onChange={(date) =>
-         onChange(new Date(date).getTime())
-        }
+        onChange={onChange}
         errors={errors.toAge}
-        helperText="Обязательное поле"
         {...field}
        />
       </div>

@@ -11,8 +11,9 @@ interface TextFieldElementMuiType {
  inputValue?: string;
  children?: ReactNode;
  placeholder: string;
- onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
  ItemRef?: any;
+ disabled?: boolean;
+ onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
  onClick?: () => void;
 }
 
@@ -26,12 +27,14 @@ export default function TextFieldElementMui({
  inputValue,
  placeholder,
  ItemRef,
+ disabled,
  onChange,
  onClick,
  ...props
 }: TextFieldElementMuiType) {
  return (
   <TextField
+   disabled={disabled}
    helperText={errors && errors.message}
    multiline={multiline}
    maxRows={4}

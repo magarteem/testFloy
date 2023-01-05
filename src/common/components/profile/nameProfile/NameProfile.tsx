@@ -20,6 +20,9 @@ export const NameProfile = ({
  const ageFu =
   new Date().getFullYear() - new Date(age).getFullYear();
  // переделать функцию ageFu
+ console.log(new Date().getFullYear());
+ console.log(new Date(age).getFullYear());
+ console.log(ageFu);
  return (
   <div className={s.nameProfile}>
    <h2>{name}</h2>

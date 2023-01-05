@@ -23,6 +23,7 @@ import { InputFormWebSite } from "./formFieldsRegister/InputFormWebSite";
 import { InputFormEstablishmentDescription } from "./formFieldsRegister/InputFormEstablishmentDescription";
 import { InputRegFormRoomArea } from "./formFieldsRegister/InputRegFormRoomArea";
 import { InputFormOpeningHours } from "./formFieldsRegister/InputFormOpeningHours";
+import { InputRegFormFieldAge } from "./formFieldsRegister/InputRegFormFieldAge";
 
 export const ThreeStepFormRegister = () => {
  const {
@@ -72,7 +73,8 @@ export const ThreeStepFormRegister = () => {
     {watchFieldName && (
      <>
       <InputFormGender control={control} name="gender" />
-      <InputFormAge control={control} name="age" />
+      {/*<InputFormAge control={control} name="age" />*/}
+      <InputRegFormFieldAge control={control} name="age" />
      </>
     )}
 
@@ -145,7 +147,10 @@ export const ThreeStepFormRegister = () => {
        </div>
 
        {/*<InputFormOpeningHours control={control} />*/}
-
+       <InputFormOpeningHours
+        control={control}
+        watch={watch}
+       />
        {watchFieldType === "performance-venue" && (
         <InputRegFormRoomArea
          control={control}

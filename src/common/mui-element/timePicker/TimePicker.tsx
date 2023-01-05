@@ -1,49 +1,58 @@
-import "dayjs/locale/ru";
-import TextField from "@mui/material/TextField";
+import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { calculateAge } from "../../../helpers/calculateAge";
+import TextField from "@mui/material/TextField";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 
-interface LinkActiveType {
- value?: any;
+interface TimePickerType {
  onChange: (data: any) => any;
- errors: any;
  placeholder: string;
- helperText?: string;
- required?: boolean;
- minDate?: any;
- views?: any;
+ value?: any;
+ errors: any;
+ minTime?: any;
+ maxTime?: any;
+ watch?: any;
+ shouldDisableTime?: any;
 }
 
-export const DatePickerMui = ({
- value,
- onChange,
- placeholder,
- required = false,
+export const TimePickerMui = ({
  errors,
- helperText = "",
- minDate = new Date(28898667000),
- views = ["year", "month", "day"],
-}: LinkActiveType) => {
+ onChange,
+ value,
+ placeholder,
+ minTime,
+ maxTime = null,
+ watch,
+ shouldDisableTime,
+}: TimePickerType) => {
  return (
-  <LocalizationProvider
-   dateAdapter={AdapterDayjs}
-   adapterLocale={"ru"}
-  >
-   <DatePicker
-    views={views}
-    minDate={minDate}
-    maxDate={new Date()}
+  <LocalizationProvider dateAdapter={AdapterDayjs}>
+   <TimePicker
+    ampm={false}
+    views={["hours"]}
+    minTime={false}
     label={placeholder}
     value={value}
-    inputFormat={calculateAge(value)}
     onChange={onChange}
-    renderInput={(params) => (
+    //minTime={minTime}
+    //maxTime={maxTime}
+    shouldDisableTime={(timeValue, clockType) => {
+     // console.log(timeValue);
+     console.log(watch?.$H);
+     console.log("--");
+
+     if (
+      watch &&
+      clockType === "hours" &&
+      timeValue < watch?.$H
+     ) {
+      return true;
+     }
+
+     return false;
+    }}
+    renderInput={(params: any) => (
      <TextField
-      required={required}
-      helperText={errors && errors.message}
-      error={errors}
+      helperText={null}
       fullWidth
       {...params}
       sx={{

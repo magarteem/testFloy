@@ -29,8 +29,12 @@ import React, {
  TouchEvent,
  useEffect,
 } from "react";
+import { useNavigate } from "react-router-dom";
+import { RouteNames } from "../../core/router/RouteNames";
 
 export const ThreeStepFormRegister = () => {
+ const navigate = useNavigate();
+
  const {
   watch,
   register,
@@ -44,6 +48,12 @@ export const ThreeStepFormRegister = () => {
  const watchFieldType = watch("type_account")?.value;
  // console.log(watch("type_account").value);
 
+ useEffect(() => {
+  !!!watchFieldType &&
+   navigate(
+    `${RouteNames.REGISTER}/${RouteNames.REG_TYPE_ACCOUNT}`
+   );
+ }, []);
  return (
   <FormLayout textLabel="Регистрация">
    <div

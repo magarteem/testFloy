@@ -61,19 +61,14 @@ export const DatePickerMobile = ({
   setIsOpen(nextIsOpen);
  };
 
- // full?.addEventListener("touchmove", (e) => {
- //  e.preventDefault();
- //  e.stopPropagation();
- // });
-
  const handleSelect = (nextTime: typeof time) => {
   setTime(nextTime);
   setIsOpen(false);
   full && full.requestFullscreen();
  };
+ full && full.requestFullscreen();
 
  useEffect(() => {
-  console.log("222");
   full && full.requestFullscreen();
  }, [full]);
 
@@ -106,8 +101,3 @@ export const DatePickerMobile = ({
   </div>
  );
 };
-
-//const onMouseDown = (e: any) => {
-//  e.preventDefault();
-//  e.stopPropagation();
-// };

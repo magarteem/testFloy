@@ -8,7 +8,7 @@ interface TextFieldElementMuiType {
  required?: boolean;
  helperText?: string;
  errors?: any;
- inputValue?: string;
+ inputValue?: string | any;
  children?: ReactNode;
  placeholder: string;
  ItemRef?: any;

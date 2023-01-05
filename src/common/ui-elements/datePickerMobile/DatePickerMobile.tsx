@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import ModalDatePicker from "react-mobile-datepicker-ts/dist";
-import DatePicker from "react-mobile-datepicker-ts/dist";
 import { calculateAge } from "../../../helpers/calculateAge";
 import TextFieldElementMui from "../../mui-element/textFieldElementMui/textField/TextFieldElementMui";
 import "./datepicker.scss";
@@ -72,13 +71,18 @@ export const DatePickerMobile = ({
   full && full.requestFullscreen();
  }, [full]);
 
+ const valid = calculateAge(new Date(time).getTime());
  return (
   <div>
    <TextFieldElementMui
     disabled={isOpen && true}
-    inputValue={calculateAge(new Date(time).getTime())}
+    inputValue={
+     valid !== "0"
+      ? calculateAge(new Date(time).getTime())
+      : null
+    }
     onClick={() => handleToggle(true)}
-    placeholder=""
+    placeholder={valid === "0" ? "Возраст" : ""}
    />
 
    <ModalDatePicker

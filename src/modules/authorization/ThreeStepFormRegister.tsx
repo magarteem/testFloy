@@ -34,10 +34,10 @@ export const ThreeStepFormRegister = () => {
  } = useFormContext();
 
  const watchFieldName =
-  watch("type_account").value === "musician";
+  watch("type_account")?.value === "musician";
 
- const watchFieldType = watch("type_account").value;
- console.log(watch("type_account").value);
+ const watchFieldType = watch("type_account")?.value;
+ // console.log(watch("type_account").value);
 
  return (
   <FormLayout textLabel="Регистрация">

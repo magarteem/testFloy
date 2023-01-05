@@ -57,11 +57,10 @@ function openFullscreen(full: any) {
 export interface DatePickerMobileType {
  placeholder: string;
  onChange: (num: number) => void;
- value: any;
+ value: number | null;
 }
 
 export const DatePickerMobile = ({
- placeholder,
  onChange,
  value,
 }: DatePickerMobileType) => {
@@ -70,10 +69,12 @@ export const DatePickerMobile = ({
  const [time, setTime] = React.useState(new Date());
  const [isOpen, setIsOpen] = React.useState(false);
  const handleToggle = (nextIsOpen: typeof isOpen) => {
+  console.log("2");
   setIsOpen(nextIsOpen);
  };
 
  const handleSelect = (nextTime: typeof time) => {
+  console.log("1");
   setTime(nextTime);
   setIsOpen(false);
   //full && full.requestFullscreen();
@@ -86,16 +87,19 @@ export const DatePickerMobile = ({
  }, [full]);
 
  const valid = calculateAge(new Date(time).getTime());
+
  return (
   <div>
    <TextFieldElementMui
-    required={true}
     disabled={isOpen && true}
     inputValue={
-     valid !== "0"
-      ? calculateAge(new Date(time).getTime())
-      : null
+     value ? calculateAge(new Date(value).getTime()) : null
     }
+    //inputValue={
+    // valid !== "0"
+    //  ? calculateAge(new Date(time).getTime())
+    //  : null
+    //}
     onClick={() => handleToggle(true)}
     placeholder={valid === "0" ? "Возраст" : ""}
    />

@@ -104,11 +104,7 @@ export const ThreeStepFormRegister = () => {
      <>
       <InputFormGender control={control} name="gender" />
       {/*<InputFormAge control={control} name="age" />*/}
-      <InputRegFormFieldAge
-       control={control}
-       name="age"
-       required={true}
-      />
+      <InputRegFormFieldAge control={control} name="age" />
      </>
     )}
 

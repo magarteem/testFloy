@@ -1,6 +1,5 @@
 import { Controller } from "react-hook-form";
 import { SelectElementMui } from "../../../common/mui-element/SelectElementMui";
-import { optionsTypeAccount } from "../../authorization/service/BD";
 import { OptionSelectType } from "../../authorization/types/authType";
 import s from "./formFieldsRegister.module.scss";
 
@@ -22,6 +21,9 @@ export const InputFormTypeCollective = ({
    <Controller
     name={name}
     control={control}
+    rules={{
+     required: "Обязательное поле",
+    }}
     render={({
      field: { onChange, value, ref, ...field },
      formState: { errors },
@@ -31,6 +33,7 @@ export const InputFormTypeCollective = ({
       value={value || ""}
       placeholder={placeholder}
       options={options}
+      required={true}
       //onChange={onChange}
       //@ts-ignore
       onChange={(e) =>

@@ -6,11 +6,13 @@ import s from "./formFieldsRegister.module.scss";
 export interface InputFormCityType {
  control: any;
  name: string;
+ placeholder: string;
 }
 
 export const InputFormCity = ({
  control,
  name,
+ placeholder,
 }: InputFormCityType) => {
  return (
   <div className={s.selectField}>
@@ -27,7 +29,7 @@ export const InputFormCity = ({
      <SelectElementMui
       ItemRef={ref}
       value={value}
-      placeholder="Город"
+      placeholder={placeholder}
       required={true}
       options={cityBD}
       //onChange={onChange}

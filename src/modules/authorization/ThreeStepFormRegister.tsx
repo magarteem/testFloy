@@ -24,11 +24,7 @@ import { InputFormEstablishmentDescription } from "./formFieldsRegister/InputFor
 import { InputRegFormRoomArea } from "./formFieldsRegister/InputRegFormRoomArea";
 import { InputFormOpeningHours } from "./formFieldsRegister/InputFormOpeningHours";
 import { InputRegFormFieldAge } from "./formFieldsRegister/InputRegFormFieldAge";
-import React, {
- ChangeEvent,
- TouchEvent,
- useEffect,
-} from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { RouteNames } from "../../core/router/RouteNames";
 
@@ -46,7 +42,6 @@ export const ThreeStepFormRegister = () => {
   watch("type_account")?.value === "musician";
 
  const watchFieldType = watch("type_account")?.value;
- // console.log(watch("type_account").value);
 
  useEffect(() => {
   !!!watchFieldType &&
@@ -54,15 +49,10 @@ export const ThreeStepFormRegister = () => {
     `${RouteNames.REGISTER}/${RouteNames.REG_TYPE_ACCOUNT}`
    );
  }, []);
+
  return (
   <FormLayout textLabel="Регистрация">
-   <div
-    className={s.main}
-    onTouchMove={(event: TouchEvent<HTMLDivElement>) => {
-     event.preventDefault();
-     event.stopPropagation();
-    }}
-   >
+   <div className={s.main}>
     {watchFieldType === "group-collective" && (
      <InputFormTypeCollective
       control={control}
@@ -72,10 +62,6 @@ export const ThreeStepFormRegister = () => {
      />
     )}
 
-    {watchFieldType === "performance-venue" && (
-     <InputFormTypeOfInstitution control={control} />
-    )}
-
     <InputRegFormFieldName
      control={control}
      name="name_field"
@@ -83,29 +69,61 @@ export const ThreeStepFormRegister = () => {
      required={true}
     />
 
+    {watchFieldType === "performance-venue" && (
+     <InputFormTypeOfInstitution
+      control={control}
+      placeholder="Тип заведения"
+     />
+    )}
+
     <InputFormImgUpload
      register={register}
      control={control}
      name="img_upload"
     />
 
-    <InputFormCity control={control} name="city" />
+    <InputFormCity
+     control={control}
+     name="city"
+     placeholder="Город"
+    />
+
+    {watchFieldType !== "musician" &&
+     watchFieldType !== "group-collective" && (
+      <InputRegFormFieldName
+       control={control}
+       name="address"
+       placeholder={"Адресс"}
+       required={true}
+      />
+     )}
+
+    {/*<InputFormCity control={control} name="city" placeholder="Метро"/>*/}
 
     {watchFieldName && (
      <>
       <InputFormGender control={control} name="gender" />
       {/*<InputFormAge control={control} name="age" />*/}
-      <InputRegFormFieldAge control={control} name="age" />
+      <InputRegFormFieldAge
+       control={control}
+       name="age"
+       required={true}
+      />
      </>
     )}
 
-    <InputFormTools
-     control={control}
-     name="tool"
-     typeAccount={watchFieldType}
-    />
+    {(watchFieldType === "musician" ||
+     watchFieldType === "group-collective") && (
+     <>
+      <InputFormTools
+       control={control}
+       name="tool"
+       typeAccount={watchFieldType}
+      />
 
-    <InputFormGenre control={control} name="genre" />
+      <InputFormGenre control={control} name="genre" />
+     </>
+    )}
 
     {watchFieldName && (
      <InputFormMaster control={control} name="master" />

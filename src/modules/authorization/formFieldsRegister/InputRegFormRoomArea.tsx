@@ -29,7 +29,7 @@ export const InputRegFormRoomArea = ({
      <div className={s.sizeInput}>
       <TextFieldElementMui
        ItemRef={ref}
-       placeholder="Площадь помещения (м. кв.)"
+       placeholder="Площадь помещения"
        onChange={onChange}
        errors={errors[name]}
        {...field}

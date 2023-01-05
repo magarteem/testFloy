@@ -18,9 +18,9 @@ export const InputFormOpeningHours = ({
     <Controller
      name="from_opening_hours"
      control={control}
-     rules={{
-      required: "Обязательное поле",
-     }}
+     // rules={{
+     //  required: "Обязательное поле",
+     // }}
      render={({
       field: { onChange, value, ref, ...field },
       formState: { errors },
@@ -43,9 +43,9 @@ export const InputFormOpeningHours = ({
     <Controller
      name="to_opening_hours"
      control={control}
-     rules={{
-      required: "Обязательное поле",
-     }}
+     // rules={{
+     //  required: "Обязательное поле",
+     // }}
      render={({
       field: { onChange, value, ref, ...field },
       formState: { errors },

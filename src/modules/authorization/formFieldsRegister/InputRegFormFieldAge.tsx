@@ -27,11 +27,12 @@ export const InputRegFormFieldAge = ({
      },
     }}
     render={({
-     field: { onChange, ref, ...field },
+     field: { onChange, ref, value, ...field },
      formState: { errors },
     }) => (
      <div className={s.sizeInput}>
       <DatePickerMobile
+       value={value}
        placeholder="Возраст"
        onChange={onChange}
        {...field}

@@ -5,10 +5,12 @@ import s from "./formFieldsRegister.module.scss";
 
 export interface InputFormTypeOfInstitutionType {
  control: any;
+ placeholder: string;
 }
 
 export const InputFormTypeOfInstitution = ({
  control,
+ placeholder,
 }: InputFormTypeOfInstitutionType) => {
  return (
   <div className={s.selectFieldCustomHeight}>
@@ -25,7 +27,7 @@ export const InputFormTypeOfInstitution = ({
      <SelectGenreElementMui
       ItemRef={ref}
       value={value}
-      placeholder="Тип заведения*"
+      placeholder={placeholder}
       required={true}
       options={typeOfInstitution}
       onChange={onChange}

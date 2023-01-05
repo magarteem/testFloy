@@ -41,6 +41,7 @@ export const Registration = () => {
    establishment_description: "",
    from_opening_hours: null,
    to_opening_hours: null,
+   address: "",
   },
  });
 

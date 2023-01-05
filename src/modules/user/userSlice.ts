@@ -11,32 +11,6 @@ import { getDataProfileThunk } from "./getDataProfileThunk";
 
 const initialState: InitialStateType = {
  profileData: null,
- //profileData: {
- //  id_user: "",
- //  name: "",
- //  email: "",
- //  city: null,
- //  //city: { value: "", label: "" },
- //  age: 952078480000,
- //  img_upload: "",
- //  gender: { value: "", label: "" },
- //  type_account: {
- //    value: "",
- //    label: "",
- //  },
- //  skills: {
- //    tool: [],
- //    genre: [],
- //    workExperience: "",
- //    master: { value: "", label: "" },
- //    education: "",
- //    inspiration: [],
- //  },
- //  private_settings: {
- //    value: "",
- //    label: "",
- //  },
- //},
  error: "",
  isLoading: false,
 };

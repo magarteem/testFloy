@@ -42,7 +42,6 @@ export const NewsPagesOne = () => {
    link: `${RouteNames.CHANGE_THIS_NEWS}/${dataOneNews.id}`,
    action: () => {},
   },
-  { label: "Архивировать", link: "", action: () => {} },
   {
    label: "Скопировать ссылку",
    link: "",

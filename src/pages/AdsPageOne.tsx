@@ -73,7 +73,6 @@ export const AdsPageOne = () => {
    link: `${RouteNames.ADS}/${RouteNames.ADS_CHANGE_THIS_ADS}/${id_ads}`,
    action: changeThisNews,
   },
-  { label: "Архивировать", link: "", action: () => {} },
   {
    label: "Скопировать ссылку",
    link: "",

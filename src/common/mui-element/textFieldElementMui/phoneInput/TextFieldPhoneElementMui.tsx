@@ -49,7 +49,7 @@ export default function TextFieldPhoneElementMui({
    fullWidth
    label={placeholder}
    autoComplete="off"
-   placeholder={placeholder}
+   // placeholder={placeholder}
    variant="outlined"
    required={required}
    onChange={onChange}

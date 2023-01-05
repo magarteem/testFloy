@@ -34,7 +34,6 @@ export const CardsNewsItemPreview = ({
    link: `${RouteNames.CHANGE_THIS_NEWS}/${itemDataNews.id}`,
    action: changeThisNews,
   },
-  { label: "Архивировать", link: "", action: () => {} },
   {
    label: "Скопировать ссылку",
    link: "",

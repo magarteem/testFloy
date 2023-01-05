@@ -45,7 +45,7 @@ export default function TextFieldElementMui({
    fullWidth
    label={placeholder}
    autoComplete="off"
-   placeholder={placeholder}
+   // placeholder={placeholder}
    variant="outlined"
    required={required}
    onChange={onChange}

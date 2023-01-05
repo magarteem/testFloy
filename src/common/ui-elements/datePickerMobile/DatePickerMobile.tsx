@@ -42,7 +42,18 @@ const dateConfig = [
  },
 ];
 
-console.log(dateConfig);
+function openFullscreen(full: any) {
+ if (full) {
+  if (full.requestFullscreen) {
+   full.requestFullscreen();
+  } else if (full.webkitRequestFullscreen) {
+   full.webkitRequestFullscreen();
+  } else if (full.msRequestFullscreen) {
+   full.msRequestFullscreen();
+  }
+ }
+}
+
 export interface DatePickerMobileType {
  placeholder: string;
  onChange: (num: number) => void;
@@ -65,11 +76,13 @@ export const DatePickerMobile = ({
  const handleSelect = (nextTime: typeof time) => {
   setTime(nextTime);
   setIsOpen(false);
-  full && full.requestFullscreen();
+  //full && full.requestFullscreen();
+  openFullscreen(full);
  };
 
  useEffect(() => {
-  full && full.requestFullscreen();
+  //full && full.requestFullscreen();
+  openFullscreen(full);
  }, [full]);
 
  const valid = calculateAge(new Date(time).getTime());

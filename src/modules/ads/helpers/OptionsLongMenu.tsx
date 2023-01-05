@@ -14,7 +14,6 @@ export const useOptionsLongMenu = (id: number) => {
    link: `${RouteNames.ADS}/${RouteNames.ADS_CHANGE_THIS_ADS}/${id}`,
    action: () => {},
   },
-  { label: "Архивировать", link: "", action: () => {} },
   {
    label: "Скопировать ссылку",
    link: "",

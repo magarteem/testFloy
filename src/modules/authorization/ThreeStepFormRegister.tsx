@@ -24,6 +24,11 @@ import { InputFormEstablishmentDescription } from "./formFieldsRegister/InputFor
 import { InputRegFormRoomArea } from "./formFieldsRegister/InputRegFormRoomArea";
 import { InputFormOpeningHours } from "./formFieldsRegister/InputFormOpeningHours";
 import { InputRegFormFieldAge } from "./formFieldsRegister/InputRegFormFieldAge";
+import React, {
+ ChangeEvent,
+ TouchEvent,
+ useEffect,
+} from "react";
 
 export const ThreeStepFormRegister = () => {
  const {
@@ -41,7 +46,13 @@ export const ThreeStepFormRegister = () => {
 
  return (
   <FormLayout textLabel="Регистрация">
-   <div className={s.main}>
+   <div
+    className={s.main}
+    onTouchMove={(event: TouchEvent<HTMLDivElement>) => {
+     event.preventDefault();
+     event.stopPropagation();
+    }}
+   >
     {watchFieldType === "group-collective" && (
      <InputFormTypeCollective
       control={control}

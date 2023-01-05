@@ -1,5 +1,11 @@
-.datepicker {
- bottom: auto;
- left: auto;
- max-width: 600px;
+.datepicker-modal {
+ background-color: rgba(45, 44, 44, 0.6) !important;
+ .presentation {
+  .datepicker {
+   position: absolute;
+   bottom: 50px !important;
+   left: auto !important;
+   max-width: 600px;
+  }
+ }
 }

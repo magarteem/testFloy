@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ModalDatePicker from "react-mobile-datepicker-ts/dist";
 import DatePicker from "react-mobile-datepicker-ts/dist";
 import { calculateAge } from "../../../helpers/calculateAge";
@@ -53,16 +53,29 @@ export const DatePickerMobile = ({
  placeholder,
  onChange,
 }: DatePickerMobileType) => {
+ let full = document.querySelector(".datepicker-modal");
+
  const [time, setTime] = React.useState(new Date());
  const [isOpen, setIsOpen] = React.useState(false);
  const handleToggle = (nextIsOpen: typeof isOpen) => {
   setIsOpen(nextIsOpen);
  };
 
+ // full?.addEventListener("touchmove", (e) => {
+ //  e.preventDefault();
+ //  e.stopPropagation();
+ // });
+
  const handleSelect = (nextTime: typeof time) => {
   setTime(nextTime);
   setIsOpen(false);
+  full && full.requestFullscreen();
  };
+
+ useEffect(() => {
+  console.log("222");
+  full && full.requestFullscreen();
+ }, [full]);
 
  return (
   <div>
@@ -73,19 +86,19 @@ export const DatePickerMobile = ({
     placeholder=""
    />
 
-   {/*<DatePicker*/}
    <ModalDatePicker
+    // <DatePicker
+    max={new Date()}
     showFooter={true}
-    style={{ position: "fixed", bottom: "50px" }}
-    cancelText="Закрыть"
+    cancelText=""
     confirmText="Готово"
     //@ts-ignore
     dateConfig={dateConfig}
-    showCaption={true}
     value={time}
     onChange={(date: Date) =>
      onChange(new Date(date).getTime())
     }
+    theme="default"
     isOpen={isOpen}
     onSelect={handleSelect}
     onCancel={() => handleToggle(false)}
@@ -93,3 +106,8 @@ export const DatePickerMobile = ({
   </div>
  );
 };
+
+//const onMouseDown = (e: any) => {
+//  e.preventDefault();
+//  e.stopPropagation();
+// };

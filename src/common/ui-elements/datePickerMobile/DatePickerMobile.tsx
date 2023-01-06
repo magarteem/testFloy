@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import ModalDatePicker from "react-mobile-datepicker-ts/dist";
+import DatePicker from "react-mobile-datepicker-ts/dist";
 import { calculateAge } from "../../../helpers/calculateAge";
 import TextFieldElementMui from "../../mui-element/textFieldElementMui/textField/TextFieldElementMui";
 import "./datepicker.scss";
 import "react-mobile-datepicker-ts/dist/main.css";
+//import s from './fieldCustomAge.module.scss';
 
 const monthMap = {
  "1": "Янв",
@@ -103,7 +105,8 @@ export const DatePickerMobile = ({
 
  return (
   <div>
-   <TextFieldElementMui
+   {/*<TextFieldElementMui
+    //disabled={ true}
     disabled={isOpen && true}
     inputValue={
      value ? calculateAge(new Date(value).getTime()) : null
@@ -115,10 +118,20 @@ export const DatePickerMobile = ({
     //}
     onClick={() => handleToggle(true)}
     placeholder={valid === "0" ? "Возраст" : ""}
-   />
+   />*/}
+   <span
+    className="fieldCustomAge"
+    onClick={() => handleToggle(true)}
+   >
+    {value ? (
+     calculateAge(new Date(value).getTime())
+    ) : (
+     <span className="customAgePlaceholder">Возраст</span>
+    )}
+   </span>
 
-   <ModalDatePicker
-    // <DatePicker
+   {/*<ModalDatePicker*/}
+   <DatePicker
     max={new Date()}
     showFooter={true}
     cancelText=""

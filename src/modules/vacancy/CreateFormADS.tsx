@@ -18,6 +18,8 @@ import { InputFormCity } from "./formFieldsVacancy/InputFormCity";
 import { InputFormTools } from "./formFieldsVacancy/InputFormTools";
 import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
 import { InputFormWorkingConditionsTextFields } from "./formFieldsVacancy/InputFormWorkingConditionsTextFields";
+import { DatePickerMobileTextFieldTEST } from "../../common/ui-elements/datePickerMobile/DatePickerMobileTextFieldTEST";
+import { InputFormFromAgeTextFieldTEST } from "./formFieldsVacancy/InputFormFromAgeTextFieldTEST";
 
 interface CreateFormADSType {
  buttonSubbmitText: string;
@@ -46,10 +48,14 @@ export const CreateFormADS = ({
      {typeAds === "Музыканта" && (
       <>
        <InputFormGender control={control} />
-       <InputFormFromAndToAge
+       <InputFormFromAgeTextFieldTEST
         control={control}
         watch={watch}
        />
+       {/*<InputFormFromAndToAge
+        control={control}
+        watch={watch}
+       />*/}
       </>
      )}
 

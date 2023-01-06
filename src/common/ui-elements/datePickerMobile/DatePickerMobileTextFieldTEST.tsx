@@ -8,16 +8,16 @@ import "react-mobile-datepicker-ts/dist/main.css";
 import { FieldCustomAge } from "./FieldCustomAge";
 import { dateConfig, DateTimeType } from "./dateTime";
 
-export interface DatePickerMobileType {
+export interface DatePickerMobileTextFieldTESTType {
  placeholder: string;
  onChange: (num: number) => void;
  value: number | null;
 }
 
-export const DatePickerMobile = ({
+export const DatePickerMobileTextFieldTEST = ({
  onChange,
  value,
-}: DatePickerMobileType) => {
+}: DatePickerMobileTextFieldTESTType) => {
  const [time, setTime] = React.useState(new Date());
  const [isOpen, setIsOpen] = React.useState(false);
  const handleToggle = (nextIsOpen: typeof isOpen) =>
@@ -41,11 +41,12 @@ export const DatePickerMobile = ({
   setIsOpen(false);
  };
 
+ const valid = calculateAge(new Date(time).getTime());
  return (
   <div className="wrappPicker">
-   {/*<TextFieldElementMui
-    //disabled={ true}
-    disabled={isOpen && true}
+   <TextFieldElementMui
+    disabled={true}
+    //disabled={isOpen && true}
     inputValue={
      value ? calculateAge(new Date(value).getTime()) : null
     }
@@ -56,26 +57,15 @@ export const DatePickerMobile = ({
     //}
     onClick={() => handleToggle(true)}
     placeholder={valid === "0" ? "Возраст" : ""}
-   />*/}
+   />
 
-   {/*<span
-    className="fieldCustomAge"
-    onClick={() => handleToggle(true)}
-   >
-    {value ? (
-     calculateAge(new Date(value).getTime())
-    ) : (
-     <span className="customAgePlaceholder">Возраст</span>
-    )}
-   </span>*/}
-
-   <FieldCustomAge
+   {/*<FieldCustomAge
     placeholder="Возраст"
     value={
      value ? calculateAge(new Date(value).getTime()) : null
     }
     onClick={() => handleToggle(true)}
-   />
+   />*/}
 
    {/*<DatePicker*/}
    <ModalDatePicker

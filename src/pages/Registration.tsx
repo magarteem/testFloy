@@ -35,8 +35,6 @@ export const Registration = () => {
    web_site: "",
    email_contact: "",
 
-   opening_hours_from: null,
-   opening_hours_to: null,
    room_area: "",
    establishment_description: "",
    from_opening_hours: null,

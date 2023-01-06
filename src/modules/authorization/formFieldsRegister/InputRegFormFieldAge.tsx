@@ -1,6 +1,8 @@
 import { Controller } from "react-hook-form";
 import { DatePickerMobile } from "../../../common/ui-elements/datePickerMobile/DatePickerMobile";
+import cn from "classnames";
 import s from "./formFieldsRegister.module.scss";
+import { dateConfig } from "../../../common/ui-elements/datePickerMobile/dateTime";
 
 export interface InputRegFormFieldAgeType {
  control: any;
@@ -20,7 +22,7 @@ export const InputRegFormFieldAge = ({
      field: { onChange, ref, value, ...field },
      formState: { errors },
     }) => (
-     <div className={s.sizeInput}>
+     <div className={cn(s.sizeInput, s.wrappPicker)}>
       <DatePickerMobile
        value={value}
        placeholder="Возраст"

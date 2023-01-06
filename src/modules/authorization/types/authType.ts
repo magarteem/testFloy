@@ -41,11 +41,9 @@ export interface ISignUpFormValues
  about_me: string;
  email_contact: string;
 
- opening_hours_from: number | null;
- opening_hours_to: number | null;
  room_area: string;
  establishment_description: string;
- from_opening_hours: null;
- to_opening_hours: null;
+ from_opening_hours: number | null;
+ to_opening_hours: number | null;
  address: string;
 }

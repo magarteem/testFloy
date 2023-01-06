@@ -1,11 +1,49 @@
 .datepicker-modal {
+ position: fixed;
+ top: 0;
+ right: 0;
+ bottom: 0;
+ left: 0;
  background-color: rgba(45, 44, 44, 0.6) !important;
- .presentation {
-  .datepicker {
-   position: absolute;
-   bottom: 50px !important;
-   left: auto !important;
-   max-width: 600px;
+
+ .datepicker.default {
+  //bottom: 30% !important;
+  left: auto !important;
+  max-width: 600px;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  .datepicker-content {
+   // position: fixed;
+   // top: 0;
+   // right: 0;
+   // bottom: 0;
+   // left: 0;
+
+   .datepicker-col-1 {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    //position: fixed;
+    //top: 0;
+    //right: 0;
+    //bottom: 0;
+    //left: 0;
+   }
   }
  }
 }
+//.datepicker-modal {
+// background-color: rgba(45, 44, 44, 0.6) !important;
+// .presentation {
+//  .datepicker {
+//   position: absolute;
+//   bottom: 50px !important;
+//   left: auto !important;
+//   max-width: 600px;
+//  }
+// }
+//}

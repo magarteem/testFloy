@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PopUpNavigateGradient } from "../common/components/navigateButton/PopUpNavigateGradient";
 import addIcons from "../assets/icons/addIcons.svg";
 import filterIconsNew from "../assets/icons/filterIconsNew.svg";
@@ -28,6 +28,19 @@ export const NewsAll = () => {
  const handleClickOpen = () => setOpen(true);
  const handleClose = () => setOpen(false);
 
+ useEffect(() => {
+  const elem = document.body;
+  open && elem.classList.add("cssGlobalHTML");
+  //@ts-ignore
+  open && elem.parentNode.classList.add("cssGlobalHTML");
+
+  return () => {
+   elem.classList.remove("cssGlobalHTML");
+   //@ts-ignore
+   elem.parentNode.classList.remove("cssGlobalHTML");
+  };
+ }, [open]);
+
  return (
   <>
    <StylesFullScreen>
@@ -53,6 +66,7 @@ export const NewsAll = () => {
     style={{
      "& .MuiDialog-container": {
       alignItems: "flex-end",
+      overscrollBehavior: "contain",
 
       "& .MuiPaper-root": {
        background: "#FDFDF5",

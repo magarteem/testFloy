@@ -32,6 +32,19 @@ export const AdsAll = () => {
  const handleClose = () => setOpen(false);
 
  useEffect(() => {
+  const elem = document.body;
+  open && elem.classList.add("cssGlobalHTML");
+  //@ts-ignore
+  open && elem.parentNode.classList.add("cssGlobalHTML");
+
+  return () => {
+   elem.classList.remove("cssGlobalHTML");
+   //@ts-ignore
+   elem.parentNode.classList.remove("cssGlobalHTML");
+  };
+ }, [open]);
+
+ useEffect(() => {
   adsData.adsList.length === 0 &&
    dispatch(getDataAdsThunk(adsListData));
  }, []);

@@ -22,7 +22,7 @@ interface QuestionnaireCardsType {
 export const QuestionnaireCards = ({
  otherUserProfile,
 }: QuestionnaireCardsType) => {
- const typeMusicant =
+ const typeMusicians =
   otherUserProfile.type_account.value === "musician";
  const typeGroupe =
   otherUserProfile.type_account.value ===
@@ -51,7 +51,7 @@ export const QuestionnaireCards = ({
       <span className={s.visit}>
        {`${otherUserProfile.city.label},        
        ${
-        typeMusicant
+        typeMusicians
          ? formatter.format(
             +calculateAge(otherUserProfile.age || 0)
            )
@@ -67,7 +67,7 @@ export const QuestionnaireCards = ({
     </div>
    </div>
 
-   {typeMusicant && (
+   {typeMusicians && (
     <div className={s.mainQuestionnaireCards}>
      <GroupeToolsAndGenreChips
       tools={otherUserProfile.skills.tool}

@@ -49,6 +49,7 @@
 
 html,
 body {
+ //overscroll-behavior: contain;
  height: 100%;
  font-family: "Mulish_Regular", sans-serif;
  font-size: 16px;
@@ -73,4 +74,8 @@ body {
   @media (max-width: $mediaMaxWidth320px) {
   }
  }
+}
+
+body {
+ overscroll-behavior: contain;
 }

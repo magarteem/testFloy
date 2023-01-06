@@ -42,17 +42,17 @@ const dateConfig = [
  },
 ];
 
-//function openFullscreen(full: any) {
-// if (full) {
-//  if (full.requestFullscreen) {
-//   full.requestFullscreen();
-//  } else if (full.webkitRequestFullscreen) {
-//   full.webkitRequestFullscreen();
-//  } else if (full.msRequestFullscreen) {
-//   full.msRequestFullscreen();
-//  }
-// }
-//}
+function openFullscreen(full: any) {
+ if (full) {
+  if (full.requestFullscreen) {
+   full.requestFullscreen();
+  } else if (full.webkitRequestFullscreen) {
+   full.webkitRequestFullscreen();
+  } else if (full.msRequestFullscreen) {
+   full.msRequestFullscreen();
+  }
+ }
+}
 
 export interface DatePickerMobileType {
  placeholder: string;
@@ -73,31 +73,18 @@ export const DatePickerMobile = ({
   setIsOpen(nextIsOpen);
  };
 
- useEffect(() => {
-  const elem = document.body;
-  isOpen && elem.classList.add("cssGlobalHTML");
-  //@ts-ignore
-  isOpen && elem.parentNode.classList.add("cssGlobalHTML");
-
-  return () => {
-   elem.classList.remove("cssGlobalHTML");
-   //@ts-ignore
-   elem.parentNode.classList.remove("cssGlobalHTML");
-  };
- }, [isOpen]);
-
  const handleSelect = (nextTime: typeof time) => {
   console.log("1");
   setTime(nextTime);
   setIsOpen(false);
   //full && full.requestFullscreen();
-  //openFullscreen(full);
+  openFullscreen(full);
  };
 
- // useEffect(() => {
- //full && full.requestFullscreen();
- //openFullscreen(full);
- // }, [full]);
+ useEffect(() => {
+  //full && full.requestFullscreen();
+  openFullscreen(full);
+ }, [full]);
 
  const valid = calculateAge(new Date(time).getTime());
 

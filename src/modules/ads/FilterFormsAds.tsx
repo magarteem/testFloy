@@ -20,6 +20,7 @@ import { InputFormWhoIsLookingAds } from "./formFieldsAds/InputFormWhoIsLookingA
 import { InputFormWhoIsLookingQestionnaire } from "./formFieldsAds/InputFormWhoIsLookingQestionnaire";
 import s from "./style/filterFormsAds.module.scss";
 import { InputFormMaster } from "./formFieldsAds/InputFormMaster";
+import { FilterLayoutWrapper } from "../../common/layout/filterLayoutWraper/FilterLayoutWrapper";
 
 interface FilterFormsAdsType {
  handleClose: () => void;
@@ -67,9 +68,7 @@ export const FilterFormsAds = ({
  };
 
  return (
-  <div className={s.filterForAds}>
-   <div className={s.toutchLine} />
-
+  <FilterLayoutWrapper handleClose={handleClose}>
    <form noValidate onSubmit={handleSubmit(onSubmit)}>
     <div className={s.headerForms}>
      <h1>Фильтр</h1>
@@ -188,7 +187,7 @@ export const FilterFormsAds = ({
      />
     </div>
    </form>
-  </div>
+  </FilterLayoutWrapper>
  );
 };
 

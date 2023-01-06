@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { ButtonSubmitMui } from "../../common/mui-element/ButtonSubmitMui";
 import { IconButton } from "@mui/material";
-import s from "./style/filterFormsTimline.module.scss";
 import { TimeLinePostType } from "./types/timlineSliceType";
 import { InputFormCity } from "./formFields/InputFormCity";
 import { InputFormSearchText } from "./formFields/InputFormSearchText";
@@ -9,6 +8,8 @@ import { InputFormCategoryNews } from "./formFields/InputFormCategoryNews";
 import { InputFormTools } from "./formFields/InputFormTools";
 import { InputFormGenre } from "./formFields/InputFormGenre";
 import { FilterFormsTimeLineFieldsType } from "./types/FilterFormsTimeLineFieldsType";
+import s from "./style/filterFormsTimline.module.scss";
+import { FilterLayoutWrapper } from "../../common/layout/filterLayoutWraper/FilterLayoutWrapper";
 
 interface FilterFormsTimeLineType {
  handleClose: () => void;
@@ -36,9 +37,7 @@ export const FilterFormsTimeLine = ({
  };
 
  return (
-  <div className={s.filterForAds}>
-   <div className={s.toutchLine} />
-
+  <FilterLayoutWrapper handleClose={handleClose}>
    <form noValidate onSubmit={handleSubmit(onSubmit)}>
     <div className={s.headerForms}>
      <h1>Фильтр</h1>
@@ -74,6 +73,6 @@ export const FilterFormsTimeLine = ({
      />
     </div>
    </form>
-  </div>
+  </FilterLayoutWrapper>
  );
 };

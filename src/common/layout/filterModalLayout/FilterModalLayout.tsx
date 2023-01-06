@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { Dialog, Slide } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
+import "./cssGlobalHTML.scss";
 
 const Transition = React.forwardRef(function Transition(
  props: TransitionProps & {
@@ -32,6 +33,15 @@ export const FilterModalLayout = ({
    onClose={handleClose}
    aria-describedby="alert-dialog-slide-description"
    sx={style}
+   style={{
+    overscrollBehavior: "contain !important",
+   }}
+   onTouchMove={(e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    e.isPropagationStopped();
+    //alert("22");
+   }}
   >
    {children}
   </Dialog>

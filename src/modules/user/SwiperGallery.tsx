@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import { FilterModalLayout } from "../../common/layout/filterModalLayout/FilterModalLayout";
@@ -14,16 +14,15 @@ export const SwiperGallery = ({
  skillsCategoryTitle,
  inspiration,
 }: SwiperGalleryType) => {
+ const swiperRef = useRef<any>(null);
  const [openModal, setOpenModal] = useState(false);
- const [sliderNumber, setSliderNumber] = useState(0);
 
  const handleClickOpen = (index: number) => {
   setOpenModal(true);
-  setSliderNumber(index);
+  swiperRef.current?.swiper.slideTo(index);
  };
- const handleClose = () => {
-  setOpenModal(false);
- };
+
+ const handleClose = () => setOpenModal(false);
 
  return (
   <div className={s.swiper}>
@@ -54,15 +53,45 @@ export const SwiperGallery = ({
     style={{
      "& .MuiDialog-container": {
       "& .MuiPaper-root": {
-       background: "#000000",
+       background: "none",
+       boxShadow: "none",
        width: "100%",
        margin: 0,
        color: "#fff",
+       "& .swiper ": {
+        width: "100%",
+
+        "& .swiperCardIsOpenning": {
+         width: "100% !important",
+        },
+
+        img: {
+         width: "100% !important",
+        },
+       },
+
+       "& .swiper-wrapper": {
+        alignItems: "center !important",
+       },
       },
      },
     }}
    >
-    <img src={inspiration[sliderNumber]} alt="111" />
+    <Swiper
+     ref={swiperRef}
+     spaceBetween={1}
+     speed={0}
+     autoHeight={true}
+    >
+     {inspiration.map((x, index) => (
+      <SwiperSlide
+       key={index}
+       className={s.swiperCardIsOpenning}
+      >
+       <img src={x} alt={x} />
+      </SwiperSlide>
+     ))}
+    </Swiper>
    </FilterModalLayout>
   </div>
  );

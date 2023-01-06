@@ -1,10 +1,6 @@
 @import "src/styles/variable";
 
 .swiper {
- // width: 100%;
- // display: flex;
- //  justify-content: space-between;
- // align-items: center;
  padding: 12px 0;
  overflow: auto;
 
@@ -15,6 +11,11 @@
    display: flex;
    justify-content: space-between;
   }
+ }
+
+ .swiper-wrapper {
+  align-items: center !important;
+  background-color: red !important;
  }
 
  h2 {

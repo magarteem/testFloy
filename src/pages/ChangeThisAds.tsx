@@ -23,12 +23,10 @@ export const ChangeThisAds = () => {
  const dataAds: TimelineCards[] = useAppSelector(
   (state) => state.adsSliceReducer.adsList
  );
- console.log(dataAds);
- console.log(change_id_ads);
+
  const changeDataADS = dataAds.find(
   (x) => `${x.id}` === change_id_ads
  );
- console.log(changeDataADS);
 
  const methodVacancy = useForm<any>({
   mode: "onBlur",
@@ -53,6 +51,7 @@ export const ChangeThisAds = () => {
  });
 
  const onSubmitVacancy = (data: any) => {
+  console.log(data);
   const changeData = {
    ...data,
    typeVacancyOrAds: changeDataADS?.typeVacancyOrAds,
@@ -96,6 +95,7 @@ export const ChangeThisAds = () => {
  });
 
  const onSubmitAds = (data: any) => {
+  console.log(data);
   const changeData = {
    ...data,
    typeVacancyOrAds: changeDataADS?.typeVacancyOrAds,

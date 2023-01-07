@@ -47,6 +47,7 @@ import { InputFormInspiration } from "./formFields/InputFormInspiration";
 import { InputFormPhone } from "./formFields/InputFormPhone";
 import { InputFormEmail } from "./formFields/InputFormEmail";
 import { InputFormWebSite } from "./formFields/InputFormWebSite";
+import { InputRegFormFieldAge } from "./formFields/InputRegFormFieldAge";
 
 interface FormChangeProfileType {
  userDataProfile: InitialStateUserType;
@@ -109,7 +110,8 @@ export const FormChangeProfile = ({
    <InputFormName control={control} />
    <SelectFieldCity control={control} />
    <SelectFieldGender control={control} />
-   <SelectFieldAge control={control} />
+   {/*<SelectFieldAge control={control} />*/}
+   <InputRegFormFieldAge control={control} name="age" />
    <SelectFieldTools control={control} />
    <SelectFieldGenre control={control} />
    <SelectFieldMaster control={control} />

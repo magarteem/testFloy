@@ -21,6 +21,7 @@ import { InputFormWhoIsLookingQestionnaire } from "./formFieldsAds/InputFormWhoI
 import s from "./style/filterFormsAds.module.scss";
 import { InputFormMaster } from "./formFieldsAds/InputFormMaster";
 import { FilterLayoutWrapper } from "../../common/layout/filterLayoutWraper/FilterLayoutWrapper";
+import { InputFormFromAgeTextFieldTEST } from "./formFieldsAds/InputFormFromAgeTextFieldTEST";
 
 interface FilterFormsAdsType {
  handleClose: () => void;
@@ -203,11 +204,15 @@ const WatchMusician = ({
  return (
   <>
    <InputFormGender control={control} name="gender" />
-   <InputFormFromAndToAge
+   {/*<InputFormFromAndToAge
     watch={watch}
     control={control}
     nameFromAge="fromAge"
     toAge="toAge"
+   />*/}
+   <InputFormFromAgeTextFieldTEST
+    control={control}
+    watch={watch}
    />
    <InputFormMaster control={control} />
   </>

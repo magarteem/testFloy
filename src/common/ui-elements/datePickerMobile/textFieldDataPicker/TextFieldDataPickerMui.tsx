@@ -1,8 +1,9 @@
 import React, { ChangeEvent, ReactNode } from "react";
 import { TextField } from "@mui/material";
 import { styleTextFieldSX } from "./styleTextFieldSX";
+import dayjs from "dayjs";
 
-interface TextFieldElementMuiType {
+interface TextFieldDataPickerMuiType {
  type?: string;
  multiline?: boolean;
  required?: boolean;
@@ -13,11 +14,12 @@ interface TextFieldElementMuiType {
  placeholder: string;
  ItemRef?: any;
  disabled?: boolean;
+ InputLabelProps?: {};
  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
  onClick?: () => void;
 }
 
-export default function TextFieldElementMui({
+export default function TextFieldDataPickerMui({
  children,
  type = "text",
  multiline = false,
@@ -30,10 +32,12 @@ export default function TextFieldElementMui({
  disabled,
  onChange,
  onClick,
+ InputLabelProps,
  ...props
-}: TextFieldElementMuiType) {
+}: TextFieldDataPickerMuiType) {
  return (
   <TextField
+   InputLabelProps={InputLabelProps}
    disabled={disabled}
    helperText={errors && errors.message}
    multiline={multiline}

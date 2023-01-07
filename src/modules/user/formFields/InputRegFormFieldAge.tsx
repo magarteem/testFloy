@@ -1,7 +1,7 @@
 import { Controller } from "react-hook-form";
 import { DatePickerMobile } from "../../../common/ui-elements/datePickerMobile/DatePickerMobile";
 import cn from "classnames";
-import s from "./formFieldsRegister.module.scss";
+import s from "./formFields.module.scss";
 
 export interface InputRegFormFieldAgeType {
  control: any;

@@ -16,6 +16,7 @@ import { InputFormEmail } from "./formFieldsVacancy/InputFormEmail";
 import { InputFormWebSite } from "./formFieldsVacancy/InputFormWebSite";
 import s from "./style/createFormVacancy.module.scss";
 import { BtnInGroupeSaveCancelMui } from "../../common/components/navigateButton/BtnInGroupeSaveCancelMui";
+import { InputFormFromAgeTextFieldTEST } from "./formFieldsVacancy/InputFormFromAgeTextFieldTEST";
 
 interface CreateFormVacancyType {
  buttonSubbmitText: string;
@@ -44,10 +45,14 @@ export const CreateFormVacancy = ({
       typeVacancy === "Звукорежиссёр") && (
       <>
        <InputFormGender control={control} />
-       <InputFormFromAndToAge
+       <InputFormFromAgeTextFieldTEST
         control={control}
         watch={watch}
        />
+       {/*<InputFormFromAndToAge
+        control={control}
+        watch={watch}
+       />*/}
       </>
      )}
 
